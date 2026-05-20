@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "title": "SWE-agent 2.0",
+    "source": "GitHub",
+    "description": "Open-source autonomous AI system for resolving real-world GitHub issues with optimized agent-computer interfaces.",
+    "href": "https://github.com",
+    "stars": 12400
+  },
+  {
+    "id": "2",
+    "title": "Q-Star v3",
+    "source": "Hugging Face",
+    "description": "Self-correcting coding agent with neural-symbolic architecture and real-time AST validation.",
+    "href": "https://huggingface.co",
+    "stars": 3200
+  },
+  {
+    "id": "3",
+    "title": "OpenCode CLI",
+    "source": "GitHub",
+    "description": "Open-source Claude Code alternative — run local LLMs with Ollama, no vendor lock-in.",
+    "href": "https://github.com",
+    "stars": 8900
+  },
+  {
+    "id": "4",
+    "title": "Midjourney V7 Prompt Pack",
+    "source": "Community",
+    "description": "50+ prompt templates for advanced image generation workflows and creative AI pipelines.",
+    "href": "#",
+    "stars": 2100
+  }
+]

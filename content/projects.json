@@ -1,0 +1,218 @@
+[
+  {
+    "slug": "trust-scan",
+    "name": "Trust-Scan",
+    "description": {
+      "en": "Search for a person by ID and instantly view their trust rating based on community feedback. Submit anonymous ratings with comments to help others make informed decisions.",
+      "he": "חיפוש אדם לפי תעודת זהות וצפייה מיידית בדירוג האמון שלו על בסיס משוב קהילתי. שליחת דירוגים אנונימיים עם הערות."
+    },
+    "stars": 0,
+    "featured": true,
+    "category": "web",
+    "stack": ["TypeScript", "React", "InstantDB", "Node.js"],
+    "href": "https://github.com/delevski/Trust-scan",
+    "demoUrl": "https://guileless-creponne-627b64.netlify.app/"
+  },
+  {
+    "slug": "doto",
+    "name": "DOTO",
+    "description": {
+      "en": "A community-driven platform to help others for free. Share knowledge, skills, and support with people in need.",
+      "he": "פלטפורמה קהילתית לעזרה חינמית לאחרים. שיתוף ידע, מיומנויות ותמיכה עם אנשים הזקוקים לכך."
+    },
+    "stars": 0,
+    "featured": true,
+    "category": "web",
+    "stack": ["JavaScript", "Node.js", "React", "Community Platform"],
+    "href": "https://github.com/delevski/DOTO",
+    "demoUrl": "https://doto-webapp.onrender.com/"
+  },
+  {
+    "slug": "constrol-saas",
+    "name": "Constrol SaaS Platform",
+    "description": {
+      "en": "Comprehensive BI, CRM, and SaaS platform with real-time tracking and AI-driven automation workflows.",
+      "he": "פלטפורמת BI, CRM ו-SaaS מקיפה עם מעקב בזמן אמת ותהליכי אוטומציה מבוססי AI."
+    },
+    "stars": 0,
+    "featured": true,
+    "category": "web",
+    "stack": ["Next.js", "React", "C#", "NestJS", "Python", "AI/ML"]
+  },
+  {
+    "slug": "paybox-fintech",
+    "name": "PayBox Fintech Solutions",
+    "description": {
+      "en": "Microservices-based payment platform with Tap-to-Pay, cashback, and loyalty integrations.",
+      "he": "פלטפורמת תשלומים מבוססת מיקרו-שירותים עם Tap-to-Pay, קאשבק ואינטגרציות נאמנות."
+    },
+    "stars": 0,
+    "featured": true,
+    "category": "fintech",
+    "stack": ["Node.js", "C#", "Kotlin", "Swift", "GCP", "Microservices"],
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.payboxapp"
+  },
+  {
+    "slug": "rag-test",
+    "name": "RAG Test",
+    "description": {
+      "en": "Retrieval-Augmented Generation (RAG) storage system for specialized AI tasks with vector embeddings and semantic search.",
+      "he": "מערכת אחסון RAG למשימות AI מיוחדות עם וקטור embeddings וחיפוש סמנטי."
+    },
+    "stars": 0,
+    "featured": true,
+    "category": "ai",
+    "stack": ["TypeScript", "AI/ML", "Vector DB", "LangChain", "Embeddings"],
+    "href": "https://github.com/delevski/RAG-test",
+    "demoUrl": "https://rag-test-beta.vercel.app/"
+  },
+  {
+    "slug": "fastapi-aws-ingestor",
+    "name": "FastAPI AWS Ingestor",
+    "description": {
+      "en": "Production-ready FastAPI microservice that ingests JSON, validates and transforms it, then stores data in AWS S3 or DynamoDB. Includes unit tests, Docker support, and comprehensive error handling.",
+      "he": "מיקרו-שירות FastAPI מוכן לייצור שקולט JSON, מאמת וממיר, ואז שומר ב-AWS S3 או DynamoDB. כולל בדיקות, Docker וטיפול בשגיאות."
+    },
+    "stars": 0,
+    "featured": true,
+    "category": "web",
+    "stack": ["Python", "FastAPI", "AWS S3", "DynamoDB", "Docker", "Pytest"],
+    "href": "https://github.com/delevski/fastapi-aws-ingestor"
+  },
+  {
+    "slug": "playground",
+    "name": "Playground",
+    "description": {
+      "en": "Interactive code playground for experimenting with JavaScript and web technologies in a sandbox environment.",
+      "he": "מגרש משחקים אינטראקטיבי לניסויים ב-JavaScript וטכנולוגיות ווב בסביבת sandbox."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": ["JavaScript", "HTML", "CSS", "Web APIs"],
+    "href": "https://github.com/delevski/Playground"
+  },
+  {
+    "slug": "feed-new",
+    "name": "Feed New",
+    "description": {
+      "en": "Modern feed aggregator and news reader built with Python, featuring content curation and filtering capabilities.",
+      "he": "מצרף פידים וקורא חדשות מודרני ב-Python עם יכולות סינון ואוצר תוכן."
+    },
+    "stars": 0,
+    "category": "automation",
+    "stack": ["Python", "RSS", "API Integration", "Data Processing"],
+    "href": "https://github.com/delevski/feed-new",
+    "demoUrl": "https://feed-news-nu.vercel.app/"
+  },
+  {
+    "slug": "meme-generator",
+    "name": "Meme Generator",
+    "description": {
+      "en": "Fun and easy-to-use meme generator with customizable templates, text overlays, and image manipulation features.",
+      "he": "מחולל ממים קל לשימוש עם תבניות מותאמות, שכבות טקסט ועיבוד תמונה."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": ["CSS", "JavaScript", "HTML5 Canvas", "Image Processing"],
+    "href": "https://github.com/delevski/meme-generator",
+    "demoUrl": "https://meme-generator-six-flax.vercel.app/"
+  },
+  {
+    "slug": "lucky-wheel",
+    "name": "Lucky Wheel",
+    "description": {
+      "en": "Interactive lucky wheel spinner for fun games and random selection. Customizable segments and smooth animations.",
+      "he": "גלגל מזל אינטראקטיבי למשחקים ובחירה אקראית. מקטעים מותאמים ואנימציות חלקות."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": ["TypeScript", "React", "CSS Animations", "Canvas API"],
+    "href": "https://github.com/delevski/Lucky-Wheel",
+    "demoUrl": "https://lucky-wheel-kgkzw7oiy-oris-projects-1434bdbc.vercel.app/"
+  },
+  {
+    "slug": "portfolio-template",
+    "name": "Portfolio Template",
+    "description": {
+      "en": "Clean and responsive HTML portfolio template showcasing projects and skills with modern design principles.",
+      "he": "תבנית תדמית HTML נקייה ורספונסיבית המציגה פרויקטים ומיומנויות בעיצוב מודרני."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": ["HTML", "CSS", "JavaScript", "Responsive Design"],
+    "href": "https://github.com/delevski/protfolio",
+    "demoUrl": "https://protfolio-tau-puce.vercel.app/"
+  },
+  {
+    "slug": "crm-pro-vb",
+    "name": "CRM PRO VB",
+    "description": {
+      "en": "Professional CRM system built with modern web technologies for customer relationship management and business process automation.",
+      "he": "מערכת CRM מקצועית בטכנולוגיות ווב מודרניות לניהול לקוחות ואוטומציית תהליכים עסקיים."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": ["JavaScript", "Node.js", "React", "MongoDB"],
+    "href": "https://github.com/delevski/CRM-PRO-VB",
+    "demoUrl": "https://crm-pro-vb.vercel.app/"
+  },
+  {
+    "slug": "scrape-websites",
+    "name": "Scrape Websites",
+    "description": {
+      "en": "Universal web scraping tool that can extract data from any website with configurable selectors and data processing capabilities.",
+      "he": "כלי גריפה אוניברסלי לחילוץ נתונים מכל אתר עם סלקטורים מותאמים ועיבוד נתונים."
+    },
+    "stars": 0,
+    "category": "automation",
+    "stack": ["JavaScript", "Node.js", "Puppeteer", "Cheerio"],
+    "href": "https://github.com/delevski/Scrape-Websites"
+  },
+  {
+    "slug": "banano-editor",
+    "name": "Banano Editor",
+    "description": {
+      "en": "Advanced image editor built with Google's Nano Banana technology, providing powerful image manipulation capabilities.",
+      "he": "עורך תמונות מתקדם המופעל על ידי טכנולוגיית Nano Banana של Google."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": ["TypeScript", "React", "Canvas API", "Image Processing"],
+    "href": "https://github.com/delevski/bananoEditor"
+  },
+  {
+    "slug": "do-your-image",
+    "name": "Do Your Image",
+    "description": {
+      "en": "Creative image generation and manipulation tool that allows users to create custom images with AI-powered features.",
+      "he": "כלי יצירה ועיבוד תמונה המאפשר יצירת תמונות מותאמות עם יכולות AI."
+    },
+    "stars": 0,
+    "category": "ai",
+    "stack": ["TypeScript", "React", "AI/ML", "Image Generation"],
+    "href": "https://github.com/delevski/Do-your-image"
+  },
+  {
+    "slug": "ocr-extractor",
+    "name": "OCR Extractor",
+    "description": {
+      "en": "Comprehensive OCR solution that extracts text from PDFs, images, Word documents, Excel files and more with high accuracy.",
+      "he": "פתרון OCR מקיף לחילוץ טקסט מ-PDF, תמונות, Word, Excel ועוד בדיוק גבוה."
+    },
+    "stars": 0,
+    "category": "automation",
+    "stack": ["Python", "OCR", "Tesseract", "PDF Processing", "Image Processing"],
+    "href": "https://github.com/delevski/OCR-extractor"
+  },
+  {
+    "slug": "b2b-mobile-platforms",
+    "name": "B2B Mobile Platforms",
+    "description": {
+      "en": "Scalable mobile platforms achieving 10M+ downloads and 300+ white-label applications across Android and iOS.",
+      "he": "פלטפורמות מובייל סקלביליות עם 10M+ הורדות ו-300+ אפליקציות white-label ב-Android ו-iOS."
+    },
+    "stars": 0,
+    "category": "mobile",
+    "stack": ["Android", "iOS", "Kotlin", "Swift", "CI/CD"]
+  }
+]

@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Agent session raw tool logs (verbose)
+.cursor/agent-sessions/sessions/**/tool-log.md
+.cursor/agent-sessions/current-session
+.cursor/agent-sessions/current-session.ended

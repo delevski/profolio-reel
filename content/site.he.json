@@ -1,0 +1,100 @@
+{
+  "name": "אור דלבסקי",
+  "brand": "ORDEL",
+  "tagline": [
+    "אור דלבסקי",
+    "CTO / סמנכ\"ל מחקר ופיתוח ומנהיג טכנולוגי",
+    "15+ שנות ניסיון במחקר ופיתוח, חדשנות מוצרית,",
+    "והרחבת צוותי הנדסה בעלי ביצועים גבוהים."
+  ],
+  "subtitle": "CTO / סמנכ\"ל מחקר ופיתוח ומנהיג טכנולוגי",
+  "badges": [
+    "ארכיטקטורת ענן",
+    "AI/ML",
+    "פינטק",
+    "מובייל",
+    "מנהיגות צוותים"
+  ],
+  "cta": {
+    "label": "לפרויקטים",
+    "href": "/projects"
+  },
+  "ctaSecondary": {
+    "label": "הורדת קורות חיים",
+    "href": "/Or-Delevski-CV.pdf"
+  },
+  "cv": {
+    "label": "הורדת קורות חיים",
+    "href": "/Or-Delevski-CV.pdf",
+    "filename": "Or-Delevski-CV.pdf"
+  },
+  "contact": {
+    "email": "ordi1985@gmail.com",
+    "phone": "+972-54-7917154",
+    "location": "רמת גן, ישראל",
+    "birthDate": "03/09/1985"
+  },
+  "experience": [
+    {
+      "title": "CTO / סמנכ\"ל מחקר ופיתוח",
+      "company": "Constrol",
+      "period": "2023 – היום",
+      "bullets": [
+        "בניית ארגון הטכנולוגיה של החברה מאפס, הכפלת ההכנסות בשנה אחת באמצעות ארכיטקטורות סקלביליות ואוטומציה",
+        "תכנון ויישום פלטפורמות BI, CRM ו-SaaS עם מעקב בזמן אמת",
+        "הטמעת פתרונות מבוססי AI ואוטומציית תהליכים באמצעות n8n, Zapier ומערכות MCP",
+        "ניהול 18+ אנשי מקצוע, הובלת פיתוח full-stack ב-Next.js, React, C#, NestJS ו-Python",
+        "התמחות ב-AI, ראייה ממוחשבת ואוטומציית QA"
+      ],
+      "stack": ["Next.js", "React", "C#", "NestJS", "Python", "AI/ML", "Computer Vision", "n8n", "Zapier", "MCP"]
+    },
+    {
+      "title": "ראש מחקר ופיתוח",
+      "company": "PayBox (בנק דיסקונט)",
+      "period": "2019 – 2023",
+      "bullets": [
+        "הובלת 20+ מהנדסים ב-3 צוותים לבניית פתרונות פינטק",
+        "מיגרציה ממונולית למיקרו-שירותים ותכנון ארכיטקטורה מבוססת אירועים",
+        "חיסכון של $3M+ בשנה באמצעות אופטימיזציית תשלומים",
+        "בניית Tap-to-Pay, קאשבק ואינטגרציות נאמנות",
+        "ניהול Node.js, C#, Kotlin, Swift עם GCP, GKE, Jenkins CI/CD"
+      ],
+      "stack": ["Node.js", "C#", "Kotlin", "Swift", "GCP", "GKE", "Jenkins", "Microservices", "Event-Driven Architecture"]
+    },
+    {
+      "title": "ראש מובייל",
+      "company": "SpotOption / Dx.Exchange",
+      "period": "2014 – 2019",
+      "bullets": [
+        "הובלת צוותי Android, iOS ו-QA להרחבת פלטפורמות מובייל פינטק B2B",
+        "השגת 10M+ הורדות ו-300+ אפליקציות white-label",
+        "הטמעת אוטומציית CI/CD ואסטרטגיית מוצר מובייל"
+      ],
+      "stack": ["Android", "iOS", "Kotlin", "Swift", "CI/CD", "Mobile Strategy", "B2B Platforms"]
+    }
+  ],
+  "about": {
+    "bio": [
+      "מנהיג טכנולוגי חדשני וממוקד תוצאות עם 15+ שנות ניסיון במחקר ופיתוח, חדשנות מוצרית והרחבת צוותי הנדסה בעלי ביצועים גבוהים. מומחה בארכיטקטורת ענן, פתרונות מבוססי AI, אוטומציה ופלטפורמות מובייל.",
+      "יכולת מוכחת ליישר אסטרטגיה טכנולוגית עם יעדי עסק ולהוביל צוותים רב-תחומיים למסירת מוצרים משמעותיים וסקלביליים."
+    ],
+    "highlights": [
+      {
+        "title": "פלטפורמות מובייל",
+        "description": "10M+ הורדות, 300+ אפליקציות white-label ב-Android ו-iOS."
+      },
+      {
+        "title": "אופטימיזציית עלויות",
+        "description": "חיסכון של $3M+ בשנה באמצעות אופטימיזציית תשלומים ושיפורי ארכיטקטורה."
+      },
+      {
+        "title": "מנהיגות צוותים",
+        "description": "ניהול 20+ מהנדסים בצוותים וטכנולוגיות מרובות."
+      }
+    ]
+  },
+  "social": [
+    { "platform": "LinkedIn", "handle": "delevskior", "href": "https://linkedin.com/in/delevskior" },
+    { "platform": "GitHub", "handle": "@delevski", "href": "https://github.com/delevski" }
+  ]
+}

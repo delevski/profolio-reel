@@ -1,0 +1,61 @@
+---
+description: Persistent project memory — read docs before tasks, update after changes
+alwaysApply: true
+---
+
+# Project memory (mandatory)
+
+**Never assume prior chat context exists.** Markdown files are the source of truth.
+
+## Before starting any task
+
+1. Read all files in `docs/`, `memory/`, and `.cursor/rules/`
+2. **Especially read:**
+   - `docs/current-state.md`
+   - `docs/session-history.md` (what was planned and built across sessions)
+   - `docs/decisions.md`
+   - `docs/roadmap.md`
+   - `docs/architecture.md`
+3. Also read `.cursor/agent-sessions/HANDOFF.md` for the latest agent handoff
+4. Briefly tell the user: current goal, status, and what you will do next
+
+## After every major change or completed feature
+
+Update documentation with:
+
+- What changed and why
+- Architecture decisions (append to `docs/decisions.md` if non-obvious)
+- Important implementation details
+- Affected files
+- Known issues
+- Next steps
+
+**Files to update:**
+
+| File | When |
+|------|------|
+| `docs/current-state.md` | Always — reflects live project status |
+| `docs/decisions.md` | New non-obvious decisions |
+| `docs/roadmap.md` | Completed or new planned items |
+| `docs/architecture.md` | Structural or stack changes only |
+
+Keep updates **concise but complete**.
+
+## End of every session
+
+1. Overwrite `memory/session-summary.md` with a short summary (what happened, outcome, open items)
+2. Update `.cursor/agent-sessions/HANDOFF.md` per `session-continuity` skill
+
+## Before large refactors
+
+1. Summarize current architecture from `docs/architecture.md`
+2. Explain impact of planned changes to the user
+3. Prefer **stability and consistency** over aggressive refactoring
+
+## If documentation is missing or outdated
+
+Create or fix it automatically — do not proceed on stale assumptions.
+
+## Next.js note
+
+This project uses Next.js 16 with breaking API differences. Read `node_modules/next/dist/docs/` before changing framework code (`AGENTS.md`).

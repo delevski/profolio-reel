@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "name": "Sarah Chen",
+    "role": "Engineering Director",
+    "company": "TechFlow",
+    "quote": "Or led our internal AI workshop for 200+ engineers. The live build-from-idea demo was the highlight — people left with working prototypes, not just slides. We finally got the practical angle we were missing.",
+    "relation": "Client",
+    "date": "March 2026",
+    "featured": true,
+    "href": "https://linkedin.com"
+  },
+  {
+    "id": "2",
+    "name": "Marcus Webb",
+    "role": "Senior ML Engineer",
+    "company": "DataScale",
+    "quote": "Or has a rare gift for making complex AI concepts feel obvious. His courses are dense with insight but never feel academic — every session ends with something you can ship the same week.",
+    "relation": "Student",
+    "href": "https://linkedin.com"
+  },
+  {
+    "id": "3",
+    "name": "Elena Rossi",
+    "role": "Product Lead",
+    "company": "BuildCo",
+    "quote": "Combines deep technical skill with clear communication. Reliable, thoughtful, and always focused on the outcome that actually matters for the team.",
+    "relation": "Colleague",
+    "date": "2024",
+    "href": "https://linkedin.com"
+  }
+]

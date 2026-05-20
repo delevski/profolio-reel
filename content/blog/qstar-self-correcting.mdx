@@ -1,0 +1,18 @@
+---
+title: "Q-Star v3: Self-Correcting AI That Eliminates Code Hallucinations"
+excerpt: "Neural-symbolic architecture pairs LLMs with deterministic solvers to validate code before it ships."
+date: "2026-03-12"
+readTime: "7 min"
+tags: ["AI Agents", "Research"]
+lang: "EN"
+---
+
+Hallucinated APIs and impossible logic paths remain the top failure mode for AI-generated code.
+
+## The neural-symbolic approach
+
+Q-Star v3 runs generated code through AST validation and symbolic checks **before** presenting output. When validation fails, the agent loops back with structured error context.
+
+## Practical takeaway
+
+Even without Q-Star, you can adopt the pattern: lint → test → fix loops wrapped around any codegen tool dramatically improves reliability.

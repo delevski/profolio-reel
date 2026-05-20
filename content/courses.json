@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "vibe-coding",
+    "title": "Vibe Coding with AI Agents",
+    "description": "Master AI-assisted development. Build real projects faster with modern agent workflows.",
+    "level": "Intermediate",
+    "isNew": true,
+    "href": "#"
+  },
+  {
+    "slug": "intro-ides",
+    "title": "Intro to IDEs",
+    "description": "Learn the fundamentals of Integrated Development Environments and productivity shortcuts.",
+    "level": "Beginner",
+    "href": "#"
+  },
+  {
+    "slug": "web-dev-fundamentals",
+    "title": "Intro to Web Development",
+    "description": "Start your web development journey with HTML, CSS, JavaScript, and modern tooling.",
+    "level": "Beginner",
+    "href": "#"
+  }
+]

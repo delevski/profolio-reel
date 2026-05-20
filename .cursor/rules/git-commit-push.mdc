@@ -1,0 +1,106 @@
+---
+description: Professional git commit messages and safe push workflow
+alwaysApply: true
+---
+
+# Git commit and push standards
+
+## When to commit or push
+
+- **Commit** only when the user explicitly asks, or when a user rule requires it.
+- **Push** only when the user explicitly asks. Never force-push to `main`/`master` without explicit request and a warning.
+- Never commit secrets (`.env`, keys, tokens, credentials). Warn if the user tries to include them.
+
+## Before every commit
+
+Run in parallel (read-only inspection):
+
+1. `git status` — untracked and modified files
+2. `git diff` and `git diff --staged` — what will be committed
+3. `git log -10 --oneline` — match existing message style
+
+Stage only files that belong to this change. Do not bundle unrelated work.
+
+## Commit message format (Conventional Commits)
+
+```
+<type>(<optional scope>): <imperative summary ≤ 72 chars>
+
+<blank line>
+
+<body: what changed and why, not a file list>
+
+<optional footer: Breaking change:, Fixes #123>
+```
+
+### Types
+
+| Type | Use when |
+|------|----------|
+| `feat` | New user-facing capability |
+| `fix` | Bug fix |
+| `docs` | Documentation only |
+| `style` | Formatting, no logic change |
+| `refactor` | Code change, same behavior |
+| `perf` | Performance improvement |
+| `test` | Tests only |
+| `build` | Build, deps, CI |
+| `chore` | Tooling, config, housekeeping |
+
+### Writing rules
+
+- **Subject:** imperative mood ("add" not "added"), no trailing period, ≤ 72 characters.
+- **Body:** complete sentences; explain **why** and **impact**, not every filename.
+- **Scope:** optional, short (`i18n`, `contact`, `deploy`, `analytics`).
+- One logical change per commit unless the user asks to squash.
+
+### Examples
+
+```
+# Weak
+fix stuff
+update files
+WIP
+
+# Strong
+fix(contact): prevent empty subject in mailto prefilled body
+
+The contact form allowed submit with whitespace-only subject.
+Trim and validate before building the mailto URL.
+
+feat(analytics): wire Vercel Analytics and Speed Insights in root layout
+
+Enables production traffic and Web Vitals without custom instrumentation.
+Dashboard toggles still required in Vercel project settings.
+```
+
+## Commit command
+
+- Use a HEREDOC for the message so newlines are preserved.
+- Never use `-i` flags (`git add -i`, `git rebase -i`).
+- Never skip hooks (`--no-verify`) unless the user explicitly requests it.
+- Never `git commit --amend` unless all safety conditions in the user commit rule are met.
+
+## Before every push
+
+1. Confirm branch: `git status` (ahead/behind remote).
+2. Summarize commits to push: `git log origin/<base>..HEAD --oneline`.
+3. For PRs, use `gh pr create` with Summary + Test plan sections.
+
+## Push rules
+
+- Use `git push -u origin HEAD` when the branch has no upstream.
+- Do not force-push unless the user explicitly requests it; warn on `main`/`master`.
+- After push, report branch name and commit range pushed.
+
+## PR description template
+
+```markdown
+## Summary
+- <1–3 bullets: outcome for reviewer>
+
+## Test plan
+- [ ] `npm run lint`
+- [ ] `npm run build`
+- [ ] <manual checks relevant to this change>
+```

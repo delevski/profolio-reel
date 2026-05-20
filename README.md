@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ORDEL — Personal Portfolio
 
-## Getting Started
+A [yuv.ai](https://yuv.ai/)-inspired personal portfolio built with Next.js, featuring a warm stone/amber/teal design system.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router)
+- Tailwind CSS v4
+- MDX content (blog + learn guides)
+- Framer Motion animations
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Languages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **English:** http://localhost:3000/en
+- **Hebrew (RTL):** http://localhost:3000/he
 
-## Learn More
+Use the **עברית / English** toggle in the nav to switch. Visiting `/` redirects to your preferred locale (cookie or default `en`).
 
-To learn more about Next.js, take a look at the following resources:
+## Content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Edit files in `content/`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `site.en.json` / `site.he.json` — hero, bio, social links
+- `projects.json` — GitHub repos with `description.en` and `description.he`
+- `projects.json`, `apps.json`, `courses.json`, etc.
+- `blog/*.mdx` and `learn/*.mdx` — articles and tutorials
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `npm run dev` — development server
+- `npm run build` — production build
+- `npm run start` — production server
+- `npm run lint` — ESLint
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Production
+
+**Live:** https://ordelwebsite.vercel.app (Vercel project `ordel_website`)
+
+- English: https://ordelwebsite.vercel.app/en
+- Hebrew: https://ordelwebsite.vercel.app/he
+
+## Environment
+
+`NEXT_PUBLIC_SITE_URL` — set in Vercel for sitemap and robots (production: `https://ordelwebsite.vercel.app`). Local default: `https://ordel.dev`.

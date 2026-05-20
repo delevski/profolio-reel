@@ -1,0 +1,174 @@
+{
+  "theme": {
+    "switchLabel": "Toggle bright theme",
+    "light": "Bright theme",
+    "dark": "Dark theme"
+  },
+  "nav": {
+    "about": "About",
+    "blog": "Blog",
+    "learn": "Learn",
+    "academy": "Academy",
+    "projects": "Projects",
+    "apps": "Apps",
+    "contact": "Contact",
+    "hebrew": "עברית",
+    "english": "English"
+  },
+  "footer": {
+    "tagline": "Build boldly. Ship often.",
+    "site": "Site",
+    "learn": "Learn",
+    "more": "More",
+    "tutorials": "Tutorials",
+    "faq": "FAQ",
+    "glossary": "Glossary (HE)",
+    "resources": "Resources",
+    "media": "Media",
+    "privacy": "Privacy",
+    "madeBy": "Made with care by",
+    "rights": "All rights reserved."
+  },
+  "marquee": {
+    "trusted": "Trusted by and worked with"
+  },
+  "sections": {
+    "blog": {
+      "label": "Blog",
+      "title": "Latest Posts",
+      "subtitle": "Thoughts on AI, development, and building products.",
+      "action": "View All Posts"
+    },
+    "learn": {
+      "label": "Learning Hub",
+      "title": "Latest from Learn",
+      "subtitle": "Comprehensive guides and tutorials to master AI tools and techniques.",
+      "action": "Explore All Tutorials"
+    },
+    "trends": {
+      "label": "Trending",
+      "title": "AI Trends",
+      "subtitle": "Daily curated trends from GitHub, Hugging Face, and more.",
+      "action": "View All Trends",
+      "loading": "Loading trends...",
+      "learnMore": "Learn more"
+    },
+    "youtube": {
+      "label": "YouTube",
+      "title": "Featured Videos",
+      "subtitle": "4.2K subscribers · 120+ videos",
+      "action": "View All Videos",
+      "filters": {
+        "all": "All",
+        "github": "GitHub",
+        "aws": "AWS",
+        "aiAgents": "AI Agents"
+      }
+    },
+    "apps": {
+      "label": "My Apps",
+      "title": "Products I've Built",
+      "subtitle": "Tools and applications designed to solve real problems.",
+      "action": "View All Apps",
+      "visit": "Visit App →"
+    },
+    "projects": {
+      "label": "Featured Work",
+      "title": "Projects & Open Source",
+      "subtitle": "Key projects and platforms built and led across fintech, mobile, AI, and web technologies.",
+      "action": "View All Projects",
+      "featured": "Featured",
+      "viewGithub": "View on GitHub",
+      "liveDemo": "Live Demo",
+      "googlePlay": "Google Play"
+    },
+    "academy": {
+      "label": "Online Courses",
+      "title": "Master AI & Development",
+      "subtitle": "Learn practical AI skills with hands-on courses. From beginners to advanced developers.",
+      "action": "View all courses",
+      "enroll": "Enroll →",
+      "visit": "Visit Academy",
+      "new": "New"
+    },
+    "testimonials": {
+      "label": "Testimonials",
+      "title": "What People Say",
+      "subtitle": "Feedback from clients, colleagues, and students",
+      "featured": "Featured"
+    },
+    "connect": {
+      "label": "Let's Connect",
+      "title": "Connect With Me",
+      "subtitle": "Follow along for more AI & development content, tutorials, and open-source projects",
+      "action": "Follow Me on All Platforms"
+    }
+  },
+  "pages": {
+    "about": {
+      "label": "About",
+      "title": "About {name}",
+      "subtitle": "CTO / VP R&D & Technology Leader",
+      "personalInfo": "Personal Information",
+      "experience": "Professional Experience",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "birthDate": "Born",
+      "downloadCv": "Download CV"
+    },
+    "blog": {
+      "label": "Blog",
+      "title": "All Posts",
+      "subtitle": "Thoughts on AI, development, and building products.",
+      "back": "Back to Blog"
+    },
+    "learn": {
+      "label": "Learning Hub",
+      "title": "Tutorials & Guides",
+      "subtitle": "Comprehensive guides to master AI tools and techniques.",
+      "back": "Back to Learn",
+      "read": "read"
+    },
+    "academy": {
+      "label": "Academy",
+      "title": "Online Courses",
+      "subtitle": "Hands-on courses from beginner to advanced. Build real projects, not slide decks.",
+      "enroll": "Enroll"
+    },
+    "projects": {
+      "label": "Open Source",
+      "title": "Projects & Repositories",
+      "subtitle": "Key projects and platforms built and led across fintech, mobile, AI, and web technologies."
+    },
+    "apps": {
+      "label": "Products",
+      "title": "Apps I've Built",
+      "subtitle": "Tools and applications designed to solve real problems."
+    },
+    "contact": {
+      "label": "Contact",
+      "title": "Get in Touch",
+      "subtitle": "Ready to collaborate on your next project? Let's discuss how I can help bring your ideas to life.",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send Message",
+      "opening": "Opening your email client...",
+      "elsewhere": "Connect elsewhere",
+      "info": "Contact Information",
+      "phone": "Phone",
+      "location": "Location"
+    },
+    "privacy": {
+      "label": "Legal",
+      "title": "Privacy Policy",
+      "p1": "This is a placeholder privacy policy. Replace with your actual policy before collecting user data.",
+      "p2": "We respect your privacy. This site uses minimal analytics and does not sell personal information. Contact us with any questions about data handling."
+    }
+  },
+  "common": {
+    "new": "NEW",
+    "minRead": "min"
+  }
+}
