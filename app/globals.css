@@ -9,19 +9,22 @@
   --accent: #f59e0b;
   --accent-2: #14b8a6;
   --accent-glow: rgba(245, 158, 11, 0.15);
+  --on-accent: #0c0a09;
   --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="light"] {
-  --bg: #fafaf9;
+  color-scheme: light;
+  --bg: #f5f5f4;
   --surface: #ffffff;
-  --surface-border: #e7e5e4;
-  --text: #1c1917;
-  --text-muted: #78716c;
-  --accent: #d97706;
-  --accent-2: #0d9488;
-  --accent-glow: rgba(217, 119, 6, 0.12);
-  --card-shadow: 0 8px 32px rgba(28, 25, 23, 0.12);
+  --surface-border: #d6d3d1;
+  --text: #0c0a09;
+  --text-muted: #44403c;
+  --accent: #b45309;
+  --accent-2: #0f766e;
+  --accent-glow: rgba(180, 83, 9, 0.18);
+  --on-accent: #0c0a09;
+  --card-shadow: 0 8px 32px rgba(12, 10, 9, 0.14);
 }
 
 @theme inline {
@@ -32,6 +35,7 @@
   --color-text-muted: var(--text-muted);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
+  --color-on-accent: var(--on-accent);
   --font-sans: var(--font-dm-sans);
   --font-serif: var(--font-fraunces);
 }
@@ -131,4 +135,28 @@ html[lang="he"] .prose-ordel h3 {
 html[dir="rtl"] input,
 html[dir="rtl"] textarea {
   text-align: right;
+}
+
+/* Section / page title frames — solid over video in bright theme */
+[data-theme="light"] .section-header-frame {
+  background-color: var(--surface);
+  box-shadow: 0 4px 24px rgba(12, 10, 9, 0.08), 0 0 0 1px var(--surface-border);
+}
+
+/* Bright theme: solid panels and stronger readable text over video */
+[data-theme="light"] .bg-surface\/90,
+[data-theme="light"] .bg-surface\/90 {
+  background-color: var(--surface);
+}
+
+[data-theme="light"] .bg-bg\/50 {
+  background-color: color-mix(in oklab, var(--surface) 75%, transparent);
+}
+
+[data-theme="light"] .text-text-muted\/60 {
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .text-accent-2\/90 {
+  color: var(--accent-2);
 }

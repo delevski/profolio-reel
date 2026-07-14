@@ -90,6 +90,26 @@
       {
         "title": "Team Leadership",
         "description": "Managed 20+ engineers across multiple teams and technologies."
+      },
+      {
+        "title": "Web Platforms",
+        "description": "Built and scaled SaaS, BI, and CRM products with Next.js, React, and modern full-stack stacks."
+      },
+      {
+        "title": "Infrastructure",
+        "description": "Cloud-native architecture on GCP/GKE, microservices, event-driven systems, and CI/CD at production scale."
+      },
+      {
+        "title": "Relational SQL",
+        "description": "Production persistence with PostgreSQL, SQL Server, and MySQL—modeling, migrations, replication, and query performance at scale."
+      },
+      {
+        "title": "NoSQL Storage",
+        "description": "Document, key-value, and wide-column stores (MongoDB, Redis, Firestore) for high-throughput apps, caching, and flexible schemas."
+      },
+      {
+        "title": "Vector Databases",
+        "description": "Embeddings and semantic search with Pinecone, pgvector, and similar stores for RAG, recommendations, and AI-powered product features."
       }
     ]
   },

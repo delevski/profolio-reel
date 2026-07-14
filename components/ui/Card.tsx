@@ -101,11 +101,6 @@ export function ProjectCard({
         isRtl && "text-right"
       )}
     >
-      {featured && (
-        <span className={cn("absolute -top-2", isRtl ? "left-4" : "right-4")}>
-          <Badge variant="featured">{featuredLabel}</Badge>
-        </span>
-      )}
       <div
         className={cn(
           "mb-3 flex items-start justify-between gap-2",
@@ -120,11 +115,19 @@ export function ProjectCard({
             </Badge>
           )}
         </div>
-        {stars > 0 && (
-          <span className="shrink-0 text-sm text-text-muted">
-            ★ {stars.toLocaleString()}
-          </span>
-        )}
+        <div
+          className={cn(
+            "flex shrink-0 flex-col items-end gap-1.5",
+            isRtl && "items-start"
+          )}
+        >
+          {featured && <Badge variant="featured">{featuredLabel}</Badge>}
+          {stars > 0 && (
+            <span className="text-sm text-text-muted">
+              ★ {stars.toLocaleString()}
+            </span>
+          )}
+        </div>
       </div>
       <p className="mb-4 flex-1 text-sm text-text-muted">{description}</p>
       <div className={cn("mb-4 flex flex-wrap gap-2", isRtl && "justify-end")}>

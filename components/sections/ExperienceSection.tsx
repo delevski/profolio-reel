@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/Badge";
+import { SectionHeaderFrame } from "@/components/ui/SectionHeaderFrame";
 import type { SiteConfig } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -13,14 +14,9 @@ export function ExperienceSection({
 }) {
   return (
     <section className="mt-16">
-      <h2
-        className={cn(
-          "mb-8 font-serif text-2xl text-text",
-          isRtl && "text-right"
-        )}
-      >
-        {title}
-      </h2>
+      <SectionHeaderFrame className={cn("mb-8", isRtl && "text-right")}>
+        <h2 className="font-serif text-2xl text-text md:text-3xl">{title}</h2>
+      </SectionHeaderFrame>
       <div className="space-y-10">
         {experience.map((role) => (
           <article

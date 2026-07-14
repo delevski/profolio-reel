@@ -35,7 +35,7 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 | Vercel Analytics | Done (code) | Packages wired; enable Web Analytics + Speed Insights in dashboard |
 | Error fallbacks | Done | `not-found`, `error`, `global-error`, `[locale]/not-found` |
 | Mobile polish | Done | viewport meta, overflow-x guard, mobile nav scroll lock, video `preload=metadata` on mobile |
-| Bright theme toggle | Done | Header switch; `data-theme="light"` CSS tokens; separate hero MP4; `localStorage` + anti-FOUC script |
+| Bright theme toggle | Done | Header switch; high-contrast light tokens + scrims; separate hero MP4; `localStorage` + anti-FOUC script |
 | Build | Done | `npm run build` and `npm run lint` pass |
 
 ### Content (real vs placeholder)

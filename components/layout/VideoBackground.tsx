@@ -84,12 +84,7 @@ export function VideoBackground() {
         />
       )}
 
-      {isLight ? (
-        <>
-          <div className="absolute inset-0 bg-white/25" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/40" />
-        </>
-      ) : (
+      {!isLight && (
         <>
           <div className="absolute inset-0 bg-bg/30" />
           <div className="absolute inset-0 bg-gradient-to-b from-bg/40 via-transparent to-bg/50" />

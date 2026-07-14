@@ -8,8 +8,8 @@ export function Marquee() {
   const items = [...logoPartners, ...logoPartners];
 
   return (
-    <section className="border-y border-surface-border bg-bg/50 py-10 backdrop-blur-sm">
-      <p className="mb-8 text-center text-sm uppercase tracking-widest text-text-muted">
+    <section className="bg-bg/50 py-8 backdrop-blur-sm">
+      <p className="mb-6 text-center text-sm uppercase tracking-widest text-text-muted">
         {dict.marquee.trusted}
       </p>
       <div className="relative overflow-hidden">

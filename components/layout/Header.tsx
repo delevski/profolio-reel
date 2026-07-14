@@ -44,8 +44,8 @@ export function Header() {
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-surface-border bg-bg/90 backdrop-blur-xl"
-          : "bg-bg/40 backdrop-blur-md"
+          ? "border-b border-surface-border bg-surface/95 backdrop-blur-xl"
+          : "bg-surface/80 backdrop-blur-md"
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
@@ -53,7 +53,7 @@ export function Header() {
           href={localizedPath(locale, "/")}
           className="flex items-center gap-2"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent font-bold text-bg">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent font-bold text-on-accent">
             O
           </span>
           <span className="font-serif text-xl tracking-tight text-text">ORDEL</span>

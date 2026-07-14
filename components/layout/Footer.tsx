@@ -31,27 +31,27 @@ export function Footer({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <footer className="border-t border-surface-border bg-bg/70 py-16 backdrop-blur-md">
+    <footer className="border-t border-surface-border bg-bg/70 py-8 backdrop-blur-md md:py-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-4">
-          <div className="md:col-span-1">
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-4 md:gap-8">
+          <div className="sm:col-span-2 md:col-span-1">
             <Link
               href={localizedPath(locale, "/")}
               className="flex items-center gap-2"
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent font-bold text-bg">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-bold text-on-accent">
                 O
               </span>
-              <span className="font-serif text-xl text-text">{site.brand}</span>
+              <span className="font-serif text-lg text-text">{site.brand}</span>
             </Link>
-            <p className="mt-3 text-sm text-text-muted">{dict.footer.tagline}</p>
+            <p className="mt-2 text-xs text-text-muted">{dict.footer.tagline}</p>
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-text">
+            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-text">
               {dict.footer.site}
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {siteLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -66,10 +66,10 @@ export function Footer({ locale }: { locale: Locale }) {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-text">
+            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-text">
               {dict.footer.learn}
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {learnLinks.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -84,10 +84,10 @@ export function Footer({ locale }: { locale: Locale }) {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-text">
+            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-text">
               {dict.footer.more}
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {moreLinks.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -102,11 +102,11 @@ export function Footer({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-surface-border pt-8 sm:flex-row">
-          <p className="text-sm text-text-muted">
+        <div className="mt-6 flex flex-col items-center justify-between gap-2 border-t border-surface-border pt-4 sm:flex-row">
+          <p className="text-xs text-text-muted">
             {dict.footer.madeBy} {site.name}
           </p>
-          <p className="text-sm text-text-muted">
+          <p className="text-xs text-text-muted">
             © {year} {site.brand}. {dict.footer.rights}
           </p>
         </div>

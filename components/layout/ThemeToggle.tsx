@@ -18,20 +18,20 @@ export function ThemeToggle() {
       aria-label={dict.theme.switchLabel}
       onClick={toggleTheme}
       className={cn(
-        "relative inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-lg p-2",
+        "relative inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-lg border border-surface-border bg-surface p-2 shadow-sm",
         "text-text-muted transition-colors hover:text-text",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       )}
     >
       <span
         className={cn(
-          "relative flex h-7 w-12 items-center rounded-full border border-surface-border bg-surface transition-colors",
-          isLight && "border-accent/40 bg-accent/10"
+          "relative flex h-7 w-12 items-center rounded-full border border-surface-border bg-bg transition-colors",
+          isLight && "border-accent/40"
         )}
       >
         <span
           className={cn(
-            "absolute top-1 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-bg shadow-sm transition-[inset] duration-200",
+            "absolute top-1 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-on-accent shadow-sm transition-[inset] duration-200",
             isLight ? "end-1" : "start-1"
           )}
         >
