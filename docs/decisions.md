@@ -156,6 +156,28 @@ Architecture and product decisions. Add a dated entry for each non-obvious choic
 
 ---
 
+## 2026-07-14 — Scroll reel via image sequences
+
+**Decision:** Build `/[locale]/reel` as a scroll-driven promo reel. Extract JPEG image sequences from seven MP4s (no `<video>`), map scroll position to frame index (scrub) or an rAF loop (looping sections), and loop a background MP3. Chrome hides the portfolio Header/Footer on this route.
+
+**Why:** User wanted an Apple-style scrubbing experience with precise scroll control, muted video content, and a looping soundtrack — image sequences give frame-accurate scrubbing that `<video>` scrubbing cannot.
+
+**Details:**
+- Frames: `scripts/extract-reel-frames.sh` → `public/reel/seq/{1..7}/frame-%04d.jpg`, ~12fps (every 2nd frame of 24fps), width 720, `-q:v 5`. Total ~20MB, 511 frames.
+- **JPEG, not WebP:** local Homebrew ffmpeg 8.0.1 has no `libwebp` encoder. JPEG at q5 is close enough and universally supported.
+- Manifest `public/reel/manifest.json` drives sections: `still` (opening.png) → `scrub` 1–3 → `loop` 4 → `scrub` 5 → `loop` 6 → `scrub` 7.
+- `components/reel/ReelExperience.tsx`: single fixed `<img>`, rAF scroll loop, preloads current ±1 section, only calls `setState` when the frame src actually changes.
+- `components/reel/ReelMusicControl.tsx`: `HTMLAudioElement` loop; attempts autoplay on first pointer/scroll/key/touch gesture (browser policy), plus a manual mute/unmute button.
+- `components/layout/LocaleShell.tsx` (client): uses `useSelectedLayoutSegment()`; on segment `reel` renders children only (no Header/Footer/VideoBackground). Header/Footer are passed as **slots** from the server `layout.tsx` so the server-only content layer never leaks into the client bundle.
+- `VideoBackground` moved from root `app/layout.tsx` into `LocaleShell` (so reel has a clean black canvas).
+- Route excluded from indexing via `robots: { index: false }`; not linked in nav (direct link only).
+
+**Source assets:** `Desktop/סירטון תדמית/{1.png,סירטון1-7.mp4}`, `Downloads/שיר רקע.mp3` → copied to `public/reel/opening.png`, `public/reel/audio/bg.mp3`.
+
+**Ops note:** Dev servers launched from the agent sandbox get SIGTERM when the tool call ends, and a broken process can squat port 3000 returning 404s. Fix: `pkill -9 -f next` then `npm run dev` in a real terminal. Verified all routes/assets return 200 on a clean port.
+
+---
+
 ## 2026-05-20 — Bright theme without `next-themes`
 
 **Decision:** Theme via `html[data-theme="light"]` CSS variable overrides, `ThemeProvider` React context, `localStorage` key `ordel-theme`, and inline `<head>` script to prevent flash. No new npm dependency.

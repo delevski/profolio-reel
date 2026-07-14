@@ -1,0 +1,78 @@
+{
+  "fps": 12,
+  "opening": "/reel/opening.png",
+  "audio": "/reel/audio/bg.mp3",
+  "sections": [
+    {
+      "id": 0,
+      "mode": "still",
+      "src": "/reel/opening.png",
+      "scrollVh": 100
+    },
+    {
+      "id": 1,
+      "mode": "scrub",
+      "dir": "/reel/seq/1",
+      "frameCount": 73,
+      "pattern": "frame-%04d.jpg",
+      "scrollVh": 140
+    },
+    {
+      "id": 2,
+      "mode": "scrub",
+      "dir": "/reel/seq/2",
+      "frameCount": 73,
+      "pattern": "frame-%04d.jpg",
+      "scrollVh": 140
+    },
+    {
+      "id": 3,
+      "mode": "scrub",
+      "dir": "/reel/seq/3",
+      "frameCount": 73,
+      "pattern": "frame-%04d.jpg",
+      "scrollVh": 140
+    },
+    {
+      "id": 4,
+      "mode": "loop",
+      "dir": "/reel/seq/4",
+      "frameCount": 49,
+      "pattern": "frame-%04d.jpg",
+      "scrollVh": 120
+    },
+    {
+      "id": 5,
+      "mode": "scrub",
+      "dir": "/reel/seq/5",
+      "frameCount": 73,
+      "pattern": "frame-%04d.jpg",
+      "scrollVh": 140
+    },
+    {
+      "id": 6,
+      "mode": "loop",
+      "dir": "/reel/seq/6",
+      "frameCount": 73,
+      "pattern": "frame-%04d.jpg",
+      "scrollVh": 120
+    },
+    {
+      "id": 7,
+      "mode": "scrub",
+      "dir": "/reel/seq/7",
+      "frameCount": 97,
+      "pattern": "frame-%04d.jpg",
+      "scrollVh": 160
+    },
+    {
+      "id": 8,
+      "mode": "scrub",
+      "dir": "/reel/seq/8",
+      "frameCount": 97,
+      "pattern": "frame-%04d.jpg",
+      "scrollVh": 200
+    }
+  ],
+  "exitUrl": "https://ordelwebsite.vercel.app/en"
+}

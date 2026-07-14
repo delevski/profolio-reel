@@ -1,19 +1,14 @@
-# Session Summary
-
-**Last session:** 2026-05-20
+**Date:** 2026-07-14  
+**Focus:** Scroll reel — opening title + idle hint
 
 ## What happened
-
-Implemented **bright theme toggle** with separate background video and CSS token overrides.
+- Idle scroll ChevronDown after 1s pause
+- Opening overlay: HE/EN title + subtitle on first frame (`lib/reel/opening.ts`)
+- Deployed to production
 
 ## Outcome
-
-- Header switch toggles dark (default) ↔ bright (`data-theme="light"`)
-- Preference persisted in `localStorage` (`ordel-theme`); anti-FOUC script in root layout
-- Bright mode uses new CloudFront MP4 (`HERO_VIDEO_SRC_LIGHT`)
-- Lint and production build pass
+- Live on https://ordelwebsite.vercel.app/en/reel and `/he/reel`
 
 ## Open items
-
-- Redeploy to Vercel for production
-- Analytics dashboard toggles, contact backend, placeholder content (unchanged)
+- [ ] Verify opening title readability on mobile over the still
+- [ ] Commit reel work when asked

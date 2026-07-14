@@ -36,6 +36,7 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 | Error fallbacks | Done | `not-found`, `error`, `global-error`, `[locale]/not-found` |
 | Mobile polish | Done | viewport meta, overflow-x guard, mobile nav scroll lock, video `preload=metadata` on mobile |
 | Bright theme toggle | Done | Header switch; high-contrast light tokens + scrims; separate hero MP4; `localStorage` + anti-FOUC script |
+| Scroll reel (`/reel`) | Done | `/he/reel` + `/en/reel`; 8 image-sequence clips + opening still; loops on 4 & 6; BG MP3; Start autoplay; exit to `/en`; idle scroll ChevronDown after 1s pause; OG thumbnail |
 | Build | Done | `npm run build` and `npm run lint` pass |
 
 ### Content (real vs placeholder)
@@ -77,6 +78,7 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 | `/{locale}/apps` | Apps | `apps.json` |
 | `/{locale}/contact` | Contact | `ContactForm` + site contact |
 | `/{locale}/privacy` | Privacy | Static copy in dictionaries |
+| `/{locale}/reel` | Scroll reel | `public/reel/manifest.json` + image sequences (noindex, not in nav) |
 | `/api/trends` | Trends JSON | `trends.json` (800ms mock delay) |
 
 ## Key files to edit
@@ -94,12 +96,17 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 
 ## Recent changes (last session)
 
-- Bright/light theme toggle in header with persisted preference (`ordel-theme` in `localStorage`)
-- Light theme swaps background video to bright CloudFront MP4; inverted CSS tokens via `[data-theme="light"]`
-- Deployed to Vercel as **ordel_website** (https://ordelwebsite.vercel.app)
-- Added `@vercel/analytics`, `@vercel/speed-insights`, `vercel.json` (headers + `/` → `/en`)
-- Error pages, mobile UX hardening, structured logging on `/api/trends`
-- Set `NEXT_PUBLIC_SITE_URL` for sitemap/robots
+- **Scroll reel** at `/[locale]/reel`: opening image → 7 clips as JPEG image sequences; sections 4 & 6 loop; scrub on 1–3, 5, 7; looping `bg.mp3`; muted video content; no Header/Footer
+- Extraction script `scripts/extract-reel-frames.sh`; `LocaleShell` hides chrome on the reel segment; Header/Footer passed as slots to keep server-only content off the client
+- Lint + build pass; all reel routes/assets verified 200 on a clean port
+- (Prior) Bright/light theme toggle, Vercel deploy, analytics packages, error pages, mobile polish
+
+## Reel — how to run / edit
+
+- Run locally: `pkill -9 -f next` (clear zombies) then `npm run dev` → http://localhost:3000/he/reel
+- Re-extract frames after changing source clips: `bash scripts/extract-reel-frames.sh`
+- Tune pacing / loops: edit `public/reel/manifest.json` (`mode`, `frameCount`, `scrollVh`)
+- Source clips live at `Desktop/סירטון תדמית`; music at `Downloads/שיר רקע.mp3`
 
 ## Known issues
 

@@ -124,6 +124,48 @@ Chronological log of agent sessions that built this project. **Source of truth f
 
 ---
 
+## Session 6 — Scroll reel experience (`/reel`)
+
+**When:** 2026-07-14  
+**Transcript:** current conversation
+
+### Planned
+
+- New page inside existing project (direct link only, not in nav) at `/he/reel` + `/en/reel`
+- Scroll-driven experience: opening image → 7 clips as **image sequences**
+- Clips 4 and 6 loop continuously while their section is active; 1–3, 5, 7 scrub on scroll
+- No audio from the videos; loop `שיר רקע.mp3` in the background
+- Decompose the MP4s into image sequences (approach A, approved)
+
+### Built
+
+| Path | Purpose |
+|------|---------|
+| `scripts/extract-reel-frames.sh` | ffmpeg extraction → JPEG sequences + `manifest.json` |
+| `public/reel/opening.png` | Section 0 still |
+| `public/reel/audio/bg.mp3` | Looped background music |
+| `public/reel/seq/{1..7}/frame-*.jpg` | 511 frames, ~20MB total |
+| `public/reel/manifest.json` | Section modes + frame counts + scroll heights |
+| `lib/reel/types.ts` | Manifest types + `framePath()` |
+| `components/reel/ReelExperience.tsx` | Scroll engine (scrub + loop), preloading, fixed canvas |
+| `components/reel/ReelMusicControl.tsx` | Looping audio + gesture autoplay + mute button |
+| `components/layout/LocaleShell.tsx` | Hides Header/Footer/VideoBackground on `reel` segment |
+| `app/[locale]/reel/{page,layout}.tsx` | Reel route (noindex) |
+| `app/[locale]/layout.tsx`, `app/layout.tsx` | Pass Header/Footer as slots; move VideoBackground into shell |
+
+### Verification
+
+- `npm run lint` + `npm run build` pass; `/[locale]/reel` in the static route map
+- Clean-port run: `/en`, `/he`, `/he/reel`, `/reel/manifest.json`, a frame, and `bg.mp3` all return **200**
+
+### Known issues / follow-ups
+
+- `public/reel/seq/**` (~20MB) not yet committed — decide commit vs. `.gitignore` + generate-in-CI before deploy
+- Not yet deployed to Vercel
+- Agent-launched dev servers get reaped; run `npm run dev` in a real terminal (see decisions.md ops note)
+
+---
+
 ## Planned but not yet built
 
 | Item | Origin | Notes |

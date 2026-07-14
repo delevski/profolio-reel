@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { LocaleShell } from "@/components/layout/LocaleShell";
 import { LocaleProvider } from "@/components/providers/LocaleProvider";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { isValidLocale } from "@/lib/i18n/config";
@@ -24,9 +25,12 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <LocaleProvider locale={locale} dict={dict}>
-      <Header />
-      <main className="flex-1">{children}</main>
-      <Footer locale={locale} />
+      <LocaleShell
+        header={<Header />}
+        footer={<Footer locale={locale} />}
+      >
+        {children}
+      </LocaleShell>
     </LocaleProvider>
   );
 }

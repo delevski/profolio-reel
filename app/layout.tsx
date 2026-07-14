@@ -4,7 +4,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { DM_Sans, Fraunces, Heebo } from "next/font/google";
 import { SetHtmlLangDir } from "@/components/providers/SetHtmlLangDir";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { VideoBackground } from "@/components/layout/VideoBackground";
 import { THEME_STORAGE_KEY } from "@/lib/constants";
 import "./globals.css";
 
@@ -29,6 +28,9 @@ const heebo = Heebo({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://ordelwebsite.vercel.app",
+  ),
   title: {
     default: "Or Delevski — CTO / VP R&D & Technology Leader",
     template: "%s | Or Delevski",
@@ -44,6 +46,32 @@ export const metadata: Metadata = {
     "Mobile Development",
     "Fintech",
   ],
+  icons: {
+    icon: [{ url: "/favicon.ico" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "512x512" }],
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Or Delevski",
+    title: "Or Delevski — CTO / VP R&D & Technology Leader",
+    description:
+      "Innovative technology leader with 15+ years of experience in R&D, product innovation, and scaling high-performance engineering teams.",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Or Delevski",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Or Delevski — CTO / VP R&D & Technology Leader",
+    description:
+      "Innovative technology leader with 15+ years of experience in R&D, product innovation, and scaling high-performance engineering teams.",
+    images: ["/og.jpg"],
+  },
 };
 
 export const viewport: Viewport = {
@@ -68,10 +96,7 @@ export default function RootLayout({
       </head>
       <body className="relative min-h-full flex flex-col font-sans">
         <SetHtmlLangDir />
-        <ThemeProvider>
-          <VideoBackground />
-          <div className="relative z-10 flex min-h-full flex-col">{children}</div>
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>
