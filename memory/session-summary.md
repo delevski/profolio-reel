@@ -1,14 +1,19 @@
-**Date:** 2026-07-14  
-**Focus:** Scroll reel — opening title + idle hint
+**Date:** 2026-07-15  
+**Focus:** About width + Daily AI Trends automation
 
 ## What happened
-- Idle scroll ChevronDown after 1s pause
-- Opening overlay: HE/EN title + subtitle on first frame (`lib/reel/opening.ts`)
-- Deployed to production
+- About page body widened to `max-w-7xl` to match other tabs
+- Built daily pipeline: GitHub trending scrape + HF trending API → Mistral summaries → Supabase → Resend Hebrew digest → optional English blog post (`AI Trend Digest`)
+- Site reads trends/blog from Supabase with JSON/MDX fallback
+- Added GHA workflow, schema SQL, setup docs
 
 ## Outcome
-- Live on https://ordelwebsite.vercel.app/en/reel and `/he/reel`
+- Lint + build pass; fetchers smoke-tested
+- End-to-end cron blocked on user secrets (Supabase URL/keys, Resend, Mistral in GHA; anon key on Vercel)
 
 ## Open items
-- [ ] Verify opening title readability on mobile over the still
-- [ ] Commit reel work when asked
+- [x] Resend key in `.env.local` (gitignored)
+- [ ] User runs `supabase/schema.sql` + provides Supabase URL/keys + Mistral key
+- [ ] Add GitHub remote (none configured) so Actions secrets + cron can run
+- [ ] Vercel `NEXT_PUBLIC_SUPABASE_*`; trigger first pipeline run
+- [ ] Commit when asked

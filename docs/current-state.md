@@ -1,6 +1,6 @@
 # Current State
 
-**Last updated:** 2026-05-20 (bright theme toggle)
+**Last updated:** 2026-07-15 (About width + daily AI Trends automation)
 
 ## Production
 
@@ -26,7 +26,7 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 |---------|--------|---------|
 | Bilingual routes | Done | `/en/*`, `/he/*` — static generation for both |
 | Homepage | Done | Hero, Marquee, Blog, Learn, Trends, YouTube, Apps, Projects, Academy, Testimonials, Connect |
-| About | Done | Bio, highlights, personal info, experience timeline, CV download |
+| About | Done | Bio, highlights, personal info, experience timeline, CV download; body uses `max-w-7xl` like other tabs |
 | Projects | Done | 17 real projects with GitHub / demo / Play Store links |
 | CV download | Done | `/Or-Delevski-CV.pdf` from Hero and About |
 | Contact | Partial | Form opens `mailto:ordi1985@gmail.com` with prefilled body |
@@ -47,13 +47,13 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 | Projects (17) | **Real** | `content/projects.json` |
 | CV PDF | **Real** | `public/Or-Delevski-CV.pdf` |
 | UI strings | **Real** | `messages/en.json`, `messages/he.json` |
-| Blog (3 posts) | Placeholder/demo | `content/blog/*.mdx` |
+| Blog (3 MDX + daily auto) | Hybrid | `content/blog/*.mdx` + Supabase `auto_posts` (AI Trend Digest) |
 | Learn (3 guides) | Placeholder/demo | `content/learn/*.mdx` |
 | Apps (3) | Placeholder | `content/apps.json` — `href: "#"` |
 | Academy courses (3) | Placeholder | `content/courses.json` — `href: "#"` |
 | Testimonials | Placeholder | `content/testimonials.json` |
 | YouTube videos | Placeholder | `content/videos.json` |
-| Trends | Mock API | `content/trends.json` + `GET /api/trends` |
+| Trends | Live + mock fallback | Supabase `trends` via `GET /api/trends`; fallback `content/trends.json` |
 
 ### Agent tooling
 
@@ -61,7 +61,9 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 |---------|--------|
 | Cursor hooks (sessionStart, postToolUse, sessionEnd) | Done |
 | `session-continuity` skill | Done |
+| `grill-me` skill | Done |
 | Project memory (`docs/`, `memory/`, `.cursor/rules/`) | Done |
+| Daily AI Trends GHA pipeline | Code done — needs secrets | See `docs/daily-trends.md` |
 
 ## Routes map
 
@@ -70,8 +72,8 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 | `/{locale}` | Home | `site.*.json` + section JSON/MDX |
 | `/{locale}/about` | About | `site.*.json` + `ExperienceSection` |
 | `/{locale}/projects` | Projects list | `projects.json` |
-| `/{locale}/blog` | Blog index | `content/blog/*.mdx` |
-| `/{locale}/blog/[slug]` | Blog post | MDX |
+| `/{locale}/blog` | Blog index | MDX + Supabase `auto_posts` |
+| `/{locale}/blog/[slug]` | Blog post | MDX or Supabase auto-post |
 | `/{locale}/learn` | Learn index | `content/learn/*.mdx` |
 | `/{locale}/learn/[slug]` | Guide | MDX |
 | `/{locale}/academy` | Academy | `courses.json` |

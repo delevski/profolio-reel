@@ -14,6 +14,7 @@ type ContentCardProps = {
   emoji?: string;
   difficulty?: string;
   newLabel?: string;
+  imageUrl?: string;
   isRtl?: boolean;
 };
 
@@ -28,34 +29,48 @@ export function ContentCard({
   emoji,
   difficulty,
   newLabel = "NEW",
+  imageUrl,
   isRtl = false,
 }: ContentCardProps) {
   return (
     <Link
       href={href}
       className={cn(
-        "group flex flex-col rounded-2xl border border-surface-border bg-surface/90 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-[var(--card-shadow)]",
+        "group flex flex-col overflow-hidden rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-[var(--card-shadow)]",
         isRtl && "text-right"
       )}
     >
-      <div className={cn("mb-4 flex flex-wrap items-center gap-2", isRtl && "justify-end")}>
-        {isNew && <Badge variant="new">{newLabel}</Badge>}
-        {emoji && <span className="text-2xl">{emoji}</span>}
-        {difficulty && <Badge>{difficulty}</Badge>}
-        {tags?.slice(0, 2).map((tag) => (
-          <Badge key={tag} variant="accent">
-            {tag}
-          </Badge>
-        ))}
-        {lang && <Badge>{lang}</Badge>}
+      {imageUrl && (
+        <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-surface-border bg-surface">
+          <Image
+            src={imageUrl}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        </div>
+      )}
+      <div className="flex flex-1 flex-col p-6">
+        <div className={cn("mb-4 flex flex-wrap items-center gap-2", isRtl && "justify-end")}>
+          {isNew && <Badge variant="new">{newLabel}</Badge>}
+          {emoji && <span className="text-2xl">{emoji}</span>}
+          {difficulty && <Badge>{difficulty}</Badge>}
+          {tags?.slice(0, 2).map((tag) => (
+            <Badge key={tag} variant="accent">
+              {tag}
+            </Badge>
+          ))}
+          {lang && <Badge>{lang}</Badge>}
+        </div>
+        <h3 className="mb-2 font-serif text-xl text-text transition-colors group-hover:text-accent">
+          {title}
+        </h3>
+        <p className="mb-4 flex-1 text-sm leading-relaxed text-text-muted line-clamp-3">
+          {excerpt}
+        </p>
+        {meta && <p className="text-xs text-text-muted">{meta}</p>}
       </div>
-      <h3 className="mb-2 font-serif text-xl text-text transition-colors group-hover:text-accent">
-        {title}
-      </h3>
-      <p className="mb-4 flex-1 text-sm leading-relaxed text-text-muted line-clamp-3">
-        {excerpt}
-      </p>
-      {meta && <p className="text-xs text-text-muted">{meta}</p>}
     </Link>
   );
 }

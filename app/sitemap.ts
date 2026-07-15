@@ -16,7 +16,9 @@ const staticRoutes = [
   "/privacy",
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await getBlogPosts();
+
   const staticEntries = locales.flatMap((locale) =>
     staticRoutes.map((route) => ({
       url: `${baseUrl}/${locale}${route}`,
@@ -27,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   const blogRoutes = locales.flatMap((locale) =>
-    getBlogPosts().map((post) => ({
+    posts.map((post) => ({
       url: `${baseUrl}/${locale}/blog/${post.slug}`,
       lastModified: new Date(post.date),
       changeFrequency: "monthly" as const,

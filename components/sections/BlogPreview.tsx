@@ -6,9 +6,9 @@ import { localizedPath } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
 import { formatDate } from "@/lib/utils";
 
-export function BlogPreview({ locale }: { locale: Locale }) {
+export async function BlogPreview({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
-  const posts = getBlogPosts().slice(0, 3);
+  const posts = (await getBlogPosts()).slice(0, 3);
   const s = dict.sections.blog;
 
   return (
@@ -29,6 +29,7 @@ export function BlogPreview({ locale }: { locale: Locale }) {
             excerpt={post.excerpt}
             tags={post.tags}
             lang={post.lang}
+            imageUrl={post.imageUrl}
             meta={`${formatDate(post.date, locale)} · ${post.readTime}`}
             isRtl={isRtl(locale)}
           />

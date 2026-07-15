@@ -7,7 +7,7 @@
       "id": 0,
       "mode": "still",
       "src": "/reel/opening.png",
-      "scrollVh": 100
+      "scrollVh": 90
     },
     {
       "id": 1,
@@ -15,7 +15,7 @@
       "dir": "/reel/seq/1",
       "frameCount": 73,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 140
+      "scrollVh": 125
     },
     {
       "id": 2,
@@ -23,7 +23,7 @@
       "dir": "/reel/seq/2",
       "frameCount": 73,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 140
+      "scrollVh": 125
     },
     {
       "id": 3,
@@ -31,7 +31,7 @@
       "dir": "/reel/seq/3",
       "frameCount": 73,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 140
+      "scrollVh": 125
     },
     {
       "id": 4,
@@ -39,7 +39,7 @@
       "dir": "/reel/seq/4",
       "frameCount": 49,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 120
+      "scrollVh": 110
     },
     {
       "id": 5,
@@ -47,7 +47,7 @@
       "dir": "/reel/seq/5",
       "frameCount": 73,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 140
+      "scrollVh": 125
     },
     {
       "id": 6,
@@ -55,7 +55,7 @@
       "dir": "/reel/seq/6",
       "frameCount": 73,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 120
+      "scrollVh": 110
     },
     {
       "id": 7,
@@ -63,7 +63,7 @@
       "dir": "/reel/seq/7",
       "frameCount": 97,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 160
+      "scrollVh": 145
     },
     {
       "id": 8,
@@ -71,8 +71,8 @@
       "dir": "/reel/seq/8",
       "frameCount": 97,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 200
+      "scrollVh": 160
     }
   ],
-  "exitUrl": "https://ordelwebsite.vercel.app/en"
+  "exitUrl": "https://ordelwebsite.vercel.app"
 }

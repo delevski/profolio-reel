@@ -156,6 +156,24 @@ Architecture and product decisions. Add a dated entry for each non-obvious choic
 
 ---
 
+## 2026-07-15 — Daily AI Trends via GitHub Actions + Supabase
+
+**Decision:** Hybrid content model. Keep existing MDX blog posts; store daily trends + auto-generated digest posts in Supabase. Run the pipeline in GitHub Actions (not Vercel Cron). Email Hebrew digests with Resend; summarize/write with Mistral.
+
+**Why:** File-based content cannot be written from a serverless cron. GitHub Actions can call external APIs and write to Supabase without a daily redeploy. Hybrid avoids migrating the three hand-written MDX posts.
+
+**Details:**
+- Schedule: `0 4 * * *` UTC (~07:00 Israel)
+- Sources: scrape `github.com/trending` (AI keyword filter + fallback) + HF `/api/trending?type=model`
+- Trends section shows only today's 10 rows (replace-by-day); history retained
+- Blog: one English post/day tagged `AI Trend Digest`, image from GitHub/HF OG card; skip post (not email) if all source URLs already covered
+- Email: Hebrew for-dummies digest of all 10 + highlight link; failure-alert email on error
+- About page body width aligned to other tabs (`max-w-7xl`)
+
+**Setup required:** run `supabase/schema.sql`; set GitHub secrets + Vercel `NEXT_PUBLIC_SUPABASE_*` (see `docs/daily-trends.md`).
+
+---
+
 ## 2026-07-14 — Scroll reel via image sequences
 
 **Decision:** Build `/[locale]/reel` as a scroll-driven promo reel. Extract JPEG image sequences from seven MP4s (no `<video>`), map scroll position to frame index (scrub) or an rAF loop (looping sections), and loop a background MP3. Chrome hides the portfolio Header/Footer on this route.
@@ -165,8 +183,9 @@ Architecture and product decisions. Add a dated entry for each non-obvious choic
 **Details:**
 - Frames: `scripts/extract-reel-frames.sh` → `public/reel/seq/{1..7}/frame-%04d.jpg`, ~12fps (every 2nd frame of 24fps), width 720, `-q:v 5`. Total ~20MB, 511 frames.
 - **JPEG, not WebP:** local Homebrew ffmpeg 8.0.1 has no `libwebp` encoder. JPEG at q5 is close enough and universally supported.
-- Manifest `public/reel/manifest.json` drives sections: `still` (opening.png) → `scrub` 1–3 → `loop` 4 → `scrub` 5 → `loop` 6 → `scrub` 7.
-- `components/reel/ReelExperience.tsx`: single fixed `<img>`, rAF scroll loop, preloads current ±1 section, only calls `setState` when the frame src actually changes.
+- Manifest `public/reel/manifest.json` drives sections: `still` (opening.png) → `scrub` 1–3 → `loop` 4 → `scrub` 5 → `loop` 6 → `scrub` 7–8.
+- `components/reel/ReelExperience.tsx`: rAF maps `scrollY` directly to frames. Frames render on a fixed **canvas** via `drawImage` from decoded `ImageBitmap`s — never swap `<img src>` (that flash was the flicker). Previous canvas pixels stay until the next ready frame is drawn; nearest-ready fallback during fast scroll. Prefetch ±24. Loop sections warm fully on enter. `scroll-behavior: auto` on the reel page.
+- Captions: opacity/transform only — CSS `filter: blur()` removed (compositor flicker).
 - `components/reel/ReelMusicControl.tsx`: `HTMLAudioElement` loop; attempts autoplay on first pointer/scroll/key/touch gesture (browser policy), plus a manual mute/unmute button.
 - `components/layout/LocaleShell.tsx` (client): uses `useSelectedLayoutSegment()`; on segment `reel` renders children only (no Header/Footer/VideoBackground). Header/Footer are passed as **slots** from the server `layout.tsx` so the server-only content layer never leaks into the client bundle.
 - `VideoBackground` moved from root `app/layout.tsx` into `LocaleShell` (so reel has a clean black canvas).

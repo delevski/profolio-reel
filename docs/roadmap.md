@@ -28,15 +28,16 @@ Prioritized work. See [session-history.md](session-history.md) for what is alrea
 | 1 | **Enable Analytics in Vercel dashboard** | medium | S | Web Analytics + Speed Insights toggles |
 | 2 | **Hebrew copy QA** | medium | M | RTL on all pages; review `site.he.json` |
 | 3 | **Contact backend** | high | M | Formspree, Resend, or Server Action + email |
-| 4 | **Replace placeholder blog/learn** | medium | L | Real articles or remove from nav |
-| 5 | **Apps & Academy links** | low | S | Update `apps.json` / `courses.json` hrefs or hide sections |
+| 4 | **Wire Daily AI Trends secrets** | high | S | Supabase schema + GHA/Vercel env — code ready (`docs/daily-trends.md`) |
+| 5 | **Replace placeholder learn content** | medium | L | Real articles or remove from nav |
+| 6 | **Apps & Academy links** | low | S | Update `apps.json` / `courses.json` hrefs or hide sections |
 
 ## Later
 
 | Item | Priority | Notes |
 |------|----------|-------|
-| Real AI trends feed | low | Replace mock `/api/trends` |
-| AI News | low | Link to external `protfolio-tau-puce.vercel.app/ai-news` or port |
+| AI News page | low | Link to external `protfolio-tau-puce.vercel.app/ai-news` or port |
+| Resend custom domain | low | Replace `onboarding@resend.dev` sender |
 | Analytics | done (code) | Enable charts in Vercel dashboard if empty |
 | Profile photo | medium | Old site had `/profile.jpg` — not yet in new app |
 | Hero video swap | low | `HERO_VIDEO_SRC` in `lib/constants.ts` |
@@ -54,7 +55,7 @@ Prioritized work. See [session-history.md](session-history.md) for what is alrea
 |---------|---------|--------|
 | Bio / experience | `site.en.json`, `site.he.json` | Real |
 | Projects (17) | `projects.json` | Real |
-| Blog posts | `content/blog/*.mdx` | Demo (3) |
+| Blog posts | MDX + Supabase auto_posts | 3 MDX demos + daily digests when pipeline runs |
 | Learn guides | `content/learn/*.mdx` | Demo (3) |
 | Apps | `apps.json` | Placeholder |
 | Courses | `courses.json` | Placeholder |

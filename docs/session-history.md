@@ -166,14 +166,35 @@ Chronological log of agent sessions that built this project. **Source of truth f
 
 ---
 
+## Session — 2026-07-15: About width + Daily AI Trends automation
+
+### Goal
+Align About page width with other tabs; automate daily GitHub/HF trends → Supabase → Hebrew email digest → English blog digest post.
+
+### What was built
+- About body `max-w-3xl` → `max-w-7xl`
+- Supabase schema (`trends`, `auto_posts`) + `lib/supabase.ts`
+- `scripts/daily-trends.ts` + GHA workflow + Resend Hebrew digest
+- `/api/trends` + blog list/slug merge MDX with Supabase; card images + `AI Trend Digest` tag
+- Setup docs: `docs/daily-trends.md`
+
+### Verification
+- `npm run lint` + `npm run build` pass
+- GitHub trending scrape + HF trending API smoke-tested
+- Full pipeline / workflow_dispatch blocked until user adds secrets
+
+### Follow-ups
+- User: run schema SQL; add GHA + Vercel env vars; trigger workflow once
+
+---
+
 ## Planned but not yet built
 
 | Item | Origin | Notes |
 |------|--------|-------|
 | Contact backend | Session 2+ roadmap | Form uses `mailto:` only |
-| Production deploy | Roadmap | `NEXT_PUBLIC_SITE_URL` defaults to `https://ordel.dev` in sitemap |
+| Wire Daily AI Trends secrets | 2026-07-15 | Code ready; needs Supabase/Resend/Mistral secrets |
 | AI News in-app | Session 2 scope cut | Could link externally to old site |
-| Real trends API | Session 1 design | Mock `/api/trends` only |
 | Academy checkout | Session 1 placeholder | `courses.json` has `#` hrefs |
 | Apps production links | Placeholder | `apps.json` hrefs are `#` |
-| Blog/Learn production content | Placeholder | Demo MDX articles remain |
+| Learn production content | Placeholder | Demo MDX guides remain |

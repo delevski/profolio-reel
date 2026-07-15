@@ -7,6 +7,18 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "opengraph.githubassets.com",
+      },
+      {
+        protocol: "https",
+        hostname: "huggingface.co",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn-thumbnails.huggingface.co",
+      },
     ],
   },
 };

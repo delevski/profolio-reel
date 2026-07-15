@@ -95,6 +95,7 @@ export interface Trend {
   description: string;
   href: string;
   stars?: number;
+  imageUrl?: string;
 }
 
 export interface MdxDoc {
@@ -111,4 +112,6 @@ export interface MdxDoc {
   category?: string;
   emoji?: string;
   content: string;
+  imageUrl?: string;
+  sourceHref?: string;
 }

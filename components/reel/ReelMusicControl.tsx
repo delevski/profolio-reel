@@ -22,20 +22,20 @@ export const ReelMusicControl = forwardRef<ReelMusicHandle, Props>(
   function ReelMusicControl({ src }, ref) {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const unlockedRef = useRef(false);
-    const [playing, setPlaying] = useState(false);
+    /** User explicitly muted — default is sound ON. */
+    const [muted, setMuted] = useState(false);
+    const mutedRef = useRef(false);
 
     const play = async (): Promise<boolean> => {
       const audio = audioRef.current;
-      if (!audio) return false;
+      if (!audio || mutedRef.current) return false;
       audio.muted = false;
       audio.volume = 0.7;
       try {
         await audio.play();
         unlockedRef.current = true;
-        setPlaying(true);
         return true;
       } catch {
-        setPlaying(false);
         return false;
       }
     };
@@ -43,20 +43,37 @@ export const ReelMusicControl = forwardRef<ReelMusicHandle, Props>(
     useImperativeHandle(ref, () => ({ play }), []);
 
     useEffect(() => {
+      mutedRef.current = muted;
+      const audio = audioRef.current;
+      if (!audio) return;
+      if (muted) {
+        audio.pause();
+        audio.muted = true;
+      } else {
+        audio.muted = false;
+        void play();
+      }
+    }, [muted]);
+
+    useEffect(() => {
       const audio = audioRef.current;
       if (!audio) return;
       audio.loop = true;
       audio.preload = "auto";
+      audio.muted = false;
       audio.volume = 0.7;
 
-      // Try unmuted autoplay on load (often blocked — Start / first gesture will unlock).
+      // Optimistic unmuted default — browsers often block until a gesture.
       void audio.play().then(() => {
         unlockedRef.current = true;
-        setPlaying(true);
       }).catch(() => {});
 
       const onGesture = () => {
-        if (unlockedRef.current && !audio.paused) return;
+        if (mutedRef.current) return;
+        if (unlockedRef.current && !audio.paused && !audio.muted) {
+          cleanup();
+          return;
+        }
         void play().then((ok) => {
           if (ok) cleanup();
         });
@@ -70,6 +87,7 @@ export const ReelMusicControl = forwardRef<ReelMusicHandle, Props>(
         window.removeEventListener("scroll", onGesture);
       };
 
+      // First scroll / wheel / tap unlocks sound (default = on).
       window.addEventListener("pointerdown", onGesture, { passive: true });
       window.addEventListener("touchstart", onGesture, { passive: true });
       window.addEventListener("keydown", onGesture);
@@ -82,15 +100,8 @@ export const ReelMusicControl = forwardRef<ReelMusicHandle, Props>(
       };
     }, [src]);
 
-    async function toggle() {
-      const audio = audioRef.current;
-      if (!audio) return;
-      if (playing) {
-        audio.pause();
-        setPlaying(false);
-        return;
-      }
-      await play();
+    function toggle() {
+      setMuted((prev) => !prev);
     }
 
     return (
@@ -100,9 +111,9 @@ export const ReelMusicControl = forwardRef<ReelMusicHandle, Props>(
           type="button"
           onClick={toggle}
           className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] end-[max(1.25rem,env(safe-area-inset-right))] z-50 flex h-11 w-11 items-center justify-center rounded-full bg-black/55 text-white backdrop-blur-sm transition hover:bg-black/75"
-          aria-label={playing ? "Mute background music" : "Play background music"}
+          aria-label={muted ? "Unmute background music" : "Mute background music"}
         >
-          {playing ? <Volume2 size={18} /> : <VolumeX size={18} />}
+          {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
         </button>
       </>
     );

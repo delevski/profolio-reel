@@ -21,7 +21,7 @@ export const REEL_CAPTIONS_EN = [
 
 export const REEL_CAPTIONS_HE = [
   "הופכים רעיונות למוצרים דיגיטליים",
-  "פיתוח מונע בינה מלאכותית",
+  "פיתוח באמצעות בינה מלאכותית",
   "פיתוח Full-Stack",
   "Vibe Coding",
   "סוכני AI",
@@ -35,7 +35,7 @@ export const REEL_CAPTIONS_HE = [
   "פיתוח מהיר יותר",
   "עסק חכם יותר",
   "חוויית לקוח טובה יותר",
-  "החזון שלך. מונע בבינה מלאכותית.",
+  "החזון שלך. באמצעות בינה מלאכותית.",
 ] as const;
 
 export function reelCaptions(locale: Locale): readonly string[] {

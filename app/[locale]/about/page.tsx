@@ -29,7 +29,7 @@ export default async function AboutPage({ params }: Props) {
         subtitle={site.subtitle}
         isRtl={rtl}
       />
-      <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className={cn("mb-8 flex", rtl ? "justify-end" : "justify-start")}>
           <Button href={site.cv.href} download={site.cv.filename}>
             {p.downloadCv}

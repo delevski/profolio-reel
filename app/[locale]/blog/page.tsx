@@ -8,6 +8,8 @@ import { formatDate } from "@/lib/utils";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
+export const revalidate = 300;
+
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const dict = getDictionary(locale);
@@ -16,7 +18,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function BlogPage({ params }: Props) {
   const { locale } = await params;
-  const posts = getBlogPosts();
+  const posts = await getBlogPosts();
   const dict = getDictionary(locale);
   const p = dict.pages.blog;
   const rtl = isRtl(locale);
@@ -34,6 +36,7 @@ export default async function BlogPage({ params }: Props) {
               excerpt={post.excerpt}
               tags={post.tags}
               lang={post.lang}
+              imageUrl={post.imageUrl}
               meta={`${formatDate(post.date, locale)} · ${post.readTime}`}
               isRtl={rtl}
             />

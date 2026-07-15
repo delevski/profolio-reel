@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import type { Locale } from "./i18n/config";
+import { getSupabase, type DbAutoPost, type DbTrend } from "./supabase";
 import type {
   App,
   Course,
@@ -59,6 +60,43 @@ function getMdxDocs(subdir: string): MdxDoc[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
+function mapAutoPost(row: DbAutoPost): MdxDoc {
+  return {
+    slug: row.slug,
+    title: row.title,
+    excerpt: row.excerpt,
+    date: row.date,
+    readTime: row.read_time,
+    tags: row.tags ?? ["AI Trend Digest"],
+    lang: row.lang ?? "EN",
+    content: row.content,
+    imageUrl: row.image_url ?? undefined,
+    sourceHref: row.source_href,
+  };
+}
+
+async function getAutoPosts(): Promise<MdxDoc[]> {
+  const supabase = getSupabase();
+  if (!supabase) return [];
+
+  try {
+    const { data, error } = await supabase
+      .from("auto_posts")
+      .select("*")
+      .order("date", { ascending: false });
+
+    if (error || !data) {
+      console.error("Failed to load auto_posts:", error?.message);
+      return [];
+    }
+
+    return (data as DbAutoPost[]).map(mapAutoPost);
+  } catch (err) {
+    console.error("Failed to load auto_posts:", err);
+    return [];
+  }
+}
+
 export function getSiteConfig(locale: Locale = "en"): SiteConfig {
   return readJson<SiteConfig>(`site.${locale}.json`);
 }
@@ -87,12 +125,47 @@ export function getTestimonials(): Testimonial[] {
   return readJson<Testimonial[]>("testimonials.json");
 }
 
-export function getBlogPosts(): MdxDoc[] {
+/** MDX blog posts from the filesystem (sync). */
+export function getMdxBlogPosts(): MdxDoc[] {
   return getMdxDocs("blog");
 }
 
-export function getBlogPost(slug: string): MdxDoc | undefined {
-  return getBlogPosts().find((p) => p.slug === slug);
+/** Merged MDX + Supabase auto-posts, newest first. */
+export async function getBlogPosts(): Promise<MdxDoc[]> {
+  const [mdx, auto] = await Promise.all([
+    Promise.resolve(getMdxBlogPosts()),
+    getAutoPosts(),
+  ]);
+
+  const bySlug = new Map<string, MdxDoc>();
+  for (const post of [...mdx, ...auto]) {
+    if (!bySlug.has(post.slug)) bySlug.set(post.slug, post);
+  }
+
+  return [...bySlug.values()].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+}
+
+export async function getBlogPost(slug: string): Promise<MdxDoc | undefined> {
+  const mdx = getMdxBlogPosts().find((p) => p.slug === slug);
+  if (mdx) return mdx;
+
+  const supabase = getSupabase();
+  if (!supabase) return undefined;
+
+  try {
+    const { data, error } = await supabase
+      .from("auto_posts")
+      .select("*")
+      .eq("slug", slug)
+      .maybeSingle();
+
+    if (error || !data) return undefined;
+    return mapAutoPost(data as DbAutoPost);
+  } catch {
+    return undefined;
+  }
 }
 
 export function getLearnGuides(): MdxDoc[] {
@@ -107,3 +180,44 @@ export function getMockTrends(): Trend[] {
   return readJson<Trend[]>("trends.json");
 }
 
+function mapDbTrend(row: DbTrend): Trend {
+  return {
+    id: row.id,
+    title: row.title,
+    source: row.source === "github" ? "GitHub" : "Hugging Face",
+    description: row.description,
+    href: row.href,
+    stars: row.stars ?? undefined,
+    imageUrl: row.image_url ?? undefined,
+  };
+}
+
+/** Latest day's trends from Supabase, or mock JSON fallback. */
+export async function getLiveTrends(): Promise<Trend[]> {
+  const supabase = getSupabase();
+  if (!supabase) return getMockTrends();
+
+  try {
+    const { data: latestRows, error: latestError } = await supabase
+      .from("trends")
+      .select("day")
+      .order("day", { ascending: false })
+      .limit(1);
+
+    if (latestError || !latestRows?.length) return getMockTrends();
+
+    const day = latestRows[0].day as string;
+    const { data, error } = await supabase
+      .from("trends")
+      .select("*")
+      .eq("day", day)
+      .order("source", { ascending: true })
+      .order("title", { ascending: true });
+
+    if (error || !data?.length) return getMockTrends();
+    return (data as DbTrend[]).map(mapDbTrend);
+  } catch (err) {
+    console.error("Failed to load live trends:", err);
+    return getMockTrends();
+  }
+}

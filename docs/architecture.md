@@ -2,7 +2,7 @@
 
 ## Overview
 
-**ordel-webside** is a bilingual (English / Hebrew) portfolio for **Or Delevski**, built with Next.js App Router. All content is file-based (JSON + MDX); there is no database or CMS.
+**ordel-webside** is a bilingual (English / Hebrew) portfolio for **Or Delevski**, built with Next.js App Router. Core content is file-based (JSON + MDX). Daily AI Trends and auto blog digests live in **Supabase**, filled by a GitHub Actions cron (see `docs/daily-trends.md`).
 
 **Design reference:** [yuv.ai](https://yuv.ai/) — homepage aggregation + dedicated section routes.  
 **Content source:** [protfolio-tau-puce.vercel.app](https://protfolio-tau-puce.vercel.app/) — migrated identity, experience, and projects.
@@ -19,6 +19,9 @@
 | Content parsing | gray-matter | 4.x |
 | MDX | next-mdx-remote (RSC) | 6.x |
 | Utilities | clsx, tailwind-merge | — |
+| Database | Supabase (trends + auto_posts) | `@supabase/supabase-js` |
+| Email (cron) | Resend | `resend` |
+| Cron | GitHub Actions | `.github/workflows/daily-trends.yml` |
 
 ## High-level structure
 
@@ -154,11 +157,18 @@ Root `app/layout.tsx` wraps all pages with `ThemeProvider` and `VideoBackground`
 
 ## API: trends
 
-`GET /api/trends`:
+`GET /api/trends` (`revalidate: 300`):
 
-- 800ms artificial delay
-- Returns `getMockTrends()` from `content/trends.json`
+- Reads latest `day` from Supabase `trends` when env is configured
+- Falls back to `content/trends.json` if empty/unavailable
 - Consumed by client `TrendsSection`
+
+## Daily trends pipeline
+
+- Script: `scripts/daily-trends.ts` (`npm run trends:daily`)
+- Workflow: `.github/workflows/daily-trends.yml` (`0 4 * * *` UTC + manual)
+- Schema: `supabase/schema.sql` (`trends`, `auto_posts`)
+- Blog list merges MDX + `auto_posts`; cards show OG image + `AI Trend Digest` tag
 
 ## SEO
 

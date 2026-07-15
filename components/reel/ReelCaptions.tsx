@@ -31,7 +31,7 @@ export function ReelCaptions({ locale, progressRef }: Props) {
         for (let i = 0; i < total; i++) {
           const el = nodesRef.current[i];
           if (!el) continue;
-          const { opacity, translateY, blur } = captionStyle(progress, i, total);
+          const { opacity, translateY } = captionStyle(progress, i, total);
           if (opacity < 0.01) {
             el.style.opacity = "0";
             el.style.visibility = "hidden";
@@ -40,7 +40,6 @@ export function ReelCaptions({ locale, progressRef }: Props) {
           el.style.visibility = "visible";
           el.style.opacity = String(opacity);
           el.style.transform = `translate3d(0, ${translateY}px, 0)`;
-          el.style.filter = blur > 0.2 ? `blur(${blur}px)` : "none";
         }
       }
       raf = requestAnimationFrame(tick);
@@ -77,7 +76,7 @@ export function ReelCaptions({ locale, progressRef }: Props) {
               visibility: "hidden",
               textShadow:
                 "0 0 28px rgba(255,255,255,0.22), 0 0 60px rgba(255,255,255,0.08), 0 2px 24px rgba(0,0,0,0.55)",
-              willChange: "opacity, transform, filter",
+              willChange: "opacity, transform",
             }}
           >
             {text}

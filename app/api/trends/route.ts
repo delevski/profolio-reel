@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
-import { getMockTrends } from "@/lib/content";
+import { getLiveTrends } from "@/lib/content";
+
+export const revalidate = 300;
 
 export async function GET() {
   const start = Date.now();
-  await new Promise((resolve) => setTimeout(resolve, 800));
-  const trends = getMockTrends();
+  const trends = await getLiveTrends();
   const durationMs = Date.now() - start;
 
   console.info(

@@ -1,0 +1,35 @@
+name: Daily AI Trends
+
+on:
+  schedule:
+    # ~07:00 Israel time (UTC+3). GitHub cron can drift by ~15 minutes.
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+jobs:
+  daily-trends:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run daily trends pipeline
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          DIGEST_EMAIL: orworkdelevski@gmail.com
+          SITE_URL: https://ordelwebsite.vercel.app
+          RESEND_FROM: AI Trends Digest <onboarding@resend.dev>
+        run: npm run trends:daily
