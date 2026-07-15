@@ -36,13 +36,13 @@ in_progress (awaiting user secrets / first live run)
 - Full pipeline / workflow_dispatch — blocked on secrets
 
 ## Open items
-- [x] Resend API key saved to local `.env.local` (gitignored) — not committed; no GitHub remote yet so GHA secret pending
+- [x] Resend API key saved to local `.env.local` (gitignored) and GitHub Actions secret on `delevski/profolio-reel`
+- [x] GitHub repo created + pushed: https://github.com/delevski/profolio-reel
 - [ ] User: run `supabase/schema.sql`
 - [ ] User: paste `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, confirm `MISTRAL_API_KEY`
-- [ ] Add GitHub remote + push, then set Actions secrets (including RESEND)
-- [ ] User: Vercel env `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- [ ] Vercel env `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - [ ] Trigger workflow once; confirm email + trends + blog card
-- [ ] Commit when asked
+- [ ] Commit when asked — done (af65c32)
 
 ## Next session should
 1. Read `docs/daily-trends.md`

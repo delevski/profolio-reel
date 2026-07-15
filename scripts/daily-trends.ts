@@ -9,9 +9,12 @@
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import * as cheerio from "cheerio";
+import fs from "fs";
+import path from "path";
 import { Resend } from "resend";
 
-const DIGEST_EMAIL = process.env.DIGEST_EMAIL ?? "orworkdelevski@gmail.com";
+const DIGEST_EMAIL =
+  process.env.DIGEST_EMAIL?.trim() || "ordi21@walla.co.il";
 const RESEND_FROM =
   process.env.RESEND_FROM ?? "AI Trends Digest <onboarding@resend.dev>";
 const SITE_URL =
@@ -358,20 +361,37 @@ async function pickAndWriteBlog(
     )
     .join("\n");
 
-  const pickRaw = await mistralChat(
-    apiKey,
-    "You are an AI news editor. Choose the single most important trend for a developer/portfolio audience. Return JSON only.",
-    `Pick the most important trend from this list. Return ONLY JSON: {"index": <1-based number>, "why": "one English sentence"}\n\n${list}`
-  );
+  let chosen = candidates[0];
+  try {
+    const pickRaw = await mistralChat(
+      apiKey,
+      "You are an AI news editor. Choose the single most important trend for a developer/portfolio audience. Return JSON only.",
+      `Pick the most important trend from this list. Return ONLY JSON: {"index": <1-based number>, "why": "one English sentence"}\n\n${list}`
+    );
+    const pick = extractJsonObject(pickRaw) as { index?: number };
+    const index = Math.max(
+      1,
+      Math.min(candidates.length, Number(pick.index) || 1)
+    );
+    chosen = candidates[index - 1];
+  } catch (err) {
+    console.warn(
+      "Trend pick JSON parse failed — defaulting to first uncovered trend.",
+      err instanceof Error ? err.message : err
+    );
+  }
 
-  const pick = extractJsonObject(pickRaw) as { index?: number };
-  const index = Math.max(1, Math.min(candidates.length, Number(pick.index) || 1));
-  const chosen = candidates[index - 1];
-
-  const postRaw = await mistralChat(
-    apiKey,
-    "You write clear English tech-blog posts for a personal AI portfolio. Use markdown. No hype. Return JSON only.",
-    `Write a short blog post about this trend:
+  let draft: {
+    title?: string;
+    excerpt?: string;
+    readTime?: string;
+    content?: string;
+  } = {};
+  try {
+    const postRaw = await mistralChat(
+      apiKey,
+      "You write clear English tech-blog posts for a personal AI portfolio. Use markdown. No hype. Return JSON only.",
+      `Write a short blog post about this trend:
 
 Title: ${chosen.title}
 Source: ${chosen.source}
@@ -385,14 +405,14 @@ Return ONLY JSON:
   "readTime": "4 min",
   "content": "markdown body with ## headings, 400-700 words, explain why it matters, end with a link to the source"
 }`
-  );
-
-  const draft = extractJsonObject(postRaw) as {
-    title?: string;
-    excerpt?: string;
-    readTime?: string;
-    content?: string;
-  };
+    );
+    draft = extractJsonObject(postRaw) as typeof draft;
+  } catch (err) {
+    console.warn(
+      "Blog draft JSON parse failed — writing a simple fallback post.",
+      err instanceof Error ? err.message : err
+    );
+  }
 
   const title = draft.title?.trim() || `${chosen.title}: Why It Matters`;
   const slugBase = slugify(title) || slugify(chosen.title) || "ai-trend";
@@ -405,7 +425,7 @@ Return ONLY JSON:
     readTime: draft.readTime?.trim() || "5 min",
     content:
       draft.content?.trim() ||
-      `## Overview\n\n${chosen.summaryEn}\n\n[Source](${chosen.href})\n`,
+      `## Overview\n\n${chosen.summaryEn}\n\n## Why it matters\n\nThis is one of today's most watched AI trends across ${chosen.source}. It is worth following if you build with modern models, agents, or open-source tooling.\n\n## Source\n\n[${chosen.title}](${chosen.href})\n`,
     imageUrl: chosen.imageUrl,
     sourceHref: chosen.href,
   };
@@ -436,6 +456,70 @@ async function insertAutoPost(
     }
     throw new Error(`Supabase insert auto_posts: ${error.message}`);
   }
+}
+
+function writeTrendsToFiles(trends: EnrichedTrend[]): void {
+  const out = trends.map((t) => ({
+    id: t.id,
+    title: t.title,
+    source: t.source === "github" ? "GitHub" : "Hugging Face",
+    description: t.summaryEn,
+    href: t.href,
+    stars: t.stars,
+    imageUrl: t.imageUrl,
+  }));
+  const filePath = path.join(process.cwd(), "content", "trends.json");
+  fs.writeFileSync(filePath, `${JSON.stringify(out, null, 2)}\n`, "utf-8");
+  console.log(`Wrote ${out.length} trends → ${filePath}`);
+}
+
+function getCoveredHrefsFromMdx(): Set<string> {
+  const dir = path.join(process.cwd(), "content", "blog");
+  const covered = new Set<string>();
+  if (!fs.existsSync(dir)) return covered;
+  for (const file of fs.readdirSync(dir).filter((f) => f.endsWith(".mdx"))) {
+    const raw = fs.readFileSync(path.join(dir, file), "utf-8");
+    const match = raw.match(/^sourceHref:\s*["']?([^"'\n]+)["']?/m);
+    if (match?.[1]) covered.add(match[1].trim());
+    // Also treat existing posts as covered if they link the same URL in content
+    for (const url of raw.matchAll(/https?:\/\/[^\s)"']+/g)) {
+      if (
+        url[0].includes("github.com/") ||
+        url[0].includes("huggingface.co/")
+      ) {
+        covered.add(url[0]);
+      }
+    }
+  }
+  return covered;
+}
+
+function writeBlogToMdx(day: string, draft: BlogDraft): void {
+  const filePath = path.join(
+    process.cwd(),
+    "content",
+    "blog",
+    `${draft.slug}.mdx`
+  );
+  if (fs.existsSync(filePath)) {
+    console.warn(`MDX already exists, skipping: ${filePath}`);
+    return;
+  }
+  const frontmatter = `---
+title: ${JSON.stringify(draft.title)}
+excerpt: ${JSON.stringify(draft.excerpt)}
+date: "${day}"
+readTime: ${JSON.stringify(draft.readTime)}
+tags: ["AI Trend Digest"]
+lang: "EN"
+imageUrl: ${JSON.stringify(draft.imageUrl ?? "")}
+sourceHref: ${JSON.stringify(draft.sourceHref)}
+---
+
+${draft.content.trim()}
+`;
+  fs.writeFileSync(filePath, `${frontmatter}\n`, "utf-8");
+  console.log(`Wrote blog post → ${filePath}`);
 }
 
 function buildDigestHtml(
@@ -545,14 +629,23 @@ async function sendFailureEmail(
 }
 
 async function main(): Promise<void> {
-  const supabaseUrl = requireEnv("SUPABASE_URL");
-  const supabaseKey = requireEnv("SUPABASE_SERVICE_ROLE_KEY");
   const mistralKey = requireEnv("MISTRAL_API_KEY");
   const resendKey = requireEnv("RESEND_API_KEY");
+  const supabaseUrl = process.env.SUPABASE_URL?.trim();
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
+  const useSupabase = Boolean(supabaseUrl && supabaseKey);
 
-  const supabase = createClient(supabaseUrl, supabaseKey, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
+  const supabase = useSupabase
+    ? createClient(supabaseUrl!, supabaseKey!, {
+        auth: { persistSession: false, autoRefreshToken: false },
+      })
+    : null;
+
+  if (!useSupabase) {
+    console.warn(
+      "SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY missing — writing trends + blog to content/ files (deployable fallback)."
+    );
+  }
 
   const day = todayIso();
   console.log(`Daily trends pipeline starting for ${day}`);
@@ -569,20 +662,39 @@ async function main(): Promise<void> {
   }
 
   const trends = await enrichTrends(mistralKey, raw);
-  await upsertTrends(supabase, day, trends);
-  console.log(`Upserted ${trends.length} trends for ${day}`);
 
-  const covered = await getCoveredHrefs(supabase);
+  if (supabase) {
+    await upsertTrends(supabase, day, trends);
+    console.log(`Upserted ${trends.length} trends for ${day}`);
+  } else {
+    writeTrendsToFiles(trends);
+  }
+
+  const covered = supabase
+    ? await getCoveredHrefs(supabase)
+    : getCoveredHrefsFromMdx();
   const blog = await pickAndWriteBlog(mistralKey, trends, covered);
   if (blog) {
-    await insertAutoPost(supabase, day, blog);
-    console.log(`Published auto-post: ${blog.slug}`);
+    if (supabase) {
+      await insertAutoPost(supabase, day, blog);
+      console.log(`Published auto-post: ${blog.slug}`);
+    } else {
+      writeBlogToMdx(day, blog);
+    }
   } else {
     console.log("Skipped blog post — all trends already covered.");
   }
 
-  await sendDigestEmail(resendKey, day, trends, blog);
-  console.log(`Digest emailed to ${DIGEST_EMAIL}`);
+  try {
+    await sendDigestEmail(resendKey, day, trends, blog);
+    console.log(`Digest emailed to ${DIGEST_EMAIL}`);
+  } catch (err) {
+    // Content is already persisted — email should not block deployable output.
+    console.error(
+      "Digest email failed (content still saved):",
+      err instanceof Error ? err.message : err
+    );
+  }
 }
 
 main().catch(async (err) => {

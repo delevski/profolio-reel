@@ -29,7 +29,7 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          DIGEST_EMAIL: orworkdelevski@gmail.com
+          DIGEST_EMAIL: ordi21@walla.co.il
           SITE_URL: https://ordelwebsite.vercel.app
           RESEND_FROM: AI Trends Digest <onboarding@resend.dev>
         run: npm run trends:daily

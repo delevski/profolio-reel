@@ -54,6 +54,8 @@ function getMdxDocs(subdir: string): MdxDoc[] {
         difficulty: data.difficulty as string | undefined,
         category: data.category as string | undefined,
         emoji: data.emoji as string | undefined,
+        imageUrl: (data.imageUrl as string | undefined) ?? (data.image as string | undefined),
+        sourceHref: data.sourceHref as string | undefined,
         content,
       };
     })

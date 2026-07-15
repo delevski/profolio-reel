@@ -1,34 +1,92 @@
 [
   {
-    "id": "1",
-    "title": "SWE-agent 2.0",
+    "id": "2026-07-15-github-1",
+    "title": "Nutlope/hallmark",
     "source": "GitHub",
-    "description": "Open-source autonomous AI system for resolving real-world GitHub issues with optimized agent-computer interfaces.",
-    "href": "https://github.com",
-    "stars": 12400
+    "description": "Hallmark is a tool that helps developers write cleaner, more human-like code by avoiding generic AI-generated patterns in tools like Claude Code, Cursor, and Codex.",
+    "href": "https://github.com/Nutlope/hallmark",
+    "stars": 6698,
+    "imageUrl": "https://opengraph.githubassets.com/1/Nutlope/hallmark"
   },
   {
-    "id": "2",
-    "title": "Q-Star v3",
+    "id": "2026-07-15-github-2",
+    "title": "mattpocock/skills",
+    "source": "GitHub",
+    "description": "A GitHub repository offering practical AI and software engineering skills directly from a developer's workflow, aimed at real-world engineering challenges.",
+    "href": "https://github.com/mattpocock/skills",
+    "stars": 171453,
+    "imageUrl": "https://opengraph.githubassets.com/1/mattpocock/skills"
+  },
+  {
+    "id": "2026-07-15-github-3",
+    "title": "moeru-ai/airi",
+    "source": "GitHub",
+    "description": "A self-hosted AI companion app inspired by Grok, enabling real-time voice chats and gameplay in Minecraft or Factorio. Supports web, macOS, and Windows for a customizable AI experience.",
+    "href": "https://github.com/moeru-ai/airi",
+    "stars": 42309,
+    "imageUrl": "https://opengraph.githubassets.com/1/moeru-ai/airi"
+  },
+  {
+    "id": "2026-07-15-github-4",
+    "title": "HKUDS/Vibe-Trading",
+    "source": "GitHub",
+    "description": "Vibe-Trading introduces an AI-powered personal trading agent that automates stock market decisions using advanced algorithms for smarter investing.",
+    "href": "https://github.com/HKUDS/Vibe-Trading",
+    "stars": 23315,
+    "imageUrl": "https://opengraph.githubassets.com/1/HKUDS/Vibe-Trading"
+  },
+  {
+    "id": "2026-07-15-github-5",
+    "title": "openinterpreter/openinterpreter",
+    "source": "GitHub",
+    "description": "OpenInterpreter is a lightweight AI coding agent that lets low-cost models run and edit code locally on your machine, making advanced AI tools more accessible without relying on cloud APIs.",
+    "href": "https://github.com/openinterpreter/openinterpreter",
+    "stars": 65134,
+    "imageUrl": "https://opengraph.githubassets.com/1/openinterpreter/openinterpreter"
+  },
+  {
+    "id": "2026-07-15-huggingface-6",
+    "title": "empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF",
     "source": "Hugging Face",
-    "description": "Self-correcting coding agent with neural-symbolic architecture and real-time AST validation.",
-    "href": "https://huggingface.co",
-    "stars": 3200
+    "description": "Qwythos-9B-Claude-Mythos-5-1M is a trending AI model on Hugging Face that processes both images and text to generate text outputs. It has gained significant popularity with over 2 million downloads and nearly 2,200 likes.",
+    "href": "https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF",
+    "stars": 2189,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF.png"
   },
   {
-    "id": "3",
-    "title": "OpenCode CLI",
-    "source": "GitHub",
-    "description": "Open-source Claude Code alternative — run local LLMs with Ollama, no vendor lock-in.",
-    "href": "https://github.com",
-    "stars": 8900
+    "id": "2026-07-15-huggingface-7",
+    "title": "prism-ml/Ternary-Bonsai-27B-gguf",
+    "source": "Hugging Face",
+    "description": "Ternary-Bonsai-27B is a trending text-generation AI model on Hugging Face with 305 likes and 23 downloads. It's optimized for efficiency and runs on consumer hardware using the GGUF format.",
+    "href": "https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf",
+    "stars": 305,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/prism-ml/Ternary-Bonsai-27B-gguf.png"
   },
   {
-    "id": "4",
-    "title": "Midjourney V7 Prompt Pack",
-    "source": "Community",
-    "description": "50+ prompt templates for advanced image generation workflows and creative AI pipelines.",
-    "href": "#",
-    "stars": 2100
+    "id": "2026-07-15-huggingface-8",
+    "title": "zai-org/GLM-5.2",
+    "source": "Hugging Face",
+    "description": "GLM-5.2 is a trending open-source AI model for text generation, developed by zai-org. It has gained significant popularity with nearly 500K downloads and 4K likes on Hugging Face.",
+    "href": "https://huggingface.co/zai-org/GLM-5.2",
+    "stars": 3964,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/zai-org/GLM-5.2.png"
+  },
+  {
+    "id": "2026-07-15-huggingface-9",
+    "title": "tencent/Hy3",
+    "source": "Hugging Face",
+    "description": "Tencent's Hy3 is a trending text-generation AI model on Hugging Face with 791 likes and over 10,000 downloads. It's designed for generating human-like text based on prompts.",
+    "href": "https://huggingface.co/tencent/Hy3",
+    "stars": 791,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/tencent/Hy3.png"
+  },
+  {
+    "id": "2026-07-15-huggingface-10",
+    "title": "bottlecapai/ThinkingCap-Qwen3.6-27B",
+    "source": "Hugging Face",
+    "description": "A trending AI model on Hugging Face that processes both images and text to generate responses. It has gained popularity with 358 likes and over 6,200 downloads.",
+    "href": "https://huggingface.co/bottlecapai/ThinkingCap-Qwen3.6-27B",
+    "stars": 358,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/bottlecapai/ThinkingCap-Qwen3.6-27B.png"
   }
 ]
