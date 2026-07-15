@@ -9,23 +9,15 @@
     "stars": 0,
     "featured": true,
     "category": "web",
-    "stack": ["TypeScript", "React", "InstantDB", "Node.js"],
-    "href": "https://github.com/delevski/Trust-scan",
-    "demoUrl": "https://guileless-creponne-627b64.netlify.app/"
-  },
-  {
-    "slug": "doto",
-    "name": "DOTO",
-    "description": {
-      "en": "A community-driven platform to help others for free. Share knowledge, skills, and support with people in need.",
-      "he": "פלטפורמה קהילתית לעזרה חינמית לאחרים. שיתוף ידע, מיומנויות ותמיכה עם אנשים הזקוקים לכך."
-    },
-    "stars": 0,
-    "featured": true,
-    "category": "web",
-    "stack": ["JavaScript", "Node.js", "React", "Community Platform"],
-    "href": "https://github.com/delevski/DOTO",
-    "demoUrl": "https://doto-webapp.onrender.com/"
+    "stack": [
+      "TypeScript",
+      "React",
+      "InstantDB",
+      "Node.js"
+    ],
+    "href": "https://github.com/delevski/trust-scan-app",
+    "demoUrl": "https://guileless-creponne-627b64.netlify.app/",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/trust-scan-app"
   },
   {
     "slug": "constrol-saas",
@@ -37,7 +29,15 @@
     "stars": 0,
     "featured": true,
     "category": "web",
-    "stack": ["Next.js", "React", "C#", "NestJS", "Python", "AI/ML"]
+    "stack": [
+      "Next.js",
+      "React",
+      "C#",
+      "NestJS",
+      "Python",
+      "AI/ML"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "slug": "paybox-fintech",
@@ -49,160 +49,231 @@
     "stars": 0,
     "featured": true,
     "category": "fintech",
-    "stack": ["Node.js", "C#", "Kotlin", "Swift", "GCP", "Microservices"],
-    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.payboxapp"
+    "stack": [
+      "Node.js",
+      "C#",
+      "Kotlin",
+      "Swift",
+      "GCP",
+      "Microservices"
+    ],
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.payboxapp",
+    "imageUrl": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80"
   },
   {
-    "slug": "rag-test",
-    "name": "RAG Test",
+    "slug": "shortigo",
+    "name": "ShortiGo",
     "description": {
-      "en": "Retrieval-Augmented Generation (RAG) storage system for specialized AI tasks with vector embeddings and semantic search.",
-      "he": "מערכת אחסון RAG למשימות AI מיוחדות עם וקטור embeddings וחיפוש סמנטי."
+      "en": "TikTok-style short-drama streaming app for iOS and Android, built with Flutter and Firebase.",
+      "he": "אפליקציית סטרימינג לדרמות קצרות בסגנון טיקטוק ל-iOS ו-Android, בנויה עם Flutter ו-Firebase."
     },
     "stars": 0,
-    "featured": true,
+    "category": "mobile",
+    "stack": [
+      "Dart",
+      "Android",
+      "Firebase",
+      "Flutter",
+      "iOS",
+      "Mobile"
+    ],
+    "href": "https://github.com/delevski/ShortiGo",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/ShortiGo",
+    "featured": true
+  },
+  {
+    "slug": "championssport",
+    "name": "Champions Sport",
+    "description": {
+      "en": "Real-time World Cup prediction platform with web and mobile clients, Hebrew RTL support, and Supabase.",
+      "he": "פלטפורמת ניחושים בזמן אמת לגביע העולם עם לקוחות ווב ומובייל, תמיכה בעברית RTL ו-Supabase."
+    },
+    "stars": 0,
+    "category": "mobile",
+    "stack": [
+      "TypeScript",
+      "Expo",
+      "Mobile",
+      "Next.js",
+      "Rtl",
+      "Sports"
+    ],
+    "href": "https://github.com/delevski/ChampionsSport",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/ChampionsSport",
+    "featured": true
+  },
+  {
+    "slug": "chefli",
+    "name": "Chefli",
+    "description": {
+      "en": "AI-powered recipe generator that creates personalized recipes from available ingredients.",
+      "he": "מחולל מתכונים מבוסס AI שיוצר מתכונים מותאמים אישית ממרכיבים זמינים."
+    },
+    "stars": 0,
     "category": "ai",
-    "stack": ["TypeScript", "AI/ML", "Vector DB", "LangChain", "Embeddings"],
-    "href": "https://github.com/delevski/RAG-test",
-    "demoUrl": "https://rag-test-beta.vercel.app/"
-  },
-  {
-    "slug": "fastapi-aws-ingestor",
-    "name": "FastAPI AWS Ingestor",
-    "description": {
-      "en": "Production-ready FastAPI microservice that ingests JSON, validates and transforms it, then stores data in AWS S3 or DynamoDB. Includes unit tests, Docker support, and comprehensive error handling.",
-      "he": "מיקרו-שירות FastAPI מוכן לייצור שקולט JSON, מאמת וממיר, ואז שומר ב-AWS S3 או DynamoDB. כולל בדיקות, Docker וטיפול בשגיאות."
-    },
-    "stars": 0,
+    "stack": [
+      "Dart",
+      "AI",
+      "Express",
+      "InstantDB",
+      "Node.js",
+      "React"
+    ],
+    "href": "https://github.com/delevski/chefli",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/chefli",
     "featured": true,
-    "category": "web",
-    "stack": ["Python", "FastAPI", "AWS S3", "DynamoDB", "Docker", "Pytest"],
-    "href": "https://github.com/delevski/fastapi-aws-ingestor"
+    "demoUrl": "https://chefli.vercel.app"
   },
   {
-    "slug": "playground",
-    "name": "Playground",
+    "slug": "doto",
+    "name": "DOTO",
     "description": {
-      "en": "Interactive code playground for experimenting with JavaScript and web technologies in a sandbox environment.",
-      "he": "מגרש משחקים אינטראקטיבי לניסויים ב-JavaScript וטכנולוגיות ווב בסביבת sandbox."
+      "en": "Location-based help platform connecting people who need assistance with nearby volunteers.",
+      "he": "פלטפורמה קהילתית לעזרה חינמית לאחרים. שיתוף ידע, מיומנויות ותמיכה עם אנשים הזקוקים לכך."
     },
     "stars": 0,
     "category": "web",
-    "stack": ["JavaScript", "HTML", "CSS", "Web APIs"],
-    "href": "https://github.com/delevski/Playground"
-  },
-  {
-    "slug": "feed-new",
-    "name": "Feed New",
-    "description": {
-      "en": "Modern feed aggregator and news reader built with Python, featuring content curation and filtering capabilities.",
-      "he": "מצרף פידים וקורא חדשות מודרני ב-Python עם יכולות סינון ואוצר תוכן."
-    },
-    "stars": 0,
-    "category": "automation",
-    "stack": ["Python", "RSS", "API Integration", "Data Processing"],
-    "href": "https://github.com/delevski/feed-new",
-    "demoUrl": "https://feed-news-nu.vercel.app/"
-  },
-  {
-    "slug": "meme-generator",
-    "name": "Meme Generator",
-    "description": {
-      "en": "Fun and easy-to-use meme generator with customizable templates, text overlays, and image manipulation features.",
-      "he": "מחולל ממים קל לשימוש עם תבניות מותאמות, שכבות טקסט ועיבוד תמונה."
-    },
-    "stars": 0,
-    "category": "web",
-    "stack": ["CSS", "JavaScript", "HTML5 Canvas", "Image Processing"],
-    "href": "https://github.com/delevski/meme-generator",
-    "demoUrl": "https://meme-generator-six-flax.vercel.app/"
-  },
-  {
-    "slug": "lucky-wheel",
-    "name": "Lucky Wheel",
-    "description": {
-      "en": "Interactive lucky wheel spinner for fun games and random selection. Customizable segments and smooth animations.",
-      "he": "גלגל מזל אינטראקטיבי למשחקים ובחירה אקראית. מקטעים מותאמים ואנימציות חלקות."
-    },
-    "stars": 0,
-    "category": "web",
-    "stack": ["TypeScript", "React", "CSS Animations", "Canvas API"],
-    "href": "https://github.com/delevski/Lucky-Wheel",
-    "demoUrl": "https://lucky-wheel-kgkzw7oiy-oris-projects-1434bdbc.vercel.app/"
-  },
-  {
-    "slug": "portfolio-template",
-    "name": "Portfolio Template",
-    "description": {
-      "en": "Clean and responsive HTML portfolio template showcasing projects and skills with modern design principles.",
-      "he": "תבנית תדמית HTML נקייה ורספונסיבית המציגה פרויקטים ומיומנויות בעיצוב מודרני."
-    },
-    "stars": 0,
-    "category": "web",
-    "stack": ["HTML", "CSS", "JavaScript", "Responsive Design"],
-    "href": "https://github.com/delevski/protfolio",
-    "demoUrl": "https://protfolio-tau-puce.vercel.app/"
-  },
-  {
-    "slug": "crm-pro-vb",
-    "name": "CRM PRO VB",
-    "description": {
-      "en": "Professional CRM system built with modern web technologies for customer relationship management and business process automation.",
-      "he": "מערכת CRM מקצועית בטכנולוגיות ווב מודרניות לניהול לקוחות ואוטומציית תהליכים עסקיים."
-    },
-    "stars": 0,
-    "category": "web",
-    "stack": ["JavaScript", "Node.js", "React", "MongoDB"],
-    "href": "https://github.com/delevski/CRM-PRO-VB",
-    "demoUrl": "https://crm-pro-vb.vercel.app/"
-  },
-  {
-    "slug": "scrape-websites",
-    "name": "Scrape Websites",
-    "description": {
-      "en": "Universal web scraping tool that can extract data from any website with configurable selectors and data processing capabilities.",
-      "he": "כלי גריפה אוניברסלי לחילוץ נתונים מכל אתר עם סלקטורים מותאמים ועיבוד נתונים."
-    },
-    "stars": 0,
-    "category": "automation",
-    "stack": ["JavaScript", "Node.js", "Puppeteer", "Cheerio"],
-    "href": "https://github.com/delevski/Scrape-Websites"
-  },
-  {
-    "slug": "banano-editor",
-    "name": "Banano Editor",
-    "description": {
-      "en": "Advanced image editor built with Google's Nano Banana technology, providing powerful image manipulation capabilities.",
-      "he": "עורך תמונות מתקדם המופעל על ידי טכנולוגיית Nano Banana של Google."
-    },
-    "stars": 0,
-    "category": "web",
-    "stack": ["TypeScript", "React", "Canvas API", "Image Processing"],
-    "href": "https://github.com/delevski/bananoEditor"
+    "stack": [
+      "JavaScript",
+      "Node.js",
+      "React",
+      "Community Platform"
+    ],
+    "href": "https://github.com/delevski/DOTO",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/DOTO",
+    "featured": true,
+    "demoUrl": "https://doto-webapp.onrender.com/"
   },
   {
     "slug": "do-your-image",
     "name": "Do Your Image",
     "description": {
-      "en": "Creative image generation and manipulation tool that allows users to create custom images with AI-powered features.",
+      "en": "Full-stack AI image generation app with React, Node.js, Google AI, and MCP integration.",
       "he": "כלי יצירה ועיבוד תמונה המאפשר יצירת תמונות מותאמות עם יכולות AI."
     },
     "stars": 0,
     "category": "ai",
-    "stack": ["TypeScript", "React", "AI/ML", "Image Generation"],
-    "href": "https://github.com/delevski/Do-your-image"
+    "stack": [
+      "TypeScript",
+      "React",
+      "AI/ML",
+      "Image Generation"
+    ],
+    "href": "https://github.com/delevski/Do-your-image",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/Do-your-image",
+    "featured": true,
+    "demoUrl": "https://do-your-image.vercel.app"
   },
   {
     "slug": "ocr-extractor",
     "name": "OCR Extractor",
     "description": {
-      "en": "Comprehensive OCR solution that extracts text from PDFs, images, Word documents, Excel files and more with high accuracy.",
+      "en": "AI OCR web app for extracting text, converting documents to markdown, locating text, and describing images.",
       "he": "פתרון OCR מקיף לחילוץ טקסט מ-PDF, תמונות, Word, Excel ועוד בדיוק גבוה."
     },
     "stars": 0,
     "category": "automation",
-    "stack": ["Python", "OCR", "Tesseract", "PDF Processing", "Image Processing"],
-    "href": "https://github.com/delevski/OCR-extractor"
+    "stack": [
+      "Python",
+      "OCR",
+      "Tesseract",
+      "PDF Processing",
+      "Image Processing"
+    ],
+    "href": "https://github.com/delevski/OCR-extractor",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/OCR-extractor",
+    "featured": true,
+    "demoUrl": "https://ocr-extractor-navy.vercel.app"
+  },
+  {
+    "slug": "rag-test",
+    "name": "RAG Test",
+    "description": {
+      "en": "Rag storage for special tasks",
+      "he": "מערכת אחסון RAG למשימות AI מיוחדות עם וקטור embeddings וחיפוש סמנטי."
+    },
+    "stars": 0,
+    "category": "ai",
+    "stack": [
+      "TypeScript",
+      "AI/ML",
+      "Vector DB",
+      "LangChain",
+      "Embeddings"
+    ],
+    "href": "https://github.com/delevski/RAG-test",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/RAG-test",
+    "featured": true,
+    "demoUrl": "https://rag-test-beta.vercel.app"
+  },
+  {
+    "slug": "fastapi-aws-ingestor",
+    "name": "FastAPI AWS Ingestor",
+    "description": {
+      "en": "Production-ready FastAPI JSON ingestion service with AWS S3/DynamoDB storage, Docker, and tests.",
+      "he": "מיקרו-שירות FastAPI מוכן לייצור שקולט JSON, מאמת וממיר, ואז שומר ב-AWS S3 או DynamoDB. כולל בדיקות, Docker וטיפול בשגיאות."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "AWS S3",
+      "DynamoDB",
+      "Docker",
+      "Pytest"
+    ],
+    "href": "https://github.com/delevski/fastapi-aws-ingestor",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/fastapi-aws-ingestor",
+    "featured": true
+  },
+  {
+    "slug": "profolio-reel",
+    "name": "Portfolio Reel",
+    "description": {
+      "en": "Or Delevski bilingual portfolio + scroll reel + daily AI trends",
+      "he": "תיק עבודות דו-לשוני עם חוויית גלילה בסגנון ריל וסיכומי AI יומיים."
+    },
+    "stars": 0,
+    "category": "ai",
+    "stack": [
+      "TypeScript"
+    ],
+    "href": "https://github.com/delevski/profolio-reel",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/profolio-reel",
+    "featured": true
+  },
+  {
+    "slug": "professional-services-template",
+    "name": "Professional Services Template",
+    "description": {
+      "en": "Reusable profile-driven professional services website template",
+      "he": "תבנית אתר לשירותים מקצועיים מבוססת פרופיל, לשימוש חוזר."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": [
+      "JavaScript"
+    ],
+    "href": "https://github.com/delevski/professional-services-template",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/professional-services-template",
+    "featured": true
+  },
+  {
+    "slug": "pilatestemplate",
+    "name": "Pilates Template",
+    "description": {
+      "en": "pilates template",
+      "he": "תבנית אתר מקצועית לסטודיו פילאטיס."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": [
+      "JavaScript"
+    ],
+    "href": "https://github.com/delevski/PilatesTemplate",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/PilatesTemplate",
+    "featured": true
   },
   {
     "slug": "b2b-mobile-platforms",
@@ -213,6 +284,233 @@
     },
     "stars": 0,
     "category": "mobile",
-    "stack": ["Android", "iOS", "Kotlin", "Swift", "CI/CD"]
+    "stack": [
+      "Android",
+      "iOS",
+      "Kotlin",
+      "Swift",
+      "CI/CD"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1512941937669-90a1b58d7eed?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "slug": "portfolio-template",
+    "name": "Portfolio (protfolio)",
+    "description": {
+      "en": "Professional portfolio website for Or Delevski, built with Next.js, TypeScript, and Tailwind CSS.",
+      "he": "תבנית תדמית HTML נקייה ורספונסיבית המציגה פרויקטים ומיומנויות בעיצוב מודרני."
+    },
+    "stars": 1,
+    "category": "web",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Responsive Design"
+    ],
+    "href": "https://github.com/delevski/protfolio",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/protfolio",
+    "demoUrl": "https://protfolio-tau-puce.vercel.app"
+  },
+  {
+    "slug": "gemel",
+    "name": "Gemel",
+    "description": {
+      "en": "gemel rates each month and overall",
+      "he": "מעקב אחר תשואות גמל לפי חודש ובמצטבר."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": [
+      "HTML"
+    ],
+    "href": "https://github.com/delevski/gemel",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/gemel"
+  },
+  {
+    "slug": "sti-signal-api",
+    "name": "STI Signal API",
+    "description": {
+      "en": "sti-signal-api project",
+      "he": "API לאיתותים פיננסיים וסטטוס שוק."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": [
+      "Python"
+    ],
+    "href": "https://github.com/delevski/sti-signal-api",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/sti-signal-api",
+    "demoUrl": "https://sti-signal-api.vercel.app"
+  },
+  {
+    "slug": "videoscrubbing",
+    "name": "Video Scrubbing",
+    "description": {
+      "en": "VideoScrubbing testing landing page",
+      "he": "עמוד נחיתה לבדיקת גרירה/סקראב של וידאו לפי גלילה."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": [
+      "CSS"
+    ],
+    "href": "https://github.com/delevski/VideoScrubbing",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/VideoScrubbing"
+  },
+  {
+    "slug": "lifebook",
+    "name": "Life Book",
+    "description": {
+      "en": "apps that help you to do a life book animation",
+      "he": "אפליקציות ליצירת אנימציית ספר חיים."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": [
+      "TypeScript"
+    ],
+    "href": "https://github.com/delevski/LifeBook",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/LifeBook"
+  },
+  {
+    "slug": "chefli-agents",
+    "name": "Chefli Agents",
+    "description": {
+      "en": "agents based langchain",
+      "he": "סוכני LangChain עבור Chefli."
+    },
+    "stars": 0,
+    "category": "ai",
+    "stack": [
+      "Python"
+    ],
+    "href": "https://github.com/delevski/chefli_agents",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/chefli_agents"
+  },
+  {
+    "slug": "chrome-extantion-tabber",
+    "name": "Chrome Tabber Extension",
+    "description": {
+      "en": "chrome extantion to detect how many tabs open on your chrome browser, and hwo much each one of them using CPU resource",
+      "he": "תוסף כרום שסופר כרטיסיות פתוחות וצריכת CPU לכל כרטיסייה."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": [
+      "JavaScript"
+    ],
+    "href": "https://github.com/delevski/chrome-extantion-tabber",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/chrome-extantion-tabber"
+  },
+  {
+    "slug": "crm-pro-vb",
+    "name": "CRM PRO VB",
+    "description": {
+      "en": "Professional CRM system built with modern web technologies for customer relationship management and business process automation.",
+      "he": "מערכת CRM מקצועית בטכנולוגיות ווב מודרניות לניהול לקוחות ואוטומציית תהליכים עסקיים."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": [
+      "JavaScript",
+      "Node.js",
+      "React",
+      "MongoDB"
+    ],
+    "href": "https://github.com/delevski/CRM-PRO-VB",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/CRM-PRO-VB",
+    "demoUrl": "https://crm-pro-vb.vercel.app"
+  },
+  {
+    "slug": "feed-news",
+    "name": "Feed News",
+    "description": {
+      "en": "feed-news project",
+      "he": "feed-news project"
+    },
+    "stars": 0,
+    "category": "automation",
+    "stack": [
+      "Python"
+    ],
+    "href": "https://github.com/delevski/feed-news",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/feed-news",
+    "demoUrl": "https://feed-news-nu.vercel.app"
+  },
+  {
+    "slug": "meme-generator",
+    "name": "Meme Generator",
+    "description": {
+      "en": "Fun and easy-to-use meme generator with customizable templates, text overlays, and image manipulation features.",
+      "he": "מחולל ממים קל לשימוש עם תבניות מותאמות, שכבות טקסט ועיבוד תמונה."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": [
+      "CSS",
+      "JavaScript",
+      "HTML5 Canvas",
+      "Image Processing"
+    ],
+    "href": "https://github.com/delevski/meme-generator",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/meme-generator",
+    "demoUrl": "https://meme-generator-six-flax.vercel.app"
+  },
+  {
+    "slug": "lucky-wheel",
+    "name": "Lucky Wheel",
+    "description": {
+      "en": "Lucky Wheel for fun!!!",
+      "he": "גלגל מזל אינטראקטיבי למשחקים ובחירה אקראית. מקטעים מותאמים ואנימציות חלקות."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": [
+      "TypeScript",
+      "React",
+      "CSS Animations",
+      "Canvas API"
+    ],
+    "href": "https://github.com/delevski/Lucky-Wheel",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/Lucky-Wheel",
+    "demoUrl": "https://lucky-wheel-indol.vercel.app"
+  },
+  {
+    "slug": "banano-editor",
+    "name": "Banano Editor",
+    "description": {
+      "en": "an editor images by google nano banana",
+      "he": "עורך תמונות מתקדם המופעל על ידי טכנולוגיית Nano Banana של Google."
+    },
+    "stars": 0,
+    "category": "web",
+    "stack": [
+      "TypeScript",
+      "React",
+      "Canvas API",
+      "Image Processing"
+    ],
+    "href": "https://github.com/delevski/bananoEditor",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/bananoEditor",
+    "demoUrl": "https://banano-editor.vercel.app"
+  },
+  {
+    "slug": "scrape-websites",
+    "name": "Scrape Websites",
+    "description": {
+      "en": "Scrape Any Website",
+      "he": "כלי גריפה אוניברסלי לחילוץ נתונים מכל אתר עם סלקטורים מותאמים ועיבוד נתונים."
+    },
+    "stars": 0,
+    "category": "automation",
+    "stack": [
+      "JavaScript",
+      "Node.js",
+      "Puppeteer",
+      "Cheerio"
+    ],
+    "href": "https://github.com/delevski/Scrape-Websites",
+    "imageUrl": "https://opengraph.githubassets.com/1/delevski/Scrape-Websites"
   }
 ]

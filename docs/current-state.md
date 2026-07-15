@@ -27,7 +27,7 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 | Bilingual routes | Done | `/en/*`, `/he/*` — static generation for both |
 | Homepage | Done | Hero, Marquee, Blog, Learn, Trends, YouTube, Apps, Projects, Academy, Testimonials, Connect |
 | About | Done | Bio, highlights, personal info, experience timeline, CV download; body uses `max-w-7xl` like other tabs |
-| Projects | Done | 17 real projects with GitHub / demo / Play Store links |
+| Projects | Done | Synced from GitHub `@delevski` (plus select work projects); card thumbnails via Open Graph / Unsplash |
 | CV download | Done | `/Or-Delevski-CV.pdf` from Hero and About |
 | Contact | Partial | Form opens `mailto:ordi1985@gmail.com` with prefilled body |
 | SEO | Done | Sitemap (all locales + blog/learn slugs), robots, metadata — uses production URL |

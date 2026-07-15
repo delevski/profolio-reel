@@ -43,6 +43,7 @@ export interface Project {
   href?: string;
   demoUrl?: string;
   playStoreUrl?: string;
+  imageUrl?: string;
 }
 
 export interface ProjectView extends Omit<Project, "description"> {

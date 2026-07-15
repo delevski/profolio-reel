@@ -85,6 +85,7 @@ type ProjectCardProps = {
   playStoreUrl?: string;
   category?: string;
   featured?: boolean;
+  imageUrl?: string;
   featuredLabel?: string;
   githubLabel?: string;
   liveDemoLabel?: string;
@@ -102,6 +103,7 @@ export function ProjectCard({
   playStoreUrl,
   category,
   featured,
+  imageUrl,
   featuredLabel = "Featured",
   githubLabel = "GitHub",
   liveDemoLabel = "Live Demo",
@@ -111,79 +113,99 @@ export function ProjectCard({
   return (
     <div
       className={cn(
-        "group relative flex flex-col rounded-2xl border border-surface-border bg-surface/90 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/30",
+        "group relative flex flex-col overflow-hidden rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/30",
         featured && "ring-1 ring-accent/30",
         isRtl && "text-right"
       )}
     >
-      <div
-        className={cn(
-          "mb-3 flex items-start justify-between gap-2",
-          isRtl && "flex-row-reverse"
+      <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-surface-border bg-surface">
+        {imageUrl ? (
+          <Image
+            src={imageUrl}
+            alt={name}
+            fill
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        ) : (
+          <div
+            className="absolute inset-0 bg-gradient-to-br from-accent/25 via-surface to-accent-2/20"
+            aria-hidden
+          />
         )}
-      >
-        <div className="min-w-0 flex-1">
-          <h3 className="font-mono text-lg text-text group-hover:text-accent">{name}</h3>
-          {category && (
-            <Badge variant="accent" className="mt-2">
-              {category}
-            </Badge>
-          )}
-        </div>
+      </div>
+      <div className="flex flex-1 flex-col p-6">
         <div
           className={cn(
-            "flex shrink-0 flex-col items-end gap-1.5",
-            isRtl && "items-start"
+            "mb-3 flex items-start justify-between gap-2",
+            isRtl && "flex-row-reverse"
           )}
         >
-          {featured && <Badge variant="featured">{featuredLabel}</Badge>}
-          {stars > 0 && (
-            <span className="text-sm text-text-muted">
-              ★ {stars.toLocaleString()}
-            </span>
-          )}
+          <div className="min-w-0 flex-1">
+            <h3 className="font-mono text-lg text-text group-hover:text-accent">
+              {name}
+            </h3>
+            {category && (
+              <Badge variant="accent" className="mt-2">
+                {category}
+              </Badge>
+            )}
+          </div>
+          <div
+            className={cn(
+              "flex shrink-0 flex-col items-end gap-1.5",
+              isRtl && "items-start"
+            )}
+          >
+            {featured && <Badge variant="featured">{featuredLabel}</Badge>}
+            {stars > 0 && (
+              <span className="text-sm text-text-muted">
+                ★ {stars.toLocaleString()}
+              </span>
+            )}
+          </div>
         </div>
-      </div>
-      <p className="mb-4 flex-1 text-sm text-text-muted">{description}</p>
-      <div className={cn("mb-4 flex flex-wrap gap-2", isRtl && "justify-end")}>
-        {stack.map((tech) => (
-          <Badge key={tech}>{tech}</Badge>
-        ))}
-      </div>
-      {(href || demoUrl || playStoreUrl) && (
-        <div className={cn("flex flex-wrap gap-3", isRtl && "justify-end")}>
-          {href && (
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-accent-2 hover:text-accent"
-            >
-              {githubLabel}
-            </a>
-          )}
-          {demoUrl && (
-            <a
-              href={demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-accent-2 hover:text-accent"
-            >
-              {liveDemoLabel}
-            </a>
-          )}
-          {playStoreUrl && (
-            <a
-              href={playStoreUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-accent-2 hover:text-accent"
-            >
-              {googlePlayLabel}
-            </a>
-          )}
+        <p className="mb-4 flex-1 text-sm text-text-muted">{description}</p>
+        <div className={cn("mb-4 flex flex-wrap gap-2", isRtl && "justify-end")}>
+          {stack.map((tech) => (
+            <Badge key={tech}>{tech}</Badge>
+          ))}
         </div>
-      )}
+        {(href || demoUrl || playStoreUrl) && (
+          <div className={cn("flex flex-wrap gap-3", isRtl && "justify-end")}>
+            {href && (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-accent-2 hover:text-accent"
+              >
+                {githubLabel}
+              </a>
+            )}
+            {demoUrl && (
+              <a
+                href={demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-accent-2 hover:text-accent"
+              >
+                {liveDemoLabel}
+              </a>
+            )}
+            {playStoreUrl && (
+              <a
+                href={playStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-accent-2 hover:text-accent"
+              >
+                {googlePlayLabel}
+              </a>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
