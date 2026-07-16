@@ -7,7 +7,7 @@ import { isRtl, type Locale } from "@/lib/i18n/config";
 
 export function LearnPreview({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
-  const guides = getLearnGuides().slice(0, 3);
+  const guides = getLearnGuides(locale).slice(0, 3);
   const s = dict.sections.learn;
 
   return (

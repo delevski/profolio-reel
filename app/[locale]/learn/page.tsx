@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function LearnPage({ params }: Props) {
   const { locale } = await params;
-  const guides = getLearnGuides();
+  const guides = getLearnGuides(locale);
   const dict = getDictionary(locale);
   const p = dict.pages.learn;
   const rtl = isRtl(locale);

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 export function TestimonialsSection({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
-  const testimonials = getTestimonials();
+  const testimonials = getTestimonials(locale);
   const featured = testimonials.find((t) => t.featured);
   const others = testimonials.filter((t) => !t.featured);
   const s = dict.sections.testimonials;

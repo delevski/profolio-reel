@@ -1,19 +1,17 @@
-**Date:** 2026-07-15  
-**Focus:** About width + Daily AI Trends automation
+**Date:** 2026-07-16  
+**Focus:** Full Hebrew localization: trends, RTL headers, testimonials, blog posts
 
 ## What happened
-- About page body widened to `max-w-7xl` to match other tabs
-- Built daily pipeline: GitHub trending scrape + HF trending API → Mistral summaries → Supabase → Resend Hebrew digest → optional English blog post (`AI Trend Digest`)
-- Site reads trends/blog from Supabase with JSON/MDX fallback
-- Added GHA workflow, schema SQL, setup docs
+- Trends bilingual (`{ en, he }` in trends.json; `summary_he` in Supabase); `/api/trends?locale=`
+- RTL header fix: removed double-reversal (`flex-row-reverse` on top of `dir=rtl`); `SectionHeaderFrame` takes `dir`
+- Testimonials: `quote`/`role`/`relation` are now `LocalizedString`; translated to Hebrew
+- Blog: Hebrew overrides at `content/blog/he/<slug>.mdx` (title/excerpt/content); Supabase `auto_posts` gained `title_he`/`excerpt_he`/`content_he`; pipeline translates new posts via Mistral
+- Translated all 5 existing posts to Hebrew
+- Deployed to production twice (RTL fix, then localization) and verified live
 
 ## Outcome
-- Lint + build pass; fetchers smoke-tested
-- End-to-end cron blocked on user secrets (Supabase URL/keys, Resend, Mistral in GHA; anon key on Vercel)
+- https://ordelwebsite.vercel.app/he — trends, testimonials, and all blog posts in Hebrew; headers right-aligned with action arrows on the left
 
 ## Open items
-- [x] Resend key in `.env.local` (gitignored)
-- [ ] User runs `supabase/schema.sql` + provides Supabase URL/keys + Mistral key
-- [ ] Add GitHub remote (none configured) so Actions secrets + cron can run
-- [ ] Vercel `NEXT_PUBLIC_SUPABASE_*`; trigger first pipeline run
 - [ ] Commit when asked
+- [ ] If Supabase gets wired: run the `title_he/excerpt_he/content_he` migration in schema.sql

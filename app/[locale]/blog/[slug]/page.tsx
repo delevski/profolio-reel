@@ -24,15 +24,15 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
-  const post = await getBlogPost(slug);
+  const { locale, slug } = await params;
+  const post = await getBlogPost(slug, locale);
   if (!post) return { title: "Post Not Found" };
   return { title: post.title, description: post.excerpt };
 }
 
 export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params;
-  const post = await getBlogPost(slug);
+  const post = await getBlogPost(slug, locale);
   if (!post) notFound();
 
   const dict = getDictionary(locale);

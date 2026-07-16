@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 export function AcademyPreview({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
-  const courses = getCourses();
+  const courses = getCourses(locale);
   const s = dict.sections.academy;
   const rtl = isRtl(locale);
 

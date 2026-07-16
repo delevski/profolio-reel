@@ -62,11 +62,18 @@ export interface App {
 
 export interface Course {
   slug: string;
+  title: LocalizedString;
+  description: LocalizedString;
+  level: LocalizedString;
+  isNew?: boolean;
+  href: string;
+}
+
+export interface CourseView
+  extends Omit<Course, "title" | "description" | "level"> {
   title: string;
   description: string;
   level: string;
-  isNew?: boolean;
-  href: string;
 }
 
 export interface Video {
@@ -80,15 +87,34 @@ export interface Video {
 export interface Testimonial {
   id: string;
   name: string;
-  role: string;
+  role: LocalizedString;
   company: string;
-  quote: string;
-  relation: string;
+  quote: LocalizedString;
+  relation: LocalizedString;
   date?: string;
   featured?: boolean;
   href?: string;
 }
 
+export interface TestimonialView
+  extends Omit<Testimonial, "role" | "quote" | "relation"> {
+  role: string;
+  quote: string;
+  relation: string;
+}
+
+/** Stored in content/trends.json and written by the daily pipeline. */
+export interface TrendRecord {
+  id: string;
+  title: string;
+  source: string;
+  description: LocalizedString;
+  href: string;
+  stars?: number;
+  imageUrl?: string;
+}
+
+/** API / UI shape — description is already localized. */
 export interface Trend {
   id: string;
   title: string;

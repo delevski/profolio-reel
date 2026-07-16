@@ -1,24 +1,51 @@
 [
   {
     "slug": "vibe-coding",
-    "title": "Vibe Coding with AI Agents",
-    "description": "Master AI-assisted development. Build real projects faster with modern agent workflows.",
-    "level": "Intermediate",
+    "title": {
+      "en": "Vibe Coding with AI Agents",
+      "he": "Vibe Coding עם סוכני AI"
+    },
+    "description": {
+      "en": "Master AI-assisted development. Build real projects faster with modern agent workflows.",
+      "he": "שליטה בפיתוח בעזרת AI. בניית פרויקטים אמיתיים מהר יותר עם תהליכי עבודה מודרניים מבוססי סוכנים."
+    },
+    "level": {
+      "en": "Intermediate",
+      "he": "בינוני"
+    },
     "isNew": true,
     "href": "#"
   },
   {
     "slug": "intro-ides",
-    "title": "Intro to IDEs",
-    "description": "Learn the fundamentals of Integrated Development Environments and productivity shortcuts.",
-    "level": "Beginner",
+    "title": {
+      "en": "Intro to IDEs",
+      "he": "מבוא לסביבות פיתוח (IDE)"
+    },
+    "description": {
+      "en": "Learn the fundamentals of Integrated Development Environments and productivity shortcuts.",
+      "he": "לימוד יסודות סביבות הפיתוח המשולבות וקיצורי דרך לפרודוקטיביות."
+    },
+    "level": {
+      "en": "Beginner",
+      "he": "מתחילים"
+    },
     "href": "#"
   },
   {
     "slug": "web-dev-fundamentals",
-    "title": "Intro to Web Development",
-    "description": "Start your web development journey with HTML, CSS, JavaScript, and modern tooling.",
-    "level": "Beginner",
+    "title": {
+      "en": "Intro to Web Development",
+      "he": "מבוא לפיתוח ווב"
+    },
+    "description": {
+      "en": "Start your web development journey with HTML, CSS, JavaScript, and modern tooling.",
+      "he": "התחלת המסע בפיתוח ווב עם HTML, CSS, JavaScript וכלים מודרניים."
+    },
+    "level": {
+      "en": "Beginner",
+      "he": "מתחילים"
+    },
     "href": "#"
   }
 ]

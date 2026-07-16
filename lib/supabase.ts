@@ -50,5 +50,8 @@ export type DbAutoPost = {
   content: string;
   source_href: string;
   lang: string;
+  title_he: string | null;
+  excerpt_he: string | null;
+  content_he: string | null;
   created_at: string;
 };

@@ -48,6 +48,9 @@ type BlogDraft = {
   content: string;
   imageUrl?: string;
   sourceHref: string;
+  titleHe?: string;
+  excerptHe?: string;
+  contentHe?: string;
 };
 
 function requireEnv(name: string): string {
@@ -418,7 +421,7 @@ Return ONLY JSON:
   const slugBase = slugify(title) || slugify(chosen.title) || "ai-trend";
   const slug = `${todayIso()}-${slugBase}`.slice(0, 100);
 
-  return {
+  const result: BlogDraft = {
     slug,
     title,
     excerpt: draft.excerpt?.trim() || chosen.summaryEn,
@@ -429,6 +432,41 @@ Return ONLY JSON:
     imageUrl: chosen.imageUrl,
     sourceHref: chosen.href,
   };
+
+  try {
+    const heRaw = await mistralChat(
+      apiKey,
+      "You translate English tech-blog posts to natural, simple Hebrew. Keep product names, code, URLs, and markdown structure unchanged. Return valid JSON only.",
+      `Translate this blog post to Hebrew:
+
+Title: ${result.title}
+Excerpt: ${result.excerpt}
+Content:
+${result.content}
+
+Return ONLY JSON:
+{
+  "titleHe": "Hebrew title",
+  "excerptHe": "Hebrew excerpt",
+  "contentHe": "Hebrew markdown body, same headings structure"
+}`
+    );
+    const he = extractJsonObject(heRaw) as {
+      titleHe?: string;
+      excerptHe?: string;
+      contentHe?: string;
+    };
+    result.titleHe = he.titleHe?.trim();
+    result.excerptHe = he.excerptHe?.trim();
+    result.contentHe = he.contentHe?.trim();
+  } catch (err) {
+    console.warn(
+      "Hebrew translation failed — post will be English-only.",
+      err instanceof Error ? err.message : err
+    );
+  }
+
+  return result;
 }
 
 async function insertAutoPost(
@@ -447,6 +485,9 @@ async function insertAutoPost(
     content: draft.content,
     source_href: draft.sourceHref,
     lang: "EN",
+    title_he: draft.titleHe ?? null,
+    excerpt_he: draft.excerptHe ?? null,
+    content_he: draft.contentHe ?? null,
   });
 
   if (error) {
@@ -463,7 +504,10 @@ function writeTrendsToFiles(trends: EnrichedTrend[]): void {
     id: t.id,
     title: t.title,
     source: t.source === "github" ? "GitHub" : "Hugging Face",
-    description: t.summaryEn,
+    description: {
+      en: t.summaryEn,
+      he: t.summaryHe,
+    },
     href: t.href,
     stars: t.stars,
     imageUrl: t.imageUrl,
@@ -520,6 +564,21 @@ ${draft.content.trim()}
 `;
   fs.writeFileSync(filePath, `${frontmatter}\n`, "utf-8");
   console.log(`Wrote blog post → ${filePath}`);
+
+  if (draft.titleHe && draft.contentHe) {
+    const heDir = path.join(process.cwd(), "content", "blog", "he");
+    fs.mkdirSync(heDir, { recursive: true });
+    const hePath = path.join(heDir, `${draft.slug}.mdx`);
+    const heFrontmatter = `---
+title: ${JSON.stringify(draft.titleHe)}
+excerpt: ${JSON.stringify(draft.excerptHe ?? draft.titleHe)}
+---
+
+${draft.contentHe.trim()}
+`;
+    fs.writeFileSync(hePath, `${heFrontmatter}\n`, "utf-8");
+    console.log(`Wrote Hebrew blog post → ${hePath}`);
+  }
 }
 
 function buildDigestHtml(

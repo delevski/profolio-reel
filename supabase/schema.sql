@@ -27,8 +27,17 @@ create table if not exists public.auto_posts (
   content text not null,
   source_href text not null unique,
   lang text not null default 'EN',
+  title_he text,
+  excerpt_he text,
+  content_he text,
   created_at timestamptz not null default now()
 );
+
+-- Migration for existing databases:
+-- alter table public.auto_posts
+--   add column if not exists title_he text,
+--   add column if not exists excerpt_he text,
+--   add column if not exists content_he text;
 
 create index if not exists auto_posts_date_idx on public.auto_posts (date desc);
 

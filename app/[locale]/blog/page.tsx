@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function BlogPage({ params }: Props) {
   const { locale } = await params;
-  const posts = await getBlogPosts();
+  const posts = await getBlogPosts(locale);
   const dict = getDictionary(locale);
   const p = dict.pages.blog;
   const rtl = isRtl(locale);

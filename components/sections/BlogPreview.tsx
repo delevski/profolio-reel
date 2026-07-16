@@ -8,7 +8,7 @@ import { formatDate } from "@/lib/utils";
 
 export async function BlogPreview({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
-  const posts = (await getBlogPosts()).slice(0, 3);
+  const posts = (await getBlogPosts(locale)).slice(0, 3);
   const s = dict.sections.blog;
 
   return (

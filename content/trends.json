@@ -3,7 +3,10 @@
     "id": "2026-07-15-github-1",
     "title": "Nutlope/hallmark",
     "source": "GitHub",
-    "description": "Hallmark is a tool that helps developers write cleaner, more human-like code by avoiding generic AI-generated patterns in tools like Claude Code, Cursor, and Codex.",
+    "description": {
+      "en": "Hallmark is a tool that helps developers write cleaner, more human-like code by avoiding generic AI-generated patterns in tools like Claude Code, Cursor, and Codex.",
+      "he": "Hallmark הוא כלי שעוזר למפתחים לכתוב קוד נקי וטבעי יותר, על ידי הימנעות מתבניות גנריות של AI בכלים כמו Claude Code, Cursor ו-Codex."
+    },
     "href": "https://github.com/Nutlope/hallmark",
     "stars": 6698,
     "imageUrl": "https://opengraph.githubassets.com/1/Nutlope/hallmark"
@@ -12,7 +15,10 @@
     "id": "2026-07-15-github-2",
     "title": "mattpocock/skills",
     "source": "GitHub",
-    "description": "A GitHub repository offering practical AI and software engineering skills directly from a developer's workflow, aimed at real-world engineering challenges.",
+    "description": {
+      "en": "A GitHub repository offering practical AI and software engineering skills directly from a developer's workflow, aimed at real-world engineering challenges.",
+      "he": "מאגר GitHub שמציע מיומנויות מעשיות ב-AI והנדסת תוכנה ישירות מתוך תהליך העבודה של מפתח, ממוקד באתגרים אמיתיים בשטח."
+    },
     "href": "https://github.com/mattpocock/skills",
     "stars": 171453,
     "imageUrl": "https://opengraph.githubassets.com/1/mattpocock/skills"
@@ -21,7 +27,10 @@
     "id": "2026-07-15-github-3",
     "title": "moeru-ai/airi",
     "source": "GitHub",
-    "description": "A self-hosted AI companion app inspired by Grok, enabling real-time voice chats and gameplay in Minecraft or Factorio. Supports web, macOS, and Windows for a customizable AI experience.",
+    "description": {
+      "en": "A self-hosted AI companion app inspired by Grok, enabling real-time voice chats and gameplay in Minecraft or Factorio. Supports web, macOS, and Windows for a customizable AI experience.",
+      "he": "אפליקציית AI חברה שאפשר להריץ בעצמך, בהשראת Grok — מאפשרת שיחות קול בזמן אמת ומשחק ב-Minecraft או Factorio. תומכת ב-web, macOS ו-Windows."
+    },
     "href": "https://github.com/moeru-ai/airi",
     "stars": 42309,
     "imageUrl": "https://opengraph.githubassets.com/1/moeru-ai/airi"
@@ -30,7 +39,10 @@
     "id": "2026-07-15-github-4",
     "title": "HKUDS/Vibe-Trading",
     "source": "GitHub",
-    "description": "Vibe-Trading introduces an AI-powered personal trading agent that automates stock market decisions using advanced algorithms for smarter investing.",
+    "description": {
+      "en": "Vibe-Trading introduces an AI-powered personal trading agent that automates stock market decisions using advanced algorithms for smarter investing.",
+      "he": "Vibe-Trading מציג סוכן מסחר אישי מבוסס AI שמאוטומט החלטות בשוק ההון בעזרת אלגוריתמים מתקדמים — להשקעה חכמה יותר."
+    },
     "href": "https://github.com/HKUDS/Vibe-Trading",
     "stars": 23315,
     "imageUrl": "https://opengraph.githubassets.com/1/HKUDS/Vibe-Trading"
@@ -39,7 +51,10 @@
     "id": "2026-07-15-github-5",
     "title": "openinterpreter/openinterpreter",
     "source": "GitHub",
-    "description": "OpenInterpreter is a lightweight AI coding agent that lets low-cost models run and edit code locally on your machine, making advanced AI tools more accessible without relying on cloud APIs.",
+    "description": {
+      "en": "OpenInterpreter is a lightweight AI coding agent that lets low-cost models run and edit code locally on your machine, making advanced AI tools more accessible without relying on cloud APIs.",
+      "he": "OpenInterpreter הוא סוכן קוד AI קל משקל שמאפשר למודלים זולים להריץ ולערוך קוד מקומית על המחשב שלך — בלי תלות ב-API של ענן."
+    },
     "href": "https://github.com/openinterpreter/openinterpreter",
     "stars": 65134,
     "imageUrl": "https://opengraph.githubassets.com/1/openinterpreter/openinterpreter"
@@ -48,7 +63,10 @@
     "id": "2026-07-15-huggingface-6",
     "title": "empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF",
     "source": "Hugging Face",
-    "description": "Qwythos-9B-Claude-Mythos-5-1M is a trending AI model on Hugging Face that processes both images and text to generate text outputs. It has gained significant popularity with over 2 million downloads and nearly 2,200 likes.",
+    "description": {
+      "en": "Qwythos-9B-Claude-Mythos-5-1M is a trending AI model on Hugging Face that processes both images and text to generate text outputs. It has gained significant popularity with over 2 million downloads and nearly 2,200 likes.",
+      "he": "Qwythos-9B-Claude-Mythos-5-1M הוא מודל AI פופולרי ב-Hugging Face שמעבד תמונות וטקסט ומייצר פלט טקסטואלי. כבר יותר מ-2 מיליון הורדות וכ-2,200 לייקים."
+    },
     "href": "https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF",
     "stars": 2189,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF.png"
@@ -57,7 +75,10 @@
     "id": "2026-07-15-huggingface-7",
     "title": "prism-ml/Ternary-Bonsai-27B-gguf",
     "source": "Hugging Face",
-    "description": "Ternary-Bonsai-27B is a trending text-generation AI model on Hugging Face with 305 likes and 23 downloads. It's optimized for efficiency and runs on consumer hardware using the GGUF format.",
+    "description": {
+      "en": "Ternary-Bonsai-27B is a trending text-generation AI model on Hugging Face with 305 likes and 23 downloads. It's optimized for efficiency and runs on consumer hardware using the GGUF format.",
+      "he": "Ternary-Bonsai-27B הוא מודל AI ליצירת טקסט שצובר פופולריות ב-Hugging Face. מותאם ליעילות ורץ על חומרה ביתית בפורמט GGUF."
+    },
     "href": "https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf",
     "stars": 305,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/prism-ml/Ternary-Bonsai-27B-gguf.png"
@@ -66,7 +87,10 @@
     "id": "2026-07-15-huggingface-8",
     "title": "zai-org/GLM-5.2",
     "source": "Hugging Face",
-    "description": "GLM-5.2 is a trending open-source AI model for text generation, developed by zai-org. It has gained significant popularity with nearly 500K downloads and 4K likes on Hugging Face.",
+    "description": {
+      "en": "GLM-5.2 is a trending open-source AI model for text generation, developed by zai-org. It has gained significant popularity with nearly 500K downloads and 4K likes on Hugging Face.",
+      "he": "GLM-5.2 הוא מודל AI קוד פתוח ליצירת טקסט מבית zai-org. כבר כמעט 500 אלף הורדות ו-4 אלף לייקים ב-Hugging Face."
+    },
     "href": "https://huggingface.co/zai-org/GLM-5.2",
     "stars": 3964,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/zai-org/GLM-5.2.png"
@@ -75,7 +99,10 @@
     "id": "2026-07-15-huggingface-9",
     "title": "tencent/Hy3",
     "source": "Hugging Face",
-    "description": "Tencent's Hy3 is a trending text-generation AI model on Hugging Face with 791 likes and over 10,000 downloads. It's designed for generating human-like text based on prompts.",
+    "description": {
+      "en": "Tencent's Hy3 is a trending text-generation AI model on Hugging Face with 791 likes and over 10,000 downloads. It's designed for generating human-like text based on prompts.",
+      "he": "Hy3 של Tencent הוא מודל AI ליצירת טקסט שצובר תאוצה ב-Hugging Face — מעל 10,000 הורדות ו-791 לייקים. מיועד ליצירת טקסט טבעי מפרומפטים."
+    },
     "href": "https://huggingface.co/tencent/Hy3",
     "stars": 791,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/tencent/Hy3.png"
@@ -84,7 +111,10 @@
     "id": "2026-07-15-huggingface-10",
     "title": "bottlecapai/ThinkingCap-Qwen3.6-27B",
     "source": "Hugging Face",
-    "description": "A trending AI model on Hugging Face that processes both images and text to generate responses. It has gained popularity with 358 likes and over 6,200 downloads.",
+    "description": {
+      "en": "A trending AI model on Hugging Face that processes both images and text to generate responses. It has gained popularity with 358 likes and over 6,200 downloads.",
+      "he": "מודל AI פופולרי ב-Hugging Face שמעבד תמונות וטקסט ומייצר תשובות. כבר יותר מ-6,200 הורדות ו-358 לייקים."
+    },
     "href": "https://huggingface.co/bottlecapai/ThinkingCap-Qwen3.6-27B",
     "stars": 358,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/bottlecapai/ThinkingCap-Qwen3.6-27B.png"

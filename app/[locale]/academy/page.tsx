@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function AcademyPage({ params }: Props) {
   const { locale } = await params;
-  const courses = getCourses();
+  const courses = getCourses(locale);
   const dict = getDictionary(locale);
   const p = dict.pages.academy;
   const s = dict.sections.academy;

@@ -47,8 +47,8 @@
     },
     "trends": {
       "label": "טרנדים",
-      "title": "טרנדים ב-AI",
-      "subtitle": "טרנדים יומיים מ-GitHub, Hugging Face ועוד.",
+      "title": "טרנדים בבינה מלאכותית",
+      "subtitle": "טרנדים יומיים מ־GitHub, Hugging Face ועוד",
       "action": "כל הטרנדים",
       "loading": "טוען טרנדים...",
       "learnMore": "קרא עוד"

@@ -19,15 +19,15 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
-  const guide = getLearnGuide(slug);
+  const { locale, slug } = await params;
+  const guide = getLearnGuide(slug, locale);
   if (!guide) return { title: "Guide Not Found" };
   return { title: guide.title, description: guide.excerpt };
 }
 
 export default async function LearnGuidePage({ params }: Props) {
   const { locale, slug } = await params;
-  const guide = getLearnGuide(slug);
+  const guide = getLearnGuide(slug, locale);
   if (!guide) notFound();
 
   const dict = getDictionary(locale);

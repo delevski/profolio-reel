@@ -2,10 +2,19 @@
   {
     "id": "1",
     "name": "Sarah Chen",
-    "role": "Engineering Director",
+    "role": {
+      "en": "Engineering Director",
+      "he": "מנהלת הנדסה"
+    },
     "company": "TechFlow",
-    "quote": "Or led our internal AI workshop for 200+ engineers. The live build-from-idea demo was the highlight — people left with working prototypes, not just slides. We finally got the practical angle we were missing.",
-    "relation": "Client",
+    "quote": {
+      "en": "Or led our internal AI workshop for 200+ engineers. The live build-from-idea demo was the highlight — people left with working prototypes, not just slides. We finally got the practical angle we were missing.",
+      "he": "אור הוביל אצלנו סדנת AI פנימית ליותר מ-200 מהנדסים. הדגמת הבנייה החיה מרעיון ועד מוצר הייתה השיא — אנשים יצאו עם אבות-טיפוס עובדים, לא רק מצגות. סוף סוף קיבלנו את הזווית המעשית שחסרה לנו."
+    },
+    "relation": {
+      "en": "Client",
+      "he": "לקוחה"
+    },
     "date": "March 2026",
     "featured": true,
     "href": "https://linkedin.com"
@@ -13,19 +22,37 @@
   {
     "id": "2",
     "name": "Marcus Webb",
-    "role": "Senior ML Engineer",
+    "role": {
+      "en": "Senior ML Engineer",
+      "he": "מהנדס ML בכיר"
+    },
     "company": "DataScale",
-    "quote": "Or has a rare gift for making complex AI concepts feel obvious. His courses are dense with insight but never feel academic — every session ends with something you can ship the same week.",
-    "relation": "Student",
+    "quote": {
+      "en": "Or has a rare gift for making complex AI concepts feel obvious. His courses are dense with insight but never feel academic — every session ends with something you can ship the same week.",
+      "he": "לאור יש כישרון נדיר להפוך מושגי AI מורכבים למובנים מאליהם. הקורסים שלו עמוסים בתובנות אבל אף פעם לא מרגישים אקדמיים — כל מפגש נגמר במשהו שאפשר לשחרר לפרודקשן באותו שבוע."
+    },
+    "relation": {
+      "en": "Student",
+      "he": "סטודנט"
+    },
     "href": "https://linkedin.com"
   },
   {
     "id": "3",
     "name": "Elena Rossi",
-    "role": "Product Lead",
+    "role": {
+      "en": "Product Lead",
+      "he": "מובילת מוצר"
+    },
     "company": "BuildCo",
-    "quote": "Combines deep technical skill with clear communication. Reliable, thoughtful, and always focused on the outcome that actually matters for the team.",
-    "relation": "Colleague",
+    "quote": {
+      "en": "Combines deep technical skill with clear communication. Reliable, thoughtful, and always focused on the outcome that actually matters for the team.",
+      "he": "משלב יכולת טכנית עמוקה עם תקשורת ברורה. אמין, מעמיק, ותמיד ממוקד בתוצאה שבאמת חשובה לצוות."
+    },
+    "relation": {
+      "en": "Colleague",
+      "he": "קולגה"
+    },
     "date": "2024",
     "href": "https://linkedin.com"
   }

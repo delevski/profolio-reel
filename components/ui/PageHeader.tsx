@@ -1,5 +1,4 @@
 import { SectionHeaderFrame } from "@/components/ui/SectionHeaderFrame";
-import { cn } from "@/lib/utils";
 
 type PageHeaderProps = {
   label?: string;
@@ -11,13 +10,8 @@ type PageHeaderProps = {
 export function PageHeader({ label, title, subtitle, isRtl = false }: PageHeaderProps) {
   return (
     <div className="py-8 md:py-10">
-      <div
-        className={cn(
-          "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
-          isRtl && "text-right"
-        )}
-      >
-        <SectionHeaderFrame>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeaderFrame dir={isRtl ? "rtl" : "ltr"}>
           {label && (
             <p className="mb-2 text-sm font-medium uppercase tracking-widest text-accent">
               {label}

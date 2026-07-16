@@ -47,13 +47,13 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 | Projects (17) | **Real** | `content/projects.json` |
 | CV PDF | **Real** | `public/Or-Delevski-CV.pdf` |
 | UI strings | **Real** | `messages/en.json`, `messages/he.json` |
-| Blog (3 MDX + daily auto) | Hybrid | `content/blog/*.mdx` + Supabase `auto_posts` (AI Trend Digest) |
+| Blog (3 MDX + daily auto) | Hybrid, bilingual | `content/blog/*.mdx` (EN) + `content/blog/he/<slug>.mdx` (HE overrides) + Supabase `auto_posts` (`title_he`/`excerpt_he`/`content_he`) |
 | Learn (3 guides) | Placeholder/demo | `content/learn/*.mdx` |
 | Apps (3) | Placeholder | `content/apps.json` — `href: "#"` |
 | Academy courses (3) | Placeholder | `content/courses.json` — `href: "#"` |
-| Testimonials | Placeholder | `content/testimonials.json` |
+| Testimonials | Placeholder, bilingual | `content/testimonials.json` — `quote`/`role`/`relation` are `{ en, he }` |
 | YouTube videos | Placeholder | `content/videos.json` |
-| Trends | Live + mock fallback | Supabase `trends` via `GET /api/trends`; fallback `content/trends.json` |
+| Trends | Live + mock fallback | Supabase `trends` (EN `description` + HE `summary_he`); `content/trends.json` bilingual `{ en, he }`; `/api/trends?locale=` |
 
 ### Agent tooling
 
