@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function AppsPage({ params }: Props) {
   const { locale } = await params;
-  const apps = getApps();
+  const apps = getApps(locale);
   const dict = getDictionary(locale);
   const p = dict.pages.apps;
   const rtl = isRtl(locale);

@@ -53,11 +53,16 @@ export interface ProjectView extends Omit<Project, "description"> {
 export interface App {
   slug: string;
   name: string;
-  description: string;
-  tagline: string;
+  description: LocalizedString;
+  tagline: LocalizedString;
   stack: string[];
   href: string;
   preview?: string;
+}
+
+export interface AppView extends Omit<App, "description" | "tagline"> {
+  description: string;
+  tagline: string;
 }
 
 export interface Course {

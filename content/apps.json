@@ -2,24 +2,42 @@
   {
     "slug": "ordel-trends-app",
     "name": "ORDEL Trends",
-    "tagline": "AI-powered trend discovery",
-    "description": "Discover trending repositories and AI tools from GitHub, Hugging Face, and more.",
+    "tagline": {
+      "en": "AI-powered trend discovery",
+      "he": "גילוי טרנדים מבוסס AI"
+    },
+    "description": {
+      "en": "Discover trending repositories and AI tools from GitHub, Hugging Face, and more.",
+      "he": "גילוי מאגרים חמים וכלי AI מ-GitHub, Hugging Face ועוד."
+    },
     "stack": ["Next.js", "OpenAI", "GitHub API"],
     "href": "#"
   },
   {
     "slug": "agents-101",
     "name": "Agents 101",
-    "tagline": "Learn AI agents interactively",
-    "description": "Interactive training platform for understanding and building AI agents.",
+    "tagline": {
+      "en": "Learn AI agents interactively",
+      "he": "לימוד סוכני AI בצורה אינטראקטיבית"
+    },
+    "description": {
+      "en": "Interactive training platform for understanding and building AI agents.",
+      "he": "פלטפורמת תרגול אינטראקטיבית להבנה ובנייה של סוכני AI."
+    },
     "stack": ["Next.js", "Python", "LangChain"],
     "href": "#"
   },
   {
     "slug": "ordel-py",
     "name": "ORDEL.PY",
-    "tagline": "Python anywhere, anytime",
-    "description": "Run Python code directly in your browser with WebAssembly and Pyodide.",
+    "tagline": {
+      "en": "Python anywhere, anytime",
+      "he": "Python בכל מקום, בכל זמן"
+    },
+    "description": {
+      "en": "Run Python code directly in your browser with WebAssembly and Pyodide.",
+      "he": "הרצת קוד Python ישירות בדפדפן עם WebAssembly ו-Pyodide."
+    },
     "stack": ["WebAssembly", "Pyodide", "TypeScript"],
     "href": "#"
   }

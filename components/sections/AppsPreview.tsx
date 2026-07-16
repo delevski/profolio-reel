@@ -7,7 +7,7 @@ import { isRtl, type Locale } from "@/lib/i18n/config";
 
 export function AppsPreview({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
-  const apps = getApps();
+  const apps = getApps(locale);
   const s = dict.sections.apps;
 
   return (

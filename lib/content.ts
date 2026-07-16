@@ -6,6 +6,7 @@ import type { Locale } from "./i18n/config";
 import { getSupabase, type DbAutoPost, type DbTrend } from "./supabase";
 import type {
   App,
+  AppView,
   Course,
   CourseView,
   LocalizedString,
@@ -115,8 +116,12 @@ export function getProjects(locale: Locale = "en"): ProjectView[] {
   }));
 }
 
-export function getApps(): App[] {
-  return readJson<App[]>("apps.json");
+export function getApps(locale: Locale = "en"): AppView[] {
+  return readJson<App[]>("apps.json").map((a) => ({
+    ...a,
+    description: pickLocalized(a.description, locale),
+    tagline: pickLocalized(a.tagline, locale),
+  }));
 }
 
 export function getCourses(locale: Locale = "en"): CourseView[] {
