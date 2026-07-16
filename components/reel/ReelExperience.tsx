@@ -310,10 +310,9 @@ export function ReelExperience({ manifest }: Props) {
   const beginExit = useCallback(() => {
     if (exitTriggeredRef.current) return;
     exitTriggeredRef.current = true;
-    const target =
-      manifest.exitUrl ?? "https://ordelwebsite.vercel.app";
+    // Same locale as the reel route: /he/reel → /he, /en/reel → /en
+    const target = `/${locale}`;
 
-    // Hard stop further reel interaction while fading out.
     autoPlayingRef.current = false;
     introFrameRef.current = null;
 
@@ -326,12 +325,11 @@ export function ReelExperience({ manifest }: Props) {
       if (t < 1) {
         requestAnimationFrame(step);
       } else {
-        // Full navigation — root hosts the portfolio (redirects to locale).
         window.location.href = target;
       }
     };
     requestAnimationFrame(step);
-  }, [manifest.exitUrl]);
+  }, [locale]);
 
   const startFirstClip = useCallback(() => {
     void musicRef.current?.play();

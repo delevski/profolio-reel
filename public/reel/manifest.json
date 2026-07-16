@@ -73,6 +73,5 @@
       "pattern": "frame-%04d.jpg",
       "scrollVh": 160
     }
-  ],
-  "exitUrl": "https://ordelwebsite.vercel.app"
+  ]
 }

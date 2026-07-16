@@ -14,7 +14,7 @@ export type ReelManifest = {
   fps: number;
   opening: string;
   audio: string;
-  /** Smooth handoff URL after the final section completes. */
+  /** @deprecated Exit URL is derived from the active locale (`/{locale}`). */
   exitUrl?: string;
   sections: ReelSection[];
 };
