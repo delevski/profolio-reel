@@ -29,11 +29,28 @@ deployed to production (commit still pending user request)
 - eslint + next build pass; local browser: `/he` trends/testimonials/blog all Hebrew, headers right-aligned
 - Deployed to prod and verified: Hebrew testimonial roles + post titles present in live HTML
 
+## Second round (same day)
+- Learn guides localized via `content/learn/he/<slug>.mdx`; academy courses via `{ en, he }` in `courses.json`
+- `applyHebrewMdxOverride` generalized to any content subdir (also overrides difficulty/category/tags)
+- Committed `24bb13f` (i18n) with `/usr/bin/git` (wrapper injects broken `--trailer`); deployed + verified live
+
+## Third round (same day)
+- Apps cards localized (`apps.json` tagline/description → `{ en, he }`, `getApps(locale)`)
+- Reel locale-exit fix committed separately as `3f8a7a6`; apps i18n as `935b690`
+- Deployed + verified live on `/he/apps`
+- Note: heredoc commit messages with apostrophes break the shell wrapper — avoid apostrophes; use `/usr/bin/git commit` (wrapper injects broken `--trailer`)
+
+## Fourth round (same day)
+- Replaced placeholder testimonials with 3 real client reviews (Yuval Avraham featured, Oren Levi, Noa Cohen) — Hebrew source from user, English translations added; names now `LocalizedString`, `company` optional
+- Section subtitle updated to "clients and business owners" in both languages
+- Deployed + verified live in both locales; NOT committed yet
+
 ## Open items
-- [ ] Commit when asked
-- [ ] Supabase migration (`title_he` etc.) if DB gets wired; Resend domain still pending (2026-07-15)
-- [ ] Learn guides + apps/courses cards still English-only (not requested yet)
+- [ ] Commit testimonials replacement when asked
+- [ ] Push to remote when asked (3 local commits: `24bb13f`, `3f8a7a6`, `935b690`)
+- [ ] `.env.example` + `docs/daily-trends.md` small diffs uncommitted (Resend email note)
+- [ ] Supabase migration (`title_he` etc.) if DB gets wired; Resend domain still pending
 
 ## Next session should
-1. If user wants Learn/Apps/Academy in Hebrew, follow the same `LocalizedString` / `he/` override pattern
-2. Commit + push when approved
+1. Push when approved
+2. Remaining English on /he: YouTube video titles (`videos.json`) — placeholder content, localize only if asked

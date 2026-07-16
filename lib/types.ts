@@ -91,9 +91,9 @@ export interface Video {
 
 export interface Testimonial {
   id: string;
-  name: string;
+  name: LocalizedString;
   role: LocalizedString;
-  company: string;
+  company?: string;
   quote: LocalizedString;
   relation: LocalizedString;
   date?: string;
@@ -102,7 +102,8 @@ export interface Testimonial {
 }
 
 export interface TestimonialView
-  extends Omit<Testimonial, "role" | "quote" | "relation"> {
+  extends Omit<Testimonial, "name" | "role" | "quote" | "relation"> {
+  name: string;
   role: string;
   quote: string;
   relation: string;

@@ -40,7 +40,8 @@ export function TestimonialsSection({ locale }: { locale: Locale }) {
             <div>
               <p className="font-semibold text-text">{featured.name}</p>
               <p className="text-sm text-text-muted">
-                {featured.role} · {featured.company}
+                {featured.role}
+                {featured.company ? ` · ${featured.company}` : ""}
               </p>
             </div>
           </div>

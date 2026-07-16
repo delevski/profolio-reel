@@ -12,6 +12,16 @@
 ## Outcome
 - https://ordelwebsite.vercel.app/he — trends, testimonials, and all blog posts in Hebrew; headers right-aligned with action arrows on the left
 
+## Also localized (second round)
+- Learn guides: `content/learn/he/<slug>.mdx` overrides (title/excerpt/body/difficulty/category/tags)
+- Academy courses: `courses.json` fields → `{ en, he }`
+- Committed as `24bb13f` and deployed; verified live on `/he/learn` + `/he/academy`
+
+## Third round
+- Apps cards localized; reel locale-exit fix committed separately
+- Commits: `24bb13f` (i18n main), `3f8a7a6` (reel), `935b690` (apps i18n) — all local, not pushed
+- Deployed + verified `/he/apps`
+
 ## Open items
-- [ ] Commit when asked
+- [ ] Push to remote when asked
 - [ ] If Supabase gets wired: run the `title_he/excerpt_he/content_he` migration in schema.sql

@@ -20,11 +20,11 @@ Pipeline that runs every morning (~07:00 Israel / `0 4 * * *` UTC) via GitHub Ac
 2. Paste and run [`supabase/schema.sql`](../supabase/schema.sql)
 3. Copy **Project URL**, **anon public** key, and **service_role** key
 
-### 2. Resend
+3. Resend
 
 1. Create a free Resend account
 2. Create an API key
-3. Until a custom domain is verified, use `onboarding@resend.dev` as the from-address (can only send to your own inbox)
+3. Until a custom domain is verified, `onboarding@resend.dev` can only email **the Resend account owner** (currently `ordi21@walla.co.il`). To send to `orworkdelevski@gmail.com`, verify a domain at resend.com/domains.
 
 ### 3. GitHub repo secrets
 

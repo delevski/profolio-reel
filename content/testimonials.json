@@ -1,59 +1,60 @@
 [
   {
     "id": "1",
-    "name": "Sarah Chen",
-    "role": {
-      "en": "Engineering Director",
-      "he": "מנהלת הנדסה"
+    "name": {
+      "en": "Yuval Avraham",
+      "he": "יובל אברהם"
     },
-    "company": "TechFlow",
+    "role": {
+      "en": "Business Owner",
+      "he": "בעל עסק"
+    },
     "quote": {
-      "en": "Or led our internal AI workshop for 200+ engineers. The live build-from-idea demo was the highlight — people left with working prototypes, not just slides. We finally got the practical angle we were missing.",
-      "he": "אור הוביל אצלנו סדנת AI פנימית ליותר מ-200 מהנדסים. הדגמת הבנייה החיה מרעיון ועד מוצר הייתה השיא — אנשים יצאו עם אבות-טיפוס עובדים, לא רק מצגות. סוף סוף קיבלנו את הזווית המעשית שחסרה לנו."
+      "en": "I was looking for someone who could take over the entire digital side of my business and lift the headache off my shoulders. From the very first moment I got personal attention, high availability, and clear explanations throughout the whole process. The website came out fast, modern, and looks great on desktop and mobile alike. Beyond that, I got ideas I had not thought of myself, including automations that improved our day-to-day work. The result exceeded my expectations, and I definitely recommend him to anyone looking for professional work and top-level service.",
+      "he": "חיפשתי מישהו שיוכל לקחת את כל הצד הדיגיטלי של העסק ולהוריד ממני את כאב הראש. מהרגע הראשון קיבלתי יחס אישי, זמינות גבוהה והסברים ברורים לאורך כל התהליך. האתר יצא מהיר, מודרני ונראה מצוין גם במחשב וגם במובייל. מעבר לזה קיבלתי רעיונות שלא חשבתי עליהם בעצמי, כולל אוטומציות ששיפרו את העבודה השוטפת. התוצאה עלתה על הציפיות שלי, ואני בהחלט ממליץ לכל מי שמחפש עבודה מקצועית ושירות ברמה גבוהה."
+    },
+    "relation": {
+      "en": "Client",
+      "he": "לקוח"
+    },
+    "featured": true
+  },
+  {
+    "id": "2",
+    "name": {
+      "en": "Oren Levi",
+      "he": "אורן לוי"
+    },
+    "role": {
+      "en": "Business Owner",
+      "he": "בעל עסק"
+    },
+    "quote": {
+      "en": "Professional, fast, and precise work. Every request was answered, and the website came out at a high level — far beyond what we expected. Highly recommended!",
+      "he": "עבודה מקצועית, מהירה ומדויקת. כל בקשה קיבלה מענה והאתר יצא ברמה גבוהה הרבה מעבר למה שציפינו. מומלץ בחום!"
+    },
+    "relation": {
+      "en": "Client",
+      "he": "לקוח"
+    }
+  },
+  {
+    "id": "3",
+    "name": {
+      "en": "Noa Cohen",
+      "he": "נועה כהן"
+    },
+    "role": {
+      "en": "Business Owner",
+      "he": "בעלת עסק"
+    },
+    "quote": {
+      "en": "The combination of technological knowledge, creative thinking, and personal service simply makes the difference. We got a modern website and automations that saved us a huge amount of time.",
+      "he": "השילוב בין ידע טכנולוגי, חשיבה יצירתית ושירות אישי פשוט עושה את ההבדל. קיבלנו אתר מודרני ואוטומציות שחסכו לנו המון זמן."
     },
     "relation": {
       "en": "Client",
       "he": "לקוחה"
-    },
-    "date": "March 2026",
-    "featured": true,
-    "href": "https://linkedin.com"
-  },
-  {
-    "id": "2",
-    "name": "Marcus Webb",
-    "role": {
-      "en": "Senior ML Engineer",
-      "he": "מהנדס ML בכיר"
-    },
-    "company": "DataScale",
-    "quote": {
-      "en": "Or has a rare gift for making complex AI concepts feel obvious. His courses are dense with insight but never feel academic — every session ends with something you can ship the same week.",
-      "he": "לאור יש כישרון נדיר להפוך מושגי AI מורכבים למובנים מאליהם. הקורסים שלו עמוסים בתובנות אבל אף פעם לא מרגישים אקדמיים — כל מפגש נגמר במשהו שאפשר לשחרר לפרודקשן באותו שבוע."
-    },
-    "relation": {
-      "en": "Student",
-      "he": "סטודנט"
-    },
-    "href": "https://linkedin.com"
-  },
-  {
-    "id": "3",
-    "name": "Elena Rossi",
-    "role": {
-      "en": "Product Lead",
-      "he": "מובילת מוצר"
-    },
-    "company": "BuildCo",
-    "quote": {
-      "en": "Combines deep technical skill with clear communication. Reliable, thoughtful, and always focused on the outcome that actually matters for the team.",
-      "he": "משלב יכולת טכנית עמוקה עם תקשורת ברורה. אמין, מעמיק, ותמיד ממוקד בתוצאה שבאמת חשובה לצוות."
-    },
-    "relation": {
-      "en": "Colleague",
-      "he": "קולגה"
-    },
-    "date": "2024",
-    "href": "https://linkedin.com"
+    }
   }
 ]

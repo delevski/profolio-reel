@@ -140,6 +140,7 @@ export function getVideos(): Video[] {
 export function getTestimonials(locale: Locale = "en"): TestimonialView[] {
   return readJson<Testimonial[]>("testimonials.json").map((t) => ({
     ...t,
+    name: pickLocalized(t.name, locale),
     role: pickLocalized(t.role, locale),
     quote: pickLocalized(t.quote, locale),
     relation: pickLocalized(t.relation, locale),
