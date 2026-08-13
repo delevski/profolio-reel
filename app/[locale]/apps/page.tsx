@@ -23,7 +23,7 @@ export default async function AppsPage({ params }: Props) {
     <>
       <PageHeader label={p.label} title={p.title} subtitle={p.subtitle} isRtl={rtl} />
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
           {apps.map((app) => (
             <AppCard
               key={app.slug}

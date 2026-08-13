@@ -19,7 +19,7 @@ export function AppsPreview({ locale }: { locale: Locale }) {
       action={{ label: s.action, href: localizedPath(locale, "/apps") }}
       isRtl={isRtl(locale)}
     >
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
         {apps.map((app) => (
           <AppCard key={app.slug} {...app} visitLabel={s.visit} isRtl={isRtl(locale)} />
         ))}

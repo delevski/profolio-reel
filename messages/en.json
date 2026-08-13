@@ -67,10 +67,10 @@
     },
     "apps": {
       "label": "My Apps",
-      "title": "Products I've Built",
-      "subtitle": "Tools and applications designed to solve real problems.",
-      "action": "View All Apps",
-      "visit": "Visit App →"
+      "title": "Templates & Commercial Apps",
+      "subtitle": "Production-ready templates and applications built for real-world business needs.",
+      "action": "View All Templates",
+      "visit": "Open Live Site →"
     },
     "projects": {
       "label": "Featured Work",
@@ -143,8 +143,8 @@
     },
     "apps": {
       "label": "Products",
-      "title": "Apps I've Built",
-      "subtitle": "Tools and applications designed to solve real problems."
+      "title": "Templates & Commercial Apps",
+      "subtitle": "Production-ready templates and applications built for real-world business needs."
     },
     "contact": {
       "label": "Contact",

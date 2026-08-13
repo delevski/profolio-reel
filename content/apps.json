@@ -1,44 +1,62 @@
 [
   {
-    "slug": "ordel-trends-app",
-    "name": "ORDEL Trends",
+    "slug": "ora-luxury-residence",
+    "name": "ORA Luxury Residence",
     "tagline": {
-      "en": "AI-powered trend discovery",
-      "he": "גילוי טרנדים מבוסס AI"
+      "en": "Luxury real-estate launch site",
+      "he": "אתר השקה לפרויקט נדל\"ן יוקרתי"
     },
     "description": {
-      "en": "Discover trending repositories and AI tools from GitHub, Hugging Face, and more.",
-      "he": "גילוי מאגרים חמים וכלי AI מ-GitHub, Hugging Face ועוד."
+      "en": "Immersive bilingual residence website with cinematic scroll storytelling, enquiry flow, and production deployment.",
+      "he": "אתר מגורים דו-לשוני עם חוויית גלילה קולנועית, טופס פנייה ופריסה לפרודקשן."
     },
-    "stack": ["Next.js", "OpenAI", "GitHub API"],
-    "href": "#"
+    "stack": ["Next.js", "Canvas", "Vercel"],
+    "href": "https://ora-website-eight.vercel.app/en",
+    "preview": "/apps/ora-website.png"
   },
   {
-    "slug": "agents-101",
-    "name": "Agents 101",
+    "slug": "professional-services-template",
+    "name": "Professional Services Template",
     "tagline": {
-      "en": "Learn AI agents interactively",
-      "he": "לימוד סוכני AI בצורה אינטראקטיבית"
+      "en": "Service-business website template",
+      "he": "תבנית אתר לעסקי שירות"
     },
     "description": {
-      "en": "Interactive training platform for understanding and building AI agents.",
-      "he": "פלטפורמת תרגול אינטראקטיבית להבנה ובנייה של סוכני AI."
+      "en": "Commercial landing page template for local service providers, with project sections, conversion copy, and responsive layout.",
+      "he": "תבנית מסחרית לעסקי שירות מקומיים, עם אזורי פרויקטים, מסרים שיווקיים ועיצוב רספונסיבי."
     },
-    "stack": ["Next.js", "Python", "LangChain"],
-    "href": "#"
+    "stack": ["React", "GitHub Pages", "Template"],
+    "href": "https://delevski.github.io/professional-services-template/#projects",
+    "preview": "/apps/professional-services-template.png"
   },
   {
-    "slug": "ordel-py",
-    "name": "ORDEL.PY",
+    "slug": "pilates-template",
+    "name": "Pilates Studio Template",
     "tagline": {
-      "en": "Python anywhere, anytime",
-      "he": "Python בכל מקום, בכל זמן"
+      "en": "Boutique studio marketing site",
+      "he": "אתר שיווקי לסטודיו בוטיק"
     },
     "description": {
-      "en": "Run Python code directly in your browser with WebAssembly and Pyodide.",
-      "he": "הרצת קוד Python ישירות בדפדפן עם WebAssembly ו-Pyodide."
+      "en": "Polished Pilates studio template with premium visual direction, offer sections, and business-ready presentation.",
+      "he": "תבנית מלוטשת לסטודיו פילאטיס עם כיוון ויזואלי פרימיום, אזורי הצעה והצגה עסקית מוכנה."
     },
-    "stack": ["WebAssembly", "Pyodide", "TypeScript"],
-    "href": "#"
+    "stack": ["React", "Responsive UI", "Branding"],
+    "href": "https://delevski.github.io/PilatesTemplate/",
+    "preview": "/apps/pilates-template.png"
+  },
+  {
+    "slug": "ora-test-build-ui",
+    "name": "ORA Test Build UI",
+    "tagline": {
+      "en": "Real-estate concept interface",
+      "he": "ממשק קונספט לפרויקט נדל\"ן"
+    },
+    "description": {
+      "en": "Interactive real-estate UI concept built to explore ORA presentation, visual hierarchy, and conversion flow.",
+      "he": "קונספט UI אינטראקטיבי לנדל\"ן שנבנה לבדיקת הצגת ORA, היררכיה ויזואלית וזרימת המרה."
+    },
+    "stack": ["React", "UI Prototype", "Real Estate"],
+    "href": "https://delevski.github.io/ORA-Test-Build-UI/",
+    "preview": "/apps/ora-test-build-ui.png"
   }
 ]

@@ -116,6 +116,16 @@ Architecture and product decisions. Add a dated entry for each non-obvious choic
 
 ---
 
+## 2026-08-13 — Reposition Apps as commercial templates
+
+**Decision:** Rename the homepage/apps section to “Templates & Commercial Apps” and replace the old placeholder app cards with four live commercial/template demos.
+
+**Why:** User wanted the section to present production-ready templates and applications for real-world business needs, with thumbnail previews and links to the deployed examples.
+
+**Details:** App cards now render local preview screenshots from `public/apps/*.png` when `preview` is present in `content/apps.json`.
+
+---
+
 ## 2026-05-20 — Mock trends API
 
 **Decision:** `GET /api/trends` with 800ms delay reading `content/trends.json`.

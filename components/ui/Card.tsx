@@ -216,6 +216,7 @@ type AppCardProps = {
   description: string;
   stack: string[];
   href: string;
+  preview?: string;
   visitLabel?: string;
   isRtl?: boolean;
 };
@@ -226,6 +227,7 @@ export function AppCard({
   description,
   stack,
   href,
+  preview,
   visitLabel = "Visit App →",
   isRtl = false,
 }: AppCardProps) {
@@ -236,7 +238,17 @@ export function AppCard({
         isRtl && "text-right"
       )}
     >
-      <div className="relative h-40 bg-gradient-to-br from-accent/20 via-surface to-accent-2/20" />
+      <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-surface-border bg-gradient-to-br from-accent/20 via-surface to-accent-2/20">
+        {preview && (
+          <Image
+            src={preview}
+            alt={name}
+            fill
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+          />
+        )}
+      </div>
       <div className="flex flex-1 flex-col p-6">
         <h3 className="mb-1 font-serif text-xl text-text">{name}</h3>
         <p className="mb-2 text-sm text-accent">{tagline}</p>
@@ -246,7 +258,12 @@ export function AppCard({
             <Badge key={tech}>{tech}</Badge>
           ))}
         </div>
-        <a href={href} className="text-sm font-medium text-accent-2 hover:text-accent">
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-medium text-accent-2 hover:text-accent"
+        >
           {visitLabel}
         </a>
       </div>

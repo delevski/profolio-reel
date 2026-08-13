@@ -1,4 +1,20 @@
 **Date:** 2026-08-13
+**Focus:** Templates & Commercial Apps section
+
+## What happened
+- Renamed the Apps section to “Templates & Commercial Apps”.
+- Replaced the old placeholder app cards with four live demos: ORA Luxury Residence, Professional Services Template, Pilates Studio Template, and ORA Test Build UI.
+- Captured local card previews into `public/apps/*.png`.
+- Updated `AppCard` to render preview images and open links in a new tab.
+
+## Verification
+- `npm run lint` passed.
+- `npm run build` passed.
+- Local production preview showed the new heading and all four cards.
+
+---
+
+**Date:** 2026-08-13
 **Focus:** Hide homepage Featured Videos section
 
 ## What happened

@@ -1,15 +1,19 @@
 # Agent Handoff
 
 ## Last updated
-2026-08-13 08:55
+2026-08-13 09:15
 
 ## Current goal
-Hide homepage Featured Videos section
+Templates & Commercial Apps section
 
 ## Status
 Implemented locally; verify/deploy status should be checked from the latest session output.
 
 ## What was done
+- Renamed the Apps homepage/page section to “Templates & Commercial Apps” with the requested subtitle.
+- Replaced `content/apps.json` with four live demo links and local preview image paths.
+- Added `public/apps/*.png` screenshots for the four app/template cards.
+- Updated `AppCard` to show preview images and open live links in a new tab.
 - Removed `YouTubeSection` and `getVideos()` from `app/[locale]/page.tsx`, so `/en` and `/he` no longer render the Featured Videos / YouTube section.
 - Left the section component, video content JSON, and dictionary keys in the repo for easy future re-enable.
 - Ran `npm run lint` and `npm run build` successfully after installing local dependencies.
