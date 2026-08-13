@@ -126,6 +126,16 @@ Architecture and product decisions. Add a dated entry for each non-obvious choic
 
 ---
 
+## 2026-08-13 — Refresh Projects from GitHub
+
+**Decision:** Refresh `content/projects.json` from the current public `delevski` GitHub repository list, while preserving curated commercial/experience entries for Constrol, PayBox, B2B mobile platforms, ORA, and Trust-Scan.
+
+**Why:** User asked for the projects page to be updated from GitHub, with relevant preview images for every card and direct Live Demo links where real demos exist.
+
+**Details:** Live demos are included only for URLs that returned HTTP 200. Demo-backed projects use local screenshots in `public/projects/*.png`; repo-only projects use GitHub OpenGraph images.
+
+---
+
 ## 2026-05-20 — Mock trends API
 
 **Decision:** `GET /api/trends` with 800ms delay reading `content/trends.json`.

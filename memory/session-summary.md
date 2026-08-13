@@ -1,4 +1,22 @@
 **Date:** 2026-08-13
+**Focus:** Projects page GitHub refresh
+
+## What happened
+- Refreshed `content/projects.json` to 41 projects from public GitHub repos plus curated work projects.
+- Added 19 verified Live Demo links.
+- Captured local screenshots for demo-backed projects under `public/projects/*.png`.
+- Used GitHub OpenGraph images for repo-only projects and curated business imagery for closed work entries.
+
+## Verification
+- Every project has an `imageUrl`.
+- All 19 `demoUrl` values returned HTTP 200.
+- Local `/en/projects` rendered 41 cards, 41 images, 36 GitHub links, and 19 Live Demo links.
+- `npm run lint` passed.
+- `npm run build` passed.
+
+---
+
+**Date:** 2026-08-13
 **Focus:** Templates & Commercial Apps section
 
 ## What happened

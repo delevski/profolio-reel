@@ -1,15 +1,19 @@
 # Agent Handoff
 
 ## Last updated
-2026-08-13 09:15
+2026-08-13 09:35
 
 ## Current goal
-Templates & Commercial Apps section
+Projects page GitHub refresh
 
 ## Status
 Implemented locally; verify/deploy status should be checked from the latest session output.
 
 ## What was done
+- Refreshed the projects page content from the current public `delevski` GitHub repo list.
+- `content/projects.json` now has 41 cards, 36 GitHub links, 19 verified Live Demo links, and an image for every project.
+- Captured demo-backed previews in `public/projects/*.png`; repo-only cards use GitHub OpenGraph.
+- Removed stale demo links for `Do Your Image` and `OCR Extractor` because their old Vercel URLs returned 404.
 - Renamed the Apps homepage/page section to “Templates & Commercial Apps” with the requested subtitle.
 - Replaced `content/apps.json` with four live demo links and local preview image paths.
 - Added `public/apps/*.png` screenshots for the four app/template cards.

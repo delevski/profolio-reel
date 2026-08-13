@@ -1,6 +1,6 @@
 # Current State
 
-**Last updated:** 2026-08-13 (Templates & Commercial Apps section)
+**Last updated:** 2026-08-13 (Projects refreshed from GitHub)
 
 ## Production
 
@@ -27,7 +27,7 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 | Bilingual routes | Done | `/en/*`, `/he/*` — static generation for both |
 | Homepage | Done | Hero, Marquee, Blog, Learn, Trends, Templates & Commercial Apps, Projects, Academy, Testimonials, Connect |
 | About | Done | Bio, highlights, personal info, experience timeline, CV download; body uses `max-w-7xl` like other tabs |
-| Projects | Done | Synced from GitHub `@delevski` (plus select work projects); card thumbnails via Open Graph / Unsplash |
+| Projects | Done | 41 GitHub/work projects; 19 verified live-demo links; card thumbnails via local screenshots, GitHub Open Graph, and curated business imagery |
 | CV download | Done | `/Or-Delevski-CV.pdf` from Hero and About |
 | Contact | Partial | Form opens `mailto:ordi1985@gmail.com` with prefilled body |
 | SEO | Done | Sitemap (all locales + blog/learn slugs), robots, metadata — uses production URL |
@@ -44,7 +44,7 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 | Content | Status | Location |
 |---------|--------|----------|
 | Identity, experience, contact | **Real** | `content/site.en.json`, `content/site.he.json` |
-| Projects (17) | **Real** | `content/projects.json` |
+| Projects (41) | **Real** | `content/projects.json` + `public/projects/*.png` previews |
 | CV PDF | **Real** | `public/Or-Delevski-CV.pdf` |
 | UI strings | **Real** | `messages/en.json`, `messages/he.json` |
 | Blog (3 MDX + daily auto) | Hybrid, bilingual | `content/blog/*.mdx` (EN) + `content/blog/he/<slug>.mdx` (HE overrides) + Supabase `auto_posts` (`title_he`/`excerpt_he`/`content_he`) |
