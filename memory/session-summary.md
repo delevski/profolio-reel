@@ -1,3 +1,17 @@
+**Date:** 2026-08-13
+**Focus:** Hide homepage Featured Videos section
+
+## What happened
+- Removed `YouTubeSection` from `app/[locale]/page.tsx`.
+- Stopped loading `getVideos()` on the homepage.
+- Left `components/sections/YouTubeSection.tsx`, `content/videos.json`, and dictionary keys in place for easy future restore.
+
+## Verification
+- `npm run lint` passed.
+- `npm run build` passed.
+
+---
+
 **Date:** 2026-07-16  
 **Focus:** Full Hebrew localization: trends, RTL headers, testimonials, blog posts
 

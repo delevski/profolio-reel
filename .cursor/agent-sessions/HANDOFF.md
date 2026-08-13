@@ -1,15 +1,20 @@
 # Agent Handoff
 
 ## Last updated
-2026-07-16 11:05
+2026-08-13 08:55
 
 ## Current goal
-Full Hebrew localization: trends + RTL headers + testimonials + blog posts
+Hide homepage Featured Videos section
 
 ## Status
-deployed to production (commit still pending user request)
+Implemented locally; verify/deploy status should be checked from the latest session output.
 
 ## What was done
+- Removed `YouTubeSection` and `getVideos()` from `app/[locale]/page.tsx`, so `/en` and `/he` no longer render the Featured Videos / YouTube section.
+- Left the section component, video content JSON, and dictionary keys in the repo for easy future re-enable.
+- Ran `npm run lint` and `npm run build` successfully after installing local dependencies.
+
+## Prior context
 - Trends bilingual: `content/trends.json` descriptions `{ en, he }`; Supabase uses `summary_he`; `/api/trends?locale=`; `TrendsSection` refetches on language switch
 - RTL fix: `/he` sets `document.dir=rtl` (`SetHtmlLangDir`), so per-element `flex-row-reverse` was double-reversing. Removed manual reversal from `Section`, `PageHeader`, `TrendsSection`; `SectionHeaderFrame` now accepts `dir`
 - Testimonials: `quote`/`role`/`relation` → `LocalizedString` in `content/testimonials.json`; `getTestimonials(locale)` returns `TestimonialView`
@@ -52,5 +57,5 @@ deployed to production (commit still pending user request)
 - [ ] Supabase migration (`title_he` etc.) if DB gets wired; Resend domain still pending
 
 ## Next session should
-1. Push when approved
-2. Remaining English on /he: YouTube video titles (`videos.json`) — placeholder content, localize only if asked
+1. Keep the homepage YouTube section hidden unless user asks to restore it.
+2. If restoring it, localize `videos.json` first; the old video titles were English-only placeholder content.

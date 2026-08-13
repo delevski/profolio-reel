@@ -1,6 +1,6 @@
 # Current State
 
-**Last updated:** 2026-07-15 (About width + daily AI Trends automation)
+**Last updated:** 2026-08-13 (Homepage YouTube section hidden)
 
 ## Production
 
@@ -25,7 +25,7 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 | Feature | Status | Details |
 |---------|--------|---------|
 | Bilingual routes | Done | `/en/*`, `/he/*` — static generation for both |
-| Homepage | Done | Hero, Marquee, Blog, Learn, Trends, YouTube, Apps, Projects, Academy, Testimonials, Connect |
+| Homepage | Done | Hero, Marquee, Blog, Learn, Trends, Apps, Projects, Academy, Testimonials, Connect |
 | About | Done | Bio, highlights, personal info, experience timeline, CV download; body uses `max-w-7xl` like other tabs |
 | Projects | Done | Synced from GitHub `@delevski` (plus select work projects); card thumbnails via Open Graph / Unsplash |
 | CV download | Done | `/Or-Delevski-CV.pdf` from Hero and About |
@@ -52,7 +52,7 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 | Apps (3) | Placeholder | `content/apps.json` — `href: "#"` |
 | Academy courses (3) | Placeholder | `content/courses.json` — `href: "#"` |
 | Testimonials | Placeholder, bilingual | `content/testimonials.json` — `quote`/`role`/`relation` are `{ en, he }` |
-| YouTube videos | Placeholder | `content/videos.json` |
+| YouTube videos | Hidden placeholder | `content/videos.json`; not rendered on the homepage |
 | Trends | Live + mock fallback | Supabase `trends` (EN `description` + HE `summary_he`); `content/trends.json` bilingual `{ en, he }`; `/api/trends?locale=` |
 
 ### Agent tooling
@@ -114,7 +114,7 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 
 - Contact form: client-only `mailto:` — no server action or email service
 - Trends: mock data, client fetch in `TrendsSection`
-- Placeholder sections still show demo copy (blog, learn, apps, academy, testimonials, youtube)
+- Placeholder sections still show demo copy (blog, learn, apps, academy, testimonials)
 - AI News from old portfolio **not** integrated (scoped out)
 - Next.js 16 APIs differ from training data — read `node_modules/next/dist/docs/`
 - Hooks: `jq` missing locally; python3 fallback in shell scripts

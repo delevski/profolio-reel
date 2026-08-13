@@ -106,6 +106,16 @@ Architecture and product decisions. Add a dated entry for each non-obvious choic
 
 ---
 
+## 2026-08-13 — Hide homepage YouTube placeholder
+
+**Decision:** Remove the YouTube / Featured Videos band from the localized homepage render while leaving `components/sections/YouTubeSection.tsx`, `content/videos.json`, and dictionary keys in place.
+
+**Why:** User asked to eliminate the visible “Featured Videos” section and all content below that section block on the live homepage.
+
+**Trade-off:** The placeholder content remains available for a future re-enable, but it is no longer part of the homepage sequence.
+
+---
+
 ## 2026-05-20 — Mock trends API
 
 **Decision:** `GET /api/trends` with 800ms delay reading `content/trends.json`.
