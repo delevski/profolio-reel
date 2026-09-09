@@ -170,5 +170,26 @@
   "common": {
     "new": "NEW",
     "minRead": "min"
+  },
+  "agent": {
+    "title": "Ori - Or's AI assistant",
+    "subtitle": "Ask me anything about Or",
+    "greeting": "Hi! I'm Ori, the assistant of this site. I know everything here about Or Delevski - experience, projects, skills. What would you like to know?",
+    "placeholder": "Ask about Or...",
+    "send": "Send",
+    "micStart": "Ask by voice",
+    "micStop": "Stop listening",
+    "listening": "Listening...",
+    "thinking": "Thinking",
+    "voiceOn": "Turn voice off",
+    "voiceOff": "Turn voice on",
+    "close": "Close chat",
+    "openChat": "Chat with Or's AI assistant",
+    "errorReply": "Something glitched on my side - please try again in a moment.",
+    "suggestions": [
+      "What is Or's experience?",
+      "What has he built with AI?",
+      "How can I contact Or?"
+    ]
   }
 }

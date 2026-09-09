@@ -2,6 +2,7 @@
 
 import { useSelectedLayoutSegment } from "next/navigation";
 import { VideoBackground } from "@/components/layout/VideoBackground";
+import { AgentWidget } from "@/components/agent/AgentWidget";
 
 type Props = {
   header: React.ReactNode;
@@ -14,7 +15,12 @@ export function LocaleShell({ header, footer, children }: Props) {
   const isReel = segment === "reel";
 
   if (isReel) {
-    return <>{children}</>;
+    return (
+      <>
+        {children}
+        <AgentWidget />
+      </>
+    );
   }
 
   return (
@@ -24,6 +30,7 @@ export function LocaleShell({ header, footer, children }: Props) {
         {header}
         <main className="flex-1">{children}</main>
         {footer}
+        <AgentWidget />
       </div>
     </>
   );
