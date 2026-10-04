@@ -1,0 +1,13 @@
+# Or Delevski
+
+> Portfolio of Or Delevski, senior AI manager and developer specializing in automation, web development, management, infrastructure, security, media, and animation.
+
+## Pages
+
+- [Home](https://ordelwebsite.vercel.app/en): Main portfolio page
+- [About](https://ordelwebsite.vercel.app/en/about): Background and experience
+- [Projects](https://ordelwebsite.vercel.app/en/projects): Selected projects
+- [Apps](https://ordelwebsite.vercel.app/en/apps): Apps and products
+- [Blog](https://ordelwebsite.vercel.app/en/blog): Articles
+- [Contact](https://ordelwebsite.vercel.app/en/contact): Get in touch
+- [Reel](https://ordelwebsite.vercel.app/en/reel): Scroll-driven promotional reel
