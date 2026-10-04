@@ -501,9 +501,18 @@ export function ReelExperience({ manifest }: Props) {
 
   useEffect(() => {
     loadFrame(manifest.opening, cacheRef.current);
-    preloadSection(manifest.sections[0]!);
-    preloadSection(manifest.sections[1]!);
-    if (manifest.sections[2]) preloadSection(manifest.sections[2]);
+
+    // Load the opening frame alone first; start the heavy section preloads once it is
+    // painted (or after a short fallback) so they do not compete with first paint.
+    let preloaded = false;
+    const preloadStart = () => {
+      if (preloaded) return;
+      preloaded = true;
+      preloadSection(manifest.sections[0]!);
+      preloadSection(manifest.sections[1]!);
+      if (manifest.sections[2]) preloadSection(manifest.sections[2]);
+    };
+    const fallback = window.setTimeout(preloadStart, 2500);
 
     // Paint opening once it decodes (no black flash on first paint).
     let tries = 0;
@@ -512,11 +521,14 @@ export function ReelExperience({ manifest }: Props) {
       const entry = cacheRef.current.get(manifest.opening);
       if (isDrawable(entry)) {
         showFrame(manifest.opening);
+        window.setTimeout(preloadStart, 150);
         return;
       }
       if (tries < 120) requestAnimationFrame(waitOpening);
+      else preloadStart();
     };
     requestAnimationFrame(waitOpening);
+    return () => window.clearTimeout(fallback);
   }, [manifest.opening, manifest.sections, preloadSection, showFrame]);
 
   useEffect(() => {
