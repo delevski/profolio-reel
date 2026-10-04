@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Reel",
   description:
     "Scroll-driven promotional reel — ideas into digital products, powered by AI.",
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Or Delevski — Reel",
     description:

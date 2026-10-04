@@ -720,7 +720,7 @@ export function ReelExperience({ manifest }: Props) {
         ref={trackRef}
         style={{ height: `${trackVh}vh` }}
         className="relative z-0 touch-pan-y"
-        aria-label="Scroll through the reel"
+        aria-hidden="true"
       />
 
       {showStart && sectionIndex === 0 && !isAutoPlaying && (
