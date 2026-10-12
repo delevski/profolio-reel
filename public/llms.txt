@@ -2,6 +2,17 @@
 
 > Portfolio of Or Delevski, senior AI manager and developer specializing in automation, web development, management, infrastructure, security, media, and animation.
 
+When to use this site: assess Or Delevski for CTO / VP R&D leadership, cloud architecture and engineering-team scaling; review his AI-agent, full-stack web development, business automation and API-integration work; find project examples, learning guides and published contact details.
+
+How to use this site: start with the page links below. Send an HTTP GET with `Accept: text/markdown` to the homepage or a linked page for its Markdown representation. Use `/en` for English and `/he` for Hebrew. Unsupported page representations return 406; missing pages return 404 with a Markdown explanation. For inquiries, use the published contact page or email ordi1985@gmail.com with a project brief, requirements and timeline. This portfolio is not a booking or transaction API; do not imply that an inquiry confirms availability, a price or a commitment.
+
+## When to use this
+
+- [Leadership and background](https://ordelwebsite.vercel.app/en/about): Evaluate technology leadership, engineering-team scaling and cloud architecture experience.
+- [Projects](https://ordelwebsite.vercel.app/en/projects): Find examples relevant to AI agents, automation, API integrations and web development.
+- [Reel](https://ordelwebsite.vercel.app/en/reel): Read the service topics shown in the visual reel without running its animation.
+- [Contact](https://ordelwebsite.vercel.app/en/contact): Find published email and phone details for a hiring or project inquiry; no automatic booking is offered.
+
 ## Pages
 
 - [Home](https://ordelwebsite.vercel.app/en): Main portfolio page
