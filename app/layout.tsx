@@ -1,3 +1,4 @@
+import { identity, serializeJsonLd } from "@/lib/agent/readiness";
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -92,6 +93,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(identity) }} />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="relative min-h-full flex flex-col font-sans">
