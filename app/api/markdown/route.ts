@@ -7,7 +7,7 @@ import type { Locale } from "@/lib/i18n/config";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  const pathname = request.nextUrl.searchParams.get("path") ?? "/";
+  const pathname = request.headers.get("x-agent-content-path") ?? request.nextUrl.searchParams.get("path") ?? "/";
   const segments = pathname.split("/").filter(Boolean);
   const locale: Locale = segments[0] === "he" ? "he" : "en";
   if (segments[0] === "he" || segments[0] === "en") segments.shift();
