@@ -20,7 +20,9 @@ export function middleware(request: NextRequest) {
     url.pathname = "/api/markdown";
     url.search = "";
     url.searchParams.set("path", pathname);
-    return NextResponse.rewrite(url, { headers: { Vary: "Accept" } });
+    const headers = new Headers(request.headers);
+    headers.set("x-agent-content-path", pathname);
+    return NextResponse.rewrite(url, { request: { headers }, headers: { Vary: "Accept" } });
   }
   if (format === "none") {
     return new NextResponse("Supported representations: text/html, text/markdown.\n", {
