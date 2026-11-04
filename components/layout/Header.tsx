@@ -3,123 +3,117 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
-import { localizedPath } from "@/lib/i18n/navigation";
+import { localizedPath, switchLocalePath } from "@/lib/i18n/navigation";
 import { useLocale } from "@/components/providers/LocaleProvider";
-import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
-import { ThemeToggle } from "@/components/layout/ThemeToggle";
-import { cn } from "@/lib/utils";
+import { useTheme } from "@/components/providers/ThemeProvider";
+import { BrandMark } from "@/components/layout/BrandMark";
+import { CONTACT_WHATSAPP_URL } from "@/lib/constants";
+import type { Locale } from "@/lib/i18n/config";
 
+/** Site header — same markup/classes as the v2 static home (public/v2). */
 export function Header() {
-  const { locale, dict, isRtl } = useLocale();
+  const { locale, dict } = useLocale();
+  const { toggleTheme } = useTheme();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-    { href: "/about", label: dict.nav.about },
+    { href: "/projects", label: dict.nav.projects },
     { href: "/blog", label: dict.nav.blog },
     { href: "/learn", label: dict.nav.learn },
     { href: "/academy", label: dict.nav.academy },
-    { href: "/projects", label: dict.nav.projects },
     { href: "/apps", label: dict.nav.apps },
+    { href: "/about", label: dict.nav.about },
     { href: "/contact", label: dict.nav.contact },
   ];
 
+  const other: Locale = locale === "en" ? "he" : "en";
+  const otherHref = switchLocalePath(pathname || `/${locale}`, other);
+  const ctaLabel = locale === "he" ? "בואו נדבר" : "Let’s talk";
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [mobileOpen]);
+    document.documentElement.classList.toggle("menu-open", menuOpen);
+    return () => document.documentElement.classList.remove("menu-open");
+  }, [menuOpen]);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "border-b border-surface-border bg-surface/95 backdrop-blur-xl"
-          : "bg-surface/80 backdrop-blur-md"
-      )}
-    >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link
-          href={localizedPath(locale, "/")}
-          className="flex items-center gap-2"
-        >
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent font-bold text-on-accent">
-            O
-          </span>
-          <span className="font-serif text-xl tracking-tight text-text">ORDEL</span>
+    <header className={`site-head${scrolled ? " scrolled" : ""}`} id="top">
+      <nav className="nav" aria-label={locale === "he" ? "ראשי" : "Main"}>
+        <Link className="brand" href={localizedPath(locale, "/")} aria-label="ORDEL — Or Delevski">
+          <BrandMark />
         </Link>
-
-        <nav className="hidden items-center gap-1 lg:flex">
-          {navItems.map((link) => {
-            const href = localizedPath(locale, link.href);
-            const active = pathname === href;
+        <div className="nav-links" id="navlinks">
+          {navItems.map((item) => {
+            const href = localizedPath(locale, item.href);
+            const active = pathname === href || pathname?.startsWith(href + "/");
             return (
               <Link
-                key={link.href}
+                key={item.href}
                 href={href}
-                className={cn(
-                  "rounded-lg px-3 py-2 text-sm transition-colors",
-                  active
-                    ? "bg-surface text-accent"
-                    : "text-text-muted hover:text-text"
-                )}
+                aria-current={active ? "page" : undefined}
+                onClick={() => setMenuOpen(false)}
               >
-                {link.label}
+                {item.label}
               </Link>
             );
           })}
-          <ThemeToggle />
-          <LocaleSwitcher locale={locale} />
-        </nav>
-
-        <div className="flex items-center gap-2 lg:hidden">
-          <ThemeToggle />
-          <LocaleSwitcher locale={locale} />
-          <button
-            type="button"
-            className="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-text"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-expanded={mobileOpen}
-            aria-label="Toggle menu"
+        </div>
+        <div className="nav-tools">
+          <Link
+            className="lang"
+            href={otherHref}
+            hrefLang={other}
+            lang={other}
+            onClick={() => {
+              document.cookie = `NEXT_LOCALE=${other};path=/;max-age=31536000`;
+            }}
           >
-            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {other === "he" ? "עברית" : "English"}
+          </Link>
+          <button
+            className="icon-btn theme-toggle"
+            type="button"
+            aria-label={dict.theme.switchLabel}
+            onClick={toggleTheme}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="i-sun"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" strokeWidth="1.8" /><path stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="i-moon"><path fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" /></svg>
+          </button>
+          <a className="btn btn-sm btn-primary nav-cta" href={CONTACT_WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+            {ctaLabel}
+          </a>
+          <button
+            className="icon-btn menu-toggle"
+            type="button"
+            aria-label={locale === "he" ? "תפריט" : "Menu"}
+            aria-expanded={menuOpen}
+            aria-controls="navlinks"
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            <span />
+            <span />
           </button>
         </div>
-      </div>
-
-      {mobileOpen && (
-        <nav
-          className="border-t border-surface-border bg-bg px-4 py-4 lg:hidden"
-          dir={isRtl ? "rtl" : "ltr"}
-        >
-          {navItems.map((link) => {
-            const href = localizedPath(locale, link.href);
-            return (
-              <Link
-                key={link.href}
-                href={href}
-                onClick={() => setMobileOpen(false)}
-                className={cn(
-                  "block rounded-lg px-3 py-3 text-sm",
-                  pathname === href ? "text-accent" : "text-text-muted"
-                )}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-      )}
+      </nav>
     </header>
   );
 }

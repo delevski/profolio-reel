@@ -51,7 +51,7 @@ export function TestimonialsSection({ locale }: { locale: Locale }) {
             <div
               key={t.id}
               className={cn(
-                "flex flex-1 flex-col rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md p-6",
+                "flex flex-1 flex-col v2-panel  p-6",
                 rtl && "text-right"
               )}
             >

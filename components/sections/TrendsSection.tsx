@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 function TrendSkeleton() {
   return (
-    <div className="animate-pulse rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md p-6">
+    <div className="animate-pulse v2-panel  p-6">
       <div className="mb-3 h-4 w-24 rounded bg-surface-border" />
       <div className="mb-2 h-6 w-3/4 rounded bg-surface-border" />
       <div className="h-16 rounded bg-surface-border" />
@@ -73,7 +73,7 @@ export function TrendsSection() {
               rel="noopener noreferrer"
               dir={isRtl ? "rtl" : "ltr"}
               className={cn(
-                "group rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md p-6 transition-all hover:-translate-y-1 hover:border-accent/30",
+                "group v2-panel  p-6 transition-all hover:-translate-y-1 hover:border-accent/30",
                 isRtl && "text-right"
               )}
             >
@@ -88,7 +88,7 @@ export function TrendsSection() {
                   </span>
                 )}
               </div>
-              <h3 className="mb-2 font-serif text-xl text-text group-hover:text-accent">
+              <h3 className="mb-2 text-xl text-text group-hover:text-accent">
                 <bdi dir="ltr">{trend.title}</bdi>
               </h3>
               <p className="mb-4 text-sm text-text-muted">{trend.description}</p>

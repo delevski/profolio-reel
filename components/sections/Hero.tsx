@@ -22,7 +22,7 @@ export function Hero({ site, locale }: { site: SiteConfig; locale: Locale }) {
 
   return (
     <section className="relative overflow-hidden pt-10 pb-16 md:pt-14 md:pb-20">
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative wrap">
         <div
           className={cn(
             "flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:gap-8 lg:gap-10",
@@ -64,7 +64,7 @@ export function Hero({ site, locale }: { site: SiteConfig; locale: Locale }) {
               </p>
             )}
             <h1 className="space-y-2">
-              <span className="block font-serif text-2xl leading-tight text-text sm:text-3xl lg:text-[2rem]">
+              <span className="block text-2xl leading-tight text-text sm:text-3xl lg:text-[2rem]">
                 {name}
               </span>
               {supportingLines.map((line, i) => (

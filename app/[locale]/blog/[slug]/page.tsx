@@ -64,7 +64,7 @@ export default async function BlogPostPage({ params }: Props) {
         ))}
         <Badge>{post.lang}</Badge>
       </div>
-      <h1 className="mb-4 font-serif text-4xl text-text md:text-5xl">
+      <h1 className="mb-4 text-4xl text-text md:text-5xl">
         {post.title}
       </h1>
       <p className="mb-8 text-text-muted">

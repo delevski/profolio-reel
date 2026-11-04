@@ -57,7 +57,7 @@ export default async function LearnGuidePage({ params }: Props) {
         {guide.difficulty && <Badge>{guide.difficulty}</Badge>}
         {guide.category && <Badge variant="accent">{guide.category}</Badge>}
       </div>
-      <h1 className="mb-4 font-serif text-4xl text-text md:text-5xl">
+      <h1 className="mb-4 text-4xl text-text md:text-5xl">
         {guide.title}
       </h1>
       <p className="mb-10 text-text-muted">

@@ -1,8 +1,6 @@
 "use client";
 
 import { useSelectedLayoutSegment } from "next/navigation";
-import { VideoBackground } from "@/components/layout/VideoBackground";
-import { AgentWidget } from "@/components/agent/AgentWidget";
 
 type Props = {
   header: React.ReactNode;
@@ -10,28 +8,24 @@ type Props = {
   children: React.ReactNode;
 };
 
+/**
+ * Inner pages use the v2 shell (fixed header, glow backdrop, footer).
+ * /reel keeps its own full-screen experience. The site chat widget is
+ * loaded once from the root layout (public/chat/widget.js) on every page.
+ */
 export function LocaleShell({ header, footer, children }: Props) {
   const segment = useSelectedLayoutSegment();
-  const isReel = segment === "reel";
-
-  if (isReel) {
-    return (
-      <>
-        {children}
-        <AgentWidget />
-      </>
-    );
-  }
+  if (segment === "reel") return <>{children}</>;
 
   return (
     <>
-      <VideoBackground />
-      <div className="relative z-10 flex min-h-full flex-col">
-        {header}
-        <main className="flex-1">{children}</main>
-        {footer}
-        <AgentWidget />
-      </div>
+      <a className="skip" href="#main">Skip to content</a>
+      <div className="page-glow" aria-hidden="true" />
+      {header}
+      <main id="main" className="v2-main">
+        {children}
+      </main>
+      {footer}
     </>
   );
 }

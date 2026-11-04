@@ -2,31 +2,13 @@ import { identity, serializeJsonLd } from "@/lib/agent/readiness";
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { DM_Sans, Fraunces, Heebo } from "next/font/google";
+import Script from "next/script";
 import { SetHtmlLangDir } from "@/components/providers/SetHtmlLangDir";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { THEME_STORAGE_KEY } from "@/lib/constants";
 import "../globals.css";
 
-const themeInitScript = `(function(){try{var t=localStorage.getItem("${THEME_STORAGE_KEY}");if(t==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}})();`;
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
-
-const heebo = Heebo({
-  variable: "--font-heebo",
-  subsets: ["hebrew", "latin"],
-  weight: ["400", "500", "600", "700"],
-});
+const themeInitScript = `(function(){try{var t=localStorage.getItem("${THEME_STORAGE_KEY}");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -111,14 +93,17 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html
       lang={locale}
       dir={isRtl(locale) ? "rtl" : "ltr"}
-      className={`${dmSans.variable} ${fraunces.variable} ${heebo.variable} h-full antialiased`}
+      data-theme="dark"
+      className="h-full antialiased"
       suppressHydrationWarning
     >
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(identity) }} />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <link rel="preload" href="/v2/assets/fonts/BricolageGrotesque-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <meta name="theme-color" content="#06080d" />
       </head>
-      <body className="relative min-h-full flex flex-col font-sans">
+      <body className={`relative min-h-full flex flex-col font-sans lang-${locale}`}>
         <SetHtmlLangDir />
         <ThemeProvider>
           <LocaleProvider locale={locale} dict={dict}>
@@ -130,6 +115,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             </LocaleShell>
           </LocaleProvider>
         </ThemeProvider>
+        <Script src="/chat/widget.js" strategy="afterInteractive" />
         <Analytics />
         <SpeedInsights />
       </body>

@@ -36,7 +36,7 @@ export function ContentCard({
     <Link
       href={href}
       className={cn(
-        "group flex flex-col overflow-hidden rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-[var(--card-shadow)]",
+        "v2-card group flex flex-col overflow-hidden",
         isRtl && "text-right"
       )}
     >
@@ -51,8 +51,8 @@ export function ContentCard({
           />
         </div>
       )}
-      <div className="flex flex-1 flex-col p-6">
-        <div className={cn("mb-4 flex flex-wrap items-center gap-2", isRtl && "justify-end")}>
+      <div className="flex flex-1 flex-col p-6 md:p-7">
+        <div className={cn("mb-4 flex flex-wrap items-center gap-2")}>
           {isNew && <Badge variant="new">{newLabel}</Badge>}
           {emoji && <span className="text-2xl">{emoji}</span>}
           {difficulty && <Badge>{difficulty}</Badge>}
@@ -63,7 +63,7 @@ export function ContentCard({
           ))}
           {lang && <Badge>{lang}</Badge>}
         </div>
-        <h3 className="mb-2 font-serif text-xl text-text transition-colors group-hover:text-accent">
+        <h3 className="mb-2 text-[22px] font-semibold leading-tight text-text">
           {title}
         </h3>
         <p className="mb-4 flex-1 text-sm leading-relaxed text-text-muted line-clamp-3">
@@ -113,8 +113,8 @@ export function ProjectCard({
   return (
     <div
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/30",
-        featured && "ring-1 ring-accent/30",
+        "v2-card group relative flex flex-col overflow-hidden",
+        false,
         isRtl && "text-right"
       )}
     >
@@ -129,20 +129,20 @@ export function ProjectCard({
           />
         ) : (
           <div
-            className="absolute inset-0 bg-gradient-to-br from-accent/25 via-surface to-accent-2/20"
+            className="absolute inset-0 bg-gradient-to-br from-[#2563eb]/25 via-transparent to-[#dc5a2c]/20"
             aria-hidden
           />
         )}
       </div>
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex flex-1 flex-col p-6 md:p-7">
         <div
           className={cn(
             "mb-3 flex items-start justify-between gap-2",
-            isRtl && "flex-row-reverse"
+            false
           )}
         >
           <div className="min-w-0 flex-1">
-            <h3 className="font-mono text-lg text-text group-hover:text-accent">
+            <h3 className="text-2xl font-semibold text-text">
               {name}
             </h3>
             {category && (
@@ -154,7 +154,7 @@ export function ProjectCard({
           <div
             className={cn(
               "flex shrink-0 flex-col items-end gap-1.5",
-              isRtl && "items-start"
+              false
             )}
           >
             {featured && <Badge variant="featured">{featuredLabel}</Badge>}
@@ -166,19 +166,19 @@ export function ProjectCard({
           </div>
         </div>
         <p className="mb-4 flex-1 text-sm text-text-muted">{description}</p>
-        <div className={cn("mb-4 flex flex-wrap gap-2", isRtl && "justify-end")}>
+        <div className={cn("mb-4 flex flex-wrap gap-2")}>
           {stack.map((tech) => (
             <Badge key={tech}>{tech}</Badge>
           ))}
         </div>
         {(href || demoUrl || playStoreUrl) && (
-          <div className={cn("flex flex-wrap gap-3", isRtl && "justify-end")}>
+          <div className={cn("flex flex-wrap gap-3")}>
             {href && (
               <a
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-accent-2 hover:text-accent"
+                className="btn btn-sm btn-ghost"
               >
                 {githubLabel}
               </a>
@@ -188,7 +188,7 @@ export function ProjectCard({
                 href={demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-accent-2 hover:text-accent"
+                className="btn btn-sm btn-ghost"
               >
                 {liveDemoLabel}
               </a>
@@ -198,7 +198,7 @@ export function ProjectCard({
                 href={playStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-accent-2 hover:text-accent"
+                className="btn btn-sm btn-ghost"
               >
                 {googlePlayLabel}
               </a>
@@ -234,11 +234,11 @@ export function AppCard({
   return (
     <div
       className={cn(
-        "group flex flex-col overflow-hidden rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/30",
+        "v2-card group flex flex-col overflow-hidden",
         isRtl && "text-right"
       )}
     >
-      <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-surface-border bg-gradient-to-br from-accent/20 via-surface to-accent-2/20">
+      <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-surface-border bg-gradient-to-br from-[#2563eb]/20 via-transparent to-[#dc5a2c]/20">
         {preview && (
           <Image
             src={preview}
@@ -249,11 +249,11 @@ export function AppCard({
           />
         )}
       </div>
-      <div className="flex flex-1 flex-col p-6">
-        <h3 className="mb-1 font-serif text-xl text-text">{name}</h3>
+      <div className="flex flex-1 flex-col p-6 md:p-7">
+        <h3 className="mb-1 text-[22px] font-semibold leading-tight text-text">{name}</h3>
         <p className="mb-2 text-sm text-accent">{tagline}</p>
         <p className="mb-4 flex-1 text-sm text-text-muted">{description}</p>
-        <div className={cn("mb-4 flex flex-wrap gap-2", isRtl && "justify-end")}>
+        <div className={cn("mb-4 flex flex-wrap gap-2")}>
           {stack.map((tech) => (
             <Badge key={tech}>{tech}</Badge>
           ))}
@@ -262,7 +262,7 @@ export function AppCard({
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-medium text-accent-2 hover:text-accent"
+          className="btn btn-sm btn-ghost self-start"
         >
           {visitLabel}
         </a>
@@ -292,7 +292,7 @@ export function VideoCard({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "group block overflow-hidden rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md transition-all hover:-translate-y-1 hover:border-accent/30",
+        "v2-card group block overflow-hidden",
         isRtl && "text-right"
       )}
     >

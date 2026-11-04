@@ -1,53 +1,21 @@
 @import "tailwindcss";
 
-:root {
-  --bg: #0c0a09;
-  --surface: #1c1917;
-  --surface-border: #292524;
-  --text: #fafaf9;
-  --text-muted: #a8a29e;
-  --accent: #f59e0b;
-  --accent-2: #14b8a6;
-  --accent-glow: rgba(245, 158, 11, 0.15);
-  --on-accent: #0c0a09;
-  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-}
+@import "./ordel-v2.css";
 
-[data-theme="light"] {
-  color-scheme: light;
-  --bg: #f5f5f4;
-  --surface: #ffffff;
-  --surface-border: #d6d3d1;
-  --text: #0c0a09;
-  --text-muted: #44403c;
-  --accent: #b45309;
-  --accent-2: #0f766e;
-  --accent-glow: rgba(180, 83, 9, 0.18);
-  --on-accent: #0c0a09;
-  --card-shadow: 0 8px 32px rgba(12, 10, 9, 0.14);
-}
-
+/* Tailwind theme → v2 design tokens (defined in ordel-v2.css) */
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
-  --color-surface-border: var(--surface-border);
+  --color-surface-border: var(--line);
   --color-text: var(--text);
-  --color-text-muted: var(--text-muted);
+  --color-text-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
   --color-on-accent: var(--on-accent);
-  --font-sans: var(--font-dm-sans);
-  --font-serif: var(--font-fraunces);
+  --font-sans: var(--f-body);
+  --font-serif: var(--f-display);
 }
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
-html[lang="he"] body {
-  font-family: var(--font-heebo), var(--font-dm-sans), system-ui, sans-serif;
-}
 
 html[dir="rtl"] body {
   text-align: right;
@@ -59,16 +27,6 @@ html[dir="rtl"] body {
   }
 }
 
-html {
-  background: var(--bg);
-}
-
-body {
-  background: transparent;
-  color: var(--text);
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
-  overflow-x: hidden;
-}
 
 @keyframes marquee {
   0% {
@@ -105,14 +63,14 @@ html[dir="rtl"] .animate-marquee {
 .prose-ordel h1,
 .prose-ordel h2,
 .prose-ordel h3 {
-  font-family: var(--font-fraunces), serif;
+  font-family: var(--f-display);
   color: var(--text);
 }
 
 html[lang="he"] .prose-ordel h1,
 html[lang="he"] .prose-ordel h2,
 html[lang="he"] .prose-ordel h3 {
-  font-family: var(--font-heebo), var(--font-dm-sans), sans-serif;
+  font-family: var(--f-display);
 }
 
 .prose-ordel p,
@@ -137,26 +95,23 @@ html[dir="rtl"] textarea {
   text-align: right;
 }
 
-/* Section / page title frames — solid over video in bright theme */
-[data-theme="light"] .section-header-frame {
-  background-color: var(--surface);
-  box-shadow: 0 4px 24px rgba(12, 10, 9, 0.08), 0 0 0 1px var(--surface-border);
-}
-
-/* Bright theme: solid panels and stronger readable text over video */
-[data-theme="light"] .bg-surface\/90,
-[data-theme="light"] .bg-surface\/90 {
-  background-color: var(--surface);
-}
-
-[data-theme="light"] .bg-bg\/50 {
-  background-color: color-mix(in oklab, var(--surface) 75%, transparent);
-}
-
-[data-theme="light"] .text-text-muted\/60 {
-  color: var(--text-muted);
-}
-
-[data-theme="light"] .text-accent-2\/90 {
-  color: var(--accent-2);
-}
+/* Article body (blog / learn) */
+.prose-ordel { font-size: 17px; }
+.prose-ordel h2 { font-size: clamp(26px, 3vw, 34px); margin: 2.2em 0 .6em; font-weight: 650; }
+.prose-ordel h3 { font-size: clamp(21px, 2.2vw, 25px); margin: 1.8em 0 .5em; font-weight: 600; }
+.prose-ordel p { margin: 0 0 1.15em; }
+.prose-ordel ul, .prose-ordel ol { margin: 0 0 1.2em; padding-inline-start: 1.3em; }
+.prose-ordel ul { list-style: disc; }
+.prose-ordel ol { list-style: decimal; }
+.prose-ordel li { margin: .35em 0; }
+.prose-ordel li::marker { color: var(--rust2); }
+.prose-ordel a { color: var(--blue2); text-decoration: underline; text-underline-offset: 3px; }
+html[data-theme="light"] .prose-ordel a { color: var(--blue); }
+.prose-ordel strong { color: var(--text); }
+.prose-ordel blockquote { border-inline-start: 2px solid var(--rust); padding-inline-start: 1em; color: var(--muted); margin: 1.4em 0; }
+.prose-ordel pre { background: var(--bg2); border: 1px solid var(--line); border-radius: 14px; padding: 16px; overflow-x: auto; margin: 0 0 1.2em; font-size: 14px; }
+.prose-ordel pre code { background: none; padding: 0; }
+.prose-ordel code { border: 1px solid var(--line); }
+.prose-ordel table { width: 100%; border-collapse: collapse; margin: 0 0 1.2em; font-size: 15px; display: block; overflow-x: auto; }
+.prose-ordel th, .prose-ordel td { border: 1px solid var(--line); padding: 8px 12px; text-align: start; }
+.prose-ordel img { border-radius: 14px; border: 1px solid var(--line); }

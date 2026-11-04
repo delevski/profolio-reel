@@ -24,9 +24,9 @@ export function FilterChips({
   className,
 }: FilterChipsProps) {
   return (
-    <SectionHeaderFrame className={cn("mb-8 !p-4 md:!p-4", className)}>
+    <SectionHeaderFrame className={cn("mb-8", className)}>
       <div
-        className={cn("flex flex-wrap gap-2", isRtl && "justify-end")}
+        className="flex flex-wrap gap-2"
         role="group"
       >
         {options.map((option) => {
@@ -37,12 +37,7 @@ export function FilterChips({
               type="button"
               aria-pressed={isActive}
               onClick={() => onChange(option.key)}
-              className={cn(
-                "rounded-full px-4 py-1.5 text-sm transition-colors",
-                isActive
-                  ? "bg-accent font-medium text-on-accent shadow-sm"
-                  : "border border-surface-border bg-surface text-text-muted hover:border-accent/40 hover:text-text"
-              )}
+              className={cn("v2-chip", isActive && "is-active")}
             >
               {option.label}
             </button>

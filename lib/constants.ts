@@ -26,3 +26,7 @@ export const HERO_VIDEO_SRC =
 /** Full-screen background video — bright/light theme (MP4) */
 export const HERO_VIDEO_SRC_LIGHT =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4";
+
+/** Same WhatsApp / email contact the v2 home page shows */
+export const CONTACT_WHATSAPP_URL = "https://wa.me/972547917154";
+export const CONTACT_EMAIL = "ordi1985@gmail.com";

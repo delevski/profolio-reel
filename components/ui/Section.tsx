@@ -29,19 +29,17 @@ export function Section({
   const Arrow = isRtl ? ArrowLeft : ArrowRight;
 
   return (
-    <section id={id} className={cn("py-20 md:py-24", className)}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id={id} className={cn("py-14 md:py-20", className)}>
+      <div className="wrap">
         <SectionHeaderFrame
           dir={isRtl ? "rtl" : "ltr"}
-          className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
+          className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
         >
           <div>
             {label && (
-              <p className="mb-2 text-sm font-medium uppercase tracking-widest text-accent">
-                {label}
-              </p>
+              <p className="kicker">{label}</p>
             )}
-            <h2 className="font-serif text-3xl text-text md:text-4xl">{title}</h2>
+            <h2 className="v2-h2 text-text">{title}</h2>
             {subtitle && (
               <p className="mt-3 max-w-2xl text-text-muted" suppressHydrationWarning>
                 {subtitle}
@@ -51,7 +49,7 @@ export function Section({
           {action && (
             <Link
               href={action.href}
-              className="group inline-flex shrink-0 items-center gap-2 text-sm font-medium text-accent-2 transition-colors hover:text-accent"
+              className="group btn btn-sm btn-ghost shrink-0"
             >
               {action.label}
               <Arrow
