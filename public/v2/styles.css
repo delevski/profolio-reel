@@ -446,3 +446,40 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
 .strengths{display:flex;flex-wrap:wrap;gap:10px}
 .strengths li{font-size:14.5px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text,inherit)}
 @media (max-width:560px){.jbul li{font-size:14.5px}.strengths li{font-size:13.5px;padding:8px 13px}.stat small{font-size:12.5px}}
+
+/* work carousel */
+/* 3D coverflow for #work, driven by carousel.js. Without JS or with reduced motion the grid above stays as it is. */
+.wcar:not(.wcar-on) .wcar-stage{width:min(1240px,100% - 48px);margin-inline:auto}
+.wcar.wcar-on{position:relative;overflow:hidden;overflow:clip;margin-top:clamp(8px,2vw,24px);padding:30px 0 6px;--cw:520px}
+.wcar-on .wcar-stage{position:relative;touch-action:pan-y;cursor:grab;-webkit-user-select:none;user-select:none}
+.wcar-on .wcar-stage.dragging{cursor:grabbing}
+.wcar-on .proj-grid{display:block;position:relative;height:var(--ch,560px);perspective:1400px;perspective-origin:50% 40%}
+.wcar-on .proj{position:absolute;top:0;left:50%;width:var(--cw);height:auto;margin-inline-start:0;margin-left:calc(var(--cw) / -2);transition:transform .95s var(--ease),opacity .7s var(--ease),border-color .4s,box-shadow .5s;background:linear-gradient(var(--surface),var(--surface)),var(--bg2);will-change:transform,opacity;backface-visibility:hidden;transform-style:flat;box-shadow:0 40px 90px -45px rgba(0,0,0,.75)}
+html[data-theme="light"] .wcar-on .proj{background:#fff;box-shadow:0 36px 80px -42px rgba(34,27,38,.38)}
+.wcar-on .proj::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--bg);opacity:var(--shade,0);pointer-events:none;transition:opacity .8s var(--ease)}
+.wcar-on .proj.is-center{border-color:var(--line2);box-shadow:0 50px 110px -50px rgba(37,99,235,.55),0 0 0 1px rgba(37,99,235,.18)}
+html[data-theme="light"] .wcar-on .proj.is-center{box-shadow:0 46px 100px -48px rgba(37,99,235,.45),0 0 0 1px rgba(37,99,235,.14)}
+.wcar-on .proj:not(.is-center){cursor:pointer}
+.wcar-on .proj:not(.is-center) .pimg img{transform:none}
+.wcar-on .proj:not(.is-center) .pbody{pointer-events:none}
+.wcar-on .proj img{-webkit-user-drag:none}
+.wcar-on .proj p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.wcar-ctrl{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:clamp(18px,3vw,30px)}
+.wcar-ctrl[hidden]{display:none}
+.wcar-btn{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:999px;border:1px solid var(--line2);background:var(--surface);color:var(--text);transition:border-color .25s,background .25s,transform .25s}
+.wcar-btn:hover{border-color:var(--blue2);transform:translateY(-1px)}
+.wcar-btn:focus-visible{outline:2px solid var(--blue2);outline-offset:3px}
+.wcar-btn svg{width:20px;height:20px}
+.wcar-toggle{width:38px;height:38px}
+.wcar-toggle svg{width:15px;height:15px}
+.wcar-toggle .i-play,.wcar-toggle[aria-pressed="true"] .i-pause{display:none}
+.wcar-toggle[aria-pressed="true"] .i-play{display:block}
+[dir="rtl"] .wcar-prev svg,[dir="rtl"] .wcar-next svg{transform:scaleX(-1)}
+.wcar-dots{display:flex;gap:7px;padding:0 6px}
+.wcar-dots i{width:7px;height:7px;border-radius:99px;background:var(--line2);transition:width .4s var(--ease),background .4s}
+.wcar-dots i.on{width:22px;background:var(--rust)}
+@media (max-width:1100px){.wcar.wcar-on{--cw:460px}}
+@media (max-width:800px){.wcar.wcar-on{--cw:400px}}
+@media (max-width:640px){.wcar:not(.wcar-on) .wcar-stage{width:min(1240px,100% - 36px)}.wcar.wcar-on{--cw:min(78vw,340px);padding-top:18px}.wcar-on .pbody{padding:18px 18px 20px;gap:10px}.wcar-on .proj h3{font-size:22px}.wcar-on .proj p{font-size:14.5px}.wcar-dots{display:none}}
+@media (prefers-reduced-motion:reduce){.wcar-on .proj{transition:none}}
+/* end work carousel */
