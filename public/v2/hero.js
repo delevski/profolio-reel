@@ -1,9 +1,10 @@
-import * as THREE from "./assets/three.module.min.js";
+import * as THREE from "./assets/three.hero.min.js";
 // ORDEL hero: particles fly in as code glyphs and assemble into the ORDEL mark (blue ring + rust dot).
 // Same technique family as a THREE.Points + ShaderMaterial morph. Pauses off-screen / hidden tab.
 const hero = document.querySelector(".hero");
 const canvas = hero && hero.querySelector(".hero-gl");
 const mark = hero && hero.querySelector(".hero-mark");
+const photo = mark && mark.querySelector(".hero-photo");
 const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const HOVER = matchMedia("(hover: hover) and (pointer: fine)").matches;
 export function start() {
@@ -29,6 +30,14 @@ export function start() {
     const i = (y * S + x) * 4; if (img[i + 3] > 150) pts.push(x, y, img[i] > 150 ? 1 : 0);
   }
   const P = pts.length / 3;
+  // Inner edge of the blue ring, in mark units (1 = uScale), measured on the very samples the particles use:
+  // each sample covers a 2x2 block centred on its pixel (jitter below), so take the block point closest to the centre.
+  let rMin = 1e9; const C = S / 2;
+  for (let j = 0; j < pts.length; j += 3) if (!pts[j + 2]) {
+    const qx = Math.min(Math.max(C, pts[j] - 0.5), pts[j] + 1.5), qy = Math.min(Math.max(C, pts[j + 1] - 0.5), pts[j + 1] + 1.5);
+    rMin = Math.min(rMin, Math.hypot(qx - C, qy - C));
+  }
+  rMin /= C;
   const pos = new Float32Array(N * 3), start = new Float32Array(N * 3), rnd = new Float32Array(N * 4),
         col = new Float32Array(N * 3), glyph = new Float32Array(N), size = new Float32Array(N);
   const blue = [[0.42, 0.58, 1.0], [0.15, 0.39, 0.92], [0.55, 0.7, 1.0]], rust = [[0.86, 0.35, 0.17], [0.94, 0.54, 0.36]];
@@ -36,7 +45,7 @@ export function start() {
     const dust = Math.random() < 0.07;
     let tx, ty, isRust = 0;
     if (dust) { const a = Math.random() * 6.283, r = 1.05 + Math.random() * 0.55; tx = Math.cos(a) * r; ty = Math.sin(a) * r; }
-    else { const j = (Math.random() * P | 0) * 3; tx = (pts[j] + Math.random() * 2 - S / 2) / (S / 2); ty = -(pts[j + 1] + Math.random() * 2 - S / 2) / (S / 2); isRust = pts[j + 2]; }
+    else { const j = (Math.random() * P | 0) * 3; tx = (pts[j] + 0.5 + (Math.random() - 0.5) * 2 - C) / C; ty = -(pts[j + 1] + 0.5 + (Math.random() - 0.5) * 2 - C) / C; isRust = pts[j + 2]; }
     pos.set([tx, ty, 0], k * 3);
     const sa = Math.random() * 6.283, sr = 0.6 + Math.pow(Math.random(), 0.6) * 2.4;
     start.set([Math.cos(sa) * sr * 1.6, Math.sin(sa) * sr, Math.random()], k * 3);
@@ -62,7 +71,7 @@ export function start() {
   const U = {
     uTime: { value: 0 }, uProgress: { value: RM ? 1 : 0 }, uMouse: { value: new THREE.Vector2(9999, 9999) },
     uLens: { value: 0 }, uR: { value: 160 }, uScroll: { value: 0 }, uPR: { value: PR }, uCenter: { value: new THREE.Vector2() },
-    uScale: { value: 200 }, uView: { value: new THREE.Vector2(1, 1) }, uDot: { value: small ? 3.6 : 3.4 }, uLight: { value: 0 }, uAtlas: { value: tex }
+    uScale: { value: 200 }, uView: { value: new THREE.Vector2(1, 1) }, uDot: { value: small ? 3.6 : 3.4 }, uLight: { value: 0 }, uAtlas: { value: tex }, uHole: { value: 0 }
   };
   const mat = new THREE.ShaderMaterial({
     uniforms: U, transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
@@ -117,11 +126,11 @@ export function start() {
   eg.setAttribute("aSeed", new THREE.BufferAttribute(es, 4));
   const em = new THREE.ShaderMaterial({
     uniforms: U, transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending,
-    vertexShader: `uniform float uTime,uPR,uScale,uProgress,uScroll; uniform vec2 uCenter; attribute vec4 aSeed; varying float vA; varying float vR;
+    vertexShader: `uniform float uTime,uPR,uScale,uProgress,uScroll,uHole; uniform vec2 uCenter; attribute vec4 aSeed; varying float vA; varying float vR;
       void main(){ float life=fract(uTime*(0.04+aSeed.y*0.06)+aSeed.x);
         vec2 p=uCenter+vec2((aSeed.z-0.5)*2.6+sin(uTime*0.7+aSeed.w*6.283)*0.12,-1.3+life*2.8)*uScale;
         gl_Position=projectionMatrix*modelViewMatrix*vec4(p,0.0,1.0);
-        gl_PointSize=(1.2+aSeed.w*2.2)*uPR; vA=sin(life*3.1416)*smoothstep(0.7,1.0,uProgress)*(1.0-uScroll)*0.7; vR=step(0.72,aSeed.y); }`,
+        gl_PointSize=(1.2+aSeed.w*2.2)*uPR; vA=sin(life*3.1416)*smoothstep(0.7,1.0,uProgress)*(1.0-uScroll)*0.7*smoothstep(uHole,uHole+10.0,length(p-uCenter)); vR=step(0.72,aSeed.y); }`,
     fragmentShader: `varying float vA; varying float vR; void main(){ float d=length(gl_PointCoord-0.5); float a=smoothstep(0.5,0.0,d)*vA; if(a<0.01) discard; gl_FragColor=vec4(mix(vec3(0.45,0.62,1.0),vec3(0.95,0.5,0.3),vR),a); }`
   });
   const embers = new THREE.Points(eg, em); embers.frustumCulled = false; scene.add(embers);
@@ -133,6 +142,13 @@ export function start() {
     camera.left = -W / 2; camera.right = W / 2; camera.top = H / 2; camera.bottom = -H / 2; camera.updateProjectionMatrix();
     U.uCenter.value.set(mr.left - hr.left + mr.width / 2 - W / 2, H / 2 - (mr.top - hr.top + mr.height / 2));
     U.uScale.value = mr.width / 2 * 0.9; U.uView.value.set(W, H); U.uR.value = Math.max(110, mr.width * 0.32);
+    // photo inside the ring: same centre as uCenter (both are the mark's centre), radius from the ring's inner edge
+    // minus the inward drift of a ring particle (breathing 1.2%, idle jitter ~2px as measured on screen)
+    // minus an even gap (12px at the 460px desktop mark, proportional below, min 7px).
+    const sc = U.uScale.value, inner = rMin * sc * (1 - 0.012) - 2;
+    const gap = Math.max(7, 12 * sc / 207), d = Math.max(0, 2 * (inner - gap));
+    U.uHole.value = inner;
+    if (photo) { photo.style.setProperty("--pd", d.toFixed(2) + "px"); photo.dataset.gap = gap.toFixed(2); photo.dataset.inner = inner.toFixed(2); }
   }
   function theme() { const light = document.documentElement.getAttribute("data-theme") === "light"; U.uLight.value = light ? 1 : 0;
     mat.blending = em.blending = light ? THREE.NormalBlending : THREE.AdditiveBlending; mat.needsUpdate = em.needsUpdate = true; }
@@ -143,12 +159,19 @@ export function start() {
   hero.addEventListener("pointermove", e => { const r = hero.getBoundingClientRect(); mx = e.clientX - r.left - W / 2; my = H / 2 - (e.clientY - r.top); lensTarget = 1; }, { passive: true });
   hero.addEventListener("pointerleave", () => { lensTarget = 0; });
   if (!HOVER) hero.addEventListener("pointerdown", e => { const r = hero.getBoundingClientRect(); mx = e.clientX - r.left - W / 2; my = H / 2 - (e.clientY - r.top); lensTarget = 1; setTimeout(() => lensTarget = 0, 900); }, { passive: true });
-  addEventListener("scroll", () => { U.uScroll.value = Math.min(1, Math.max(0, scrollY / (H * 0.85))); if (!running && RM) draw(); }, { passive: true });
+  addEventListener("scroll", () => { U.uScroll.value = Math.min(1, Math.max(0, scrollY / (H * 0.85))); if (!running && RM) draw(); else syncPhoto(); }, { passive: true });
   let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { layout(); if (!running) draw(); }, 120); });
   // loop
   const t0 = performance.now(); let running = false, visible = true, raf = 0, last = t0;
   const DUR = 2600, DELAY = 250;
-  function draw() { renderer.render(scene, camera); }
+  const FADE0 = 1 - 600 / DUR;
+  function syncPhoto() {
+    if (!photo) return;
+    const a = Math.min(1, Math.max(0, (U.uProgress.value - FADE0) / (1 - FADE0))), e = a * a * (3 - 2 * a), s = U.uScroll.value;
+    photo.style.opacity = (e * Math.max(0, 1 - s * 1.35)).toFixed(3);
+    photo.style.transform = "translate(-50%,-50%) scale(" + ((0.9 + 0.1 * e) * (1 - 0.15 * s)).toFixed(4) + ")";
+  }
+  function draw() { renderer.render(scene, camera); syncPhoto(); }
   function frame(now) {
     raf = 0; if (!running) return;
     const dt = Math.min(50, now - last); last = now;
