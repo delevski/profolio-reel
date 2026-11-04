@@ -434,3 +434,15 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
 .about-photo img{width:100%;height:auto;aspect-ratio:760/880;object-fit:cover}
 .about-photo figcaption{position:absolute;inset-inline:0;bottom:0;padding:40px 18px 14px;background:linear-gradient(180deg,transparent,rgba(6,8,13,.85));color:#fff;display:flex;flex-direction:column}
 .about-photo b{font-size:17px}.about-photo span{font-size:13px;opacity:.75}
+
+/* CV sync (Nov 4) */
+.cv-role{margin-top:18px;font-size:14px;font-weight:600;letter-spacing:.01em;color:var(--rust2)}
+.jbul{margin:12px 0 16px;display:grid;gap:8px}
+.jbul li{position:relative;padding-inline-start:16px;color:var(--muted);font-size:15px;line-height:1.55}
+.jbul li::before{content:"";position:absolute;inset-inline-start:0;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--rust)}
+.skills p{overflow-wrap:anywhere}
+.lang-he .skills p{text-align:right}
+.strengths-title{font-size:clamp(20px,2vw,24px);margin:44px 0 16px}
+.strengths{display:flex;flex-wrap:wrap;gap:10px}
+.strengths li{font-size:14.5px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text,inherit)}
+@media (max-width:560px){.jbul li{font-size:14.5px}.strengths li{font-size:13.5px;padding:8px 13px}.stat small{font-size:12.5px}}
