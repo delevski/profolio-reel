@@ -15,14 +15,14 @@ export function ExperienceSection({
   return (
     <section className="mt-16">
       <SectionHeaderFrame className={cn("mb-8", isRtl && "text-right")}>
-        <h2 className="font-serif text-2xl text-text md:text-3xl">{title}</h2>
+        <h2 className="text-2xl text-text md:text-3xl">{title}</h2>
       </SectionHeaderFrame>
       <div className="space-y-10">
         {experience.map((role) => (
           <article
             key={`${role.company}-${role.period}`}
             className={cn(
-              "rounded-2xl border border-surface-border bg-surface/90 p-6 backdrop-blur-md",
+              "v2-panel p-6 ",
               isRtl && "text-right"
             )}
           >
@@ -33,7 +33,7 @@ export function ExperienceSection({
               )}
             >
               <div>
-                <h3 className="font-serif text-xl text-text">{role.title}</h3>
+                <h3 className="text-xl text-text">{role.title}</h3>
                 <p className="text-accent">{role.company}</p>
               </div>
               <p className="text-sm text-text-muted">{role.period}</p>

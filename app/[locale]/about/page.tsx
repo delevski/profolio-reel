@@ -53,11 +53,11 @@ export default async function AboutPage({ params }: Props) {
             <div
               key={item.title}
               className={cn(
-                "rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md p-6",
+                "v2-panel  p-6",
                 rtl && "text-right"
               )}
             >
-              <h3 className="mb-2 font-serif text-xl text-text">{item.title}</h3>
+              <h3 className="mb-2 text-xl text-text">{item.title}</h3>
               <p className="text-sm text-text-muted">{item.description}</p>
             </div>
           ))}
@@ -66,7 +66,7 @@ export default async function AboutPage({ params }: Props) {
         <section className="mt-16">
           <h2
             className={cn(
-              "mb-6 font-serif text-2xl text-text",
+              "mb-6 text-2xl text-text",
               rtl && "text-right"
             )}
           >
@@ -74,7 +74,7 @@ export default async function AboutPage({ params }: Props) {
           </h2>
           <dl
             className={cn(
-              "grid gap-4 rounded-2xl border border-surface-border bg-surface/90 p-6 backdrop-blur-md sm:grid-cols-2",
+              "grid gap-4 v2-panel p-6  sm:grid-cols-2",
               rtl && "text-right"
             )}
           >

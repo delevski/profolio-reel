@@ -28,7 +28,7 @@ export function AcademyPreview({ locale }: { locale: Locale }) {
           <div
             key={course.slug}
             className={cn(
-              "flex flex-col rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md p-6 transition-all hover:-translate-y-1 hover:border-accent/30",
+              "flex flex-col v2-panel  p-6 transition-all hover:-translate-y-1 hover:border-accent/30",
               rtl && "text-right"
             )}
           >
@@ -36,7 +36,7 @@ export function AcademyPreview({ locale }: { locale: Locale }) {
               {course.isNew && <Badge variant="new">{s.new}</Badge>}
               <Badge>{course.level}</Badge>
             </div>
-            <h3 className="mb-2 font-serif text-xl text-text">{course.title}</h3>
+            <h3 className="mb-2 text-xl text-text">{course.title}</h3>
             <p className="mb-6 flex-1 text-sm text-text-muted">{course.description}</p>
             <Link
               href={course.href}

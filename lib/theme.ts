@@ -4,11 +4,8 @@ export type Theme = "dark" | "light";
 
 export function applyTheme(theme: Theme): void {
   if (typeof document === "undefined") return;
-  if (theme === "light") {
-    document.documentElement.setAttribute("data-theme", "light");
-  } else {
-    document.documentElement.removeAttribute("data-theme");
-  }
+  // Same attribute contract as the v2 home page (public/v2/theme.js)
+  document.documentElement.setAttribute("data-theme", theme);
 }
 
 export function getStoredTheme(): Theme | null {

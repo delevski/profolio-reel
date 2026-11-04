@@ -12,12 +12,11 @@ type ButtonProps = {
   external?: boolean;
 };
 
+// v2 design system buttons (classes in app/ordel-v2.css)
 const variants = {
-  primary:
-    "bg-accent text-on-accent font-semibold hover:bg-amber-500 shadow-[0_0_24px_var(--accent-glow)]",
-  secondary:
-    "border border-surface-border bg-surface/90 text-text backdrop-blur-md hover:border-accent/50",
-  ghost: "text-text-muted hover:text-text",
+  primary: "btn-primary",
+  secondary: "btn-ghost",
+  ghost: "btn-text",
 };
 
 export function Button({
@@ -31,7 +30,7 @@ export function Button({
   external,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm transition-all duration-200",
+    "btn btn-sm",
     variants[variant],
     className
   );

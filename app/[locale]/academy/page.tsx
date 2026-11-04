@@ -31,7 +31,7 @@ export default async function AcademyPage({ params }: Props) {
             <div
               key={course.slug}
               className={cn(
-                "flex flex-col rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md p-8",
+                "flex flex-col v2-panel  p-8",
                 rtl && "text-right"
               )}
             >
@@ -39,7 +39,7 @@ export default async function AcademyPage({ params }: Props) {
                 {course.isNew && <Badge variant="new">{s.new}</Badge>}
                 <Badge>{course.level}</Badge>
               </div>
-              <h2 className="mb-3 font-serif text-2xl text-text">{course.title}</h2>
+              <h2 className="mb-3 text-2xl text-text">{course.title}</h2>
               <p className="mb-8 flex-1 text-text-muted">{course.description}</p>
               <Button href={course.href} variant="primary">
                 {p.enroll}

@@ -43,7 +43,7 @@ export function ConnectSection({
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                "group flex flex-col rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md p-6 transition-all hover:-translate-y-1 hover:border-accent/30",
+                "group flex flex-col v2-panel  p-6 transition-all hover:-translate-y-1 hover:border-accent/30",
                 rtl && "text-right"
               )}
             >

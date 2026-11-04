@@ -39,7 +39,7 @@ export function ContactForm({
       <form
         onSubmit={handleSubmit}
         className={cn(
-          "space-y-6 rounded-2xl border border-surface-border bg-surface/90 backdrop-blur-md p-8",
+          "space-y-6 v2-panel  p-8",
           isRtl && "text-right"
         )}
         dir={isRtl ? "rtl" : "ltr"}
@@ -88,7 +88,7 @@ export function ContactForm({
       </form>
 
       <div className={cn(isRtl && "text-right")}>
-        <h2 className="mb-6 font-serif text-2xl text-text">{labels.info}</h2>
+        <h2 className="mb-6 text-2xl text-text">{labels.info}</h2>
         <ul className="mb-8 space-y-4">
           <li>
             <a
@@ -114,7 +114,7 @@ export function ContactForm({
           </li>
         </ul>
 
-        <h2 className="mb-6 font-serif text-2xl text-text">{labels.elsewhere}</h2>
+        <h2 className="mb-6 text-2xl text-text">{labels.elsewhere}</h2>
         <ul className="space-y-4">
           {social.map((link) => (
             <li key={link.platform}>
