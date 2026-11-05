@@ -20,6 +20,43 @@
     "demoUrl": "https://ordelwebsite.vercel.app/en"
   },
   {
+    "slug": "leadflow",
+    "name": "LeadFlow",
+    "description": {
+      "en": "Hebrew-first CRM for small businesses, with Flo, a built-in AI assistant for leads, deals and follow-ups.",
+      "he": "CRM בעברית לעסקים קטנים, עם Flo, עוזרת AI מובנית ללידים, עסקאות ומעקבים."
+    },
+    "stars": 0,
+    "featured": true,
+    "category": "web",
+    "stack": [
+      "TypeScript",
+      "Cloudflare Workers",
+      "AI Assistant"
+    ],
+    "imageUrl": "/projects/leadflow.png",
+    "demoUrl": "https://leadflow-mvp.orworkdelevski.workers.dev"
+  },
+  {
+    "slug": "agent-office",
+    "name": "Agent Office",
+    "description": {
+      "en": "A live office where AI agents sit at desks and stream their work into one hub: kanban, stats, skills, reviews and day replay.",
+      "he": "משרד חי שבו סוכני AI יושבים ליד שולחנות ומזרימים את העבודה שלהם להאב אחד: קנבן, סטטיסטיקות, כישורים, ביקורות ו-replay של היום."
+    },
+    "stars": 0,
+    "featured": true,
+    "category": "ai",
+    "stack": [
+      "TypeScript",
+      "Cloudflare Workers",
+      "AI Agents"
+    ],
+    "href": "https://github.com/delevski/agent-office-demo",
+    "imageUrl": "/projects/agent-office.png",
+    "demoUrl": "https://agent-office-demo.orworkdelevski.workers.dev"
+  },
+  {
     "slug": "ora-website",
     "name": "ORA Luxury Residence",
     "description": {
