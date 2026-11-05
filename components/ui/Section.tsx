@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/ui/SiteLink";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { SectionHeaderFrame } from "@/components/ui/SectionHeaderFrame";
 import { cn } from "@/lib/utils";

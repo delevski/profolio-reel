@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/SiteLink";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { localizedPath, switchLocalePath } from "@/lib/i18n/navigation";
 import { BrandMark } from "@/components/layout/BrandMark";

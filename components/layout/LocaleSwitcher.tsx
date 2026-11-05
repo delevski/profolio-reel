@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/ui/SiteLink";
 import { usePathname } from "next/navigation";
 import { switchLocalePath } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/config";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/SiteLink";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { isRtl, type Locale } from "@/lib/i18n/config";
 import { cn } from "@/lib/utils";

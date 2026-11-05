@@ -22,3 +22,16 @@ export function switchLocalePath(pathname: string, newLocale: Locale): string {
   const pathWithoutLocale = stripLocaleFromPathname(pathname);
   return localizedPath(newLocale, pathWithoutLocale);
 }
+
+/**
+ * Paths served as static HTML (the v2 home pages, rewritten to public/v2 in
+ * next.config.ts) rather than by the Next.js app router. Links to these must be
+ * full-page navigations — see components/ui/SiteLink.tsx.
+ */
+const STATIC_PAGE_PATHS = new Set(["/en", "/he"]);
+
+export function isStaticPagePath(href: string): boolean {
+  if (!href.startsWith("/") || href.startsWith("//")) return false;
+  const path = href.split(/[?#]/)[0].replace(/\/+$/, "") || "/";
+  return STATIC_PAGE_PATHS.has(path);
+}
