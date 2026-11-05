@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { ChevronDown, Play } from "lucide-react";
 import {
   framePath,
@@ -186,7 +186,33 @@ function nearestReadySrc(
   return null;
 }
 
-export function ReelExperience({ manifest }: Props) {
+const PORTRAIT_QUERY = "(orientation: portrait)";
+function subscribePortrait(onChange: () => void) {
+  const mq = window.matchMedia(PORTRAIT_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+export function ReelExperience({ manifest: sourceManifest }: Props) {
+  // Sections may ship a portrait frame set (portraitDir) for phones held upright,
+  // where object-cover would otherwise crop a landscape frame to its middle strip.
+  const portrait = useSyncExternalStore(
+    subscribePortrait,
+    () => window.matchMedia(PORTRAIT_QUERY).matches,
+    () => false,
+  );
+  const manifest = useMemo<ReelManifest>(
+    () =>
+      portrait
+        ? {
+            ...sourceManifest,
+            sections: sourceManifest.sections.map((s) =>
+              s.portraitDir ? { ...s, dir: s.portraitDir } : s,
+            ),
+          }
+        : sourceManifest,
+    [sourceManifest, portrait],
+  );
   const { locale } = useLocale();
   const trackRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
