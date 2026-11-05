@@ -15,6 +15,19 @@ export type ReelSection = {
   frameCount?: number;
   pattern?: string;
   scrollVh: number;
+  /** WebP frame pack of `dir` (scripts/build-reel-packs.mjs); the JPEGs in `dir` are the fallback. */
+  pack?: string;
+  /** Pack of `portraitDir`. */
+  portraitPack?: string;
+  /**
+   * Pack of `dir` center-cropped to the manifest's narrowAspect, for canvases at least that narrow
+   * (only that middle strip of a landscape frame is ever visible there).
+   */
+  narrowPack?: string;
+  /** Per-locale frames for this section (e.g. an ending that shows that locale's home page). */
+  locales?: Partial<
+    Record<string, Pick<ReelSection, "dir" | "portraitDir" | "pack" | "portraitPack" | "narrowPack">>
+  >;
 };
 
 export type ReelManifest = {
@@ -24,6 +37,8 @@ export type ReelManifest = {
   /** @deprecated Exit URL is derived from the active locale (`/{locale}`). */
   exitUrl?: string;
   sections: ReelSection[];
+  /** width / height at or below which sections use their narrowPack. */
+  narrowAspect?: number;
 };
 
 export function framePath(section: ReelSection, index: number): string | null {

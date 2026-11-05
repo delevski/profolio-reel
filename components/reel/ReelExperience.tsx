@@ -2,19 +2,25 @@
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { ChevronDown, Play } from "lucide-react";
-import {
-  framePath,
-  type ReelManifest,
-  type ReelSection,
-} from "@/lib/reel/types";
+import type { ReelManifest, ReelSection } from "@/lib/reel/types";
+import { FrameStore, loadStill, type Drawable, type FocusWindow, type FrameSeq } from "@/lib/reel/frames";
 import { ReelMusicControl, type ReelMusicHandle } from "@/components/reel/ReelMusicControl";
 import { ReelCaptions } from "@/components/reel/ReelCaptions";
 import { useLocale } from "@/components/providers/LocaleProvider";
 import { reelOpeningCopy } from "@/lib/reel/opening";
 
 const IDLE_HINT_MS = 1000;
-/** Prefetch this many frames ahead/behind the current scrub frame. */
-const PREFETCH_RADIUS = 24;
+/** Keep this many decoded frames on each side of the current scrub frame. */
+const DECODE_RADIUS = 14;
+/** Decode the first frames of the next clip ahead of time, so entering it is instant. */
+const NEXT_CLIP_WARM = 6;
+/** Upper bound for decoded frames held at once (compressed frames are kept separately). */
+const DECODED_BUDGET_BYTES = 128 * 1024 * 1024;
+/**
+ * Scroll track beyond the clips: one screen (the last scroll position still shows a full
+ * viewport) plus a little room after the last frame.
+ */
+const TRACK_EXTRA_VH = 120;
 
 type Props = {
   manifest: ReelManifest;
@@ -24,8 +30,6 @@ type ScrollMap = {
   sectionIndex: number;
   localProgress: number;
 };
-
-type BitmapCache = Map<string, ImageBitmap | HTMLImageElement | "loading" | "error">;
 
 function buildOffsets(sections: ReelSection[], vh: number): number[] {
   const offsets: number[] = [0];
@@ -64,32 +68,45 @@ function scrubFrameIndex(localProgress: number, frameCount: number): number {
   );
 }
 
-function isDrawable(
-  entry: ImageBitmap | HTMLImageElement | "loading" | "error" | undefined,
-): entry is ImageBitmap | HTMLImageElement {
-  if (!entry || entry === "loading" || entry === "error") return false;
-  if (typeof ImageBitmap !== "undefined" && entry instanceof ImageBitmap) {
-    return entry.width > 0;
+/**
+ * The frames a section plays on this screen: the locale's own frames when it has them
+ * (the ending shows that language's home page), the portrait set on a phone held upright,
+ * and the narrow (center-cropped) pack on canvases that only show a landscape frame's middle.
+ */
+function resolveSeq(
+  s: ReelSection,
+  locale: string,
+  portrait: boolean,
+  narrow: boolean,
+): FrameSeq | null {
+  if (s.mode === "still" || !s.pattern || !s.frameCount) return null;
+  const o = { ...s, ...(s.locales?.[locale] ?? {}) };
+  let dir = o.dir;
+  let pack = o.pack;
+  if (portrait && o.portraitDir) {
+    dir = o.portraitDir;
+    pack = o.portraitPack;
+  } else if (narrow && o.narrowPack) {
+    pack = o.narrowPack;
   }
-  const img = entry as HTMLImageElement;
-  return img.complete && img.naturalWidth > 0;
+  if (!dir) return null;
+  return { key: pack ?? dir, pack, dir, pattern: s.pattern, frameCount: s.frameCount };
+}
+
+function sourceSize(source: Drawable): [number, number] {
+  return source instanceof HTMLImageElement
+    ? [source.naturalWidth, source.naturalHeight]
+    : [source.width, source.height];
 }
 
 /** object-cover draw into a canvas sized to CSS pixels × DPR. */
 function drawCover(
   ctx: CanvasRenderingContext2D,
-  source: ImageBitmap | HTMLImageElement,
+  source: Drawable,
   canvasW: number,
   canvasH: number,
 ) {
-  const sw =
-    typeof ImageBitmap !== "undefined" && source instanceof ImageBitmap
-      ? source.width
-      : (source as HTMLImageElement).naturalWidth;
-  const sh =
-    typeof ImageBitmap !== "undefined" && source instanceof ImageBitmap
-      ? source.height
-      : (source as HTMLImageElement).naturalHeight;
+  const [sw, sh] = sourceSize(source);
   if (sw <= 0 || sh <= 0) return;
 
   const scale = Math.max(canvasW / sw, canvasH / sh);
@@ -100,92 +117,6 @@ function drawCover(
   ctx.drawImage(source, dx, dy, dw, dh);
 }
 
-function loadFrame(src: string, cache: BitmapCache) {
-  if (cache.has(src)) return;
-  cache.set(src, "loading");
-
-  const img = new Image();
-  img.decoding = "async";
-  img.src = src;
-
-  const finish = async () => {
-    try {
-      if (typeof createImageBitmap === "function") {
-        const bitmap = await createImageBitmap(img);
-        cache.set(src, bitmap);
-      } else if (img.complete && img.naturalWidth > 0) {
-        cache.set(src, img);
-      } else {
-        cache.set(src, "error");
-      }
-    } catch {
-      if (img.complete && img.naturalWidth > 0) cache.set(src, img);
-      else cache.set(src, "error");
-    }
-  };
-
-  if (img.complete && img.naturalWidth > 0) {
-    void finish();
-  } else {
-    img.addEventListener(
-      "load",
-      () => {
-        void finish();
-      },
-      { once: true },
-    );
-    img.addEventListener(
-      "error",
-      () => {
-        cache.set(src, "error");
-      },
-      { once: true },
-    );
-  }
-}
-
-function prefetchAround(
-  section: ReelSection,
-  center: number,
-  cache: BitmapCache,
-  radius = PREFETCH_RADIUS,
-) {
-  if (section.mode === "still") {
-    if (section.src) loadFrame(section.src, cache);
-    return;
-  }
-  const count = section.frameCount ?? 0;
-  const from = Math.max(0, center - radius);
-  const to = Math.min(count - 1, center + radius);
-  for (let i = from; i <= to; i++) {
-    const path = framePath(section, i);
-    if (path) loadFrame(path, cache);
-  }
-}
-
-function nearestReadySrc(
-  section: ReelSection,
-  center: number,
-  cache: BitmapCache,
-): string | null {
-  const count = section.frameCount ?? 0;
-  const exact = framePath(section, center);
-  if (exact && isDrawable(cache.get(exact))) return exact;
-  for (let d = 1; d < count; d++) {
-    const lo = center - d;
-    const hi = center + d;
-    if (lo >= 0) {
-      const p = framePath(section, lo);
-      if (p && isDrawable(cache.get(p))) return p;
-    }
-    if (hi < count) {
-      const p = framePath(section, hi);
-      if (p && isDrawable(cache.get(p))) return p;
-    }
-  }
-  return null;
-}
-
 const PORTRAIT_QUERY = "(orientation: portrait)";
 function subscribePortrait(onChange: () => void) {
   const mq = window.matchMedia(PORTRAIT_QUERY);
@@ -193,7 +124,7 @@ function subscribePortrait(onChange: () => void) {
   return () => mq.removeEventListener("change", onChange);
 }
 
-export function ReelExperience({ manifest: sourceManifest }: Props) {
+export function ReelExperience({ manifest }: Props) {
   // Sections may ship a portrait frame set (portraitDir) for phones held upright,
   // where object-cover would otherwise crop a landscape frame to its middle strip.
   const portrait = useSyncExternalStore(
@@ -201,17 +132,18 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
     () => window.matchMedia(PORTRAIT_QUERY).matches,
     () => false,
   );
-  const manifest = useMemo<ReelManifest>(
+  const { locale } = useLocale();
+  // Read from the window on the first client render (it changes no markup), so the very first
+  // downloads already pick the right frame set; measure() keeps it current.
+  const [narrow, setNarrow] = useState(
     () =>
-      portrait
-        ? {
-            ...sourceManifest,
-            sections: sourceManifest.sections.map((s) =>
-              s.portraitDir ? { ...s, dir: s.portraitDir } : s,
-            ),
-          }
-        : sourceManifest,
-    [sourceManifest, portrait],
+      typeof window !== "undefined" &&
+      manifest.narrowAspect !== undefined &&
+      window.innerWidth / Math.max(1, window.innerHeight) <= manifest.narrowAspect,
+  );
+  const seqs = useMemo(
+    () => manifest.sections.map((s) => resolveSeq(s, locale, portrait, narrow)),
+    [manifest.sections, locale, portrait, narrow],
   );
   // On the portrait ending the last frames are the mobile home page; finish the
   // caption sequence before them so no caption covers its buttons. Landscape
@@ -230,13 +162,16 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
   useEffect(() => {
     captionsEndAtRef.current = captionsEndAt;
   }, [captionsEndAt]);
-  const { locale } = useLocale();
   const trackRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const fadeRef = useRef<HTMLDivElement>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
-  const cacheRef = useRef<BitmapCache>(new Map());
-  const shownSrcRef = useRef<string | null>(null);
+  const storeRef = useRef<FrameStore | null>(null);
+  const openingRef = useRef<Drawable | null>(null);
+  const shownIdRef = useRef<string | null>(null);
+  const shownFrameRef = useRef<Drawable | null>(null);
   const canvasSizeRef = useRef({ w: 0, h: 0, dpr: 1 });
+  const maxScrollRef = useRef(0);
   const loopFrameRef = useRef(0);
   const loopSectionRef = useRef<number | null>(null);
   const progressRef = useRef(0);
@@ -244,13 +179,17 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
   const autoPlayingRef = useRef(false);
   const introFrameRef = useRef<number | null>(null);
   const exitTriggeredRef = useRef(false);
+  const tickRafRef = useRef(0);
+  const tickFnRef = useRef<((ts: number) => void) | null>(null);
   const musicRef = useRef<ReelMusicHandle>(null);
-  const [vh, setVh] = useState(800);
+  const [vh, setVh] = useState(() =>
+    typeof window !== "undefined" ? (window.visualViewport?.height ?? window.innerHeight) : 800,
+  );
   const [sectionIndex, setSectionIndex] = useState(0);
   const [showStart, setShowStart] = useState(true);
   const [showIdleHint, setShowIdleHint] = useState(false);
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
-  const [exitFade, setExitFade] = useState(0);
+  const [exiting, setExiting] = useState(false);
   const idleHintVisibleRef = useRef(false);
 
   // The reel maps window.scrollY to its clips and leaves for the home page once
@@ -268,19 +207,65 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
     () => manifest.sections.reduce((sum, s) => sum + s.scrollVh, 0),
     [manifest.sections],
   );
-  const trackVh = totalVh + 20;
+  const trackVh = totalVh + TRACK_EXTRA_VH;
 
   const offsets = useMemo(
     () => buildOffsets(manifest.sections, vh),
     [manifest.sections, vh],
   );
 
+  /** Run one reel update on the next animation frame (coalesces scroll, decode and resize events). */
+  const schedule = useCallback(() => {
+    if (tickRafRef.current) return;
+    tickRafRef.current = requestAnimationFrame((ts) => {
+      tickRafRef.current = 0;
+      tickFnRef.current?.(ts);
+    });
+  }, []);
+
+  /** Paint a decoded frame; `id` names it so the same frame is never painted twice in a row. */
+  const showFrame = useCallback((id: string, frame: Drawable | null) => {
+    if (!frame || id === shownIdRef.current) return;
+    const ctx = ctxRef.current;
+    const { w, h } = canvasSizeRef.current;
+    if (!ctx || w <= 0 || h <= 0) return;
+    try {
+      drawCover(ctx, frame, w, h);
+    } catch {
+      return; // a frame closed under us; the next tick paints a live one
+    }
+    shownIdRef.current = id;
+    shownFrameRef.current = frame;
+  }, []);
+
+  /** Paint frame `index` of a sequence, or the nearest decoded one while it decodes. */
+  const showSeqFrame = useCallback(
+    (seq: FrameSeq, index: number) => {
+      const store = storeRef.current;
+      if (!store) return;
+      const exact = store.get(seq.key, index);
+      if (exact) {
+        showFrame(`${seq.key}#${index}`, exact);
+        return;
+      }
+      const near = store.nearest(seq.key, index, seq.frameCount);
+      if (near) showFrame(`${seq.key}#${near.index}`, near.frame);
+    },
+    [showFrame],
+  );
+
+  /** Canvas backing store = the canvas's real CSS box × DPR (it is 100svh/100dvh tall, not innerHeight). */
   const syncCanvasSize = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const dpr = Math.min(2, window.devicePixelRatio || 1);
-    const w = Math.max(1, Math.round(window.innerWidth * dpr));
-    const h = Math.max(1, Math.round(window.innerHeight * dpr));
+    const rect = canvas.getBoundingClientRect();
+    const cssW = rect.width || window.innerWidth;
+    const cssH = rect.height || window.innerHeight;
+    const w = Math.max(1, Math.round(cssW * dpr));
+    const h = Math.max(1, Math.round(cssH * dpr));
+    const aspect = manifest.narrowAspect;
+    setNarrow(aspect !== undefined && cssW / cssH <= aspect);
     const prev = canvasSizeRef.current;
     if (prev.w === w && prev.h === h && prev.dpr === dpr) return;
     canvas.width = w;
@@ -290,66 +275,60 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
     if (ctx) {
       ctx.imageSmoothingEnabled = true;
       ctxRef.current = ctx;
-      // Re-paint last frame after resize so the canvas never goes blank.
-      const src = shownSrcRef.current;
-      if (src) {
-        const entry = cacheRef.current.get(src);
-        if (isDrawable(entry)) {
-          drawCover(ctx, entry, w, h);
+      // Re-paint the last frame after resize so the canvas never goes blank.
+      const frame = shownFrameRef.current;
+      if (frame) {
+        try {
+          drawCover(ctx, frame, w, h);
+        } catch {
+          shownIdRef.current = null;
         }
       }
     }
-  }, []);
+  }, [manifest.narrowAspect]);
 
   /**
-   * Draw a frame onto the canvas only when it is already decoded.
-   * Never clear between frames — previous pixels stay until the next draw,
-   * so there is no flash of black between JPEG swaps.
+   * Real viewport measurement. The clip offsets must use the same pixel size of "1vh" as the
+   * scroll track (which is laid out in CSS vh), otherwise the reel's timing drifts from the
+   * scroll length: with the old fixed 800px, tall screens ran out of clips early and jumped home.
+   * Taken from the track's laid-out height, with visualViewport/innerHeight as the fallback.
    */
-  const showFrame = useCallback((src: string | null) => {
-    if (!src || src === shownSrcRef.current) return;
-    const cache = cacheRef.current;
-    loadFrame(src, cache);
-    const entry = cache.get(src);
-    if (!isDrawable(entry)) return;
-
-    const canvas = canvasRef.current;
-    const ctx = ctxRef.current;
-    if (!canvas || !ctx) return;
-
-    const { w, h } = canvasSizeRef.current;
-    if (w <= 0 || h <= 0) return;
-
-    drawCover(ctx, entry, w, h);
-    shownSrcRef.current = src;
-  }, []);
-
-  const preloadSection = useCallback((section: ReelSection) => {
-    if (section.mode === "still" && section.src) {
-      loadFrame(section.src, cacheRef.current);
-      return;
+  const measure = useCallback(() => {
+    const track = trackRef.current;
+    let unit = 0;
+    if (track) {
+      const h = track.getBoundingClientRect().height;
+      if (h > 0) unit = h / trackVh;
     }
-    const count = section.frameCount ?? 0;
-    const warm = Math.min(count, PREFETCH_RADIUS * 2);
-    for (let i = 0; i < warm; i++) {
-      const path = framePath(section, i);
-      if (path) loadFrame(path, cacheRef.current);
-    }
-    if (count > warm) {
-      const cache = cacheRef.current;
-      const rest = () => {
-        for (let i = warm; i < count; i++) {
-          const path = framePath(section, i);
-          if (path) loadFrame(path, cache);
-        }
-      };
-      if (typeof requestIdleCallback !== "undefined") {
-        requestIdleCallback(rest, { timeout: 1500 });
-      } else {
-        window.setTimeout(rest, 0);
-      }
-    }
-  }, []);
+    if (!(unit > 0)) unit = (window.visualViewport?.height ?? window.innerHeight) / 100;
+    const next = Math.round(unit * 100 * 100) / 100;
+    setVh((prev) => (Math.abs(prev - next) > 0.5 ? next : prev));
+    maxScrollRef.current = Math.max(
+      0,
+      (document.documentElement.scrollHeight || 0) - window.innerHeight,
+    );
+    syncCanvasSize();
+  }, [trackVh, syncCanvasSize]);
+
+  useLayoutEffect(() => {
+    measure();
+  }, [measure]);
+
+  useEffect(() => {
+    const onResize = () => {
+      measure();
+      schedule();
+    };
+    const vv = window.visualViewport;
+    window.addEventListener("resize", onResize);
+    window.addEventListener("orientationchange", onResize);
+    vv?.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("orientationchange", onResize);
+      vv?.removeEventListener("resize", onResize);
+    };
+  }, [measure, schedule]);
 
   const cancelAutoPlay = useCallback(() => {
     if (autoPlayRafRef.current) {
@@ -359,23 +338,26 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
     autoPlayingRef.current = false;
     introFrameRef.current = null;
     setIsAutoPlaying(false);
-  }, []);
+    schedule();
+  }, [schedule]);
 
   const beginExit = useCallback(() => {
     if (exitTriggeredRef.current) return;
     exitTriggeredRef.current = true;
+    setExiting(true);
     // Same locale as the reel route: /he/reel → /he, /en/reel → /en
     const target = `/${locale}`;
 
     autoPlayingRef.current = false;
     introFrameRef.current = null;
 
+    // The fade is written straight to the overlay's style: no React render per frame.
     const durationMs = 700;
     const t0 = performance.now();
     const step = (now: number) => {
       const t = Math.min(1, (now - t0) / durationMs);
       const eased = t * t * (3 - 2 * t);
-      setExitFade(eased);
+      if (fadeRef.current) fadeRef.current.style.opacity = String(eased);
       if (t < 1) {
         requestAnimationFrame(step);
       } else {
@@ -389,12 +371,15 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
     void musicRef.current?.play();
 
     const clip = manifest.sections[1];
-    if (!clip || clip.mode !== "scrub") return;
+    const seq = seqs[1];
+    if (!clip || clip.mode !== "scrub" || !seq) return;
 
     cancelAutoPlay();
     setShowStart(false);
     setSectionIndex(1);
-    preloadSection(clip);
+    const store = storeRef.current;
+    store?.load(seq, true);
+    if (seqs[2]) store?.load(seqs[2]);
 
     const startY = offsets[1] ?? 0;
     const endY = Math.max(startY + 1, (offsets[2] ?? startY + 1) - 1);
@@ -410,11 +395,8 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
     // and can leave the page unable to move after unlock. Intro drives scrollY;
     // user touch/wheel just cancels intro (see listeners below).
 
-    const first = framePath(clip, 0);
-    if (first) {
-      loadFrame(first, cacheRef.current);
-      showFrame(first);
-    }
+    store?.setFocus([{ key: seq.key, center: 0, radius: DECODE_RADIUS }]);
+    showSeqFrame(seq, 0);
     window.scrollTo({ top: startY, behavior: "auto" });
     progressRef.current = Math.min(1, startY / contentEnd);
 
@@ -427,6 +409,7 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
       autoPlayRafRef.current = 0;
       window.scrollTo({ top: endY, behavior: "auto" });
       setIsAutoPlaying(false);
+      schedule();
     };
 
     const step = (now: number) => {
@@ -438,14 +421,8 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
         lastTs += steps * frameMs;
 
         introFrameRef.current = frame;
-        const src = framePath(clip, frame);
-        if (src) {
-          prefetchAround(clip, frame, cacheRef.current);
-          const ready = isDrawable(cacheRef.current.get(src))
-            ? src
-            : nearestReadySrc(clip, frame, cacheRef.current);
-          if (ready) showFrame(ready);
-        }
+        store?.setFocus([{ key: seq.key, center: frame, radius: DECODE_RADIUS }]);
+        showSeqFrame(seq, frame);
 
         const local = frames <= 1 ? 1 : frame / (frames - 1);
         const y = startY + (endY - startY) * local;
@@ -456,6 +433,9 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
           finishIntro();
           return;
         }
+      } else {
+        // Frame not due yet, but it may have finished decoding since the last paint.
+        showSeqFrame(seq, frame);
       }
 
       autoPlayRafRef.current = requestAnimationFrame(step);
@@ -467,24 +447,14 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
     manifest.fps,
     manifest.sections,
     offsets,
-    preloadSection,
-    showFrame,
+    seqs,
+    schedule,
+    showSeqFrame,
   ]);
-
-  useEffect(() => {
-    syncCanvasSize();
-    const update = () => {
-      setVh(window.innerHeight);
-      syncCanvasSize();
-    };
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, [syncCanvasSize]);
 
   useEffect(() => {
     const html = document.documentElement;
     const body = document.body;
-    const cache = cacheRef.current;
     const prev = {
       htmlOX: html.style.overflowX,
       htmlOY: html.style.overflowY,
@@ -519,23 +489,29 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
       body.style.touchAction = prev.bodyTouch;
       body.style.overscrollBehavior = prev.bodyOverscroll;
       cancelAutoPlay();
-      for (const entry of cache.values()) {
-        if (typeof ImageBitmap !== "undefined" && entry instanceof ImageBitmap) {
-          entry.close();
-        }
-      }
-      cache.clear();
     };
   }, [cancelAutoPlay]);
 
+  // The frame store lives as long as the reel is mounted (created before the effects below use it).
+  useEffect(() => {
+    const store = new FrameStore(() => schedule(), DECODED_BUDGET_BYTES);
+    storeRef.current = store;
+    return () => {
+      store.dispose();
+      if (storeRef.current === store) storeRef.current = null;
+    };
+  }, [schedule]);
+
+  // Scroll: a passive listener that only schedules one rAF update (no work per scroll event).
   useEffect(() => {
     const onScroll = () => {
+      schedule();
       if (autoPlayingRef.current) return;
       if (window.scrollY > 24) setShowStart(false);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [schedule]);
 
   // User gesture during Start intro → hand control back immediately (no overflow lock).
   useEffect(() => {
@@ -553,33 +529,33 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
     };
   }, [cancelAutoPlay]);
 
+  // Progressive preload: the opening still, then the first two clips; later clips are queued
+  // as the scroll approaches them (see the section change in the tick below).
   useEffect(() => {
-    loadFrame(manifest.opening, cacheRef.current);
-    preloadSection(manifest.sections[0]!);
-    preloadSection(manifest.sections[1]!);
-    if (manifest.sections[2]) preloadSection(manifest.sections[2]);
-
-    // Paint opening once it decodes (no black flash on first paint).
-    let tries = 0;
-    const waitOpening = () => {
-      tries += 1;
-      const entry = cacheRef.current.get(manifest.opening);
-      if (isDrawable(entry)) {
-        showFrame(manifest.opening);
-        return;
-      }
-      if (tries < 120) requestAnimationFrame(waitOpening);
+    let cancelled = false;
+    void loadStill(manifest.opening)
+      .then((still) => {
+        if (cancelled) return;
+        openingRef.current = still;
+        schedule();
+      })
+      .catch(() => {});
+    const store = storeRef.current;
+    if (seqs[1]) store?.load(seqs[1], true);
+    if (seqs[2]) store?.load(seqs[2]);
+    return () => {
+      cancelled = true;
     };
-    requestAnimationFrame(waitOpening);
-  }, [manifest.opening, manifest.sections, preloadSection, showFrame]);
+  }, [manifest.opening, seqs, schedule]);
 
   useEffect(() => {
-    let raf = 0;
     let lastLoopTs = 0;
     let lastSection = -1;
     let lastScrollY = window.scrollY;
     let lastMoveTs = performance.now();
     let scrubFrameKey = "";
+    let focusKey = "";
+    let idleTimer = 0;
 
     const setIdleHint = (visible: boolean) => {
       if (idleHintVisibleRef.current === visible) return;
@@ -587,73 +563,81 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
       setShowIdleHint(visible);
     };
 
+    const setFocus = (windows: FocusWindow[]) => {
+      const key = windows.map((w) => `${w.key}@${w.center}/${w.radius}`).join("|");
+      if (key === focusKey) return;
+      focusKey = key;
+      storeRef.current?.setFocus(windows);
+    };
+
     const tick = (ts: number) => {
       if (autoPlayingRef.current && introFrameRef.current !== null) {
         lastMoveTs = ts;
         setIdleHint(false);
-        raf = requestAnimationFrame(tick);
-        return;
+        return; // the intro drives its own frames; it reschedules us when it ends
       }
 
+      const store = storeRef.current;
       const targetY = window.scrollY;
       const map = resolveScroll(targetY, offsets, manifest.sections.length);
       const section = manifest.sections[map.sectionIndex]!;
+      const seq = seqs[map.sectionIndex] ?? null;
+      const nextSeq = seqs[map.sectionIndex + 1] ?? null;
       const contentEnd = Math.max(1, offsets[offsets.length - 1] ?? 1);
       progressRef.current = Math.min(1, Math.max(0, targetY / contentEnd));
+      let again = false;
 
       if (map.sectionIndex !== lastSection) {
         lastSection = map.sectionIndex;
         setSectionIndex(map.sectionIndex);
         if (map.sectionIndex > 0) setShowStart(false);
-        const next = manifest.sections[map.sectionIndex + 1];
-        const prev = manifest.sections[map.sectionIndex - 1];
-        if (next) preloadSection(next);
-        if (prev) preloadSection(prev);
+        // Progressive preload: this clip first, then the next two, then the one behind.
+        if (seq) store?.load(seq, true);
+        if (nextSeq) store?.load(nextSeq);
+        const after = seqs[map.sectionIndex + 2];
+        if (after) store?.load(after);
+        const prev = seqs[map.sectionIndex - 1];
+        if (prev) store?.load(prev);
       }
 
-      let desired: string | null = null;
       let activeFrameKey = `${map.sectionIndex}:still`;
-      let scrubIdx = 0;
+      const warmNext: FocusWindow[] = nextSeq
+        ? [{ key: nextSeq.key, center: 0, radius: NEXT_CLIP_WARM }]
+        : [];
 
-      if (section.mode === "still") {
-        desired = section.src ?? manifest.opening;
+      if (section.mode === "still" || !seq) {
         loopSectionRef.current = null;
+        setFocus(warmNext);
+        const still = openingRef.current;
+        if (still) showFrame(`still:${section.src ?? manifest.opening}`, still);
       } else if (section.mode === "scrub") {
         loopSectionRef.current = null;
-        scrubIdx = scrubFrameIndex(map.localProgress, section.frameCount ?? 1);
-        desired = framePath(section, scrubIdx);
-        activeFrameKey = `${map.sectionIndex}:scrub:${scrubIdx}`;
-        prefetchAround(section, scrubIdx, cacheRef.current);
+        const idx = scrubFrameIndex(map.localProgress, seq.frameCount);
+        activeFrameKey = `${map.sectionIndex}:scrub:${idx}`;
+        setFocus([{ key: seq.key, center: idx, radius: DECODE_RADIUS }, ...warmNext]);
+        showSeqFrame(seq, idx);
       } else if (section.mode === "loop") {
         if (loopSectionRef.current !== section.id) {
           loopSectionRef.current = section.id;
           loopFrameRef.current = 0;
           lastLoopTs = ts;
-          // Warm the whole loop so wraps don't hitch.
-          preloadSection(section);
         }
-        const count = Math.max(1, section.frameCount ?? 1);
+        const count = Math.max(1, seq.frameCount);
         const frameMs = 1000 / manifest.fps;
         if (ts - lastLoopTs >= frameMs) {
           const steps = Math.floor((ts - lastLoopTs) / frameMs);
           loopFrameRef.current = (loopFrameRef.current + steps) % count;
           lastLoopTs += steps * frameMs;
         }
-        scrubIdx = loopFrameRef.current;
-        desired = framePath(section, scrubIdx);
-        activeFrameKey = `${map.sectionIndex}:loop:${scrubIdx}`;
-        prefetchAround(section, scrubIdx, cacheRef.current);
-      }
-
-      if (desired) {
-        const cache = cacheRef.current;
-        loadFrame(desired, cache);
-        const paintSrc = isDrawable(cache.get(desired))
-          ? desired
-          : section.mode === "still"
-            ? desired
-            : nearestReadySrc(section, scrubIdx, cache);
-        if (paintSrc) showFrame(paintSrc);
+        const idx = loopFrameRef.current;
+        activeFrameKey = `${map.sectionIndex}:loop:${idx}`;
+        // Keep the whole loop decoded so wraps don't hitch.
+        setFocus([
+          { key: seq.key, center: 0, radius: Math.ceil(count / 2), wrap: true },
+          ...warmNext,
+        ]);
+        showSeqFrame(seq, idx);
+        again = true; // loops play on their own clock
       }
 
       const scrollMoved = Math.abs(targetY - lastScrollY) > 1;
@@ -684,6 +668,11 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
           setIdleHint(true);
         }
       }
+      // Wake up once the scroll has rested long enough for the idle hint.
+      window.clearTimeout(idleTimer);
+      if (!idleHintVisibleRef.current && !again) {
+        idleTimer = window.setTimeout(schedule, Math.max(0, IDLE_HINT_MS - (ts - lastMoveTs)) + 20);
+      }
 
       // Leave the reel once the final clip is nearly done, OR the user has
       // physically reached the bottom of the scroll track (covers vh mismatches).
@@ -700,10 +689,7 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
         finalFrame >= finalFrameCount - 2;
       const nearLastProgress =
         map.sectionIndex === lastIdx && map.localProgress >= 0.88;
-      const maxScroll = Math.max(
-        0,
-        (document.documentElement.scrollHeight || 0) - window.innerHeight,
-      );
+      const maxScroll = maxScrollRef.current;
       const atDocumentBottom = maxScroll > 0 && targetY >= maxScroll - 12;
 
       if (
@@ -715,17 +701,29 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
         beginExit();
       }
 
-      raf = requestAnimationFrame(tick);
+      if (again) schedule();
     };
 
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [offsets, manifest, preloadSection, beginExit, showFrame]);
+    tickFnRef.current = tick;
+    schedule();
+    return () => {
+      window.clearTimeout(idleTimer);
+      if (tickFnRef.current === tick) tickFnRef.current = null;
+    };
+  }, [offsets, manifest, seqs, beginExit, schedule, showFrame, showSeqFrame]);
+
+  useEffect(
+    () => () => {
+      if (tickRafRef.current) cancelAnimationFrame(tickRafRef.current);
+      tickRafRef.current = 0;
+    },
+    [],
+  );
 
   const startLabel = locale === "he" ? "התחל" : "Start";
   const opening = reelOpeningCopy(locale);
   const showOpeningTitle =
-    sectionIndex === 0 && !isAutoPlaying && exitFade < 0.05;
+    sectionIndex === 0 && !isAutoPlaying && !exiting;
 
   return (
     <div className="relative bg-black text-white">
@@ -805,7 +803,7 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
         </div>
       )}
 
-      {showIdleHint && !showStart && !isAutoPlaying && exitFade < 0.05 && (
+      {showIdleHint && !showStart && !isAutoPlaying && !exiting && (
         <div
           className="pointer-events-none fixed inset-x-0 bottom-[max(2rem,env(safe-area-inset-bottom))] z-40 flex flex-col items-center gap-2 text-white/80 transition-opacity duration-300"
           aria-hidden
@@ -822,9 +820,10 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
       <ReelMusicControl ref={musicRef} src={manifest.audio} />
 
       <div
+        ref={fadeRef}
         className="pointer-events-none fixed inset-0 z-[60] bg-black"
         style={{
-          opacity: exitFade,
+          opacity: 0,
           transition: "opacity 40ms linear",
         }}
         aria-hidden

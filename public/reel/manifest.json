@@ -1,12 +1,12 @@
 {
   "fps": 12,
-  "opening": "/reel/opening.png",
+  "opening": "/reel/opening.webp",
   "audio": "/reel/audio/bg.mp3",
   "sections": [
     {
       "id": 0,
       "mode": "still",
-      "src": "/reel/opening.png",
+      "src": "/reel/opening.webp",
       "scrollVh": 90
     },
     {
@@ -15,7 +15,9 @@
       "dir": "/reel/seq/1",
       "frameCount": 73,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 125
+      "scrollVh": 125,
+      "pack": "/reel/pack/1.a2f7f24f7c.rpk",
+      "narrowPack": "/reel/pack/1n.523f14e462.rpk"
     },
     {
       "id": 2,
@@ -23,7 +25,9 @@
       "dir": "/reel/seq/2",
       "frameCount": 73,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 125
+      "scrollVh": 125,
+      "pack": "/reel/pack/2.ae9d05ccd6.rpk",
+      "narrowPack": "/reel/pack/2n.43e509d94c.rpk"
     },
     {
       "id": 3,
@@ -31,7 +35,9 @@
       "dir": "/reel/seq/3",
       "frameCount": 73,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 125
+      "scrollVh": 125,
+      "pack": "/reel/pack/3.9eafa355eb.rpk",
+      "narrowPack": "/reel/pack/3n.85477074ab.rpk"
     },
     {
       "id": 4,
@@ -39,7 +45,9 @@
       "dir": "/reel/seq/4",
       "frameCount": 49,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 110
+      "scrollVh": 110,
+      "pack": "/reel/pack/4.1ee1bf9863.rpk",
+      "narrowPack": "/reel/pack/4n.29f1d4d84b.rpk"
     },
     {
       "id": 5,
@@ -47,7 +55,9 @@
       "dir": "/reel/seq/5",
       "frameCount": 73,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 125
+      "scrollVh": 125,
+      "pack": "/reel/pack/5.f315a53610.rpk",
+      "narrowPack": "/reel/pack/5n.2237f85fa7.rpk"
     },
     {
       "id": 6,
@@ -55,7 +65,9 @@
       "dir": "/reel/seq/6",
       "frameCount": 73,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 110
+      "scrollVh": 110,
+      "pack": "/reel/pack/6.8dd9159dbe.rpk",
+      "narrowPack": "/reel/pack/6n.7916f16d37.rpk"
     },
     {
       "id": 7,
@@ -63,7 +75,9 @@
       "dir": "/reel/seq/7",
       "frameCount": 97,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 145
+      "scrollVh": 145,
+      "pack": "/reel/pack/7.7cd6f04a89.rpk",
+      "narrowPack": "/reel/pack/7n.ef1a55c1c9.rpk"
     },
     {
       "id": 8,
@@ -73,7 +87,19 @@
       "portraitCaptionsEnd": 0.45,
       "frameCount": 97,
       "pattern": "frame-%04d.jpg",
-      "scrollVh": 160
+      "scrollVh": 160,
+      "locales": {
+        "he": {
+          "dir": "/reel/seq/8he",
+          "portraitDir": "/reel/seq/8phe",
+          "pack": "/reel/pack/8he.43ec6affb0.rpk",
+          "portraitPack": "/reel/pack/8phe.af0c811add.rpk"
+        }
+      },
+      "pack": "/reel/pack/8.b77a91a689.rpk",
+      "portraitPack": "/reel/pack/8p.a64a44e8a0.rpk"
     }
-  ]
+  ],
+  "openingSource": "/reel/opening.png",
+  "narrowAspect": 0.66
 }
