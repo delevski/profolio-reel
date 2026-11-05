@@ -8,13 +8,18 @@ type Props = {
   locale: Locale;
   /** 0..1 overall reel progress — updated from scroll rAF via ref for 60fps. */
   progressRef: React.MutableRefObject<number>;
+  /**
+   * Overall progress (0..1) at which the caption sequence ends; captions are
+   * spread evenly before it and hidden after it. Defaults to the reel's end.
+   */
+  endAt?: number;
 };
 
 /**
  * Cinematic caption layer. Styles are written directly to the DOM inside rAF
  * so we do not re-render React 60 times per second.
  */
-export function ReelCaptions({ locale, progressRef }: Props) {
+export function ReelCaptions({ locale, progressRef, endAt = 1 }: Props) {
   const captions = reelCaptions(locale);
   const nodesRef = useRef<(HTMLParagraphElement | null)[]>([]);
 
@@ -24,7 +29,7 @@ export function ReelCaptions({ locale, progressRef }: Props) {
     const total = captions.length;
 
     const tick = () => {
-      const progress = progressRef.current;
+      const progress = progressRef.current / Math.max(0.01, endAt);
       const key = progress.toFixed(3);
       if (key !== lastKey) {
         lastKey = key;
@@ -47,7 +52,7 @@ export function ReelCaptions({ locale, progressRef }: Props) {
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [captions, progressRef]);
+  }, [captions, progressRef, endAt]);
 
   return (
     <div

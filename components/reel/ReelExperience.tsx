@@ -213,6 +213,23 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
         : sourceManifest,
     [sourceManifest, portrait],
   );
+  // On the portrait ending the last frames are the mobile home page; finish the
+  // caption sequence before them so no caption covers its buttons. Landscape
+  // keeps the captions running to the reel's end.
+  const captionsEndAt = useMemo(() => {
+    if (!portrait) return 1;
+    const sections = manifest.sections;
+    const last = sections[sections.length - 1];
+    const cut = last?.portraitDir ? last.portraitCaptionsEnd : undefined;
+    if (cut === undefined) return 1;
+    const total = sections.reduce((sum, s) => sum + s.scrollVh, 0);
+    if (total <= 0) return 1;
+    return (total - last.scrollVh + last.scrollVh * cut) / total;
+  }, [manifest.sections, portrait]);
+  const captionsEndAtRef = useRef(captionsEndAt);
+  useEffect(() => {
+    captionsEndAtRef.current = captionsEndAt;
+  }, [captionsEndAt]);
   const { locale } = useLocale();
   const trackRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -651,8 +668,13 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
         const nearExit =
           map.sectionIndex === lastIdx && map.localProgress >= 0.85;
         const onOpeningStart = map.sectionIndex === 0 && targetY < 24;
+        // Portrait ending: no "Scroll" hint over the home page's buttons either.
+        const pastCaptions =
+          captionsEndAtRef.current < 1 &&
+          progressRef.current >= captionsEndAtRef.current;
         const canHint =
           !exitTriggeredRef.current &&
+          !pastCaptions &&
           !autoPlayingRef.current &&
           !nearExit &&
           !onOpeningStart &&
@@ -795,7 +817,7 @@ export function ReelExperience({ manifest: sourceManifest }: Props) {
         </div>
       )}
 
-      <ReelCaptions locale={locale} progressRef={progressRef} />
+      <ReelCaptions locale={locale} progressRef={progressRef} endAt={captionsEndAt} />
 
       <ReelMusicControl ref={musicRef} src={manifest.audio} />
 
