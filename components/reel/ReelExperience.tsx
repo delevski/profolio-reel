@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { ChevronDown, Play } from "lucide-react";
 import {
   framePath,
@@ -186,7 +186,33 @@ function nearestReadySrc(
   return null;
 }
 
-export function ReelExperience({ manifest }: Props) {
+const PORTRAIT_QUERY = "(orientation: portrait)";
+function subscribePortrait(onChange: () => void) {
+  const mq = window.matchMedia(PORTRAIT_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+export function ReelExperience({ manifest: sourceManifest }: Props) {
+  // Sections may ship a portrait frame set (portraitDir) for phones held upright,
+  // where object-cover would otherwise crop a landscape frame to its middle strip.
+  const portrait = useSyncExternalStore(
+    subscribePortrait,
+    () => window.matchMedia(PORTRAIT_QUERY).matches,
+    () => false,
+  );
+  const manifest = useMemo<ReelManifest>(
+    () =>
+      portrait
+        ? {
+            ...sourceManifest,
+            sections: sourceManifest.sections.map((s) =>
+              s.portraitDir ? { ...s, dir: s.portraitDir } : s,
+            ),
+          }
+        : sourceManifest,
+    [sourceManifest, portrait],
+  );
   const { locale } = useLocale();
   const trackRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -209,6 +235,17 @@ export function ReelExperience({ manifest }: Props) {
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const [exitFade, setExitFade] = useState(0);
   const idleHintVisibleRef = useRef(false);
+
+  // The reel maps window.scrollY to its clips and leaves for the home page once
+  // the scroll reaches the end. Arriving by a client-side link from far down a
+  // long page (e.g. the footer "Reel" link on /projects) can carry that page's
+  // scroll offset into the first frame, which read as "already at the end" and
+  // bounced straight back to the home page. Always start the reel at the top.
+  // ("instant": the site CSS sets scroll-behavior: smooth, which would animate
+  // the jump and leave the first frames reading the old offset.)
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, []);
 
   const totalVh = useMemo(
     () => manifest.sections.reduce((sum, s) => sum + s.scrollVh, 0),

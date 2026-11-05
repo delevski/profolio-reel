@@ -69,6 +69,7 @@
       "id": 8,
       "mode": "scrub",
       "dir": "/reel/seq/8",
+      "portraitDir": "/reel/seq/8p",
       "frameCount": 97,
       "pattern": "frame-%04d.jpg",
       "scrollVh": 160

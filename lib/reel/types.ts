@@ -5,6 +5,8 @@ export type ReelSection = {
   mode: ReelSectionMode;
   src?: string;
   dir?: string;
+  /** Optional frames for portrait screens (same frameCount/pattern), used instead of `dir`. */
+  portraitDir?: string;
   frameCount?: number;
   pattern?: string;
   scrollVh: number;

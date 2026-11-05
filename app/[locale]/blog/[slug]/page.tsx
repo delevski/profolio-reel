@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/ui/SiteLink";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { MdxContent } from "@/lib/mdx";
 import { getBlogPost, getMdxBlogPosts } from "@/lib/content";

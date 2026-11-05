@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/ui/SiteLink";
 import { Section } from "@/components/ui/Section";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";

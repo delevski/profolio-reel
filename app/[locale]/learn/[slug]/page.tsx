@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
+import Link from "@/components/ui/SiteLink";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { MdxContent } from "@/lib/mdx";
 import { getLearnGuide, getLearnGuides } from "@/lib/content";
