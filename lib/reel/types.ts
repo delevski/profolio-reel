@@ -7,6 +7,11 @@ export type ReelSection = {
   dir?: string;
   /** Optional frames for portrait screens (same frameCount/pattern), used instead of `dir`. */
   portraitDir?: string;
+  /**
+   * Portrait only: local progress (0..1) of this section by which the reel
+   * captions must be gone, so they never sit on top of the frames after it.
+   */
+  portraitCaptionsEnd?: number;
   frameCount?: number;
   pattern?: string;
   scrollVh: number;

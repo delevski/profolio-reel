@@ -70,6 +70,7 @@
       "mode": "scrub",
       "dir": "/reel/seq/8",
       "portraitDir": "/reel/seq/8p",
+      "portraitCaptionsEnd": 0.45,
       "frameCount": 97,
       "pattern": "frame-%04d.jpg",
       "scrollVh": 160

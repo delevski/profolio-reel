@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { getCourses } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { isRtl, type Locale } from "@/lib/i18n/config";
+import { localizedPath } from "@/lib/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 type Props = { params: Promise<{ locale: Locale }> };
@@ -12,6 +13,12 @@ export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const dict = getDictionary(locale);
   return { title: dict.nav.academy };
+}
+
+// Courses without their own enrollment page ("#" in content/courses.json)
+// enroll through the site's contact page, in the same language.
+function enrollHref(href: string | undefined, locale: Locale) {
+  return href && href !== "#" ? href : localizedPath(locale, "/contact");
 }
 
 export default async function AcademyPage({ params }: Props) {
@@ -41,7 +48,10 @@ export default async function AcademyPage({ params }: Props) {
               </div>
               <h2 className="mb-3 text-2xl text-text">{course.title}</h2>
               <p className="mb-8 flex-1 text-text-muted">{course.description}</p>
-              <Button href={course.href} variant="primary">
+              <Button
+                href={enrollHref(course.href, locale)}
+                variant="primary"
+              >
                 {p.enroll}
               </Button>
             </div>

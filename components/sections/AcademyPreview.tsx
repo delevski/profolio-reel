@@ -39,7 +39,7 @@ export function AcademyPreview({ locale }: { locale: Locale }) {
             <h3 className="mb-2 text-xl text-text">{course.title}</h3>
             <p className="mb-6 flex-1 text-sm text-text-muted">{course.description}</p>
             <Link
-              href={course.href}
+              href={course.href && course.href !== "#" ? course.href : localizedPath(locale, "/contact")}
               className="text-sm font-medium text-accent-2 hover:text-accent"
             >
               {s.enroll}
