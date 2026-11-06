@@ -1,5 +1,47 @@
 [
   {
+    "slug": "shortigo",
+    "name": "ShortiGo",
+    "description": {
+      "en": "TikTok-style short-drama streaming app for iOS and Android, built with Flutter and Firebase.",
+      "he": "אפליקציית סטרימינג לדרמות קצרות בסגנון טיקטוק ל-iOS ו-Android, בנויה עם Flutter ו-Firebase."
+    },
+    "stars": 0,
+    "featured": true,
+    "category": "mobile",
+    "stack": [
+      "Dart",
+      "Flutter",
+      "Firebase",
+      "iOS",
+      "Android"
+    ],
+    "href": "https://github.com/delevski/ShortiGo",
+    "demoUrl": "https://shortigo-prod.web.app",
+    "imageUrl": "/projects/shortigo.png"
+  },
+  {
+    "slug": "lyra",
+    "name": "Lyra",
+    "description": {
+      "en": "Song-meaning explainer: search a song or paste a YouTube link and get its story, themes, symbols and references. Free, in English and Hebrew, on Android and the web.",
+      "he": "מנתח שירים: מחפשים שיר או מדביקים קישור YouTube ומקבלים את הסיפור, הסמלים וההקשר שלו. בחינם, באנגלית ובעברית, באנדרואיד ובווב."
+    },
+    "stars": 0,
+    "featured": true,
+    "category": "mobile",
+    "stack": [
+      "TypeScript",
+      "Next.js",
+      "Expo",
+      "Supabase",
+      "Gemini AI"
+    ],
+    "demoUrl": "https://lyra-rho-orpin.vercel.app",
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.delevski.lyra",
+    "imageUrl": "/projects/lyra.png"
+  },
+  {
     "slug": "profolio-reel",
     "name": "Ordel Portfolio & Reel",
     "description": {
@@ -153,26 +195,6 @@
     "demoUrl": "https://chefli.vercel.app"
   },
   {
-    "slug": "shortigo",
-    "name": "ShortiGo",
-    "description": {
-      "en": "TikTok-style short-drama streaming app for iOS and Android, built with Flutter and Firebase.",
-      "he": "אפליקציית סטרימינג לדרמות קצרות בסגנון טיקטוק ל-iOS ו-Android, בנויה עם Flutter ו-Firebase."
-    },
-    "stars": 0,
-    "featured": true,
-    "category": "mobile",
-    "stack": [
-      "Dart",
-      "Flutter",
-      "Firebase",
-      "iOS",
-      "Android"
-    ],
-    "href": "https://github.com/delevski/ShortiGo",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/ShortiGo"
-  },
-  {
     "slug": "championssport",
     "name": "Champions Sport",
     "description": {
@@ -323,6 +345,64 @@
     "href": "https://github.com/delevski/RAG-test",
     "imageUrl": "/projects/rag-test.png",
     "demoUrl": "https://rag-test-beta.vercel.app"
+  },
+  {
+    "slug": "locksmithruslan-redesign",
+    "name": "Locksmith Ruslan Redesign",
+    "description": {
+      "en": "Redesign of a 24/6 locksmith service site: Hebrew RTL landing with real pricing, service areas, reviews and click-to-call, built as fast static HTML/CSS/JS.",
+      "he": "עיצוב מחדש לאתר מנעולן 24/6: דף נחיתה בעברית RTL עם מחירון אמיתי, אזורי שירות, ביקורות וחיוג בלחיצה, ב-HTML/CSS/JS סטטי ומהיר."
+    },
+    "stars": 0,
+    "featured": false,
+    "category": "web",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "RTL"
+    ],
+    "href": "https://github.com/delevski/locksmithruslan-redesign",
+    "demoUrl": "https://delevski.github.io/locksmithruslan-redesign/",
+    "imageUrl": "/projects/locksmithruslan-redesign.png"
+  },
+  {
+    "slug": "mira-star-book",
+    "name": "Mira, Bit and the Little Star",
+    "description": {
+      "en": "Interactive Hebrew flip-book for kids with AI illustrations that draw themselves, Hebrew narration and 3D page turns.",
+      "he": "ספר-דפדוף אינטראקטיבי לילדים בעברית, עם איורי AI שנציירים על הדף, קריינות בעברית ודפדוף תלת-ממדי."
+    },
+    "stars": 0,
+    "featured": false,
+    "category": "web",
+    "stack": [
+      "TypeScript",
+      "Next.js",
+      "AI Illustration"
+    ],
+    "href": "https://github.com/delevski/mira-star-book",
+    "demoUrl": "https://mira-star-book.vercel.app",
+    "imageUrl": "/projects/mira-star-book.png"
+  },
+  {
+    "slug": "rosh-hashana-shopping",
+    "name": "Rosh Hashanah Shopping",
+    "description": {
+      "en": "Hebrew RTL mobile-first holiday grocery checklist with categories, quantities and progress tracking.",
+      "he": "רשימת קניות לחג בעברית RTL, מותאמת למובייל, עם קטגוריות, כמויות ומעקב התקדמות."
+    },
+    "stars": 0,
+    "featured": false,
+    "category": "web",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "href": "https://github.com/delevski/rosh-hashana-shopping",
+    "demoUrl": "https://delevski.github.io/rosh-hashana-shopping/",
+    "imageUrl": "/projects/rosh-hashana-shopping.png"
   },
   {
     "slug": "fastapi-aws-ingestor",
