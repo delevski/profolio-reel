@@ -752,6 +752,13 @@ export function ReelExperience({ manifest }: Props) {
               }}
               aria-hidden
             />
+            <p
+              className="relative mb-4 text-xs font-medium uppercase tracking-[0.28em] text-white/80 sm:text-sm"
+              style={{ textShadow: "0 2px 14px rgba(0,0,0,0.7)" }}
+              dir="ltr"
+            >
+              {opening.eyebrow}
+            </p>
             <h1
               className="relative font-serif text-[2.35rem] leading-[1.12] tracking-[-0.02em] text-white sm:text-5xl md:text-6xl lg:text-7xl"
               style={{
@@ -769,6 +776,21 @@ export function ReelExperience({ manifest }: Props) {
             >
               {opening.subtitle}
             </p>
+            <ul className="relative mx-auto mt-6 flex max-w-2xl flex-nowrap items-stretch justify-center gap-2 sm:mt-8 sm:gap-4">
+              {opening.stats.map((s) => (
+                <li
+                  key={s.value}
+                  className="min-w-0 flex-1 rounded-2xl border border-white/20 bg-black/35 px-2 py-3 backdrop-blur-sm sm:min-w-[8.5rem] sm:flex-none sm:px-5"
+                >
+                  <span className="block font-serif text-2xl leading-none text-white sm:text-3xl" dir="ltr">
+                    {s.value}
+                  </span>
+                  <span className="mt-1.5 block text-[0.65rem] uppercase tracking-[0.08em] text-white/75 sm:text-xs sm:tracking-[0.12em]">
+                    {s.label}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       )}
