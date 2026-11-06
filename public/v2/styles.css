@@ -226,6 +226,8 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
 .pimg img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1.2s var(--ease)}
 .proj:hover .pimg img{transform:scale(1.06)}
 .pbody{padding:24px 24px 26px;display:flex;flex-direction:column;gap:12px;flex:1}
+.pbody h3 a{color:inherit;transition:color .25s}.pbody h3 a:hover{color:var(--rust2)}
+.pcase{color:var(--rust2);font-weight:600;white-space:nowrap}.pcase:hover{text-decoration:underline;text-underline-offset:3px}
 .pcat{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust2);font-weight:600}
 .proj h3{font-size:clamp(22px,2vw,28px);font-weight:650;letter-spacing:-.02em}
 .proj p{color:var(--muted);font-size:15.5px}

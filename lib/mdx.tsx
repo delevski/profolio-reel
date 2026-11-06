@@ -1,7 +1,25 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import { LazyVideo } from "@/components/ui/LazyVideo";
+
+/**
+ * A clearly marked gap for Ori to fill with a real number or quote. Kept in
+ * the page source but hidden from visitors, like the home page placeholders.
+ */
+function Placeholder({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div hidden data-placeholder="case-study" className="mb-6 rounded-xl border border-dashed border-accent/60 bg-surface/60 p-4 text-text-muted">
+      <span className="mb-2 inline-block rounded-full border border-accent/60 px-2.5 py-0.5 text-xs font-semibold text-accent">
+        {"\u270e"} {label}
+      </span>
+      <div className="text-sm leading-relaxed">{children}</div>
+    </div>
+  );
+}
 
 const components = {
+  Video: LazyVideo,
+  Placeholder,
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1 className="mb-6 font-serif text-3xl text-text md:text-4xl" {...props} />
   ),
