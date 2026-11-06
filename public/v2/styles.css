@@ -496,3 +496,11 @@ html[data-theme="light"] .wcar-on .proj.is-center{box-shadow:0 46px 100px -48px 
 .open-to b{font-weight:650}
 .open-to .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.18);flex:none}
 @media (max-width:640px){.open-to{font-size:13px;padding:6px 12px;flex-wrap:wrap}}
+
+/* recruiter-first hero: LinkedIn next to CV, WhatsApp as a quiet text link */
+.cta-sub{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;flex-basis:100%;font-size:14px}
+.cta-sub .sep{color:var(--muted);opacity:.6}
+.text-link.small{font-size:14px}
+.nav-li svg{width:15px;height:15px}
+.nav-li{gap:7px}
+@media (max-width:640px){.nav-li{padding:0;width:38px;height:38px;justify-content:center}.nav-li span{display:none}.cta-sub{justify-content:center}.hero-cta .cta-sub .text-link{margin-inline:0}}
