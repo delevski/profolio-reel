@@ -15,10 +15,10 @@ const components = {
     <p className="mb-4 leading-relaxed text-text-muted" {...props} />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="mb-4 list-disc space-y-2 pl-6 text-text-muted" {...props} />
+    <ul className="mb-4 list-disc space-y-2 ps-6 text-text-muted" {...props} />
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className="mb-4 list-decimal space-y-2 pl-6 text-text-muted" {...props} />
+    <ol className="mb-4 list-decimal space-y-2 ps-6 text-text-muted" {...props} />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
     <li className="leading-relaxed" {...props} />

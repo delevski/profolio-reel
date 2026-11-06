@@ -1,0 +1,33 @@
+---
+title: "AgentLens: mapping where AI agents pay for themselves"
+excerpt: "Give it a repository and it draws the system back to you, finds the bottlenecks, and scores where an agent is worth building. Offline-first, zero-cost, bilingual."
+date: "2026-11-06"
+readTime: "6 min read"
+tags: ["AI Agents", "Next.js", "TypeScript", "Case Study"]
+lang: "EN"
+featured: true
+imageUrl: "/case-studies/agentlens.png"
+---
+
+## The problem
+
+Engineering leaders keep getting the same question: where would AI agents actually help us? An honest answer takes a senior engineer days of reading a codebase, and the output is usually a slide deck nobody can act on. I wanted that analysis to be a product. Paste a repository, get the system drawn back to you, and see exactly where an agent pays for itself.
+
+## What it does
+
+You give AgentLens a repo URL, an architecture diagram, a PDF or a document. It extracts the system, draws an interactive architecture map, finds bottlenecks and manual processes, and recommends where agents would help. Every recommendation comes with before and after diagrams, the evidence behind it, and an impact vs effort score. The full analysis exports to a PDF report. "Ask AgentLens" answers questions about the scanned project and labels every answer confirmed, inferred or ambiguous, because a tool like this loses its value the moment it bluffs.
+
+## Engineering decisions
+
+- **Offline-first AI.** The AI layer is provider-independent with three modes: a deterministic local engine, OpenRouter's free tier, or a local Ollama model. The product stays usable with no API key at all. When the free tier saturates, scans fall back to the deterministic engine on their own, and every scan is tagged so you know which engine produced it.
+- **The map is a real graph.** The architecture view is a Dagre-laid flow graph, not a page tree, and each proposed agent is drawn on it anchored to the exact node it touches. A layout test fails the build if two nodes overlap.
+- **No secrets, no credit card.** The constraint from day one: buildable and runnable with no paid APIs, and no secrets in the repo. Postgres runs on Neon, auth is email and password with per-user project isolation, and CI runs install, tests and build on every push.
+- **Bilingual from the start.** Hebrew with real RTL alongside English, a persisted light/dark toggle, and a 9-step in-app tutorial. English model output inside a Hebrew UI gets rejected automatically.
+
+## What shipped
+
+From written spec to a running vertical slice took one evening. Since then: repo scan end to end, agent-spec export to LangGraph, OpenAI Agents, CrewAI and Hermes, a "Create PR" button that scaffolds the recommended agent into your repository, auto-scan on every push to main with a diff against the previous scan, and comments and assignees on every insight.
+
+The bugs worth mentioning are the ones users found: an auth flow that broke on an unsupported library path, insights rendering twice, English leaking into the Hebrew UI. All reproduced, fixed and verified in production.
+
+Live at [agent-lens-neon.vercel.app](https://agent-lens-neon.vercel.app/). Stack: Next.js 16, TypeScript, Vitest, Dagre, Neon Postgres, GitHub Actions, Vercel.

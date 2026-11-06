@@ -10,6 +10,7 @@
     "learn": "Learn",
     "academy": "Academy",
     "projects": "Projects",
+    "caseStudies": "Case Studies",
     "apps": "Apps",
     "contact": "Contact",
     "hebrew": "עברית",
@@ -165,6 +166,12 @@
       "title": "Privacy Policy",
       "p1": "This is a placeholder privacy policy. Replace with your actual policy before collecting user data.",
       "p2": "We respect your privacy. This site uses minimal analytics and does not sell personal information. Contact us with any questions about data handling."
+    },
+    "caseStudies": {
+      "label": "Case Studies",
+      "title": "Case Studies",
+      "subtitle": "Deep dives into the agent systems I design, ship and run: the architecture, the numbers and the trade-offs.",
+      "back": "Back to Case Studies"
     }
   },
   "common": {

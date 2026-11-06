@@ -12,6 +12,7 @@ export function Footer({ locale }: { locale: Locale }) {
 
   const links = [
     { href: "/projects", label: dict.nav.projects },
+    { href: "/case-studies", label: dict.nav.caseStudies },
     { href: "/blog", label: dict.nav.blog },
     { href: "/learn", label: dict.footer.tutorials },
     { href: "/academy", label: dict.nav.academy },

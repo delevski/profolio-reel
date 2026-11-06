@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSiteConfig, getProjects, getApps, getCourses, getBlogPosts, getBlogPost, getLearnGuides, getLearnGuide } from "@/lib/content";
+import { getSiteConfig, getProjects, getApps, getCourses, getBlogPosts, getBlogPost, getLearnGuides, getLearnGuide, getCaseStudies, getCaseStudy } from "@/lib/content";
 import { reelCaptions } from "@/lib/reel/captions";
 import { siteUrl } from "@/lib/agent/readiness";
 import type { Locale } from "@/lib/i18n/config";
@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
   const contact = `## ${locale === "he" ? "יצירת קשר" : "Contact"}\n\n${site.contact.email}\n\n${site.contact.phone}\n\n${site.contact.location}\n\n${link("Contact page", "/contact")}`;
   let body: string | undefined;
   if (!route || route === "about") {
-    body = `# ${site.name}\n\n> ${site.subtitle}\n\n${site.about.bio.join("\n\n")}\n\n## Experience\n\n${site.experience.map((e) => `### ${e.title} - ${e.company}\n\n${e.period}\n\n${e.bullets.map((b) => `- ${b}`).join("\n")}`).join("\n\n")}\n\n## Pages\n\n${["reel", "projects", "apps", "blog", "learn", "academy", "contact"].map((p) => `- ${link(p, `/${p}`)}`).join("\n")}\n\n${contact}`;
+    body = `# ${site.name}\n\n> ${site.subtitle}\n\n${site.about.bio.join("\n\n")}\n\n## Experience\n\n${site.experience.map((e) => `### ${e.title} - ${e.company}\n\n${e.period}\n\n${e.bullets.map((b) => `- ${b}`).join("\n")}`).join("\n\n")}\n\n## Pages\n\n${["reel", "projects", "case-studies", "apps", "blog", "learn", "academy", "contact"].map((p) => `- ${link(p, `/${p}`)}`).join("\n")}\n\n${contact}`;
   } else if (route === "reel") {
     body = `# ${site.brand} - ${locale === "he" ? "ריל" : "Reel"}\n\n> ${locale === "he" ? "הופכים רעיונות למוצרים דיגיטליים" : "Turning ideas into digital products"}\n\n${reelCaptions(locale).map((c) => `- ${c}`).join("\n")}\n\n${contact}`;
   } else if (route === "contact") body = `# ${site.name}\n\n${contact}`;
@@ -27,6 +27,11 @@ export async function GET(request: NextRequest) {
   else if (route === "blog" || route === "learn") {
     const docs = route === "blog" ? await getBlogPosts(locale) : getLearnGuides(locale);
     body = `# ${route === "blog" ? "Blog" : "Learning guides"}\n\n${docs.map((d) => `- ${link(d.title, `/${route}/${d.slug}`)}: ${d.excerpt}`).join("\n")}`;
+  } else if (route === "case-studies") {
+    body = `# Case studies\n\n${getCaseStudies(locale).map((d) => `- ${link(d.title, `/case-studies/${d.slug}`)}: ${d.excerpt}`).join("\n")}`;
+  } else if (segments.length === 2 && segments[0] === "case-studies") {
+    const doc = getCaseStudy(segments[1], locale);
+    if (doc) body = `# ${doc.title}\n\n${doc.excerpt}\n\n${doc.content}`;
   } else if (segments.length === 2 && ["blog", "learn"].includes(segments[0])) {
     const doc = segments[0] === "blog" ? await getBlogPost(segments[1], locale) : getLearnGuide(segments[1], locale);
     if (doc) body = `# ${doc.title}\n\n${doc.excerpt}\n\n${doc.content}`;

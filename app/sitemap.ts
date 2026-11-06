@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getBlogPosts, getLearnGuides } from "@/lib/content";
+import { getBlogPosts, getCaseStudies, getLearnGuides } from "@/lib/content";
 import { locales } from "@/lib/i18n/config";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ordel.dev";
@@ -11,6 +11,7 @@ const staticRoutes = [
   "/learn",
   "/academy",
   "/projects",
+  "/case-studies",
   "/apps",
   "/contact",
   "/privacy",
@@ -46,5 +47,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
-  return [...staticEntries, ...blogRoutes, ...learnRoutes];
+  const caseStudyRoutes = locales.flatMap((locale) =>
+    getCaseStudies().map((study) => ({
+      url: `${baseUrl}/${locale}/case-studies/${study.slug}`,
+      lastModified: new Date(study.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }))
+  );
+
+  return [...staticEntries, ...blogRoutes, ...learnRoutes, ...caseStudyRoutes];
 }

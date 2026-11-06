@@ -221,6 +221,18 @@ export async function getBlogPost(
   }
 }
 
+/** Case studies from the filesystem, localized like blog posts. */
+export function getCaseStudies(locale: Locale = "en"): MdxDoc[] {
+  return getLocalizedMdxDocs("case-studies", locale);
+}
+
+export function getCaseStudy(
+  slug: string,
+  locale: Locale = "en"
+): MdxDoc | undefined {
+  return getCaseStudies(locale).find((c) => c.slug === slug);
+}
+
 export function getLearnGuides(locale: Locale = "en"): MdxDoc[] {
   return getLocalizedMdxDocs("learn", locale);
 }

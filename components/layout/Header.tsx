@@ -20,6 +20,7 @@ export function Header() {
 
   const navItems = [
     { href: "/projects", label: dict.nav.projects },
+    { href: "/case-studies", label: dict.nav.caseStudies },
     { href: "/blog", label: dict.nav.blog },
     { href: "/learn", label: dict.nav.learn },
     { href: "/academy", label: dict.nav.academy },
