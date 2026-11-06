@@ -98,6 +98,9 @@ See **[session-history.md](session-history.md)** for the full chronological buil
 
 ## Recent changes (last session)
 
+- **Case Studies section (2026-11-06):** `/[locale]/case-studies` index + `[slug]` detail, MDX-driven from `content/case-studies/` with `he/` overrides (same pattern as blog). Three studies: AgentLens (flagship), zero-cost agent stack (reliability/cost), agent security in production. Card images in `public/case-studies/`. Wired into: Header + Footer nav (`nav.caseStudies`), sitemap, `/api/markdown` (index + detail), `llms.txt`, chatbot knowledge (`scripts/build-knowledge.mjs` kinds). New blog post `agentlens-architecture` (EN+HE). `lib/mdx.tsx` lists now use `ps-6` (logical padding) so RTL lists indent correctly.
+
+
 - **Scroll reel** at `/[locale]/reel`: opening image → 7 clips as JPEG image sequences; sections 4 & 6 loop; scrub on 1–3, 5, 7; looping `bg.mp3`; muted video content; no Header/Footer
 - Extraction script `scripts/extract-reel-frames.sh`; `LocaleShell` hides chrome on the reel segment; Header/Footer passed as slots to keep server-only content off the client
 - Lint + build pass; all reel routes/assets verified 200 on a clean port
