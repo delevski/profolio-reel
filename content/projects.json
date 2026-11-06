@@ -347,26 +347,6 @@
     "demoUrl": "https://rag-test-beta.vercel.app"
   },
   {
-    "slug": "locksmithruslan-redesign",
-    "name": "Locksmith Ruslan Redesign",
-    "description": {
-      "en": "Redesign of a 24/6 locksmith service site: Hebrew RTL landing with real pricing, service areas, reviews and click-to-call, built as fast static HTML/CSS/JS.",
-      "he": "עיצוב מחדש לאתר מנעולן 24/6: דף נחיתה בעברית RTL עם מחירון אמיתי, אזורי שירות, ביקורות וחיוג בלחיצה, ב-HTML/CSS/JS סטטי ומהיר."
-    },
-    "stars": 0,
-    "featured": false,
-    "category": "web",
-    "stack": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "RTL"
-    ],
-    "href": "https://github.com/delevski/locksmithruslan-redesign",
-    "demoUrl": "https://delevski.github.io/locksmithruslan-redesign/",
-    "imageUrl": "/projects/locksmithruslan-redesign.png"
-  },
-  {
     "slug": "mira-star-book",
     "name": "Mira, Bit and the Little Star",
     "description": {
