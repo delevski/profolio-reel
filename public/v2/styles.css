@@ -488,3 +488,9 @@ html[data-theme="light"] .wcar-on .proj.is-center{box-shadow:0 46px 100px -48px 
 /* carousel perf: far cards hidden and unshadowed, side cards with a lighter shadow */
 .wcar-on .proj:not(.is-center){box-shadow:0 24px 50px -36px rgba(0,0,0,.45)}
 .wcar-on .proj.is-far{visibility:hidden;box-shadow:none;will-change:auto;transition:transform .95s var(--ease),opacity .7s var(--ease),visibility 0s .7s}
+
+/* recruiter line */
+.open-to{display:inline-flex;align-items:center;gap:10px;margin:16px 0 14px;padding:7px 14px;border:1px solid var(--line2);border-radius:999px;font-size:15px;color:var(--text);background:var(--surface)}
+.open-to b{font-weight:650}
+.open-to .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.18);flex:none}
+@media (max-width:640px){.open-to{font-size:13px;padding:6px 12px;flex-wrap:wrap}}
