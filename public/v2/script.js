@@ -46,7 +46,7 @@ var lv=document.querySelector('.lf-visual');
 if(lv&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting)auto();else clearInterval(timer)})}).observe(lv)}
 /* hero particles (three.js), loaded after first paint */
 var heroBase=(document.currentScript&&document.currentScript.src)||location.href;
-function loadHero(){if(!document.querySelector('.hero-gl'))return;try{import(new URL('hero.js',heroBase).href).catch(function(){document.querySelector('.hero').classList.add('no-gl')})}catch(e){document.querySelector('.hero').classList.add('no-gl')}}
+function loadHero(){if(!document.querySelector('.hero-gl'))return;var lite=matchMedia('(max-width:760px), (pointer:coarse)').matches||(navigator.connection&&navigator.connection.saveData);if(lite){document.querySelector('.hero').classList.add('no-gl');return}try{import(new URL('hero.js',heroBase).href).catch(function(){document.querySelector('.hero').classList.add('no-gl')})}catch(e){document.querySelector('.hero').classList.add('no-gl')}}
 function whenIdle(fn){if('requestIdleCallback' in window)requestIdleCallback(fn,{timeout:1200});else setTimeout(fn,200)}
 if(document.readyState==='complete')whenIdle(loadHero);else window.addEventListener('load',function(){whenIdle(loadHero)});
 })();
