@@ -1,0 +1,29 @@
+---
+title: "Security for agents that act on your behalf"
+excerpt: "Agents that read mail, book meetings and message customers need boundaries designed in from the start. How I scope, gate and audit the agents I build and run."
+date: "2026-11-06"
+readTime: "6 min read"
+tags: ["Security", "AI Agents", "SaaS", "Case Study"]
+lang: "EN"
+imageUrl: "/case-studies/leadflow.png"
+---
+
+## The stance
+
+An agent that can only chat is a toy. An agent that can act is a liability until you design its boundaries. Every agent system I build answers four questions before the first line of code: what can it read, what can it change, who approved that, and where is the audit trail.
+
+## Approval gates and tenant isolation
+
+LeadFlow is a white-label, multi-tenant AI sales platform: CRM, AI sales agents, email, WhatsApp and voice. A system like that dies from one cross-tenant leak or one rogue outbound message, so the rules are structural. Strict tenant isolation and role-based access at the data layer. Audit logs on the actions that matter. Consent and opt-out management for outbound communication. And a hard rule the whole team (human and agent) works under: no real outbound message, no production deploy and no paid charge without explicit authorization. Sensitive automations run through human approval steps with escalation paths, not around them.
+
+## OAuth done deliberately
+
+Hermes, my personal WhatsApp agent, has read and write access to my Gmail, Calendar, Drive and Sheets. Getting there safely was the interesting part. The Google integration lives in its own dedicated Cloud project, not shared with anything else. Scope selection was an explicit decision, documented, with the trade-offs on the table. While the app was in Testing mode, access was limited to listed test users, and it only moved to Production after the verification requirements (homepage, privacy policy) were in place. Access stays revocable from the user's side at any time.
+
+## Secrets discipline
+
+No secrets in repositories, ever. Keys live in environment configuration or a secret store. AgentLens runs its AI enrichment through a key that exists only in deployment env. Agent Office, my live agent dashboard, shows clearly marked mock data to the public; the live view of real agents sits behind a login, and each agent reports with its own per-agent token, so one leaked token exposes one agent, not the fleet.
+
+## What I am still hardening
+
+The next layer is prompt-injection defense: treating every inbound email, message and web page an agent reads as untrusted input, and making sure content can never escalate into instructions. Parts of this exist in my systems today (strict tool scoping, approval gates on side effects), and I test it as an ongoing practice rather than a finished feature. Security on agents that act is a posture, not a checkbox.

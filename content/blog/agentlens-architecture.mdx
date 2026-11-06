@@ -1,0 +1,28 @@
+---
+title: "How AgentLens reads a codebase"
+excerpt: "The architecture behind AgentLens: from a repo URL to a flow graph, scored agent opportunities, and a report. Offline-first, with a deterministic engine under the LLM."
+date: "2026-11-06"
+readTime: "4 min read"
+tags: ["Architecture", "AI Agents", "AgentLens"]
+lang: "EN"
+---
+
+AgentLens started with a simple-sounding requirement: paste a repository URL and get back a map of the system, plus a scored list of where AI agents would pay for themselves. This post is about the pipeline that makes that work, and why the deterministic engine is the part I trust most.
+
+## The pipeline
+
+**1. Extraction.** The input is a repo URL, an architecture diagram, a PDF or a document. The scanner pulls the source and derives the system inventory: pages, routes, services, data stores, integrations. This stage is purely deterministic. Same input, same inventory, every time.
+
+**2. The flow graph.** The inventory becomes a directed graph, laid out with Dagre. I chose a real flow graph over the much easier "page tree" because the question the tool answers is where work flows and where it gets stuck, and you cannot see that in a tree. Proposed agents are drawn on the same graph, anchored to the exact node they touch, so a recommendation is a place, not a slogan. A layout test fails the build if two nodes overlap, because a map you cannot read is worse than no map.
+
+**3. The opportunity engine.** The deterministic engine walks the graph looking for the patterns that usually hide agent opportunities: manual handoffs, polling loops, repeated CRUD across systems, unprotected API routes, dead dependencies, missing CI. Each finding becomes a scored insight, impact vs effort, with the evidence attached.
+
+**4. LLM enrichment, optional.** On top of the deterministic findings, an LLM layer (provider-independent: OpenRouter free tier, local Ollama, or nothing at all) writes the summary and deepens the insights. When the model is unavailable or the free tier is saturated, the scan still completes on the deterministic engine, and the result is tagged with the engine that produced it. A scan that cannot run without an API key is a demo, not a tool.
+
+**5. Output.** The analysis renders as an interactive map with before/after diagrams per recommendation, exports to a PDF report, and can export an agent spec to LangGraph, OpenAI Agents, CrewAI or Hermes. A "Create PR" button goes one step further and scaffolds the recommended agent into the repository itself.
+
+## Why deterministic first
+
+LLMs are great readers and unreliable accountants. If the graph, the findings and the scores come from the model, every run is a new opinion. Putting a deterministic engine underneath means the structure is stable, the model only adds language and depth, and the whole product works offline. The AI is an enrichment layer. The engineering is the product.
+
+The full story is in the [AgentLens case study](/en/case-studies/agentlens), and the product is live at [agent-lens-neon.vercel.app](https://agent-lens-neon.vercel.app/).

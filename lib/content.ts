@@ -63,7 +63,11 @@ function getMdxDocs(subdir: string): MdxDoc[] {
         content,
       };
     })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    .sort((a, b) => {
+      const f = Number(b.featured ?? false) - Number(a.featured ?? false);
+      if (f !== 0) return f;
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
 }
 
 function mapAutoPost(row: DbAutoPost, locale: Locale): MdxDoc {
@@ -164,6 +168,7 @@ function applyHebrewMdxOverride(subdir: string, doc: MdxDoc): MdxDoc {
     difficulty: (data.difficulty as string | undefined) ?? doc.difficulty,
     category: (data.category as string | undefined) ?? doc.category,
     tags: (data.tags as string[] | undefined) ?? doc.tags,
+    readTime: (data.readTime as string) || doc.readTime,
     content,
     lang: "HE",
   };
@@ -219,6 +224,18 @@ export async function getBlogPost(
   } catch {
     return undefined;
   }
+}
+
+/** Case studies from the filesystem, localized like blog posts. */
+export function getCaseStudies(locale: Locale = "en"): MdxDoc[] {
+  return getLocalizedMdxDocs("case-studies", locale);
+}
+
+export function getCaseStudy(
+  slug: string,
+  locale: Locale = "en"
+): MdxDoc | undefined {
+  return getCaseStudies(locale).find((c) => c.slug === slug);
 }
 
 export function getLearnGuides(locale: Locale = "en"): MdxDoc[] {

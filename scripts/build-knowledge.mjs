@@ -117,7 +117,7 @@ function frontmatter(src) {
   }
   return [meta, m[2]];
 }
-for (const kind of ["blog", "learn"]) {
+for (const kind of ["blog", "learn", "case-studies"]) {
   for (const lang of ["en", "he"]) {
     const dir = path.join(root, "content", kind, lang === "he" ? "he" : "");
     if (!fs.existsSync(dir)) continue;
@@ -126,7 +126,7 @@ for (const kind of ["blog", "learn"]) {
       const [meta, body] = frontmatter(fs.readFileSync(path.join(dir, f), "utf8"));
       const slug = f.replace(/\.mdx?$/, "");
       const text = `${meta.title || slug}. ${meta.excerpt || ""} ${body.replace(/```[\s\S]*?```/g, " ").replace(/<[^>]+>/g, " ").replace(/[#*_>`]/g, " ")}`;
-      push(lang, `${kind}:${slug}`, `${kind === "blog" ? "Blog" : "Learn guide"} — ${meta.title || slug}${meta.date ? ` (${meta.date})` : ""}`, `/${lang}/${kind}/${slug}`, text, 0.9);
+      push(lang, `${kind}:${slug}`, `${kind === "blog" ? "Blog" : kind === "learn" ? "Learn guide" : "Case study"} — ${meta.title || slug}${meta.date ? ` (${meta.date})` : ""}`, `/${lang}/${kind}/${slug}`, text, 0.9);
     }
   }
 }

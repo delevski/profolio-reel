@@ -1,0 +1,31 @@
+---
+title: "Reliable agents on a zero-cost stack"
+excerpt: "Every system I ship runs with no credit card and no paid APIs. That constraint became an engineering method: fallbacks everywhere, measured quality gates, and live supervision."
+date: "2026-11-06"
+readTime: "5 min read"
+tags: ["Reliability", "Cost Engineering", "AI Agents", "Case Study"]
+lang: "EN"
+imageUrl: "/case-studies/agent-office.png"
+---
+
+## The constraint
+
+Everything I build for myself and for clients runs on free tiers or local models. No credit card, no paid APIs. Most people treat that as a limitation. I treat it as a design input, because a system that survives free-tier limits is a system that survives anything.
+
+## What that looks like in practice
+
+**Fallbacks are the product, not the safety net.** AgentLens runs its analysis through a provider-independent AI layer with three modes: deterministic local, OpenRouter free tier, local Ollama. When the free tier saturates, scans fall back to the deterministic engine automatically, and every result is tagged with the engine that produced it. Users never see a failure; they see a label.
+
+**Token lifecycles are part of the design.** Hermes, my personal WhatsApp agent, drives Gmail, Calendar, Drive and Sheets through a dedicated Google OAuth app. OAuth apps in Testing mode expire their refresh tokens after 7 days, so the app went through Google's verification requirements (homepage, privacy policy, Production status) to make grants durable. When a token still expired, the agent recovered with a silent refresh and no re-login, and the mail and calendar reads were verified against the real accounts afterwards.
+
+**Degrade, don't die.** When Hermes' search provider returned empty results, the fix was a fallback chain: DuckDuckGo Lite by default, an HTML endpoint as backup, and the recovery path saved as a reusable skill so the next agent gets it for free.
+
+**Supervision is a feature.** Agent Office is a live dashboard where my agents sit at desks and stream their work: task start and done events, a 7-day task graph per agent, a reliability score, stuck-agent alerts and a full day replay. If an agent goes quiet or starts failing, I see it before a user does.
+
+## Measured quality gates
+
+Reliability claims need numbers, so I measure them. This portfolio holds a perfect 100 across all four PageSpeed categories on desktop, and 100 in Accessibility, Best Practices and SEO on mobile. Its agent-readiness score went from 76 to 100 after I shipped Markdown content negotiation, a Markdown 404, structured JSON-LD identity and an llms.txt guide. Both scores come from external auditors, not from me.
+
+## What I take from it
+
+Cost is an architecture decision. Reliability is a product feature. If your agent stack only works while the paid API is up and the budget holds, you don't have a stack yet.
