@@ -1,0 +1,55 @@
+---
+title: "Agent Office: one live view of every AI agent I run"
+excerpt: "My AI agents sit at desks in a live 3D office and stream their work into one hub: what each one is doing, what it costs, and where it's stuck. Cloudflare Workers, no paid APIs."
+date: "2026-11-06"
+readTime: "5 min read"
+tags: ["AI Agents", "Cloudflare Workers", "Observability", "Case Study"]
+lang: "EN"
+featured: true
+imageUrl: "/case-studies/agent-office.png"
+---
+
+## The problem
+
+I run several AI agents at once: Claude, GPT, Hermes (a young agent I'm training), plus Nova, Pixel and Atlas. Each one works in its own place. There was no shared view of what each agent was doing right now, what it was costing me, or where it was stuck. Finding out meant reading logs one agent at a time.
+
+## What I built
+
+Agent Office is a live web "office". Every agent is a character at a desk, and the room itself is the dashboard: when several agents work in parallel, you see what each one is doing in a second instead of reading logs.
+
+<Video src="/v2/agent-office/demo.mp4" poster="/v2/agent-office/poster.jpg" label="Agent Office demo: agents working at their desks" />
+
+The public page runs in demo mode with fictional data, clearly labeled. Live mode, with the real agents and what they report, opens only after login.
+
+## Architecture
+
+- **One endpoint in.** Agents report by `POST /api/ingest`. The event kinds are `task.start`, `task.done`, `task.failed`, `task.queued`, `status`, `usage` and `config`, plus `review`, `pr.merged`, `deploy` and `handoff`. An agent can also send a full snapshot in one call to its own `heartbeat` endpoint.
+- **A token per agent.** Each agent writes with its own bearer token, kept as a Workers secret and never in the repo. Bad review, merge and deploy payloads are rejected with a 400 and nothing is stored; the original kinds are never rejected, so existing agents keep working.
+- **One hub, real time.** A single SQLite-backed Durable Object stores the events and each agent's state, and fans them out to browsers over a WebSocket. `GET /api/events?since=N` is the polling fallback.
+- **Same logic on both sides.** The browser runs the same reducer as the server, so a replay of the day matches what really happened.
+- **No made-up numbers.** An agent that never reported shows "no data", and one that's been quiet for 10 minutes shows "offline".
+- **Zero-cost stack.** Cloudflare Workers free tier, static assets plus one Worker, no paid APIs and no build step. The 3D room is Three.js with all geometry generated in code.
+
+## What it shows
+
+- A kanban board per agent (to do, in progress, done), stats and a skills shelf.
+- Code-review cards, with the findings-per-PR trend for Hermes's own PRs.
+- A 7-day history graph of tasks done and failed.
+- A stuck / silent alert after 30 minutes with no update on an open task.
+- A "what changed today" feed of merged PRs and deploys, and a live activity line under each agent's name.
+- Day replay at ×10, ×60 or ×600, with a slider to jump to any moment.
+- Handoff lines that fly between desks when one agent passes a task to another.
+- A daily cost / budget meter that turns amber at 80% and red when over.
+- A morning-summary endpoint with the overnight digest.
+- A meeting room: agents working on the same PR sit together at the round table.
+- A reliability score from 0 to 100, built only from events the agents already send.
+- "Give a task": add a card to an agent's to-do column from the board.
+
+<Placeholder label="For Ori to fill">Results: A real number from using it, e.g. how much faster you spot a stuck agent, or what the budget meter caught. Leave empty until there is one.</Placeholder>
+
+## Links
+
+- Live demo: [agent-office-demo.orworkdelevski.workers.dev](https://agent-office-demo.orworkdelevski.workers.dev)
+- Code: [github.com/delevski/agent-office-demo](https://github.com/delevski/agent-office-demo)
+
+Stack: JavaScript (ES modules), Cloudflare Workers, Durable Objects (SQLite), WebSockets, Three.js.
