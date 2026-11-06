@@ -75,7 +75,9 @@
   /* Initial height must be measured before absolutely positioning the cards. */
   grid.style.setProperty('--ch','0px');
   /* Load every card image up front (they are small) so none pops in and changes height mid-rotation. */
-  cards.forEach(function(c){var im=c.querySelector('img');if(im){im.loading='eager';if(!im.complete)im.addEventListener('load',queueMeasure,{once:true})}});
+  function eagerAll(){cards.forEach(function(c){var im=c.querySelector('img');if(im){im.loading='eager';if(!im.complete)im.addEventListener('load',queueMeasure,{once:true})}})}
+  /* ...but only once the carousel is near the viewport, so they don't compete with the first screen on mobile. */
+  if('IntersectionObserver' in window){var eio=new IntersectionObserver(function(es){if(es.some(function(e){return e.isIntersecting})){eio.disconnect();eagerAll()}},{rootMargin:'900px 0px'});eio.observe(root)}else eagerAll();
   requestAnimationFrame(measure);
   /* Only a width change re-measures: the mobile address bar showing/hiding on scroll changes height only. */
   if('ResizeObserver' in window){resizeObserver=new ResizeObserver(function(en){var w=Math.round(en[0].contentRect.width);if(w!==lastW){lastW=w;queueMeasure()}});resizeObserver.observe(stage)}

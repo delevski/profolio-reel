@@ -26,6 +26,23 @@ export const ReelMusicControl = forwardRef<ReelMusicHandle, Props>(
     const [muted, setMuted] = useState(false);
     const mutedRef = useRef(false);
 
+    // ~1 MB of music: fetch it only after the page has loaded, not during first paint.
+    useEffect(() => {
+      let t = 0;
+      const warm = () => {
+        t = window.setTimeout(() => {
+          const a = audioRef.current;
+          if (a && a.preload !== "auto") a.preload = "auto";
+        }, 2500);
+      };
+      if (document.readyState === "complete") warm();
+      else window.addEventListener("load", warm, { once: true });
+      return () => {
+        window.removeEventListener("load", warm);
+        if (t) window.clearTimeout(t);
+      };
+    }, []);
+
     const play = async (): Promise<boolean> => {
       const audio = audioRef.current;
       if (!audio || mutedRef.current) return false;
@@ -42,10 +59,15 @@ export const ReelMusicControl = forwardRef<ReelMusicHandle, Props>(
 
     useImperativeHandle(ref, () => ({ play }), []);
 
+    const firstMutedRun = useRef(true);
     useEffect(() => {
       mutedRef.current = muted;
       const audio = audioRef.current;
       if (!audio) return;
+      if (firstMutedRun.current) {
+        firstMutedRun.current = false;
+        return;
+      }
       if (muted) {
         audio.pause();
         audio.muted = true;
@@ -59,14 +81,21 @@ export const ReelMusicControl = forwardRef<ReelMusicHandle, Props>(
       const audio = audioRef.current;
       if (!audio) return;
       audio.loop = true;
-      audio.preload = "auto";
       audio.muted = false;
       audio.volume = 0.7;
 
-      // Optimistic unmuted default — browsers often block until a gesture.
-      void audio.play().then(() => {
-        unlockedRef.current = true;
-      }).catch(() => {});
+      // Optimistic unmuted default — browsers often block until a gesture. Tried only after the
+      // page has loaded, so the ~1 MB track never competes with the first paint.
+      const tryAutoplay = () => {
+        if (mutedRef.current || unlockedRef.current) return;
+        void audio.play().then(() => {
+          unlockedRef.current = true;
+        }).catch(() => {});
+      };
+      let autoT = 0;
+      const onLoad = () => { autoT = window.setTimeout(tryAutoplay, 2500); };
+      if (document.readyState === "complete") onLoad();
+      else window.addEventListener("load", onLoad, { once: true });
 
       const onGesture = () => {
         if (mutedRef.current) return;
@@ -96,6 +125,8 @@ export const ReelMusicControl = forwardRef<ReelMusicHandle, Props>(
 
       return () => {
         cleanup();
+        window.removeEventListener("load", onLoad);
+        if (autoT) window.clearTimeout(autoT);
         audio.pause();
       };
     }, [src]);
@@ -106,7 +137,7 @@ export const ReelMusicControl = forwardRef<ReelMusicHandle, Props>(
 
     return (
       <>
-        <audio ref={audioRef} src={src} loop playsInline preload="auto" />
+        <audio ref={audioRef} src={src} loop playsInline preload="none" />
         <button
           type="button"
           onClick={toggle}

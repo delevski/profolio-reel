@@ -540,11 +540,31 @@ export function ReelExperience({ manifest }: Props) {
         schedule();
       })
       .catch(() => {});
-    const store = storeRef.current;
-    if (seqs[1]) store?.load(seqs[1], true);
-    if (seqs[2]) store?.load(seqs[2]);
+    // The clip packs are ~1 MB each: start them once the page has loaded and gone idle so they
+    // don't compete with the first paint on mobile. Start/scroll still load them on demand.
+    let idleId = 0;
+    let timer = 0;
+    const warm = () => {
+      if (cancelled) return;
+      const store = storeRef.current;
+      if (seqs[1]) store?.load(seqs[1], true);
+      if (seqs[2]) store?.load(seqs[2]);
+    };
+    const afterLoad = () => {
+      const w = window as Window & {
+        requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number;
+      };
+      if (w.requestIdleCallback) idleId = w.requestIdleCallback(warm, { timeout: 1500 });
+      else timer = window.setTimeout(warm, 300);
+    };
+    if (document.readyState === "complete") afterLoad();
+    else window.addEventListener("load", afterLoad, { once: true });
     return () => {
       cancelled = true;
+      window.removeEventListener("load", afterLoad);
+      const w = window as Window & { cancelIdleCallback?: (id: number) => void };
+      if (idleId && w.cancelIdleCallback) w.cancelIdleCallback(idleId);
+      if (timer) window.clearTimeout(timer);
     };
   }, [manifest.opening, seqs, schedule]);
 
