@@ -16,29 +16,38 @@
   var dotsEls=cards.map(function(){var d=document.createElement('i');dots.appendChild(d);return d});
   var resizeObserver;
   function delta(i){var n=(i-index+len)%len;return n>len/2?n-len:n}
+  var lastH=0,lastW=0,mq=0;
   function measure(){
-    /* Let the tallest card determine a constant stage height so captions never jump. */
+    /* Tallest card sets one constant stage height; only rewritten when it really changes, so the page never jumps. */
     var max=0;cards.forEach(function(c){max=Math.max(max,c.scrollHeight)});
-    grid.style.setProperty('--ch',Math.ceil(max)+'px');
+    max=Math.ceil(max);
+    if(Math.abs(max-lastH)>2){lastH=max;grid.style.setProperty('--ch',max+'px')}
     paint();
   }
+  function queueMeasure(){if(mq)return;mq=requestAnimationFrame(function(){mq=0;measure()})}
+  var lastSide=cards.map(function(){return 0});
   function paint(){
     var w=cards[0].getBoundingClientRect().width || 520;
     var compact=window.innerWidth<641;
     var side=compact?w*.8:w*.72;
     cards.forEach(function(card,i){
       var d=delta(i),dist=Math.abs(d),sign=Math.sign(d)*(rtl?-1:1);
-      var x=dist===0?0:sign*side*(dist===1?1:dist===2?1.72:2.25);
-      var z=dist===0?0:dist===1?-195:dist===2?-410:-560;
-      var scale=dist===0?1:dist===1?.83:dist===2?.66:.51;
-      card.style.transform='translate3d('+x.toFixed(1)+'px,0,'+z+'px) rotateY('+(-sign*(dist===1?43:dist===2?54:62))+'deg) scale('+scale+')';
-      card.style.opacity=dist<=2?'1':'0';
-      card.style.pointerEvents=dist<=2?'':'none';
-      card.style.setProperty('--shade',dist===0?'0':dist===1?'.22':dist===2?'.42':'.6');
+      var far=dist>2, dd=Math.min(dist,3);
+      /* A far card that wraps to the other side jumps there hidden, with no flight across the stage. */
+      var jump=far&&lastSide[i]!==0&&sign!==lastSide[i];
+      lastSide[i]=sign;
+      card.classList.toggle('is-far',far);
+      card.style.transition=jump?'none':'';
+      var x=dd===0?0:sign*side*(dd===1?1:dd===2?1.72:2.25);
+      var z=dd===0?0:dd===1?-195:dd===2?-410:-560;
+      var scale=dd===0?1:dd===1?.83:dd===2?.66:.51;
+      card.style.transform='translate3d('+x.toFixed(1)+'px,0,'+z+'px) rotateY('+(-sign*(dd===1?43:dd===2?54:62))+'deg) scale('+scale+')';
+      card.style.opacity=far?'0':'1';
+      card.style.pointerEvents=far?'none':'';
+      card.style.setProperty('--shade',dist===0?'0':dist===1?'.22':'.42');
       card.style.zIndex=String(10-dist);
       card.classList.toggle('is-center',dist===0);
       card.setAttribute('aria-hidden',dist===0?'false':'true');
-      /* Only the centered card's live site is focusable and follows a click. */
       imageLinks[i].tabIndex=dist===0?0:-1;
       imageLinks[i].setAttribute('aria-hidden',dist===0?'false':'true');
       card.querySelectorAll('.pbody a').forEach(function(a){a.tabIndex=dist===0?0:-1});
@@ -46,11 +55,12 @@
     });
     root.setAttribute('aria-label',root.dataset.label+' — '+format.replace('{n}',index+1).replace('{t}',len)+': '+cards[index].querySelector('h3').textContent);
   }
+  var scrollingUntil=0;window.addEventListener('scroll',function(){scrollingUntil=Date.now()+700},{passive:true});
   function canRun(){return inView&&!document.hidden&&!hovering&&!focusing&&!dragging&&!userPaused}
   function schedule(){
     clearTimeout(timer);timer=null;
     if(!canRun())return;
-    timer=setTimeout(function(){if(!canRun())return;var wait=coolUntil-Date.now();if(wait>0){schedule();return}select(index+1,false);schedule()},4800);
+    timer=setTimeout(function(){if(!canRun())return;var wait=Math.max(coolUntil,scrollingUntil)-Date.now();if(wait>0){schedule();return}select(index+1,false);schedule()},4800);
   }
   function select(n,manual){
     index=(n%len+len)%len;
@@ -64,8 +74,11 @@
   control.hidden=false;
   /* Initial height must be measured before absolutely positioning the cards. */
   grid.style.setProperty('--ch','0px');
+  /* Load every card image up front (they are small) so none pops in and changes height mid-rotation. */
+  cards.forEach(function(c){var im=c.querySelector('img');if(im){im.loading='eager';if(!im.complete)im.addEventListener('load',queueMeasure,{once:true})}});
   requestAnimationFrame(measure);
-  if('ResizeObserver' in window){resizeObserver=new ResizeObserver(function(){requestAnimationFrame(measure)});resizeObserver.observe(stage)}
+  /* Only a width change re-measures: the mobile address bar showing/hiding on scroll changes height only. */
+  if('ResizeObserver' in window){resizeObserver=new ResizeObserver(function(en){var w=Math.round(en[0].contentRect.width);if(w!==lastW){lastW=w;queueMeasure()}});resizeObserver.observe(stage)}
   else window.addEventListener('resize',measure,{passive:true});
   window.addEventListener('load',measure,{once:true});
   cards.forEach(function(card,i){
