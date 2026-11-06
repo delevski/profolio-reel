@@ -448,6 +448,7 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
 @media (max-width:560px){.jbul li{font-size:14.5px}.strengths li{font-size:13.5px;padding:8px 13px}.stat small{font-size:12.5px}}
 
 /* work carousel */
+
 /* 3D coverflow for #work, driven by carousel.js. Without JS or with reduced motion the grid above stays as it is. */
 .wcar:not(.wcar-on) .wcar-stage{width:min(1240px,100% - 48px);margin-inline:auto}
 .wcar.wcar-on{position:relative;overflow:hidden;overflow:clip;margin-top:clamp(8px,2vw,24px);padding:30px 0 6px;--cw:520px}
@@ -483,3 +484,7 @@ html[data-theme="light"] .wcar-on .proj.is-center{box-shadow:0 46px 100px -48px 
 @media (max-width:640px){.wcar:not(.wcar-on) .wcar-stage{width:min(1240px,100% - 36px)}.wcar.wcar-on{--cw:min(78vw,340px);padding-top:18px}.wcar-on .pbody{padding:18px 18px 20px;gap:10px}.wcar-on .proj h3{font-size:22px}.wcar-on .proj p{font-size:14.5px}.wcar-dots{display:none}}
 @media (prefers-reduced-motion:reduce){.wcar-on .proj{transition:none}}
 /* end work carousel */
+
+/* carousel perf: far cards hidden and unshadowed, side cards with a lighter shadow */
+.wcar-on .proj:not(.is-center){box-shadow:0 24px 50px -36px rgba(0,0,0,.45)}
+.wcar-on .proj.is-far{visibility:hidden;box-shadow:none;will-change:auto;transition:transform .95s var(--ease),opacity .7s var(--ease),visibility 0s .7s}
