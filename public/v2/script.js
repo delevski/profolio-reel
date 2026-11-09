@@ -55,6 +55,11 @@ if(aoBox){
   var aoPlay=function(){aoLoad();var p=aov.play();if(p&&p.catch)p.catch(function(){})};
   if(aoRM.matches||aoSave){aoHeld=true;aov.removeAttribute('autoplay')}
   aov.addEventListener('play',aoLabel);aov.addEventListener('pause',aoLabel);aoLabel();
+  var aoChips=[].slice.call(document.querySelectorAll('.ao-chip')), aoCur=-1;
+  var aoMark=function(){var t=aov.currentTime,i=0;aoChips.forEach(function(c,j){if(t>=parseFloat(c.getAttribute('data-t')))i=j});if(i!==aoCur){aoCur=i;aoChips.forEach(function(c,j){c.classList.toggle('on',j===i)})}};
+  aov.addEventListener('timeupdate',aoMark);
+  aoChips.forEach(function(c){c.addEventListener('click',function(){var t=parseFloat(c.getAttribute('data-t'))+0.3;aoHeld=false;
+    if(aov.readyState>=1)aov.currentTime=t;else aov.addEventListener('loadedmetadata',function(){aov.currentTime=t},{once:true});aoPlay()})});
   aob.addEventListener('click',function(){if(aov.paused){aoHeld=false;aoPlay()}else{aoHeld=true;aov.pause()}});
   var aoSync=function(){if(aoNear&&!aoHeld&&!document.hidden)aoPlay();else if(!aov.paused)aov.pause()};
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){aoNear=es[es.length-1].isIntersecting;aoSync()},{rootMargin:'160px 0px'}).observe(aoBox)}
