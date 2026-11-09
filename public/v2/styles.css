@@ -520,10 +520,13 @@ html[data-theme="light"] .wcar-on .proj.is-center{box-shadow:0 46px 100px -48px 
 .ao-screen.is-paused .i-pause{display:none}
 .ao-screen.is-paused .i-play{display:block}
 .ao-tags{margin-top:22px}
+.ao-tags li{padding:0;border:0;background:none}
+.ao-chip{font:inherit;font-size:12.5px;line-height:1.4;padding:6px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--surface);cursor:pointer;transition:color .25s,background .25s,border-color .25s}
+.ao-chip:hover{color:var(--text);border-color:var(--line2)}
+.ao-chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
 .ao .lf-cta{margin-top:26px}
 @media (max-width:640px){
   .ao-frame{border-radius:14px}
-  .ao-screen{aspect-ratio:16/10}
   .ao-toggle{width:38px;height:38px;inset-inline-end:10px;bottom:10px}
   .ao .display .by{display:block;margin-top:8px;font-size:.36em;vertical-align:baseline}
 }
