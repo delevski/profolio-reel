@@ -3,6 +3,15 @@
  * Fetches 5 GitHub + 5 Hugging Face trends, summarizes with Mistral,
  * upserts Supabase, emails a Hebrew digest, and may publish one blog post.
  *
+ * Mistral budget: ~3-4 calls per run (1 batched summaries+pick, 1 article, 1 Hebrew translation,
+ * +1 optional cover concept), all through one rate-limit-aware client (scripts/lib/llm.ts).
+ * Optional env: MISTRAL_MODEL_SUMMARY (mistral-small-latest), MISTRAL_MODEL_ARTICLE (mistral-large-latest),
+ *   MISTRAL_MODEL_TRANSLATE (= article model), MISTRAL_MODEL_FALLBACK (mistral-small-latest),
+ *   MISTRAL_MIN_INTERVAL_MS (2500), MISTRAL_MAX_ATTEMPTS (5), MISTRAL_TIME_BUDGET_MS (600000).
+ * If Mistral stays rate-limited after its retries and ANTHROPIC_API_KEY (+ optional ANTHROPIC_MODEL) is set,
+ * the same requests are served by Anthropic; without that secret nothing changes.
+ * REGENERATE_DATE=YYYY-MM-DD: rebuild that existing day's post (same slug, same trend) from its digest.
+ *
  * Required env: MISTRAL_API_KEY, RESEND_API_KEY (SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY optional)
  * Optional: DIGEST_EMAIL, RESEND_FROM, SITE_URL, GITHUB_TOKEN (source README lookups, higher rate limit)
  * Optional cover-image provider — the first key present wins, none = branded cover drawn in code:
@@ -16,12 +25,26 @@ import path from "path";
 import { Resend } from "resend";
 import {
   checkStructure,
+  buildFallbackArticle,
   ensureDiagram,
   getMermaidBlocks,
   parseArticleResponse,
   restoreDiagrams,
 } from "./lib/article";
 import { generateCover, type CoverResult } from "./lib/cover";
+import {
+  LlmClient,
+  LlmError,
+  llmConfigFromEnv,
+  mistralModelsFromEnv,
+  type MistralModels,
+} from "./lib/llm";
+import {
+  SUMMARY_SYSTEM,
+  buildSummaryPrompt,
+  parseSummaryResponse,
+  type BatchResult,
+} from "./lib/summaries";
 import { readTimeString } from "../lib/reading-time";
 
 const DIGEST_EMAIL =
@@ -37,6 +60,8 @@ const AI_KEYWORDS =
   /\b(ai|ml|llm|gpt|transformer|diffusion|neural|deep.?learning|machine.?learning|huggingface|openai|anthropic|agent|rag|embedding|inference|cuda|pytorch|tensorflow|whisper|llama|mistral|claude|gemini|vision|nlp|stable.?diffusion|flux)\b/i;
 
 type RawTrend = {
+  /** Set when the trend comes from an existing digest (REGENERATE_DATE). */
+  id?: string;
   source: "github" | "huggingface";
   title: string;
   description: string;
@@ -247,111 +272,68 @@ async function fetchHuggingFaceTrending(): Promise<RawTrend[]> {
   });
 }
 
-async function mistralChat(
-  apiKey: string,
-  system: string,
-  user: string,
-  options: { maxTokens?: number; temperature?: number } = {}
-): Promise<string> {
-  // Mistral's free tier answers 429 when calls come in bursts (the 2026-11-09 run
-  // lost its Hebrew summaries and blog draft that way), so back off and retry.
-  const delays = [3000, 8000, 20000];
-  let res: Response | undefined;
-  for (let attempt = 0; ; attempt++) {
-    res = await fetch(`${process.env.MISTRAL_API_BASE ?? "https://api.mistral.ai"}/v1/chat/completions`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "mistral-small-latest",
-        temperature: options.temperature ?? 0.4,
-        ...(options.maxTokens ? { max_tokens: options.maxTokens } : {}),
-        messages: [
-          { role: "system", content: system },
-          { role: "user", content: user },
-        ],
-      }),
-    });
-    const retryable = res.status === 429 || res.status >= 500;
-    if (res.ok || !retryable || attempt >= delays.length) break;
-    await new Promise((r) => setTimeout(r, delays[attempt]));
-  }
+/** Tracks why-not for the logs: which steps were skipped to protect the article + translation. */
+const TRANSLATE_RESERVE_MS = 150_000;
+const OPTIONAL_STEP_COST_MS = 60_000;
 
-  if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`Mistral API ${res.status}: ${body.slice(0, 400)}`);
-  }
-
-  const data = (await res.json()) as {
-    choices?: { message?: { content?: string } }[];
-  };
-  const content = data.choices?.[0]?.message?.content?.trim();
-  if (!content) throw new Error("Mistral returned empty content");
-  return content;
+/** The configured model itself was refused (unknown model / no access), as opposed to a rate limit. */
+function modelUnavailable(err: unknown): boolean {
+  return err instanceof LlmError && err.kind === "http" && [400, 403, 404].includes(err.status ?? 0);
 }
 
-function extractJsonObject(text: string): unknown {
-  const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/);
-  const candidate = fenced?.[1]?.trim() ?? text.trim();
-  const start = candidate.indexOf("{");
-  const end = candidate.lastIndexOf("}");
-  if (start === -1 || end === -1) {
-    throw new Error("Could not find JSON object in model response");
-  }
-  return JSON.parse(candidate.slice(start, end + 1));
+function fallbackSummaryHe(title: string): string {
+  return `טרנד חדש: ${title}. כדאי לעקוב אחרי העדכון הזה.`;
 }
 
+/**
+ * ONE call (JSON out) for all per-trend summaries and, when `wantPick`, the trend-of-the-day pick.
+ * On any failure every trend keeps its raw description and the pick falls back to the first uncovered one.
+ */
 async function enrichTrends(
-  apiKey: string,
-  trends: RawTrend[]
-): Promise<EnrichedTrend[]> {
-  const enriched: EnrichedTrend[] = [];
-
-  for (const [index, trend] of trends.entries()) {
-    const prompt = `Summarize this AI trend for a portfolio digest.
-
-Source: ${trend.source}
-Title: ${trend.title}
-Description: ${trend.description}
-URL: ${trend.href}
-
-Return ONLY JSON:
-{
-  "summaryEn": "1-2 clear English sentences for the website card",
-  "summaryHe": "1-2 short Hebrew sentences, simple language for beginners (for dummies)"
-}`;
-
+  client: LlmClient,
+  models: MistralModels,
+  trends: RawTrend[],
+  day: string,
+  covered: Set<string>,
+  wantPick: boolean
+): Promise<{ trends: EnrichedTrend[]; pick: number | null }> {
+  const inputs = trends.map((t) => ({ ...t, covered: covered.has(t.href) }));
+  let parsed: BatchResult | null = null;
+  for (let attempt = 1; attempt <= 2 && !parsed; attempt++) {
     try {
-      const raw = await mistralChat(
-        apiKey,
-        "You write short plain-language AI trend summaries. Return valid JSON only.",
-        prompt
+      const raw = await client.chat(SUMMARY_SYSTEM, buildSummaryPrompt(inputs, { pick: wantPick }), {
+        model: models.summary,
+        // 10 trends x (EN + HE sentence) — Hebrew is token-hungry, leave headroom.
+        maxTokens: 3500,
+        temperature: 0.3,
+        json: true,
+        // The article and its translation come first: never spend their time on summaries.
+        reserveMs: TRANSLATE_RESERVE_MS * 2,
+        label: `summaries(${attempt})`,
+      });
+      parsed = parseSummaryResponse(raw, trends.length);
+    } catch (err) {
+      console.warn(
+        `Batched summaries attempt ${attempt} failed:`,
+        err instanceof Error ? err.message : err
       );
-      const parsed = extractJsonObject(raw) as {
-        summaryEn?: string;
-        summaryHe?: string;
-      };
-      enriched.push({
-        ...trend,
-        id: `${todayIso()}-${trend.source}-${index + 1}`,
-        summaryEn: parsed.summaryEn?.trim() || trend.description,
-        summaryHe:
-          parsed.summaryHe?.trim() ||
-          `טרנד חדש: ${trend.title}. כדאי לעקוב אחרי העדכון הזה.`,
-      });
-    } catch {
-      enriched.push({
-        ...trend,
-        id: `${todayIso()}-${trend.source}-${index + 1}`,
-        summaryEn: trend.description,
-        summaryHe: `טרנד חדש: ${trend.title}. כדאי לעקוב אחרי העדכון הזה.`,
-      });
+      // HTTP errors were already retried with backoff inside the client; only a malformed answer is worth one more call.
+      if (err instanceof LlmError) break;
     }
   }
 
-  return enriched;
+  const enriched = trends.map((trend, index): EnrichedTrend => {
+    const item = parsed?.items[index];
+    return {
+      ...trend,
+      id: trend.id ?? `${day}-${trend.source}-${index + 1}`,
+      summaryEn: item?.summaryEn || trend.description,
+      summaryHe: item?.summaryHe || fallbackSummaryHe(trend.title),
+    };
+  });
+  const got = parsed?.items.filter(Boolean).length ?? 0;
+  console.log(`Summaries: ${got}/${trends.length} from the model (1 batched call${got < trends.length ? ", rest use fallback text" : ""}).`);
+  return { trends: enriched, pick: parsed?.pick ?? null };
 }
 
 async function upsertTrends(
@@ -388,43 +370,24 @@ async function getCoveredHrefs(supabase: SupabaseClient): Promise<Set<string>> {
 }
 
 async function pickAndWriteBlog(
-  apiKey: string,
+  client: LlmClient,
+  models: MistralModels,
   trends: EnrichedTrend[],
-  covered: Set<string>
+  covered: Set<string>,
+  options: { pick: number | null; forcedHref?: string; forcedSlug?: string; day: string }
 ): Promise<BlogDraft | null> {
   const candidates = trends.filter((t) => !covered.has(t.href));
-  if (candidates.length === 0) return null;
+  const forced = options.forcedHref ? trends.find((t) => t.href === options.forcedHref) : undefined;
+  if (!forced && candidates.length === 0) return null;
 
-  const list = candidates
-    .map(
-      (t, i) =>
-        `${i + 1}. [${t.source}] ${t.title} — ${t.summaryEn} (${t.href})`
-    )
-    .join("\n");
-
-  let chosen = candidates[0];
-  try {
-    const pickRaw = await mistralChat(
-      apiKey,
-      "You are an AI news editor. Choose the single most important trend for a developer/portfolio audience. Return JSON only.",
-      `Pick the most important trend from this list. Return ONLY JSON: {"index": <1-based number>, "why": "one English sentence"}\n\n${list}`
-    );
-    const pick = extractJsonObject(pickRaw) as { index?: number };
-    const index = Math.max(
-      1,
-      Math.min(candidates.length, Number(pick.index) || 1)
-    );
-    chosen = candidates[index - 1];
-  } catch (err) {
-    console.warn(
-      "Trend pick JSON parse failed — defaulting to first uncovered trend.",
-      err instanceof Error ? err.message : err
-    );
-  }
+  // The pick came with the batched summaries (no extra call).
+  const picked = options.pick !== null ? trends[options.pick] : undefined;
+  const chosen = forced ?? (picked && !covered.has(picked.href) ? picked : candidates[0]);
+  if (!forced && !picked) console.warn("No usable trend pick from the model — defaulting to the first uncovered trend.");
 
   // Ground the article in the project's own README / model card, not only a one-line summary.
   const material = await fetchSourceMaterial(chosen);
-  const day = todayIso();
+  const day = options.day;
 
   const articleSystem =
     "You are a senior engineer writing a long-form article for a personal AI/engineering blog. " +
@@ -464,12 +427,19 @@ Article requirements:
 - "Links" lists the repo/model URL (${chosen.href}) and the README/docs if known.
 - Do not use first-person claims of having tested it.`;
 
+  // Priority 1: the article. Keep enough budget in reserve for priority 2 (the translation).
   let parsed: ReturnType<typeof parseArticleResponse> = null;
+  // A rate-limit failure was already retried with backoff inside the client, so a second draft is only
+  // worth a call when the answer was malformed (same model) or the model itself is unavailable (smaller model).
+  let articleModel = models.article;
   for (let attempt = 0; attempt < 2 && !parsed; attempt++) {
     try {
-      const raw = await mistralChat(apiKey, articleSystem, articlePrompt, {
+      const raw = await client.chat(articleSystem, articlePrompt, {
+        model: articleModel,
         maxTokens: 4500,
         temperature: attempt === 0 ? 0.4 : 0.2,
+        reserveMs: TRANSLATE_RESERVE_MS,
+        label: `article(${attempt + 1})`,
       });
       const candidate = parseArticleResponse(raw);
       if (candidate && checkStructure(candidate.content).words >= 250) parsed = candidate;
@@ -479,37 +449,59 @@ Article requirements:
         `Article draft #${attempt + 1} failed:`,
         err instanceof Error ? err.message : err
       );
+      if (modelUnavailable(err) && articleModel !== models.fallback) articleModel = models.fallback;
+      else break;
     }
   }
 
-  const title = parsed?.title.trim() || `${chosen.title}: Why It Matters`;
+  let title: string;
+  let excerpt: string;
+  let rawContent: string;
+  if (parsed) {
+    title = parsed.title.trim();
+    excerpt = parsed.excerpt?.trim() || chosen.summaryEn;
+    rawContent = parsed.content;
+  } else {
+    // Still a real, structured article: built from the README / model card we already fetched.
+    const fb = buildFallbackArticle({
+      title: chosen.title,
+      href: chosen.href,
+      source: chosen.source,
+      summary: chosen.summaryEn,
+      language: chosen.language,
+      tag: chosen.tag,
+      stars: chosen.stars,
+      downloads: chosen.downloads,
+      material,
+    });
+    console.warn("Using the README-based fallback article (the model did not deliver one).");
+    title = fb.title;
+    excerpt = fb.excerpt;
+    rawContent = fb.content;
+  }
   const slugBase = slugify(title) || slugify(chosen.title) || "ai-trend";
-  const slug = `${day}-${slugBase}`.slice(0, 100);
+  const slug = options.forcedSlug ?? `${day}-${slugBase}`.slice(0, 100);
 
-  const rawContent =
-    parsed?.content ||
-    `## Why it matters\n\n${chosen.summaryEn}\n\nThis is one of today's most watched AI trends on ${chosen.source === "github" ? "GitHub" : "Hugging Face"}. It is worth following if you build with modern models, agents, or open-source tooling.\n\n## How to try it\n\nStart from the project page and its README: [${chosen.title}](${chosen.href}).\n\n## Links\n\n- [${chosen.title}](${chosen.href})\n`;
   const withDiagram = ensureDiagram(rawContent, "en");
   if (withDiagram.added) console.warn("Article had no valid Mermaid diagram — inserted the generic evaluation flow.");
   const structure = checkStructure(withDiagram.content);
-  console.log(`Article: ${structure.words} words, ${structure.h2} sections, ${structure.mermaid} diagram(s).`);
+  console.log(`Article: ${structure.words} words, ${structure.h2} sections, ${structure.mermaid} diagram(s)${parsed ? "" : " [fallback]"}.`);
 
   const result: BlogDraft = {
     slug,
     title,
-    excerpt: parsed?.excerpt?.trim() || chosen.summaryEn,
+    excerpt,
     readTime: readTimeString(withDiagram.content, "en"),
     content: withDiagram.content,
     imageUrl: chosen.imageUrl,
     sourceHref: chosen.href,
   };
 
-  // Hebrew version — diagrams are copied from the English article, never re-typed by the model.
-  try {
-    const heRaw = await mistralChat(
-      apiKey,
-      "You translate English tech-blog articles to natural, simple Hebrew. Keep product names, code, URLs and markdown structure (every heading, list and table) unchanged. Copy every ```mermaid block exactly as it is. Return plain markdown in the requested format — no JSON.",
-      `Translate this article to Hebrew.
+  // Priority 2: the Hebrew version (also for a fallback article) — diagrams are copied from the
+  // English article, never re-typed by the model.
+  const translateSystem =
+    "You translate English tech-blog articles to natural, simple Hebrew. Keep product names, code, URLs and markdown structure (every heading, list and table) unchanged. Copy every ```mermaid block exactly as it is. Return plain markdown in the requested format — no JSON.";
+  const translatePrompt = `Translate this article to Hebrew.
 
 Response format — exactly this, nothing before it:
 TITLE: Hebrew title
@@ -520,36 +512,54 @@ EXCERPT: Hebrew excerpt
 English title: ${result.title}
 English excerpt: ${result.excerpt}
 English body:
-${result.content}`,
-      { maxTokens: 6000, temperature: 0.2 }
-    );
-    const he = parseArticleResponse(heRaw);
-    if (!he) throw new Error("Hebrew translation did not follow the response format");
-    result.titleHe = he.title;
-    result.excerptHe = he.excerpt || he.title;
-    result.contentHe = restoreDiagrams(he.content, getMermaidBlocks(result.content));
-  } catch (err) {
-    console.warn(
-      "Hebrew translation failed — post will be English-only.",
-      err instanceof Error ? err.message : err
-    );
+${result.content}`;
+  let translateModel = models.translate;
+  for (let i = 0; i < 2; i++) {
+    try {
+      const heRaw = await client.chat(translateSystem, translatePrompt, {
+        model: translateModel,
+        maxTokens: 6000,
+        temperature: 0.2,
+        label: `translation(${i + 1})`,
+      });
+      const he = parseArticleResponse(heRaw);
+      if (!he) throw new Error("Hebrew translation did not follow the response format");
+      result.titleHe = he.title;
+      result.excerptHe = he.excerpt || he.title;
+      result.contentHe = restoreDiagrams(he.content, getMermaidBlocks(result.content));
+      break;
+    } catch (err) {
+      // One more try: a malformed answer (same model) or an unavailable model (smaller model).
+      // A rate limit was already retried with backoff inside the client.
+      const malformed = !(err instanceof LlmError);
+      const retry = i === 0 && (malformed || (modelUnavailable(err) && translateModel !== models.fallback));
+      console.warn(
+        retry ? "Hebrew translation failed — trying once more." : "Hebrew translation failed — post will be English-only.",
+        err instanceof Error ? err.message : err
+      );
+      if (!retry) break;
+      if (!malformed) translateModel = models.fallback;
+    }
   }
 
-  // Cover image: AI illustration if a key is set, branded cover drawn in code otherwise.
-  // Never throws — the post is published either way.
+  // Optional (last): art direction for an AI cover. Skipped when the budget is low — the branded
+  // cover drawn in code needs no model call. Never throws.
   let concept: string | undefined;
   if (process.env.FAL_KEY || process.env.GEMINI_API_KEY || process.env.OPENAI_API_KEY) {
-    try {
-      concept = (
-        await mistralChat(
-          apiKey,
-          "You are an art director. Reply with ONE sentence only.",
-          `Describe one abstract visual metaphor (shapes, light, structure — no text, no logos, no people, no screenshots) for an editorial illustration of this article.\nTitle: ${result.title}\nSummary: ${chosen.summaryEn}`,
-          { maxTokens: 80, temperature: 0.7 }
-        )
-      ).split("\n")[0].slice(0, 300);
-    } catch {
-      /* the prompt builder has its own default concept */
+    if (!client.canAfford(OPTIONAL_STEP_COST_MS)) {
+      console.warn("Skipping the cover-concept call: not enough Mistral time budget left (the default concept is used).");
+    } else {
+      try {
+        concept = (
+          await client.chat(
+            "You are an art director. Reply with ONE sentence only.",
+            `Describe one abstract visual metaphor (shapes, light, structure — no text, no logos, no people, no screenshots) for an editorial illustration of this article.\nTitle: ${result.title}\nSummary: ${chosen.summaryEn}`,
+            { model: models.summary, maxTokens: 80, temperature: 0.7, label: "cover-concept" }
+          )
+        ).split("\n")[0].slice(0, 300);
+      } catch {
+        /* the prompt builder has its own default concept */
+      }
     }
   }
   let cover: CoverResult | null = null;
@@ -613,8 +623,13 @@ async function fetchSourceMaterial(trend: EnrichedTrend): Promise<string> {
 async function insertAutoPost(
   supabase: SupabaseClient,
   day: string,
-  draft: BlogDraft
+  draft: BlogDraft,
+  replace = false
 ): Promise<void> {
+  if (replace) {
+    const { error: delError } = await supabase.from("auto_posts").delete().eq("slug", draft.slug);
+    if (delError) throw new Error(`Supabase delete auto_posts: ${delError.message}`);
+  }
   const { error } = await supabase.from("auto_posts").insert({
     slug: draft.slug,
     title: draft.title,
@@ -731,14 +746,14 @@ function getCoveredHrefsFromMdx(): Set<string> {
   return covered;
 }
 
-function writeBlogToMdx(day: string, draft: BlogDraft): void {
+function writeBlogToMdx(day: string, draft: BlogDraft, overwrite = false): void {
   const filePath = path.join(
     process.cwd(),
     "content",
     "blog",
     `${draft.slug}.mdx`
   );
-  if (fs.existsSync(filePath)) {
+  if (fs.existsSync(filePath) && !overwrite) {
     console.warn(`MDX already exists, skipping: ${filePath}`);
     return;
   }
@@ -882,6 +897,56 @@ async function sendFailureEmail(
   }
 }
 
+type StoredDigest = {
+  date: string;
+  trendOfTheDay?: { slug?: string; sourceHref?: string } | null;
+  items: {
+    id?: string;
+    source: "github" | "huggingface";
+    title: string;
+    href: string;
+    stars?: number | null;
+    language?: string;
+    tag?: string;
+    downloads?: number;
+    imageUrl?: string | null;
+    summary?: { en?: string; he?: string };
+  }[];
+};
+
+/** REGENERATE_DATE (YYYY-MM-DD) or null. Throws on a malformed value so a typo never rebuilds the wrong day. */
+function regenerateDate(): string | null {
+  const value = process.env.REGENERATE_DATE?.trim();
+  if (!value) return null;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || Number.isNaN(Date.parse(`${value}T00:00:00Z`))) {
+    throw new Error(`REGENERATE_DATE must look like 2026-11-10, got "${value}"`);
+  }
+  return value;
+}
+
+function readStoredDigest(day: string): StoredDigest {
+  const file = path.join(process.cwd(), "content", "ai-trends", `${day}.json`);
+  if (!fs.existsSync(file)) {
+    throw new Error(`REGENERATE_DATE=${day}, but ${file} does not exist — nothing to regenerate.`);
+  }
+  return JSON.parse(fs.readFileSync(file, "utf-8")) as StoredDigest;
+}
+
+function rawFromDigest(digest: StoredDigest): RawTrend[] {
+  return digest.items.map((i) => ({
+    id: i.id,
+    source: i.source,
+    title: i.title,
+    description: i.summary?.en || i.title,
+    href: i.href,
+    stars: typeof i.stars === "number" ? i.stars : undefined,
+    imageUrl: i.imageUrl ?? undefined,
+    language: i.language,
+    tag: i.tag,
+    downloads: i.downloads,
+  }));
+}
+
 async function main(): Promise<void> {
   const mistralKey = requireEnv("MISTRAL_API_KEY");
   const resendKey = requireEnv("RESEND_API_KEY");
@@ -901,45 +966,89 @@ async function main(): Promise<void> {
     );
   }
 
-  const day = todayIso();
-  console.log(`Daily trends pipeline starting for ${day}`);
+  const regenDay = regenerateDate();
+  const day = regenDay ?? todayIso();
+  console.log(regenDay ? `Regenerating the post for ${day} from its stored digest` : `Daily trends pipeline starting for ${day}`);
 
-  const [github, huggingface] = await Promise.all([
-    scrapeGitHubTrending(),
-    fetchHuggingFaceTrending(),
-  ]);
-
-  console.log(`Fetched GitHub=${github.length} HF=${huggingface.length}`);
-  const raw = [...github, ...huggingface];
+  let raw: RawTrend[];
+  let stored: StoredDigest | null = null;
+  if (regenDay) {
+    // The trending pages have moved on: rebuild from the digest that day's run saved.
+    stored = readStoredDigest(regenDay);
+    raw = rawFromDigest(stored);
+  } else {
+    const [github, huggingface] = await Promise.all([
+      scrapeGitHubTrending(),
+      fetchHuggingFaceTrending(),
+    ]);
+    console.log(`Fetched GitHub=${github.length} HF=${huggingface.length}`);
+    raw = [...github, ...huggingface];
+  }
   if (raw.length === 0) {
     throw new Error("No trends fetched from GitHub or Hugging Face");
   }
 
-  const trends = await enrichTrends(mistralKey, raw);
+  // Regenerating deliberately overwrites the day's own post, so nothing counts as "already covered".
+  const covered: Set<string> = regenDay
+    ? new Set<string>()
+    : supabase
+      ? await getCoveredHrefs(supabase)
+      : getCoveredHrefsFromMdx();
+
+  const client = new LlmClient(llmConfigFromEnv(process.env, mistralKey));
+  const models = mistralModelsFromEnv(process.env);
+  console.log(
+    `LLM client: models summary=${models.summary} article=${models.article} translate=${models.translate}; ` +
+      `spacing ${client.cfg.minIntervalMs} ms, ${client.cfg.maxAttempts} attempts, budget ${Math.round(client.cfg.budgetMs / 1000)} s; ` +
+      (client.hasFallback ? `Anthropic fallback on (${client.cfg.anthropic?.model}).` : "no Anthropic fallback (ANTHROPIC_API_KEY not set).")
+  );
+
+  const forcedHref = stored?.trendOfTheDay?.sourceHref;
+  const forcedSlug = forcedHref && raw.some((t) => t.href === forcedHref) ? stored?.trendOfTheDay?.slug : undefined;
+  const wantPick = !forcedSlug;
+  const enrichedResult = await enrichTrends(client, models, raw, day, covered, wantPick);
+  const trends = enrichedResult.trends;
+
+  const blog = await pickAndWriteBlog(client, models, trends, covered, {
+    pick: enrichedResult.pick,
+    forcedHref: forcedSlug ? forcedHref : undefined,
+    forcedSlug,
+    day,
+  });
+  console.log(
+    `LLM usage: ${client.stats.calls} call(s) = ${client.stats.served.mistral} by Mistral + ${client.stats.served.anthropic} by Anthropic; ` +
+      `${client.stats.requests} request(s), ${client.stats.retries} retr${client.stats.retries === 1 ? "y" : "ies"}, ${client.stats.rateLimited} rate-limited.`
+  );
 
   if (supabase) {
     await upsertTrends(supabase, day, trends);
     console.log(`Upserted ${trends.length} trends for ${day}`);
   } else {
-    writeTrendsToFiles(trends);
+    // Regenerating an older day must not replace the home-page list of today's trends.
+    const newerDigest = regenDay
+      ? fs.readdirSync(path.join(process.cwd(), "content", "ai-trends")).some((f) => f.endsWith(".json") && f.slice(0, 10) > regenDay)
+      : false;
+    if (newerDigest) console.log("Skipping content/trends.json — a newer digest exists.");
+    else writeTrendsToFiles(trends);
   }
 
-  const covered = supabase
-    ? await getCoveredHrefs(supabase)
-    : getCoveredHrefsFromMdx();
-  const blog = await pickAndWriteBlog(mistralKey, trends, covered);
   if (blog) {
     if (supabase) {
-      await insertAutoPost(supabase, day, blog);
+      await insertAutoPost(supabase, day, blog, Boolean(regenDay));
       console.log(`Published auto-post: ${blog.slug}`);
     } else {
-      writeBlogToMdx(day, blog);
+      writeBlogToMdx(day, blog, Boolean(regenDay));
     }
   } else {
     console.log("Skipped blog post — all trends already covered.");
   }
 
   writeDigestFile(day, trends, blog);
+
+  if (regenDay) {
+    console.log("Regeneration run: not re-sending the digest email.");
+    return;
+  }
 
   try {
     await sendDigestEmail(resendKey, day, trends, blog);

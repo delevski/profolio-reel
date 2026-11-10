@@ -12,7 +12,7 @@
     "prebuild": "node scripts/build-knowledge.mjs",
     "knowledge": "node scripts/build-knowledge.mjs",
     "test:chat": "tsx --test tests/chat.test.ts",
-    "test:ai-trends": "tsx --test tests/ai-trends.test.ts",
+    "test:ai-trends": "tsx --test tests/ai-trends.test.ts tests/llm.test.ts",
     "cover": "tsx scripts/generate-cover.ts"
   },
   "dependencies": {
