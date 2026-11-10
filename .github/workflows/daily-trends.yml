@@ -5,6 +5,12 @@ on:
     # ~07:00 Israel time (UTC+3). GitHub cron can drift by ~15 minutes.
     - cron: "0 4 * * *"
   workflow_dispatch:
+    inputs:
+      regenerate_date:
+        description: "Optional. Rebuild the post (article, Hebrew, cover) for an EXISTING digest date, e.g. 2026-11-10. Leave empty for a normal run."
+        required: false
+        default: ""
+        type: string
 
 # The job commits the day's digest + blog post back to main (built-in token, no extra secret).
 permissions:
@@ -17,7 +23,7 @@ concurrency:
 jobs:
   daily-trends:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,6 +43,17 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          # Rate-limit handling (all optional, sane defaults in scripts/lib/llm.ts). Models are repo
+          # *variables* (Settings -> Secrets and variables -> Actions -> Variables), not secrets.
+          MISTRAL_MODEL_SUMMARY: ${{ vars.MISTRAL_MODEL_SUMMARY }}
+          MISTRAL_MODEL_ARTICLE: ${{ vars.MISTRAL_MODEL_ARTICLE }}
+          MISTRAL_MODEL_TRANSLATE: ${{ vars.MISTRAL_MODEL_TRANSLATE }}
+          MISTRAL_MIN_INTERVAL_MS: ${{ vars.MISTRAL_MIN_INTERVAL_MS }}
+          # Optional fallback when Mistral stays rate-limited: Anthropic. Absent = Mistral only.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+          # Empty on the schedule; a YYYY-MM-DD from "Run workflow" regenerates that day's post.
+          REGENERATE_DATE: ${{ github.event.inputs.regenerate_date }}
           # Optional cover-image provider (first one present is used). With none set, every
           # post still gets a branded cover drawn in code. Recommended: FAL_KEY (about $0.003/image).
           FAL_KEY: ${{ secrets.FAL_KEY }}
