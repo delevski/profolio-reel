@@ -1,0 +1,147 @@
+{
+  "date": "2026-11-10",
+  "trendOfTheDay": {
+    "slug": "2026-11-10-meta-astryx-why-it-matters",
+    "title": "meta/astryx: Why It Matters",
+    "excerpt": "An open source design system that's fully customizable and agent ready",
+    "sourceHref": "https://github.com/meta/astryx",
+    "image": "/blog/ai-trends/2026-11-10-meta-astryx-why-it-matters.webp",
+    "imageAlt": "Abstract illustration for: meta/astryx: Why It Matters"
+  },
+  "items": [
+    {
+      "id": "2026-11-10-github-1",
+      "source": "github",
+      "title": "meta/astryx",
+      "href": "https://github.com/meta/astryx",
+      "stars": 21604,
+      "language": "TypeScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/meta/astryx",
+      "summary": {
+        "en": "An open source design system that's fully customizable and agent ready",
+        "he": "טרנד חדש: meta/astryx. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-10-github-2",
+      "source": "github",
+      "title": "anthropics/skills",
+      "href": "https://github.com/anthropics/skills",
+      "stars": 191810,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/anthropics/skills",
+      "summary": {
+        "en": "Public repository for Agent Skills",
+        "he": "טרנד חדש: anthropics/skills. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-10-github-3",
+      "source": "github",
+      "title": "addyosmani/agent-skills",
+      "href": "https://github.com/addyosmani/agent-skills",
+      "stars": 114817,
+      "language": "JavaScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/addyosmani/agent-skills",
+      "summary": {
+        "en": "Production-grade engineering skills for AI coding agents.",
+        "he": "טרנד חדש: addyosmani/agent-skills. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-10-github-4",
+      "source": "github",
+      "title": "anthropics/claude-quickstarts",
+      "href": "https://github.com/anthropics/claude-quickstarts",
+      "stars": 20272,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/anthropics/claude-quickstarts",
+      "summary": {
+        "en": "A collection of projects designed to help developers quickly get started with building deployable applications using the Claude API",
+        "he": "טרנד חדש: anthropics/claude-quickstarts. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-10-github-5",
+      "source": "github",
+      "title": "homeassistant-ai/ha-mcp",
+      "href": "https://github.com/homeassistant-ai/ha-mcp",
+      "stars": 6357,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/homeassistant-ai/ha-mcp",
+      "summary": {
+        "en": "Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.",
+        "he": "טרנד חדש: homeassistant-ai/ha-mcp. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-10-huggingface-6",
+      "source": "huggingface",
+      "title": "speridlabs/idol",
+      "href": "https://huggingface.co/speridlabs/idol",
+      "stars": 1758,
+      "tag": "image-to-3d",
+      "downloads": 26470,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/speridlabs/idol.png",
+      "summary": {
+        "en": "Trending Hugging Face model (image-to-3d). Likes: 1758, downloads: 26470.",
+        "he": "טרנד חדש: speridlabs/idol. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-10-huggingface-7",
+      "source": "huggingface",
+      "title": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+      "href": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+      "stars": 1125,
+      "tag": "text-generation",
+      "downloads": 14378,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic.png",
+      "summary": {
+        "en": "Trending Hugging Face model (text-generation). Likes: 1125, downloads: 14378.",
+        "he": "טרנד חדש: xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-10-huggingface-8",
+      "source": "huggingface",
+      "title": "moonshotai/Kimi-K3.1-Pro",
+      "href": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+      "stars": 1828,
+      "tag": "image-text-to-text",
+      "downloads": 30721,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/moonshotai/Kimi-K3.1-Pro.png",
+      "summary": {
+        "en": "Trending Hugging Face model (image-text-to-text). Likes: 1828, downloads: 30721.",
+        "he": "טרנד חדש: moonshotai/Kimi-K3.1-Pro. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-10-huggingface-9",
+      "source": "huggingface",
+      "title": "ricursiveAI/Ripple-65B-Preview",
+      "href": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
+      "stars": 469,
+      "downloads": 6480,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/ricursiveAI/Ripple-65B-Preview.png",
+      "summary": {
+        "en": "Trending Hugging Face model. Likes: 469, downloads: 6480.",
+        "he": "טרנד חדש: ricursiveAI/Ripple-65B-Preview. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-10-huggingface-10",
+      "source": "huggingface",
+      "title": "Lightricks/LTX-2.5",
+      "href": "https://huggingface.co/Lightricks/LTX-2.5",
+      "stars": 11313,
+      "tag": "image-to-video",
+      "downloads": 2791606,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png",
+      "summary": {
+        "en": "Trending Hugging Face model (image-to-video). Likes: 11313, downloads: 2791606.",
+        "he": "טרנד חדש: Lightricks/LTX-2.5. כדאי לעקוב אחרי העדכון הזה."
+      }
+    }
+  ]
+}
