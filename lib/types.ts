@@ -65,22 +65,6 @@ export interface AppView extends Omit<App, "description" | "tagline"> {
   tagline: string;
 }
 
-export interface Course {
-  slug: string;
-  title: LocalizedString;
-  description: LocalizedString;
-  level: LocalizedString;
-  isNew?: boolean;
-  href: string;
-}
-
-export interface CourseView
-  extends Omit<Course, "title" | "description" | "level"> {
-  title: string;
-  description: string;
-  level: string;
-}
-
 export interface Video {
   id: string;
   title: string;
@@ -129,6 +113,46 @@ export interface Trend {
   href: string;
   stars?: number;
   imageUrl?: string;
+}
+
+/** One day of the "Daily AI Trends" pipeline: content/ai-trends/YYYY-MM-DD.json */
+export interface TrendDigestFile {
+  date: string; // YYYY-MM-DD
+  /** The blog post written for the most important new trend of the day (if any). */
+  trendOfTheDay?: {
+    slug: string; // content/blog/<slug>.mdx (or Supabase auto_posts)
+    title: string;
+    titleHe?: string;
+    excerpt: string;
+    excerptHe?: string;
+    sourceHref: string;
+  } | null;
+  items: {
+    id: string;
+    source: "github" | "huggingface";
+    title: string;
+    href: string;
+    stars?: number | null;
+    imageUrl?: string | null;
+    summary: { en?: string; he?: string };
+  }[];
+}
+
+export interface TrendDigestItem {
+  id: string;
+  source: "github" | "huggingface";
+  title: string;
+  href: string;
+  stars?: number | null;
+  imageUrl?: string | null;
+  summary: string;
+}
+
+/** UI shape — text already localized. */
+export interface TrendDigest {
+  date: string;
+  trendOfTheDay: { slug: string; title: string; excerpt: string; sourceHref: string } | null;
+  items: TrendDigestItem[];
 }
 
 export interface MdxDoc {

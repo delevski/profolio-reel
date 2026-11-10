@@ -89,7 +89,6 @@ const jsonSources = [
   ["site", "Profile & contact (site settings)", "/about"],
   ["projects", "Projects", "/projects"],
   ["apps", "Apps", "/apps"],
-  ["courses", "Academy courses", "/academy"],
   ["testimonials", "Testimonials", "/about"],
   ["videos", "Videos", "/"],
 ];

@@ -7,7 +7,7 @@ import { getCaseStudies, getCaseStudy } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { localizedPath } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
-import { formatDate } from "@/lib/utils";
+import { formatDate, formatReadTime } from "@/lib/utils";
 import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
 
@@ -69,7 +69,7 @@ export default async function CaseStudyPage({ params }: Props) {
         {study.title}
       </h1>
       <p className="mb-8 text-text-muted">
-        {formatDate(study.date, locale)} · {study.readTime}
+        {formatDate(study.date, locale)} · {formatReadTime(study.readTime, locale)}
       </p>
       {study.imageUrl && (
         <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-surface-border">

@@ -4,6 +4,7 @@ import { getLearnGuides } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { localizedPath } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
+import { formatReadTime } from "@/lib/utils";
 
 export function LearnPreview({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
@@ -30,7 +31,7 @@ export function LearnPreview({ locale }: { locale: Locale }) {
             isNew={guide.isNew}
             emoji={guide.emoji}
             difficulty={guide.difficulty}
-            meta={`${guide.category} · ${guide.readTime}`}
+            meta={`${guide.category} · ${formatReadTime(guide.readTime, locale)}`}
             newLabel={dict.common.new}
             isRtl={isRtl(locale)}
           />

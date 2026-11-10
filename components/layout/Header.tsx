@@ -23,7 +23,7 @@ export function Header() {
     { href: "/case-studies", label: dict.nav.caseStudies },
     { href: "/blog", label: dict.nav.blog },
     { href: "/learn", label: dict.nav.learn },
-    { href: "/academy", label: dict.nav.academy },
+    { href: "/ai-trends", label: dict.nav.aiTrends },
     { href: "/apps", label: dict.nav.apps },
     { href: "/about", label: dict.nav.about },
     { href: "/contact", label: dict.nav.contact },

@@ -8,13 +8,13 @@
     "about": "About",
     "blog": "Blog",
     "learn": "Learn",
-    "academy": "Academy",
     "projects": "Projects",
     "caseStudies": "Case Studies",
     "apps": "Apps",
     "contact": "Contact",
     "hebrew": "עברית",
-    "english": "English"
+    "english": "English",
+    "aiTrends": "AI Trends"
   },
   "footer": {
     "tagline": "Build boldly. Ship often.",
@@ -50,7 +50,7 @@
       "label": "Trending",
       "title": "AI Trends",
       "subtitle": "Daily curated trends from GitHub, Hugging Face, and more.",
-      "action": "View All Trends",
+      "action": "All daily digests",
       "loading": "Loading trends...",
       "learnMore": "Learn more"
     },
@@ -82,15 +82,6 @@
       "viewGithub": "View on GitHub",
       "liveDemo": "Live Demo",
       "googlePlay": "Google Play"
-    },
-    "academy": {
-      "label": "Online Courses",
-      "title": "Master AI & Development",
-      "subtitle": "Learn practical AI skills with hands-on courses. From beginners to advanced developers.",
-      "action": "View all courses",
-      "enroll": "Enroll →",
-      "visit": "Visit Academy",
-      "new": "New"
     },
     "testimonials": {
       "label": "Testimonials",
@@ -131,12 +122,6 @@
       "back": "Back to Learn",
       "read": "read"
     },
-    "academy": {
-      "label": "Academy",
-      "title": "Online Courses",
-      "subtitle": "Hands-on courses from beginner to advanced. Build real projects, not slide decks.",
-      "enroll": "Enroll"
-    },
     "projects": {
       "label": "Open Source",
       "title": "Projects & Repositories",
@@ -172,6 +157,22 @@
       "title": "Case Studies",
       "subtitle": "Deep dives into the agent systems I design, ship and run: the architecture, the numbers and the trade-offs.",
       "back": "Back to Case Studies"
+    },
+    "aiTrends": {
+      "label": "Daily",
+      "title": "AI Trends",
+      "subtitle": "A short digest every morning: what is trending on GitHub and Hugging Face, in plain language, with the trend of the day written up on the blog.",
+      "trendOfDay": "Trend of the day",
+      "readPost": "Read the post",
+      "github": "GitHub",
+      "huggingface": "Hugging Face",
+      "open": "Open",
+      "stars": "stars",
+      "empty": "The first digest appears after the next daily run.",
+      "olderDays": "Earlier days",
+      "updated": "Updated every morning from GitHub Trending and Hugging Face.",
+      "items": "trends",
+      "source": "Source"
     }
   },
   "common": {

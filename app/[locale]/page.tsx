@@ -6,7 +6,6 @@ import { TrendsSection } from "@/components/sections/TrendsSection";
 import { AppsPreview } from "@/components/sections/AppsPreview";
 import { ProjectsPreview } from "@/components/sections/ProjectsPreview";
 import { AgentOfficeShowcase } from "@/components/sections/AgentOfficeShowcase";
-import { AcademyPreview } from "@/components/sections/AcademyPreview";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { ConnectSection } from "@/components/sections/ConnectSection";
 import { getSiteConfig } from "@/lib/content";
@@ -28,7 +27,6 @@ export default async function HomePage({ params }: Props) {
       <AppsPreview locale={locale} />
       <ProjectsPreview locale={locale} />
       <AgentOfficeShowcase locale={locale} />
-      <AcademyPreview locale={locale} />
       <TestimonialsSection locale={locale} />
       <ConnectSection site={site} locale={locale} />
     </>

@@ -225,21 +225,30 @@ async function mistralChat(
   system: string,
   user: string
 ): Promise<string> {
-  const res = await fetch("https://api.mistral.ai/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: "mistral-small-latest",
-      temperature: 0.4,
-      messages: [
-        { role: "system", content: system },
-        { role: "user", content: user },
-      ],
-    }),
-  });
+  // Mistral's free tier answers 429 when calls come in bursts (the 2026-11-09 run
+  // lost its Hebrew summaries and blog draft that way), so back off and retry.
+  const delays = [3000, 8000, 20000];
+  let res: Response | undefined;
+  for (let attempt = 0; ; attempt++) {
+    res = await fetch("https://api.mistral.ai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "mistral-small-latest",
+        temperature: 0.4,
+        messages: [
+          { role: "system", content: system },
+          { role: "user", content: user },
+        ],
+      }),
+    });
+    const retryable = res.status === 429 || res.status >= 500;
+    if (res.ok || !retryable || attempt >= delays.length) break;
+    await new Promise((r) => setTimeout(r, delays[attempt]));
+  }
 
   if (!res.ok) {
     const body = await res.text();
@@ -517,6 +526,54 @@ function writeTrendsToFiles(trends: EnrichedTrend[]): void {
   console.log(`Wrote ${out.length} trends → ${filePath}`);
 }
 
+/**
+ * One file per day: content/ai-trends/YYYY-MM-DD.json — read at build time by the
+ * /ai-trends page (schema: docs/daily-trends.md). The workflow commits it to main.
+ */
+function writeDigestFile(
+  day: string,
+  trends: EnrichedTrend[],
+  blog: BlogDraft | null
+): void {
+  const digest: { date: string; trendOfTheDay: unknown; items: unknown[] } = {
+    date: day,
+    trendOfTheDay: blog
+      ? {
+          slug: blog.slug,
+          title: blog.title,
+          ...(blog.titleHe ? { titleHe: blog.titleHe } : {}),
+          excerpt: blog.excerpt,
+          ...(blog.excerptHe ? { excerptHe: blog.excerptHe } : {}),
+          sourceHref: blog.sourceHref,
+        }
+      : null,
+    items: trends.map((t) => ({
+      id: t.id,
+      source: t.source,
+      title: t.title,
+      href: t.href,
+      stars: t.stars ?? null,
+      imageUrl: t.imageUrl ?? null,
+      summary: { en: t.summaryEn, he: t.summaryHe },
+    })),
+  };
+  const dir = path.join(process.cwd(), "content", "ai-trends");
+  fs.mkdirSync(dir, { recursive: true });
+  const filePath = path.join(dir, `${day}.json`);
+  // A second run on the same day finds today's post already covered (blog = null):
+  // keep the trend of the day the first run chose instead of erasing it.
+  if (!digest.trendOfTheDay && fs.existsSync(filePath)) {
+    try {
+      const prev = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+      if (prev?.trendOfTheDay) digest.trendOfTheDay = prev.trendOfTheDay;
+    } catch {
+      /* unreadable previous file: write fresh */
+    }
+  }
+  fs.writeFileSync(filePath, `${JSON.stringify(digest, null, 2)}\n`, "utf-8");
+  console.log(`Wrote digest → ${filePath}`);
+}
+
 function getCoveredHrefsFromMdx(): Set<string> {
   const dir = path.join(process.cwd(), "content", "blog");
   const covered = new Set<string>();
@@ -743,6 +800,8 @@ async function main(): Promise<void> {
   } else {
     console.log("Skipped blog post — all trends already covered.");
   }
+
+  writeDigestFile(day, trends, blog);
 
   try {
     await sendDigestEmail(resendKey, day, trends, blog);

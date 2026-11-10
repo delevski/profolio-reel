@@ -9,10 +9,46 @@ Pipeline that runs every morning (~07:00 Israel / `0 4 * * *` UTC) via GitHub Ac
 3. Replaces today's rows in Supabase `trends`
 4. Picks the most important **new** trend (skips if already blogged via `source_href`)
 5. Writes an English markdown blog post tagged `AI Trend Digest` into `auto_posts`
-6. Emails a styled Hebrew digest to `orworkdelevski@gmail.com` via Resend
-7. On failure, emails an alert and fails the Actions run
+6. Writes the day's digest to `content/ai-trends/YYYY-MM-DD.json` and the workflow commits it (plus the blog post and `content/trends.json`) to `main`, which redeploys the site — this is what the **/ai-trends** page shows
+7. Emails a styled Hebrew digest to `orworkdelevski@gmail.com` via Resend
+8. On failure, emails an alert and fails the Actions run
+
+## The AI Trends page (`/en/ai-trends`, `/he/ai-trends`)
+
+The page reads `content/ai-trends/*.json` at build time (`lib/ai-trends.ts`), newest first. The old `/academy` URLs redirect to it.
+The daily workflow needs **no extra secret** for this: it commits with the built-in `GITHUB_TOKEN`
+(`permissions: contents: write` in the workflow). If `main` is ever protected, allow `github-actions[bot]` to push or switch the commit step to a PR.
+
+One file per day, `content/ai-trends/YYYY-MM-DD.json`:
+
+```json
+{
+  "date": "2026-11-09",
+  "trendOfTheDay": {
+    "slug": "2026-11-09-anthropics-skills-why-it-matters",
+    "title": "…", "titleHe": "…", "excerpt": "…", "excerptHe": "…",
+    "sourceHref": "https://github.com/anthropics/skills"
+  },
+  "items": [
+    {
+      "id": "2026-11-09-github-1",
+      "source": "github",
+      "title": "anthropics/skills",
+      "href": "https://github.com/anthropics/skills",
+      "stars": 12345,
+      "imageUrl": "https://opengraph.githubassets.com/1/anthropics/skills",
+      "summary": { "en": "…", "he": "…" }
+    }
+  ]
+}
+```
+
+`trendOfTheDay` may be `null` (every trend already covered); `titleHe`/`excerptHe` are optional; `source` is `github` or `huggingface`.
+`npm run test:ai-trends` checks every file against this schema and that each `trendOfTheDay.slug` has a blog post.
 
 ## One-time setup
+
+> Note: if `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` are **not** set as repo secrets (as of 2026-11-09 they are empty in the workflow log), the pipeline runs in file mode: everything above is written to `content/` and committed. Supabase is optional.
 
 ### 1. Supabase
 

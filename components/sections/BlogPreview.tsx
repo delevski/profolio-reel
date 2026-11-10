@@ -4,7 +4,7 @@ import { getBlogPosts } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { localizedPath } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
-import { formatDate } from "@/lib/utils";
+import { formatDate, formatReadTime, formatTag } from "@/lib/utils";
 
 export async function BlogPreview({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
@@ -27,10 +27,10 @@ export async function BlogPreview({ locale }: { locale: Locale }) {
             href={localizedPath(locale, `/blog/${post.slug}`)}
             title={post.title}
             excerpt={post.excerpt}
-            tags={post.tags}
+            tags={post.tags.map((t) => formatTag(t, locale))}
             lang={post.lang}
             imageUrl={post.imageUrl}
-            meta={`${formatDate(post.date, locale)} · ${post.readTime}`}
+            meta={`${formatDate(post.date, locale)} · ${formatReadTime(post.readTime, locale)}`}
             isRtl={isRtl(locale)}
           />
         ))}

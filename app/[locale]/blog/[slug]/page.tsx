@@ -7,7 +7,7 @@ import { getBlogPost, getMdxBlogPosts } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { localizedPath } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
-import { formatDate } from "@/lib/utils";
+import { formatDate, formatReadTime, formatTag } from "@/lib/utils";
 import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
 
@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: Props) {
       <div className={cn("mb-6 flex flex-wrap gap-2", rtl && "justify-end")}>
         {post.tags.map((tag) => (
           <Badge key={tag} variant="accent">
-            {tag}
+            {formatTag(tag, locale)}
           </Badge>
         ))}
         <Badge>{post.lang}</Badge>
@@ -68,7 +68,7 @@ export default async function BlogPostPage({ params }: Props) {
         {post.title}
       </h1>
       <p className="mb-8 text-text-muted">
-        {formatDate(post.date, locale)} · {post.readTime}
+        {formatDate(post.date, locale)} · {formatReadTime(post.readTime, locale)}
       </p>
       {post.imageUrl && (
         <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-surface-border">

@@ -8,13 +8,13 @@
     "about": "אודות",
     "blog": "בלוג",
     "learn": "למידה",
-    "academy": "אקדמיה",
     "projects": "פרויקטים",
     "caseStudies": "מקרי בוחן",
     "apps": "אפליקציות",
     "contact": "צור קשר",
     "hebrew": "עברית",
-    "english": "English"
+    "english": "English",
+    "aiTrends": "טרנדים ב-AI"
   },
   "footer": {
     "tagline": "בונים בנועזות. משחררים לעיתים קרובות.",
@@ -50,7 +50,7 @@
       "label": "טרנדים",
       "title": "טרנדים בבינה מלאכותית",
       "subtitle": "טרנדים יומיים מ־GitHub, Hugging Face ועוד",
-      "action": "כל הטרנדים",
+      "action": "כל התקצירים היומיים",
       "loading": "טוען טרנדים...",
       "learnMore": "קרא עוד"
     },
@@ -82,15 +82,6 @@
       "viewGithub": "GitHub",
       "liveDemo": "הדגמה חיה",
       "googlePlay": "Google Play"
-    },
-    "academy": {
-      "label": "קורסים מקוונים",
-      "title": "שליטה ב-AI ופיתוח",
-      "subtitle": "קורסים מעשיים ממתחילים ועד מתקדמים.",
-      "action": "כל הקורסים",
-      "enroll": "הרשמה ←",
-      "visit": "לאקדמיה",
-      "new": "חדש"
     },
     "testimonials": {
       "label": "המלצות",
@@ -131,12 +122,6 @@
       "back": "חזרה ללמידה",
       "read": "קריאה"
     },
-    "academy": {
-      "label": "אקדמיה",
-      "title": "קורסים מקוונים",
-      "subtitle": "קורסים מעשיים — פרויקטים אמיתיים, לא מצגות.",
-      "enroll": "הרשמה"
-    },
     "projects": {
       "label": "קוד פתוח",
       "title": "פרויקטים ומאגרים",
@@ -172,6 +157,22 @@
       "title": "מקרי בוחן",
       "subtitle": "צלילה לעומק מערכות הסוכנים שאני מתכנן, מעלה ומפעיל: הארכיטקטורה, המספרים והפשרות.",
       "back": "חזרה למקרי הבוחן"
+    },
+    "aiTrends": {
+      "label": "יומי",
+      "title": "טרנדים ב-AI",
+      "subtitle": "תקציר קצר בכל בוקר: מה חם ב-GitHub וב-Hugging Face, בעברית פשוטה, ועל טרנד היום יש פוסט בבלוג.",
+      "trendOfDay": "טרנד היום",
+      "readPost": "לקריאת הפוסט",
+      "github": "GitHub",
+      "huggingface": "Hugging Face",
+      "open": "פתיחה",
+      "stars": "כוכבים",
+      "empty": "התקציר הראשון יופיע אחרי הריצה היומית הבאה.",
+      "olderDays": "ימים קודמים",
+      "updated": "מתעדכן בכל בוקר מ-GitHub Trending ומ-Hugging Face.",
+      "items": "טרנדים",
+      "source": "מקור"
     }
   },
   "common": {

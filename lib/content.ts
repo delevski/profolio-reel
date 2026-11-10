@@ -7,8 +7,6 @@ import { getSupabase, type DbAutoPost, type DbTrend } from "./supabase";
 import type {
   App,
   AppView,
-  Course,
-  CourseView,
   LocalizedString,
   MdxDoc,
   Project,
@@ -125,15 +123,6 @@ export function getApps(locale: Locale = "en"): AppView[] {
     ...a,
     description: pickLocalized(a.description, locale),
     tagline: pickLocalized(a.tagline, locale),
-  }));
-}
-
-export function getCourses(locale: Locale = "en"): CourseView[] {
-  return readJson<Course[]>("courses.json").map((c) => ({
-    ...c,
-    title: pickLocalized(c.title, locale),
-    description: pickLocalized(c.description, locale),
-    level: pickLocalized(c.level, locale),
   }));
 }
 

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, TrendingUp } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Badge } from "@/components/ui/Badge";
+import { localizedPath } from "@/lib/i18n/navigation";
 import { useLocale } from "@/components/providers/LocaleProvider";
 import type { Trend } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -51,7 +52,7 @@ export function TrendsSection() {
       label={s.label}
       title={s.title}
       subtitle={s.subtitle}
-      action={{ label: s.action, href: "#" }}
+      action={{ label: s.action, href: localizedPath(locale, "/ai-trends") }}
       isRtl={isRtl}
     >
       {loading ? (
