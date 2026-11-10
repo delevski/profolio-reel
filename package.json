@@ -12,7 +12,8 @@
     "prebuild": "node scripts/build-knowledge.mjs",
     "knowledge": "node scripts/build-knowledge.mjs",
     "test:chat": "tsx --test tests/chat.test.ts",
-    "test:ai-trends": "tsx --test tests/ai-trends.test.ts"
+    "test:ai-trends": "tsx --test tests/ai-trends.test.ts",
+    "cover": "tsx scripts/generate-cover.ts"
   },
   "dependencies": {
     "@microsoft/clarity": "^1.0.2",
@@ -23,6 +24,7 @@
     "framer-motion": "^12.39.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^1.16.0",
+    "mermaid": "^11.17.2",
     "next": "16.2.6",
     "next-mdx-remote": "^6.0.0",
     "react": "19.2.4",
@@ -30,6 +32,7 @@
     "remark-gfm": "^4.0.1",
     "resend": "^6.17.2",
     "server-only": "^0.0.1",
+    "sharp": "^0.34.5",
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {

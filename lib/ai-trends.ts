@@ -42,6 +42,9 @@ function localize(file: TrendDigestFile, locale: Locale): TrendDigest {
     title: i.title,
     href: i.href,
     stars: i.stars,
+    language: i.language,
+    tag: i.tag,
+    downloads: i.downloads,
     imageUrl: i.imageUrl,
     summary: pick(i.summary, locale),
   }));
@@ -53,6 +56,8 @@ function localize(file: TrendDigestFile, locale: Locale): TrendDigest {
           title: locale === "he" ? t.titleHe || t.title : t.title,
           excerpt: locale === "he" ? t.excerptHe || t.excerpt : t.excerpt,
           sourceHref: t.sourceHref,
+          image: t.image,
+          imageAlt: t.imageAlt,
         }
       : null,
     items,
@@ -78,4 +83,9 @@ export function getTrendDigests(locale: Locale = "en"): TrendDigest[] {
   return out
     .sort((a, b) => b.date.localeCompare(a.date))
     .map((f) => localize(f, locale));
+}
+
+/** The digest whose trend-of-the-day is this blog post (null for ordinary posts). */
+export function getDigestForPost(slug: string, locale: Locale = "en"): TrendDigest | null {
+  return getTrendDigests(locale).find((d) => d.trendOfTheDay?.slug === slug) ?? null;
 }

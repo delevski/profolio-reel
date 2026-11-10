@@ -1,6 +1,9 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
+import React from "react";
+import { MDXRemote, compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { LazyVideo } from "@/components/ui/LazyVideo";
+import { MermaidDiagram } from "@/components/blog/MermaidDiagram";
+import { rehypeCollectHeadings, type TocHeading } from "@/lib/headings";
 
 /**
  * A clearly marked gap for Ori to fill with a real number or quote. Kept in
@@ -23,12 +26,6 @@ const components = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1 className="mb-6 font-serif text-3xl text-text md:text-4xl" {...props} />
   ),
-  h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className="mb-4 mt-8 font-serif text-2xl text-text" {...props} />
-  ),
-  h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className="mb-3 mt-6 text-xl text-text" {...props} />
-  ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p className="mb-4 leading-relaxed text-text-muted" {...props} />
   ),
@@ -50,11 +47,28 @@ const components = {
       {...props}
     />
   ),
-  pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
-    <pre
-      className="mb-4 overflow-x-auto rounded-xl border border-surface-border bg-surface/90 p-4 text-sm backdrop-blur-md"
-      {...props}
-    />
+  pre: (props: React.HTMLAttributes<HTMLPreElement>) => {
+    // ```mermaid blocks become diagrams (client-side, lazy); everything else stays a code block.
+    const child = React.Children.toArray(props.children)[0];
+    if (React.isValidElement(child)) {
+      const p = child.props as { className?: string; children?: React.ReactNode };
+      if (/\blanguage-mermaid\b/.test(p.className ?? "")) {
+        const chart = React.Children.toArray(p.children).join("").trim();
+        return <MermaidDiagram chart={chart} />;
+      }
+    }
+    return (
+      <pre
+        className="mb-4 overflow-x-auto rounded-xl border border-surface-border bg-surface/90 p-4 text-sm backdrop-blur-md"
+        {...props}
+      />
+    );
+  },
+  h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h2 className="mb-4 mt-8 scroll-mt-28 font-serif text-2xl text-text" {...props} />
+  ),
+  h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h3 className="mb-3 mt-6 scroll-mt-28 text-xl text-text" {...props} />
   ),
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
@@ -74,4 +88,20 @@ export function MdxContent({ source }: { source: string }) {
       />
     </div>
   );
+}
+
+/**
+ * Article body plus its headings (for the table of contents). Headings get stable ids
+ * from the same pass that renders them, so ToC links always land.
+ */
+export async function renderArticle(source: string): Promise<{ content: React.ReactElement; headings: TocHeading[] }> {
+  const headings: TocHeading[] = [];
+  const { content } = await compileMDX({
+    source,
+    components,
+    options: {
+      mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeCollectHeadings(headings)] },
+    },
+  });
+  return { content: <div className="prose-ordel max-w-none">{content}</div>, headings };
 }

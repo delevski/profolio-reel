@@ -37,6 +37,13 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          # Optional cover-image provider (first one present is used). With none set, every
+          # post still gets a branded cover drawn in code. Recommended: FAL_KEY (about $0.003/image).
+          FAL_KEY: ${{ secrets.FAL_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # Built-in token (not a new secret): lets the job read project READMEs without rate limits.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DIGEST_EMAIL: ordi21@walla.co.il
           SITE_URL: https://ordelwebsite.vercel.app
           RESEND_FROM: AI Trends Digest <onboarding@resend.dev>
@@ -46,7 +53,7 @@ jobs:
         run: |
           git config user.name "daily-trends[bot]"
           git config user.email "daily-trends@users.noreply.github.com"
-          git add content/ai-trends content/blog content/trends.json
+          git add content/ai-trends content/blog content/trends.json public/blog/ai-trends
           if git diff --cached --quiet; then
             echo "Nothing new to commit."
             exit 0

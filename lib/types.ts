@@ -126,6 +126,9 @@ export interface TrendDigestFile {
     excerpt: string;
     excerptHe?: string;
     sourceHref: string;
+    /** Cover image path under /public (e.g. /blog/ai-trends/<slug>.webp). */
+    image?: string;
+    imageAlt?: string;
   } | null;
   items: {
     id: string;
@@ -133,6 +136,12 @@ export interface TrendDigestFile {
     title: string;
     href: string;
     stars?: number | null;
+    /** GitHub: primary language. */
+    language?: string;
+    /** Hugging Face: pipeline tag. */
+    tag?: string;
+    /** Hugging Face: downloads. */
+    downloads?: number;
     imageUrl?: string | null;
     summary: { en?: string; he?: string };
   }[];
@@ -144,6 +153,9 @@ export interface TrendDigestItem {
   title: string;
   href: string;
   stars?: number | null;
+  language?: string;
+  tag?: string;
+  downloads?: number;
   imageUrl?: string | null;
   summary: string;
 }
@@ -151,7 +163,14 @@ export interface TrendDigestItem {
 /** UI shape — text already localized. */
 export interface TrendDigest {
   date: string;
-  trendOfTheDay: { slug: string; title: string; excerpt: string; sourceHref: string } | null;
+  trendOfTheDay: {
+    slug: string;
+    title: string;
+    excerpt: string;
+    sourceHref: string;
+    image?: string;
+    imageAlt?: string;
+  } | null;
   items: TrendDigestItem[];
 }
 
@@ -170,5 +189,8 @@ export interface MdxDoc {
   emoji?: string;
   content: string;
   imageUrl?: string;
+  imageAlt?: string;
+  /** "ai" (generated illustration), "generated" (branded cover drawn in code) or "source". */
+  coverKind?: string;
   sourceHref?: string;
 }

@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { formatMinutes } from "./reading-time";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -9,7 +10,8 @@ export function cn(...inputs: ClassValue[]) {
 export function formatReadTime(readTime: string, locale = "en") {
   if (locale !== "he") return readTime;
   const m = readTime.match(/^(\d+)\s*min(?:ute)?s?(?:\s+read)?$/i);
-  return m ? `${m[1]} דקות קריאה` : readTime;
+  if (!m) return readTime;
+  return formatMinutes(Number(m[1]), "he");
 }
 
 const HE_TAGS: Record<string, string> = {

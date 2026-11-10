@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "@/components/ui/SiteLink";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Badge } from "@/components/ui/Badge";
@@ -56,6 +57,18 @@ function DayDigest({ digest, locale }: { digest: TrendDigest; locale: Locale }) 
           )}
           style={{ borderInlineStartColor: "var(--rust)" }}
         >
+          {day.image && (
+            <div className="relative mb-5 aspect-[1200/630] w-full max-w-xl overflow-hidden rounded-xl border border-surface-border bg-surface">
+              <Image
+                src={day.image}
+                alt={day.imageAlt ?? day.title}
+                fill
+                loading="lazy"
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 576px"
+              />
+            </div>
+          )}
           <Badge variant="accent">{p.trendOfDay}</Badge>
           <h3 className="mb-3 mt-4 text-2xl text-text md:text-3xl">
             <bdi>{day.title}</bdi>

@@ -6,7 +6,9 @@
     "titleHe": "Nutlope/hallmark: למה זה חשוב",
     "excerpt": "Hallmark is a tool that helps developers write cleaner, more human-like code by avoiding generic AI-generated patterns in tools like Claude Code, Cursor, and Codex.",
     "excerptHe": "Hallmark הוא כלי שעוזר למפתחים לכתוב קוד נקי וטבעי יותר, על ידי הימנעות מתבניות גנריות של AI בכלים כמו Claude Code, Cursor ו-Codex.",
-    "sourceHref": "https://github.com/Nutlope/hallmark"
+    "sourceHref": "https://github.com/Nutlope/hallmark",
+    "image": "/blog/ai-trends/2026-07-15-nutlope-hallmark-why-it-matters.webp",
+    "imageAlt": "Abstract illustration for: Nutlope/hallmark: Why It Matters"
   },
   "items": [
     {
