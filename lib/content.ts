@@ -3,12 +3,11 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import type { Locale } from "./i18n/config";
+import { readTimeString } from "./reading-time";
 import { getSupabase, type DbAutoPost, type DbTrend } from "./supabase";
 import type {
   App,
   AppView,
-  Course,
-  CourseView,
   LocalizedString,
   MdxDoc,
   Project,
@@ -58,7 +57,9 @@ function getMdxDocs(subdir: string): MdxDoc[] {
         difficulty: data.difficulty as string | undefined,
         category: data.category as string | undefined,
         emoji: data.emoji as string | undefined,
-        imageUrl: (data.imageUrl as string | undefined) ?? (data.image as string | undefined),
+        imageUrl: (data.imageUrl as string | undefined) || (data.image as string | undefined) || undefined,
+        imageAlt: data.imageAlt as string | undefined,
+        coverKind: data.coverKind as string | undefined,
         sourceHref: data.sourceHref as string | undefined,
         content,
       };
@@ -70,9 +71,14 @@ function getMdxDocs(subdir: string): MdxDoc[] {
     });
 }
 
+/** Reading time always comes from the actual text (Hebrew reads a little slower). */
+function withComputedReadTime(doc: MdxDoc, locale: Locale): MdxDoc {
+  return { ...doc, readTime: readTimeString(doc.content, doc.lang === "HE" || locale === "he" ? "he" : "en") };
+}
+
 function mapAutoPost(row: DbAutoPost, locale: Locale): MdxDoc {
   const useHe = locale === "he" && Boolean(row.title_he && row.content_he);
-  return {
+  return withComputedReadTime({
     slug: row.slug,
     title: useHe ? row.title_he! : row.title,
     excerpt: useHe ? row.excerpt_he ?? row.excerpt : row.excerpt,
@@ -81,9 +87,9 @@ function mapAutoPost(row: DbAutoPost, locale: Locale): MdxDoc {
     tags: row.tags ?? ["AI Trend Digest"],
     lang: useHe ? "HE" : row.lang ?? "EN",
     content: useHe ? row.content_he! : row.content,
-    imageUrl: row.image_url ?? undefined,
+    imageUrl: row.image_url || undefined,
     sourceHref: row.source_href,
-  };
+  }, locale);
 }
 
 async function getAutoPosts(locale: Locale): Promise<MdxDoc[]> {
@@ -125,15 +131,6 @@ export function getApps(locale: Locale = "en"): AppView[] {
     ...a,
     description: pickLocalized(a.description, locale),
     tagline: pickLocalized(a.tagline, locale),
-  }));
-}
-
-export function getCourses(locale: Locale = "en"): CourseView[] {
-  return readJson<Course[]>("courses.json").map((c) => ({
-    ...c,
-    title: pickLocalized(c.title, locale),
-    description: pickLocalized(c.description, locale),
-    level: pickLocalized(c.level, locale),
   }));
 }
 
@@ -182,7 +179,7 @@ function getLocalizedMdxDocs(subdir: string, locale: Locale): MdxDoc[] {
 
 /** MDX blog posts from the filesystem (sync). */
 export function getMdxBlogPosts(locale: Locale = "en"): MdxDoc[] {
-  return getLocalizedMdxDocs("blog", locale);
+  return getLocalizedMdxDocs("blog", locale).map((d) => withComputedReadTime(d, locale));
 }
 
 /** Merged MDX + Supabase auto-posts, newest first. */

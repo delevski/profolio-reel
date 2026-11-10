@@ -4,6 +4,7 @@ import { getLearnGuides } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { localizedPath } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
+import { formatReadTime } from "@/lib/utils";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -35,7 +36,7 @@ export default async function LearnPage({ params }: Props) {
               isNew={guide.isNew}
               emoji={guide.emoji}
               difficulty={guide.difficulty}
-              meta={`${guide.category} · ${guide.readTime}`}
+              meta={`${guide.category} · ${formatReadTime(guide.readTime, locale)}`}
               newLabel={dict.common.new}
               isRtl={rtl}
             />

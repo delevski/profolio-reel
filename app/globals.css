@@ -115,3 +115,8 @@ html[data-theme="light"] .prose-ordel a { color: var(--blue); }
 .prose-ordel table { width: 100%; border-collapse: collapse; margin: 0 0 1.2em; font-size: 15px; display: block; overflow-x: auto; }
 .prose-ordel th, .prose-ordel td { border: 1px solid var(--line); padding: 8px 12px; text-align: start; }
 .prose-ordel img { border-radius: 14px; border: 1px solid var(--line); }
+
+/* Mermaid diagrams inside articles: labels must not inherit prose paragraph styling. */
+.mermaid-figure { color: var(--text); }
+.mermaid-figure p, .mermaid-figure span { margin: 0; color: inherit; line-height: 1.35; }
+.mermaid-figure svg { height: auto; max-width: 100%; }

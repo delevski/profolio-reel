@@ -65,22 +65,6 @@ export interface AppView extends Omit<App, "description" | "tagline"> {
   tagline: string;
 }
 
-export interface Course {
-  slug: string;
-  title: LocalizedString;
-  description: LocalizedString;
-  level: LocalizedString;
-  isNew?: boolean;
-  href: string;
-}
-
-export interface CourseView
-  extends Omit<Course, "title" | "description" | "level"> {
-  title: string;
-  description: string;
-  level: string;
-}
-
 export interface Video {
   id: string;
   title: string;
@@ -131,6 +115,65 @@ export interface Trend {
   imageUrl?: string;
 }
 
+/** One day of the "Daily AI Trends" pipeline: content/ai-trends/YYYY-MM-DD.json */
+export interface TrendDigestFile {
+  date: string; // YYYY-MM-DD
+  /** The blog post written for the most important new trend of the day (if any). */
+  trendOfTheDay?: {
+    slug: string; // content/blog/<slug>.mdx (or Supabase auto_posts)
+    title: string;
+    titleHe?: string;
+    excerpt: string;
+    excerptHe?: string;
+    sourceHref: string;
+    /** Cover image path under /public (e.g. /blog/ai-trends/<slug>.webp). */
+    image?: string;
+    imageAlt?: string;
+  } | null;
+  items: {
+    id: string;
+    source: "github" | "huggingface";
+    title: string;
+    href: string;
+    stars?: number | null;
+    /** GitHub: primary language. */
+    language?: string;
+    /** Hugging Face: pipeline tag. */
+    tag?: string;
+    /** Hugging Face: downloads. */
+    downloads?: number;
+    imageUrl?: string | null;
+    summary: { en?: string; he?: string };
+  }[];
+}
+
+export interface TrendDigestItem {
+  id: string;
+  source: "github" | "huggingface";
+  title: string;
+  href: string;
+  stars?: number | null;
+  language?: string;
+  tag?: string;
+  downloads?: number;
+  imageUrl?: string | null;
+  summary: string;
+}
+
+/** UI shape — text already localized. */
+export interface TrendDigest {
+  date: string;
+  trendOfTheDay: {
+    slug: string;
+    title: string;
+    excerpt: string;
+    sourceHref: string;
+    image?: string;
+    imageAlt?: string;
+  } | null;
+  items: TrendDigestItem[];
+}
+
 export interface MdxDoc {
   slug: string;
   title: string;
@@ -146,5 +189,8 @@ export interface MdxDoc {
   emoji?: string;
   content: string;
   imageUrl?: string;
+  imageAlt?: string;
+  /** "ai" (generated illustration), "generated" (branded cover drawn in code) or "source". */
+  coverKind?: string;
   sourceHref?: string;
 }

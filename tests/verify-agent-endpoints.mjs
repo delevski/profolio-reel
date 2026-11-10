@@ -12,7 +12,7 @@ function probe(path, accept, expected, type) {
   console.log(`${path} | ${accept} | ${headers.split(/\r?\n/)[0]} | ${headers.split(/\r?\n/).filter(l => /^(content-type|vary):/i.test(l)).join(" | ")} | ${body.length} characters`);
   return body;
 }
-for (const p of ["/", "/en", "/he", "/en/reel", "/he/reel", "/en/about", "/en/contact", "/en/projects", "/en/apps", "/en/blog", "/en/learn", "/en/academy", "/en/privacy"]) {
+for (const p of ["/", "/en", "/he", "/en/reel", "/he/reel", "/en/about", "/en/contact", "/en/projects", "/en/apps", "/en/blog", "/en/learn", "/en/ai-trends", "/en/privacy"]) {
   probe(p, "text/markdown", 200, "text/markdown");
 }
 for (const p of ["/__ora-404-probe-qp9j7ffd", "/en/some-path-that-does-not-exist", "/he/some-path-that-does-not-exist", "/en/blog/no-such-post", "/en/learn/no-such-guide"]) {

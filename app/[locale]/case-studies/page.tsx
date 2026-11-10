@@ -4,7 +4,7 @@ import { getCaseStudies } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { localizedPath } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
-import { formatDate } from "@/lib/utils";
+import { formatDate, formatReadTime } from "@/lib/utils";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -40,7 +40,7 @@ export default async function CaseStudiesPage({ params }: Props) {
               tags={study.tags}
               lang={study.lang}
               imageUrl={study.imageUrl}
-              meta={`${formatDate(study.date, locale)} · ${study.readTime}`}
+              meta={`${formatDate(study.date, locale)} · ${formatReadTime(study.readTime, locale)}`}
               isRtl={rtl}
             />
           ))}

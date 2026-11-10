@@ -6,6 +6,14 @@ on:
     - cron: "0 4 * * *"
   workflow_dispatch:
 
+# The job commits the day's digest + blog post back to main (built-in token, no extra secret).
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-trends
+  cancel-in-progress: false
+
 jobs:
   daily-trends:
     runs-on: ubuntu-latest
@@ -29,7 +37,31 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          # Optional cover-image provider (first one present is used). With none set, every
+          # post still gets a branded cover drawn in code. Recommended: FAL_KEY (about $0.003/image).
+          FAL_KEY: ${{ secrets.FAL_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # Built-in token (not a new secret): lets the job read project READMEs without rate limits.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DIGEST_EMAIL: ordi21@walla.co.il
           SITE_URL: https://ordelwebsite.vercel.app
           RESEND_FROM: AI Trends Digest <onboarding@resend.dev>
         run: npm run trends:daily
+
+      - name: Commit digest to main
+        run: |
+          git config user.name "daily-trends[bot]"
+          git config user.email "daily-trends@users.noreply.github.com"
+          git add content/ai-trends content/blog content/trends.json public/blog/ai-trends
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+            exit 0
+          fi
+          git commit -m "chore(trends): daily AI trends digest $(date -u +%F)"
+          for i in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep 5
+          done
+          echo "::error::Could not push the digest commit"
+          exit 1

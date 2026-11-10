@@ -10,7 +10,7 @@
 
 - **Home page (v2)**: hero, selected-work carousel, projects, experience and CV, in English and Hebrew (RTL).
 - **Reel** (`/reel`): a scroll-driven promotional video reel with captions and a music control.
-- **Case studies, blog and learn guides** written in MDX, plus projects, apps, academy and contact pages.
+- **Case studies, blog and learn guides** written in MDX, plus projects, apps, AI trends and contact pages.
 - **Site chatbot**: answers visitors' questions using only what the site itself publishes.
 - **Daily AI trends**: a scheduled job collects GitHub and Hugging Face trends, summarizes them, stores them, emails a Hebrew digest and can publish a blog post; the site reads them from `/api/trends`.
 - **Agent-ready**: requests that prefer Markdown (`Accept` header) get a Markdown version of the page, and `llms.txt` describes the site for AI agents.
@@ -54,7 +54,7 @@ Key design decisions:
 ## Project structure
 
 ```
-app/[locale]/   reel, blog, learn, case-studies, projects, apps, academy, about, contact, privacy
+app/[locale]/   reel, blog, learn, case-studies, projects, apps, ai-trends, about, contact, privacy
 app/api/        agent (chatbot), markdown, trends
 public/v2/      static EN/HE home pages, carousel, assets
 content/        JSON content + MDX posts and case studies
