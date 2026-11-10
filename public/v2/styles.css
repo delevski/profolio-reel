@@ -77,7 +77,7 @@ main,footer,header{position:relative;z-index:1}
 .brand .sym{width:34px;height:34px;transition:transform .8s var(--ease)}
 .ct-orb{will-change:transform}
 .brand:hover .sym{transform:rotate(-200deg)}
-.brand .wm{width:82px;height:36px;color:var(--text)}
+.brand .wm{width:92px;height:36px;color:var(--text)}
 .nav-links{display:flex;gap:6px;margin-inline:auto;padding:5px;border:1px solid var(--line);border-radius:999px;background:var(--surface);}
 .nav-links a{padding:7px 15px;border-radius:999px;font-size:14px;color:var(--muted);transition:color .2s,background .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--text);background:var(--surface2)}
@@ -383,7 +383,7 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
   body{font-size:16px}
   .wrap{width:min(1240px,100% - 36px)}
   .nav-cta{display:none}
-  .brand .wm{width:70px}
+  .brand .wm{width:78px}
   .hero{padding:96px 0 28px;min-height:auto}
   .hero-mark{width:min(64vw,250px)}
   .hero h1{font-size:clamp(36px,10.6vw,52px);margin:18px 0 16px}
