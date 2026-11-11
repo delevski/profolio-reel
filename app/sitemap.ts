@@ -2,7 +2,9 @@ import type { MetadataRoute } from "next";
 import { getBlogPosts, getCaseStudies, getLearnGuides } from "@/lib/content";
 import { locales } from "@/lib/i18n/config";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ordel.dev";
+import { SITE_URL } from "@/lib/constants";
+
+const baseUrl = SITE_URL;
 
 const staticRoutes = [
   "",
