@@ -8,19 +8,19 @@ How to use this site: start with the page links below. Send an HTTP GET with `Ac
 
 ## When to use this
 
-- [Leadership and background](https://ordelwebsite.vercel.app/en/about): Evaluate technology leadership, engineering-team scaling and cloud architecture experience.
-- [Projects](https://ordelwebsite.vercel.app/en/projects): Find examples relevant to AI agents, automation, API integrations and web development.
-- [Reel](https://ordelwebsite.vercel.app/en/reel): Read the service topics shown in the visual reel without running its animation.
-- [Contact](https://ordelwebsite.vercel.app/en/contact): Find published email and phone details for a hiring or project inquiry; no automatic booking is offered.
+- [Leadership and background](https://ordel.dev/en/about): Evaluate technology leadership, engineering-team scaling and cloud architecture experience.
+- [Projects](https://ordel.dev/en/projects): Find examples relevant to AI agents, automation, API integrations and web development.
+- [Reel](https://ordel.dev/en/reel): Read the service topics shown in the visual reel without running its animation.
+- [Contact](https://ordel.dev/en/contact): Find published email and phone details for a hiring or project inquiry; no automatic booking is offered.
 
 ## Pages
 
-- [Home](https://ordelwebsite.vercel.app/en): Main portfolio page
-- [About](https://ordelwebsite.vercel.app/en/about): Background and experience
-- [Projects](https://ordelwebsite.vercel.app/en/projects): Selected projects
-- [Case Studies](https://ordelwebsite.vercel.app/en/case-studies): Deep dives into shipped agent systems: architecture, reliability, cost and security decisions with real numbers
-- [Apps](https://ordelwebsite.vercel.app/en/apps): Apps and products
-- [Case Studies](https://ordelwebsite.vercel.app/en/case-studies): Case studies of production agent systems
-- [Blog](https://ordelwebsite.vercel.app/en/blog): Articles
-- [Contact](https://ordelwebsite.vercel.app/en/contact): Get in touch
-- [Reel](https://ordelwebsite.vercel.app/en/reel): Scroll-driven promotional reel
+- [Home](https://ordel.dev/en): Main portfolio page
+- [About](https://ordel.dev/en/about): Background and experience
+- [Projects](https://ordel.dev/en/projects): Selected projects
+- [Case Studies](https://ordel.dev/en/case-studies): Deep dives into shipped agent systems: architecture, reliability, cost and security decisions with real numbers
+- [Apps](https://ordel.dev/en/apps): Apps and products
+- [Case Studies](https://ordel.dev/en/case-studies): Case studies of production agent systems
+- [Blog](https://ordel.dev/en/blog): Articles
+- [Contact](https://ordel.dev/en/contact): Get in touch
+- [Reel](https://ordel.dev/en/reel): Scroll-driven promotional reel
