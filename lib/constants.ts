@@ -1,3 +1,6 @@
+/** Canonical public origin. Hardcoded on purpose: Google must see one host. */
+export const SITE_URL = "https://ordel.dev";
+
 export const navLinks = [
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },

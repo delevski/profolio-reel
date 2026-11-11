@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
     return [
       { source: "/:locale(en|he)/academy", destination: "/:locale/ai-trends", permanent: true },
       { source: "/academy", destination: "/en/ai-trends", permanent: true },
+      // One canonical host for Google: old Vercel alias and www go to https://ordel.dev (308).
+      { source: "/:path*", has: [{ type: "host", value: "ordelwebsite.vercel.app" }], destination: "https://ordel.dev/:path*", permanent: true },
+      { source: "/:path*", has: [{ type: "host", value: "www.ordel.dev" }], destination: "https://ordel.dev/:path*", permanent: true },
     ];
   },
   async rewrites() {

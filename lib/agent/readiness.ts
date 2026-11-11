@@ -1,6 +1,6 @@
 import site from "@/content/site.en.json";
 
-export const siteUrl = "https://ordelwebsite.vercel.app";
+export const siteUrl = "https://ordel.dev";
 
 /** Exact media ranges override wildcards; ties keep the browser's HTML default. */
 export function preferredFormat(accept: string | null): "html" | "markdown" | "none" {

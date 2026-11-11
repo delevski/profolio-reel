@@ -5,15 +5,13 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import { SetHtmlLangDir } from "@/components/providers/SetHtmlLangDir";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { THEME_STORAGE_KEY } from "@/lib/constants";
+import { SITE_URL, THEME_STORAGE_KEY } from "@/lib/constants";
 import "../globals.css";
 
 const themeInitScript = `(function(){try{var t=localStorage.getItem("${THEME_STORAGE_KEY}");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://ordelwebsite.vercel.app",
-  ),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Or Delevski — CTO / VP R&D & Technology Leader",
     template: "%s | Or Delevski",
