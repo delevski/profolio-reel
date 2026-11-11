@@ -30,6 +30,7 @@ export async function BlogPreview({ locale }: { locale: Locale }) {
             tags={post.tags.map((t) => formatTag(t, locale))}
             lang={post.lang}
             imageUrl={post.imageUrl}
+            imageAlt={post.imageAlt}
             meta={`${formatDate(post.date, locale)} · ${formatReadTime(post.readTime, locale)}`}
             isRtl={isRtl(locale)}
           />

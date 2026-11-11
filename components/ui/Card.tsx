@@ -15,6 +15,7 @@ type ContentCardProps = {
   difficulty?: string;
   newLabel?: string;
   imageUrl?: string;
+  imageAlt?: string;
   isRtl?: boolean;
 };
 
@@ -30,6 +31,7 @@ export function ContentCard({
   difficulty,
   newLabel = "NEW",
   imageUrl,
+  imageAlt,
   isRtl = false,
 }: ContentCardProps) {
   return (
@@ -44,7 +46,7 @@ export function ContentCard({
         <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-surface-border bg-surface">
           <Image
             src={imageUrl}
-            alt={title}
+            alt={imageAlt || title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, 33vw"

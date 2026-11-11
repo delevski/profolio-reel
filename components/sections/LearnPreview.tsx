@@ -31,6 +31,8 @@ export function LearnPreview({ locale }: { locale: Locale }) {
             isNew={guide.isNew}
             emoji={guide.emoji}
             difficulty={guide.difficulty}
+            imageUrl={guide.imageUrl}
+            imageAlt={guide.imageAlt}
             meta={`${guide.category} · ${formatReadTime(guide.readTime, locale)}`}
             newLabel={dict.common.new}
             isRtl={isRtl(locale)}
