@@ -9,6 +9,8 @@ export function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/api") ||
     pathname.startsWith("/_next") ||
+    pathname === "/products" ||
+    pathname.startsWith("/products/") ||
     pathname.includes(".")
   ) {
     return NextResponse.next();
