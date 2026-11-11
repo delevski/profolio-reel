@@ -211,7 +211,7 @@
       "Supabase"
     ],
     "href": "https://github.com/delevski/ChampionsSport",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/ChampionsSport"
+    "imageUrl": "/projects/covers/championssport.webp"
   },
   {
     "slug": "trust-scan",
@@ -249,7 +249,7 @@
       "Python",
       "AI/ML"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+    "imageUrl": "/projects/covers/constrol-saas.webp"
   },
   {
     "slug": "paybox-fintech",
@@ -270,7 +270,7 @@
       "Microservices"
     ],
     "playStoreUrl": "https://play.google.com/store/apps/details?id=com.payboxapp",
-    "imageUrl": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80"
+    "imageUrl": "/projects/covers/paybox-fintech.webp"
   },
   {
     "slug": "doto",
@@ -307,7 +307,7 @@
       "AI Images"
     ],
     "href": "https://github.com/delevski/Do-your-image",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/Do-your-image"
+    "imageUrl": "/projects/covers/do-your-image.webp"
   },
   {
     "slug": "ocr-extractor",
@@ -325,7 +325,7 @@
       "Documents"
     ],
     "href": "https://github.com/delevski/OCR-extractor",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/OCR-extractor"
+    "imageUrl": "/projects/covers/ocr-extractor.webp"
   },
   {
     "slug": "rag-test",
@@ -401,7 +401,7 @@
       "Docker"
     ],
     "href": "https://github.com/delevski/fastapi-aws-ingestor",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/fastapi-aws-ingestor"
+    "imageUrl": "/projects/covers/fastapi-aws-ingestor.webp"
   },
   {
     "slug": "github-profile-readme",
@@ -419,7 +419,7 @@
       "Portfolio"
     ],
     "href": "https://github.com/delevski/delevski",
-    "imageUrl": "/projects/portfolio-template.png",
+    "imageUrl": "/projects/covers/github-profile-readme.webp",
     "demoUrl": "https://protfolio-tau-puce.vercel.app/"
   },
   {
@@ -495,7 +495,7 @@
       "Scroll"
     ],
     "href": "https://github.com/delevski/VideoScrubbing",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/VideoScrubbing"
+    "imageUrl": "/projects/covers/videoscrubbing.webp"
   },
   {
     "slug": "sti-signal-api",
@@ -513,7 +513,7 @@
       "Signals"
     ],
     "href": "https://github.com/delevski/sti-signal-api",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/sti-signal-api",
+    "imageUrl": "/projects/covers/sti-signal-api.webp",
     "demoUrl": "https://sti-signal-api.vercel.app"
   },
   {
@@ -532,7 +532,7 @@
       "Agents"
     ],
     "href": "https://github.com/delevski/chefli_agents",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/chefli_agents"
+    "imageUrl": "/projects/covers/chefli-agents.webp"
   },
   {
     "slug": "chrome-extantion-tabber",
@@ -549,7 +549,7 @@
       "Chrome Extension"
     ],
     "href": "https://github.com/delevski/chrome-extantion-tabber",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/chrome-extantion-tabber"
+    "imageUrl": "/projects/covers/chrome-extantion-tabber.webp"
   },
   {
     "slug": "crm-pro-vb",
@@ -662,7 +662,7 @@
       "Automation"
     ],
     "href": "https://github.com/delevski/Scrape-Websites",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/Scrape-Websites"
+    "imageUrl": "/projects/covers/scrape-websites.webp"
   },
   {
     "slug": "animated-web",
@@ -679,7 +679,7 @@
       "Animation"
     ],
     "href": "https://github.com/delevski/animated-web",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/animated-web"
+    "imageUrl": "/projects/covers/animated-web.webp"
   },
   {
     "slug": "conflictflow",
@@ -696,7 +696,7 @@
       "Visualization"
     ],
     "href": "https://github.com/delevski/ConflictFlow",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/ConflictFlow"
+    "imageUrl": "/projects/covers/conflictflow.webp"
   },
   {
     "slug": "lifebook",
@@ -714,7 +714,7 @@
       "Storytelling"
     ],
     "href": "https://github.com/delevski/LifeBook",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/LifeBook"
+    "imageUrl": "/projects/covers/lifebook.webp"
   },
   {
     "slug": "autodesk-agent",
@@ -731,7 +731,7 @@
       "Automation"
     ],
     "href": "https://github.com/delevski/autodesk-agent",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/autodesk-agent"
+    "imageUrl": "/projects/covers/autodesk-agent.webp"
   },
   {
     "slug": "tamakotchi",
@@ -748,7 +748,7 @@
       "Interactive UI"
     ],
     "href": "https://github.com/delevski/tamakotchi",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/tamakotchi"
+    "imageUrl": "/projects/covers/tamakotchi.webp"
   },
   {
     "slug": "custome-yad2",
@@ -765,7 +765,7 @@
       "Listings"
     ],
     "href": "https://github.com/delevski/custome-yad2",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/custome-yad2"
+    "imageUrl": "/projects/covers/custome-yad2.webp"
   },
   {
     "slug": "notebook-with-local-agent",
@@ -783,7 +783,7 @@
       "Agent"
     ],
     "href": "https://github.com/delevski/otebook_with_local_agent",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/otebook_with_local_agent"
+    "imageUrl": "/projects/covers/notebook-with-local-agent.webp"
   },
   {
     "slug": "adk-agent-test",
@@ -801,7 +801,7 @@
       "Experiment"
     ],
     "href": "https://github.com/delevski/ADK-AGENT-TEST",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/ADK-AGENT-TEST"
+    "imageUrl": "/projects/covers/adk-agent-test.webp"
   },
   {
     "slug": "me-as-agent",
@@ -819,7 +819,7 @@
       "Prototype"
     ],
     "href": "https://github.com/delevski/meAsAgent",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/meAsAgent"
+    "imageUrl": "/projects/covers/me-as-agent.webp"
   },
   {
     "slug": "playground",
@@ -836,7 +836,7 @@
       "Prototype"
     ],
     "href": "https://github.com/delevski/Playground",
-    "imageUrl": "https://opengraph.githubassets.com/1/delevski/Playground"
+    "imageUrl": "/projects/covers/playground.webp"
   },
   {
     "slug": "b2b-mobile-platforms",
@@ -855,6 +855,6 @@
       "Swift",
       "White Label"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1200&q=80"
+    "imageUrl": "/projects/covers/b2b-mobile-platforms.webp"
   }
 ]
