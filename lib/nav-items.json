@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "href": "/projects",
+      "key": "projects"
+    },
+    {
+      "href": "/case-studies",
+      "key": "caseStudies"
+    },
+    {
+      "href": "/blog",
+      "key": "blog"
+    },
+    {
+      "href": "/learn",
+      "key": "learn"
+    },
+    {
+      "href": "/ai-trends",
+      "key": "aiTrends"
+    },
+    {
+      "href": "/apps",
+      "key": "apps"
+    },
+    {
+      "href": "/about",
+      "key": "about"
+    },
+    {
+      "href": "/contact",
+      "key": "contact"
+    }
+  ],
+  "linkedin": "https://linkedin.com/in/delevskior"
+}

@@ -9,6 +9,7 @@ import { useTheme } from "@/components/providers/ThemeProvider";
 import { BrandMark } from "@/components/layout/BrandMark";
 import { CONTACT_WHATSAPP_URL } from "@/lib/constants";
 import type { Locale } from "@/lib/i18n/config";
+import navConfig from "@/lib/nav-items.json";
 
 /** Site header — same markup/classes as the v2 static home (public/v2). */
 export function Header() {
@@ -18,16 +19,12 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const navItems = [
-    { href: "/projects", label: dict.nav.projects },
-    { href: "/case-studies", label: dict.nav.caseStudies },
-    { href: "/blog", label: dict.nav.blog },
-    { href: "/learn", label: dict.nav.learn },
-    { href: "/ai-trends", label: dict.nav.aiTrends },
-    { href: "/apps", label: dict.nav.apps },
-    { href: "/about", label: dict.nav.about },
-    { href: "/contact", label: dict.nav.contact },
-  ];
+  // Single source of truth: lib/nav-items.json. The static v2 home pages get the same
+  // items injected by scripts/sync-v2-nav.mjs (runs on prebuild; tests/nav-parity.test.ts guards it).
+  const navItems = navConfig.items.map((item) => ({
+    href: item.href,
+    label: dict.nav[item.key as keyof typeof dict.nav] as string,
+  }));
 
   const other: Locale = locale === "en" ? "he" : "en";
   const otherHref = switchLocalePath(pathname || `/${locale}`, other);
@@ -99,6 +96,16 @@ export function Header() {
             <svg viewBox="0 0 24 24" aria-hidden="true" className="i-sun"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" strokeWidth="1.8" /><path stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
             <svg viewBox="0 0 24 24" aria-hidden="true" className="i-moon"><path fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" /></svg>
           </button>
+          <a
+            className="btn btn-sm btn-ghost nav-li"
+            href={navConfig.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm7 0h3.8v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.2c0-1.2 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4V9.5Z" /></svg>
+            <span>LinkedIn</span>
+          </a>
           <a className="btn btn-sm btn-primary nav-cta" href={CONTACT_WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
             {ctaLabel}
           </a>
