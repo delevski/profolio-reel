@@ -1,6 +1,6 @@
 [
   {
-    "id": "2026-11-10-github-1",
+    "id": "2026-11-11-github-1",
     "title": "meta/astryx",
     "source": "GitHub",
     "description": {
@@ -8,115 +8,115 @@
       "he": "טרנד חדש: meta/astryx. כדאי לעקוב אחרי העדכון הזה."
     },
     "href": "https://github.com/meta/astryx",
-    "stars": 21604,
+    "stars": 24126,
     "imageUrl": "https://opengraph.githubassets.com/1/meta/astryx"
   },
   {
-    "id": "2026-11-10-github-2",
-    "title": "anthropics/skills",
+    "id": "2026-11-11-github-2",
+    "title": "ZhuLinsen/daily_stock_analysis",
     "source": "GitHub",
     "description": {
-      "en": "Public repository for Agent Skills",
-      "he": "טרנד חדש: anthropics/skills. כדאי לעקוב אחרי העדכון הזה."
+      "en": "An LLM-powered stock analysis system that aggregates multi-market data, real-time news, and automated insights with zero-cost scheduled execution. Useful for traders wanting AI-driven decision dashboards across multiple markets.",
+      "he": "מערכת ניתוח מניות המופעלת על ידי AI שמאגדת נתונים מכמה שווקים וחדשות בזמן אמת. כלי שימושי לסוחרים שרוצים תובנות חכמות באופן אוטומטי."
     },
-    "href": "https://github.com/anthropics/skills",
-    "stars": 191810,
-    "imageUrl": "https://opengraph.githubassets.com/1/anthropics/skills"
+    "href": "https://github.com/ZhuLinsen/daily_stock_analysis",
+    "stars": 69712,
+    "imageUrl": "https://opengraph.githubassets.com/1/ZhuLinsen/daily_stock_analysis"
   },
   {
-    "id": "2026-11-10-github-3",
+    "id": "2026-11-11-github-3",
     "title": "addyosmani/agent-skills",
     "source": "GitHub",
     "description": {
-      "en": "Production-grade engineering skills for AI coding agents.",
-      "he": "טרנד חדש: addyosmani/agent-skills. כדאי לעקוב אחרי העדכון הזה."
+      "en": "Production-ready engineering skills library designed to enhance AI coding agents with real-world capabilities. Enables developers to build more capable autonomous coding systems.",
+      "he": "ספריית כישורים הנדסיים שמשפרת סוכנים AI לכתיבת קוד. עוזרת למפתחים לבנות מערכות קוד אוטונומיות חזקות יותר."
     },
     "href": "https://github.com/addyosmani/agent-skills",
-    "stars": 114817,
+    "stars": 115535,
     "imageUrl": "https://opengraph.githubassets.com/1/addyosmani/agent-skills"
   },
   {
-    "id": "2026-11-10-github-4",
-    "title": "anthropics/claude-quickstarts",
+    "id": "2026-11-11-github-4",
+    "title": "vercel-labs/agent-browser",
     "source": "GitHub",
     "description": {
-      "en": "A collection of projects designed to help developers quickly get started with building deployable applications using the Claude API",
-      "he": "טרנד חדש: anthropics/claude-quickstarts. כדאי לעקוב אחרי העדכון הזה."
+      "en": "A CLI tool that gives AI agents the ability to automate browser interactions and web tasks. Essential infrastructure for building agents that can navigate and interact with web applications.",
+      "he": "כלי שמאפשר לסוכנים AI לבצע פעולות בדפדפן באופן אוטומטי. חיוני לבניית סוכנים שיכולים לנווט באתרים."
     },
-    "href": "https://github.com/anthropics/claude-quickstarts",
-    "stars": 20272,
-    "imageUrl": "https://opengraph.githubassets.com/1/anthropics/claude-quickstarts"
+    "href": "https://github.com/vercel-labs/agent-browser",
+    "stars": 49576,
+    "imageUrl": "https://opengraph.githubassets.com/1/vercel-labs/agent-browser"
   },
   {
-    "id": "2026-11-10-github-5",
+    "id": "2026-11-11-github-5",
     "title": "homeassistant-ai/ha-mcp",
     "source": "GitHub",
     "description": {
-      "en": "Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.",
-      "he": "טרנד חדש: homeassistant-ai/ha-mcp. כדאי לעקוב אחרי העדכון הזה."
+      "en": "Integration layer that connects Home Assistant smart home systems with Claude, ChatGPT, and other AI assistants for voice and text control. Brings conversational AI to home automation.",
+      "he": "חיבור בין מערכות בית חכם לסוכנים AI כמו Claude ו-ChatGPT. מאפשר שליטה בבית דרך שיחה עם AI."
     },
     "href": "https://github.com/homeassistant-ai/ha-mcp",
-    "stars": 6357,
+    "stars": 6962,
     "imageUrl": "https://opengraph.githubassets.com/1/homeassistant-ai/ha-mcp"
   },
   {
-    "id": "2026-11-10-huggingface-6",
-    "title": "speridlabs/idol",
-    "source": "Hugging Face",
-    "description": {
-      "en": "Trending Hugging Face model (image-to-3d). Likes: 1758, downloads: 26470.",
-      "he": "טרנד חדש: speridlabs/idol. כדאי לעקוב אחרי העדכון הזה."
-    },
-    "href": "https://huggingface.co/speridlabs/idol",
-    "stars": 1758,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/speridlabs/idol.png"
-  },
-  {
-    "id": "2026-11-10-huggingface-7",
+    "id": "2026-11-11-huggingface-6",
     "title": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
     "source": "Hugging Face",
     "description": {
-      "en": "Trending Hugging Face model (text-generation). Likes: 1125, downloads: 14378.",
-      "he": "טרנד חדש: xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic. כדאי לעקוב אחרי העדכון הזה."
+      "en": "A high-performing text generation model based on DeepSeek-V4 and Qwen architecture with strong community adoption. Offers an alternative to mainstream LLMs for developers.",
+      "he": "מודל יצירת טקסט חזק המבוסס על DeepSeek ו-Qwen עם קהילה פעילה. אפשרות טובה למפתחים שמחפשים חלופה ל-LLM רגיל."
     },
     "href": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
-    "stars": 1125,
+    "stars": 1316,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic.png"
   },
   {
-    "id": "2026-11-10-huggingface-8",
+    "id": "2026-11-11-huggingface-7",
+    "title": "speridlabs/idol",
+    "source": "Hugging Face",
+    "description": {
+      "en": "A trending image-to-3D model that converts 2D images into 3D models with significant community interest. Opens new possibilities for 3D content creation workflows.",
+      "he": "מודל המרה מתמונה ל-3D שהופך תמונות דו-ממדיות לדגמים תלת-ממדיים. פותח אפשרויות חדשות ליצירת תוכן 3D."
+    },
+    "href": "https://huggingface.co/speridlabs/idol",
+    "stars": 1923,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/speridlabs/idol.png"
+  },
+  {
+    "id": "2026-11-11-huggingface-8",
     "title": "moonshotai/Kimi-K3.1-Pro",
     "source": "Hugging Face",
     "description": {
-      "en": "Trending Hugging Face model (image-text-to-text). Likes: 1828, downloads: 30721.",
-      "he": "טרנד חדש: moonshotai/Kimi-K3.1-Pro. כדאי לעקוב אחרי העדכון הזה."
+      "en": "A multimodal model from Moonshot AI that processes both images and text for advanced reasoning tasks. Combines vision and language understanding for complex AI applications.",
+      "he": "מודל מתקדם שמעבד תמונות וטקסט ביחד. משלב ראייה והבנת שפה לפתרון בעיות מורכבות."
     },
     "href": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
-    "stars": 1828,
+    "stars": 1897,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/moonshotai/Kimi-K3.1-Pro.png"
   },
   {
-    "id": "2026-11-10-huggingface-9",
+    "id": "2026-11-11-huggingface-9",
+    "title": "MiniMaxAI/MiniMax-H3-Image",
+    "source": "Hugging Face",
+    "description": {
+      "en": "A text-to-image generation model with exceptionally high download numbers, indicating strong practical adoption. Demonstrates demand for accessible image synthesis tools.",
+      "he": "מודל יצירת תמונות מטקסט עם מספר הורדות גבוה מאוד. מראה שיש ביקוש גדול לכלים שיוצרים תמונות."
+    },
+    "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+    "stars": 575,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png"
+  },
+  {
+    "id": "2026-11-11-huggingface-10",
     "title": "ricursiveAI/Ripple-65B-Preview",
     "source": "Hugging Face",
     "description": {
-      "en": "Trending Hugging Face model. Likes: 469, downloads: 6480.",
-      "he": "טרנד חדש: ricursiveAI/Ripple-65B-Preview. כדאי לעקוב אחרי העדכון הזה."
+      "en": "A large-scale language model from Recursive AI in preview stage with growing adoption. Represents emerging competition in the LLM space.",
+      "he": "מודל שפה גדול בשלב ניסיון מחברת Recursive AI. מראה תחרות חדשה בתחום ה-LLM."
     },
     "href": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
-    "stars": 469,
+    "stars": 494,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/ricursiveAI/Ripple-65B-Preview.png"
-  },
-  {
-    "id": "2026-11-10-huggingface-10",
-    "title": "Lightricks/LTX-2.5",
-    "source": "Hugging Face",
-    "description": {
-      "en": "Trending Hugging Face model (image-to-video). Likes: 11313, downloads: 2791606.",
-      "he": "טרנד חדש: Lightricks/LTX-2.5. כדאי לעקוב אחרי העדכון הזה."
-    },
-    "href": "https://huggingface.co/Lightricks/LTX-2.5",
-    "stars": 11313,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png"
   }
 ]
