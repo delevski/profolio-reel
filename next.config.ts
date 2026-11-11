@@ -15,6 +15,11 @@ const nextConfig: NextConfig = {
       beforeFiles: [
         { source: "/en", destination: "/v2/index.html" },
         { source: "/he", destination: "/v2/he/index.html" },
+        // Proxy /products to the gated ordel-products Cloudflare Worker.
+        // No trailing-slash redirect: Next normalizes /products/ -> /products (308)
+        // before rewrites, and the Worker uses absolute /products/... links.
+        { source: "/products", destination: "https://ordel-products.orworkdelevski.workers.dev/" },
+        { source: "/products/:path+", destination: "https://ordel-products.orworkdelevski.workers.dev/:path+" },
       ],
       afterFiles: [],
       fallback: [],
