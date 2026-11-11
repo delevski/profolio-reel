@@ -1,12 +1,15 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ordel.dev";
+import { SITE_URL } from "@/lib/constants";
+
+const baseUrl = SITE_URL;
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/products", "/api/"],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
   };
