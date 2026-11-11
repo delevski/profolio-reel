@@ -37,6 +37,7 @@ export default async function BlogPage({ params }: Props) {
               tags={post.tags.map((t) => formatTag(t, locale))}
               lang={post.lang}
               imageUrl={post.imageUrl}
+              imageAlt={post.imageAlt}
               meta={`${formatDate(post.date, locale)} · ${formatReadTime(post.readTime, locale)}`}
               isRtl={rtl}
             />
