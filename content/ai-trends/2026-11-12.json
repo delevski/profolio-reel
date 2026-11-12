@@ -1,0 +1,150 @@
+{
+  "date": "2026-11-12",
+  "trendOfTheDay": {
+    "slug": "2026-11-12-codex-security-automated-vulnerability-detection-and-patching-in-your-workflow",
+    "title": "Codex Security: Automated Vulnerability Detection and Patching in Your Workflow",
+    "titleHe": "Codex Security: זיהוי וטיפול אוטומטי בפגיעויות אבטחה בזרימת העבודה שלך",
+    "excerpt": "OpenAI's Codex Security brings AI-powered security scanning directly into development workflows, offering automated vulnerability detection, validation, and patch generation through a CLI, TypeScript SDK, and GitHub Actions integration.",
+    "excerptHe": "Codex Security של OpenAI מביא סריקת אבטחה מונעת בינה מלאכותית ישירות לזרימות פיתוח, ומציע זיהוי אוטומטי של פגיעויות, אימות וייצור תיקונים דרך CLI, TypeScript SDK ואינטגרציה GitHub Actions.",
+    "sourceHref": "https://github.com/openai/codex-security",
+    "image": "/blog/ai-trends/2026-11-12-codex-security-automated-vulnerability-detection-and-patching-in-your-workflow.webp",
+    "imageAlt": "Abstract illustration for: Codex Security: Automated Vulnerability Detection and Patching in Your Workflow"
+  },
+  "items": [
+    {
+      "id": "2026-11-12-github-1",
+      "source": "github",
+      "title": "openai/codex-security",
+      "href": "https://github.com/openai/codex-security",
+      "stars": 12080,
+      "language": "TypeScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/openai/codex-security",
+      "summary": {
+        "en": "OpenAI's Codex Security tool automatically finds, validates, and fixes security vulnerabilities in code through a CLI and TypeScript SDK. It brings AI-powered security scanning directly into your development workflow.",
+        "he": "כלי אבטחה של OpenAI שמוצא ותוקן באגי אבטחה בקוד באופן אוטומטי. זה עוזר למפתחים לשמור על הקוד שלהם בטוח."
+      }
+    },
+    {
+      "id": "2026-11-12-github-2",
+      "source": "github",
+      "title": "QwenLM/qwen-code",
+      "href": "https://github.com/QwenLM/qwen-code",
+      "stars": 29559,
+      "language": "TypeScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/QwenLM/qwen-code",
+      "summary": {
+        "en": "Qwen-Code is an open-source AI coding agent that runs directly in your terminal, enabling developers to get real-time code assistance without leaving their command line. It brings conversational AI coding help to your local environment.",
+        "he": "סוכן קוד בינה מלאכותית שרץ בטרמינל שלך ועוזר לכתוב קוד. זה כמו עוזר חכם שנמצא תמיד ליד שלך."
+      }
+    },
+    {
+      "id": "2026-11-12-github-3",
+      "source": "github",
+      "title": "ashhart/TensorFold",
+      "href": "https://github.com/ashhart/TensorFold",
+      "stars": 1827,
+      "language": "Zig",
+      "imageUrl": "https://opengraph.githubassets.com/1/ashhart/TensorFold",
+      "summary": {
+        "en": "TensorFold is a high-performance LLM inference engine optimized for Metal, CUDA, and Vulkan backends. It enables efficient AI model deployment across different hardware platforms.",
+        "he": "מנוע חישוב חזק שמריץ מודלי AI בצורה מהירה על חומרה שונה. זה עוזר למודלים גדולים לרוץ בצורה יעילה."
+      }
+    },
+    {
+      "id": "2026-11-12-github-4",
+      "source": "github",
+      "title": "addyosmani/agent-skills",
+      "href": "https://github.com/addyosmani/agent-skills",
+      "stars": 116341,
+      "language": "JavaScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/addyosmani/agent-skills",
+      "summary": {
+        "en": "Agent-Skills provides production-ready engineering capabilities specifically designed for AI coding agents. It offers battle-tested patterns and tools to make AI agents more reliable in real-world development scenarios.",
+        "he": "ספריית כלים מקצועיים שמעניקה לסוכני AI יכולות הנדסיות אמיתיות. זה עוזר לסוכנים לעבוד בצורה יציבה בפרויקטים אמיתיים."
+      }
+    },
+    {
+      "id": "2026-11-12-github-5",
+      "source": "github",
+      "title": "meta/astryx",
+      "href": "https://github.com/meta/astryx",
+      "stars": 25932,
+      "language": "TypeScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/meta/astryx",
+      "summary": {
+        "en": "An open source design system that's fully customizable and agent ready",
+        "he": "טרנד חדש: meta/astryx. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-12-huggingface-6",
+      "source": "huggingface",
+      "title": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+      "href": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+      "stars": 4609,
+      "tag": "text-generation",
+      "downloads": 18933,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic.png",
+      "summary": {
+        "en": "DeepSeek-V4-Pro-Qwen3.5-9B is a trending text-generation model with strong community adoption. It combines multiple model architectures for improved reasoning and code generation capabilities.",
+        "he": "מודל טקסט חזק שנוצר על ידי שילוב של מודלים שונים. הוא טוב בכתיבת קוד והבנת שאלות מורכבות."
+      }
+    },
+    {
+      "id": "2026-11-12-huggingface-7",
+      "source": "huggingface",
+      "title": "MiniMaxAI/MiniMax-H3-Image",
+      "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+      "stars": 804,
+      "tag": "text-to-image",
+      "downloads": 306718,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png",
+      "summary": {
+        "en": "MiniMax-H3-Image is a text-to-image model gaining significant traction with over 300K downloads. It enables developers to generate high-quality images from text descriptions at scale.",
+        "he": "מודל שיוצר תמונות יפות מתיאור בטקסט. הוא משמש אנשים רבים ליצירת תמונות אוטומטיות."
+      }
+    },
+    {
+      "id": "2026-11-12-huggingface-8",
+      "source": "huggingface",
+      "title": "speridlabs/idol",
+      "href": "https://huggingface.co/speridlabs/idol",
+      "stars": 2188,
+      "tag": "image-to-3d",
+      "downloads": 29904,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/speridlabs/idol.png",
+      "summary": {
+        "en": "IDOL is an image-to-3D model that converts 2D images into 3D models. It opens new possibilities for 3D content creation and digital asset generation from existing images.",
+        "he": "מודל שהופך תמונות דו-ממדיות לתלת-ממדיות. זה שימושי ליצירת מודלים תלת-ממדיים מהר."
+      }
+    },
+    {
+      "id": "2026-11-12-huggingface-9",
+      "source": "huggingface",
+      "title": "NousResearch/Arete-27B",
+      "href": "https://huggingface.co/NousResearch/Arete-27B",
+      "stars": 458,
+      "tag": "text-generation",
+      "downloads": 4669,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/NousResearch/Arete-27B.png",
+      "summary": {
+        "en": "Arete-27B is a text-generation model from Nous Research offering a balance of performance and efficiency. It's designed for developers seeking capable language models with reasonable resource requirements.",
+        "he": "מודל טקסט בגודל בינוני שעובד טוב ולא דורש הרבה משאבים. זה אפשרות טובה למפתחים שרוצים מודל יעיל."
+      }
+    },
+    {
+      "id": "2026-11-12-huggingface-10",
+      "source": "huggingface",
+      "title": "Lightricks/LTX-2.5",
+      "href": "https://huggingface.co/Lightricks/LTX-2.5",
+      "stars": 11574,
+      "tag": "image-to-video",
+      "downloads": 2782513,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png",
+      "summary": {
+        "en": "LTX-2.5 is a leading image-to-video model with nearly 2.8M downloads, enabling developers to generate dynamic video content from static images. It's the most adopted trend in this digest by download volume.",
+        "he": "מודל שהופך תמונות לסרטונים קצרים. הוא מאוד פופולרי ומשמש הרבה אנשים ליצירת וידאו."
+      }
+    }
+  ]
+}
