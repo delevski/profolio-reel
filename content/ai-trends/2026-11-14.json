@@ -1,0 +1,150 @@
+{
+  "date": "2026-11-14",
+  "trendOfTheDay": {
+    "slug": "2026-11-14-ltx-2-5-a-high-download-image-to-video-model-from-lightricks",
+    "title": "LTX-2.5: A High-Download Image-to-Video Model from Lightricks",
+    "titleHe": "LTX-2.5: מודל המרת תמונה לווידאו בעל הורדות גבוהות מ-Lightricks",
+    "excerpt": "Lightricks' LTX-2.5 has become the most downloaded trending model on Hugging Face with 2.7 million downloads, offering image-to-video generation capabilities that have resonated with the community.",
+    "excerptHe": "LTX-2.5 של Lightricks הפך למודל הטרנדי המובילה בהורדות ב-Hugging Face עם 2.7 מיליון הורדות, והוא מציע יכולות יצירת ווידאו מתמונה שהשיגו הד חזק בקהילה.",
+    "sourceHref": "https://huggingface.co/Lightricks/LTX-2.5",
+    "image": "/blog/ai-trends/2026-11-14-ltx-2-5-a-high-download-image-to-video-model-from-lightricks.webp",
+    "imageAlt": "Abstract illustration for: LTX-2.5: A High-Download Image-to-Video Model from Lightricks"
+  },
+  "items": [
+    {
+      "id": "2026-11-14-github-1",
+      "source": "github",
+      "title": "alibaba/open-code-review",
+      "href": "https://github.com/alibaba/open-code-review",
+      "stars": 51002,
+      "language": "Go",
+      "imageUrl": "https://opengraph.githubassets.com/1/alibaba/open-code-review",
+      "summary": {
+        "en": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+        "he": "טרנד חדש: alibaba/open-code-review. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-14-github-2",
+      "source": "github",
+      "title": "GoogleChrome/modern-web-guidance-src",
+      "href": "https://github.com/GoogleChrome/modern-web-guidance-src",
+      "stars": 5292,
+      "language": "TypeScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/GoogleChrome/modern-web-guidance-src",
+      "summary": {
+        "en": "Google Chrome's guidance framework keeps AI coding agents aligned with modern web standards and best practices. Essential for developers building with AI assistants.",
+        "he": "גוגל Chrome מספקת הנחיות לעדכון סוכני AI לפי תקנים ועקרונות אתר מודרניים. חשוב למפתחים שעובדים עם עוזרים AI."
+      }
+    },
+    {
+      "id": "2026-11-14-github-3",
+      "source": "github",
+      "title": "openai/codex-security",
+      "href": "https://github.com/openai/codex-security",
+      "stars": 13377,
+      "language": "TypeScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/openai/codex-security",
+      "summary": {
+        "en": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm: https://www.npmjs.com/package/@openai/codex-security",
+        "he": "טרנד חדש: openai/codex-security. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-14-github-4",
+      "source": "github",
+      "title": "ZhuLinsen/daily_stock_analysis",
+      "href": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "stars": 72042,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/ZhuLinsen/daily_stock_analysis",
+      "summary": {
+        "en": "LLM-powered stock analysis system that aggregates multi-market data, real-time news, and automated insights with zero infrastructure costs. Practical AI for financial decision-making.",
+        "he": "מערכת ניתוח מניות המופעלת על ידי LLM עם נתונים מרובי שווקים וחדשות בזמן אמת. פתרון AI מעשי לקבלת החלטות כלכליות."
+      }
+    },
+    {
+      "id": "2026-11-14-github-5",
+      "source": "github",
+      "title": "tradermonty/claude-trading-skills",
+      "href": "https://github.com/tradermonty/claude-trading-skills",
+      "stars": 4400,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/tradermonty/claude-trading-skills",
+      "summary": {
+        "en": "Claude Code skills toolkit for traders and investors covering market analysis, technical charting, and strategy development. Brings AI reasoning to equity trading workflows.",
+        "he": "ערכת כלים Claude Code לסוחרים ומשקיעים עם ניתוח שוק וטכניקות גרפיות. מביא AI לתהליכי מסחר בהון עצמי."
+      }
+    },
+    {
+      "id": "2026-11-14-huggingface-6",
+      "source": "huggingface",
+      "title": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+      "href": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+      "stars": 7226,
+      "tag": "text-generation",
+      "downloads": 24470,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic.png",
+      "summary": {
+        "en": "High-performance 9B text generation model trending on Hugging Face with strong community adoption. Lightweight alternative for resource-constrained deployments.",
+        "he": "מודל יצירת טקסט קל משקל עם אימוץ קהילתי חזק. אפשרות טובה לסביבות עם משאבים מוגבלים."
+      }
+    },
+    {
+      "id": "2026-11-14-huggingface-7",
+      "source": "huggingface",
+      "title": "MiniMaxAI/MiniMax-H3-Image",
+      "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+      "stars": 1073,
+      "tag": "text-to-image",
+      "downloads": 517948,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png",
+      "summary": {
+        "en": "MiniMax's text-to-image model with nearly 520K downloads showing strong production adoption. Efficient image generation for creative and commercial applications.",
+        "he": "מודל טקסט לתמונה עם מעל 500K הורדות. יעיל ליצירת תמונות בשימושים יצירתיים."
+      }
+    },
+    {
+      "id": "2026-11-14-huggingface-8",
+      "source": "huggingface",
+      "title": "Lightricks/LTX-2.5",
+      "href": "https://huggingface.co/Lightricks/LTX-2.5",
+      "stars": 11842,
+      "tag": "image-to-video",
+      "downloads": 2777667,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png",
+      "summary": {
+        "en": "Lightricks' image-to-video model is the most downloaded trending model with 2.7M downloads and 11K+ likes. State-of-the-art video generation from static images.",
+        "he": "מודל תמונה לווידאו עם 2.7 מיליון הורדות. יצירת וידאו מתקדמת מתמונות סטטיות."
+      }
+    },
+    {
+      "id": "2026-11-14-huggingface-9",
+      "source": "huggingface",
+      "title": "Qwen/Qwen3.8-27B",
+      "href": "https://huggingface.co/Qwen/Qwen3.8-27B",
+      "stars": 19932,
+      "tag": "image-text-to-text",
+      "downloads": 6757964,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Qwen/Qwen3.8-27B.png",
+      "summary": {
+        "en": "Qwen's 27B multimodal model with 6.7M downloads and 19K+ likes is a top performer for image-text understanding. Versatile foundation model for vision-language tasks.",
+        "he": "מודל Qwen 27B עם 6.7 מיליון הורדות. מודל חזק להבנת תמונות וטקסט ביחד."
+      }
+    },
+    {
+      "id": "2026-11-14-huggingface-10",
+      "source": "huggingface",
+      "title": "NousResearch/Arete-27B",
+      "href": "https://huggingface.co/NousResearch/Arete-27B",
+      "stars": 584,
+      "tag": "text-generation",
+      "downloads": 6191,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/NousResearch/Arete-27B.png",
+      "summary": {
+        "en": "Nous Research's 27B text generation model offers an emerging alternative in the crowded LLM space. Designed for high-quality reasoning and instruction-following.",
+        "he": "מודל יצירת טקסט 27B מ-Nous Research. מודל חדש עם דגש על חשיבה איכותית."
+      }
+    }
+  ]
+}

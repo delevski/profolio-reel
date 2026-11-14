@@ -1,30 +1,30 @@
 [
   {
-    "id": "2026-11-13-github-1",
+    "id": "2026-11-14-github-1",
     "title": "alibaba/open-code-review",
     "source": "GitHub",
     "description": {
-      "en": "Alibaba's open-source code review tool combines deterministic pipelines with LLM agents to catch security issues like SQL injection and XSS across multiple languages. It's production-tested at scale and works with OpenAI and Anthropic models.",
-      "he": "כלי סקירת קוד של אליבאבא משלב בדיקות אוטומטיות עם AI כדי למצוא בעיות אבטחה. הוא עובד עם מודלים של OpenAI ו-Anthropic."
+      "en": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+      "he": "טרנד חדש: alibaba/open-code-review. כדאי לעקוב אחרי העדכון הזה."
     },
     "href": "https://github.com/alibaba/open-code-review",
-    "stars": 50155,
+    "stars": 51002,
     "imageUrl": "https://opengraph.githubassets.com/1/alibaba/open-code-review"
   },
   {
-    "id": "2026-11-13-github-2",
+    "id": "2026-11-14-github-2",
     "title": "GoogleChrome/modern-web-guidance-src",
     "source": "GitHub",
     "description": {
-      "en": "Google Chrome's guidance repository helps keep AI coding agents updated with the latest web development best practices and standards. It serves as a knowledge base for modern web development patterns.",
-      "he": "מאגר של גוגל שמעדכן סוכני AI עם הנוהלים הטובים ביותר של פיתוח אתרים מודרני. זה עוזר לשמור על קוד עדכני."
+      "en": "Google Chrome's guidance framework keeps AI coding agents aligned with modern web standards and best practices. Essential for developers building with AI assistants.",
+      "he": "גוגל Chrome מספקת הנחיות לעדכון סוכני AI לפי תקנים ועקרונות אתר מודרניים. חשוב למפתחים שעובדים עם עוזרים AI."
     },
     "href": "https://github.com/GoogleChrome/modern-web-guidance-src",
-    "stars": 4117,
+    "stars": 5292,
     "imageUrl": "https://opengraph.githubassets.com/1/GoogleChrome/modern-web-guidance-src"
   },
   {
-    "id": "2026-11-13-github-3",
+    "id": "2026-11-14-github-3",
     "title": "openai/codex-security",
     "source": "GitHub",
     "description": {
@@ -32,91 +32,91 @@
       "he": "טרנד חדש: openai/codex-security. כדאי לעקוב אחרי העדכון הזה."
     },
     "href": "https://github.com/openai/codex-security",
-    "stars": 12802,
+    "stars": 13377,
     "imageUrl": "https://opengraph.githubassets.com/1/openai/codex-security"
   },
   {
-    "id": "2026-11-13-github-4",
+    "id": "2026-11-14-github-4",
     "title": "ZhuLinsen/daily_stock_analysis",
     "source": "GitHub",
     "description": {
-      "en": "An LLM-powered stock analysis system that aggregates multi-source market data, real-time news, and generates trading insights with automated notifications. It runs on free scheduled infrastructure with zero ongoing costs.",
-      "he": "מערכת ניתוח מניות המופעלת על ידי AI שמאגדת נתונים שוק, חדשות בזמן אמת והמלצות מסחר. היא רצה בחינם בלוח זמנים."
+      "en": "LLM-powered stock analysis system that aggregates multi-market data, real-time news, and automated insights with zero infrastructure costs. Practical AI for financial decision-making.",
+      "he": "מערכת ניתוח מניות המופעלת על ידי LLM עם נתונים מרובי שווקים וחדשות בזמן אמת. פתרון AI מעשי לקבלת החלטות כלכליות."
     },
     "href": "https://github.com/ZhuLinsen/daily_stock_analysis",
-    "stars": 71228,
+    "stars": 72042,
     "imageUrl": "https://opengraph.githubassets.com/1/ZhuLinsen/daily_stock_analysis"
   },
   {
-    "id": "2026-11-13-github-5",
+    "id": "2026-11-14-github-5",
     "title": "tradermonty/claude-trading-skills",
     "source": "GitHub",
     "description": {
-      "en": "Claude Code skills package for traders and investors offering market analysis, technical charting, economic calendars, and strategy development tools. It integrates directly with Claude's coding capabilities.",
-      "he": "חבילת כלים ל-Claude עבור סוחרים שמספקת ניתוח שוק, תרשימים טכניים וכלים לפיתוח אסטרטגיה. היא משתלבת ישירות עם Claude."
+      "en": "Claude Code skills toolkit for traders and investors covering market analysis, technical charting, and strategy development. Brings AI reasoning to equity trading workflows.",
+      "he": "ערכת כלים Claude Code לסוחרים ומשקיעים עם ניתוח שוק וטכניקות גרפיות. מביא AI לתהליכי מסחר בהון עצמי."
     },
     "href": "https://github.com/tradermonty/claude-trading-skills",
-    "stars": 3866,
+    "stars": 4400,
     "imageUrl": "https://opengraph.githubassets.com/1/tradermonty/claude-trading-skills"
   },
   {
-    "id": "2026-11-13-huggingface-6",
+    "id": "2026-11-14-huggingface-6",
     "title": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
     "source": "Hugging Face",
     "description": {
-      "en": "A trending 9B parameter text generation model based on DeepSeek and Qwen architectures, gaining traction with over 21,000 downloads. It offers a compact alternative for resource-constrained deployments.",
-      "he": "מודל טקסט קטן עם 9 מיליארד פרמטרים שמתבסס על DeepSeek ו-Qwen. הוא טוב למכונות עם משאבים מוגבלים."
+      "en": "High-performance 9B text generation model trending on Hugging Face with strong community adoption. Lightweight alternative for resource-constrained deployments.",
+      "he": "מודל יצירת טקסט קל משקל עם אימוץ קהילתי חזק. אפשרות טובה לסביבות עם משאבים מוגבלים."
     },
     "href": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
-    "stars": 4840,
+    "stars": 7226,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic.png"
   },
   {
-    "id": "2026-11-13-huggingface-7",
+    "id": "2026-11-14-huggingface-7",
     "title": "MiniMaxAI/MiniMax-H3-Image",
     "source": "Hugging Face",
     "description": {
-      "en": "MiniMax's text-to-image model is trending with nearly 440,000 downloads, demonstrating strong adoption for image generation tasks. It competes with other open-source vision models in the generative space.",
-      "he": "מודל יצירת תמונות מ-MiniMax שהורד כמעט 440 אלף פעמים. הוא פופולרי מאוד ליצירת תמונות."
+      "en": "MiniMax's text-to-image model with nearly 520K downloads showing strong production adoption. Efficient image generation for creative and commercial applications.",
+      "he": "מודל טקסט לתמונה עם מעל 500K הורדות. יעיל ליצירת תמונות בשימושים יצירתיים."
     },
     "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
-    "stars": 943,
+    "stars": 1073,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png"
   },
   {
-    "id": "2026-11-13-huggingface-8",
-    "title": "NousResearch/Arete-27B",
-    "source": "Hugging Face",
-    "description": {
-      "en": "Nous Research's 27B parameter text generation model offers a mid-sized option for developers needing more capability than smaller models. It's gaining adoption in the open-source LLM ecosystem.",
-      "he": "מודל טקסט בגודל בינוני עם 27 מיליארד פרמטרים מ-Nous Research. הוא מציע איזון בין כוח וביצועים."
-    },
-    "href": "https://huggingface.co/NousResearch/Arete-27B",
-    "stars": 513,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/NousResearch/Arete-27B.png"
-  },
-  {
-    "id": "2026-11-13-huggingface-9",
+    "id": "2026-11-14-huggingface-8",
     "title": "Lightricks/LTX-2.5",
     "source": "Hugging Face",
     "description": {
-      "en": "Lightricks' LTX-2.5 image-to-video model is the most downloaded trending model with 2.7M downloads and 11,686 likes, indicating strong market demand for video generation from static images. It's becoming a standard tool for content creators.",
-      "he": "מודל יצירת וידאו מתמונות שהורד 2.7 מיליון פעמים. זה הכלי הפופולרי ביותר ליצירת וידאו מתמונות סטטיות."
+      "en": "Lightricks' image-to-video model is the most downloaded trending model with 2.7M downloads and 11K+ likes. State-of-the-art video generation from static images.",
+      "he": "מודל תמונה לווידאו עם 2.7 מיליון הורדות. יצירת וידאו מתקדמת מתמונות סטטיות."
     },
     "href": "https://huggingface.co/Lightricks/LTX-2.5",
-    "stars": 11686,
+    "stars": 11842,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png"
   },
   {
-    "id": "2026-11-13-huggingface-10",
-    "title": "speridlabs/idol",
+    "id": "2026-11-14-huggingface-9",
+    "title": "Qwen/Qwen3.8-27B",
     "source": "Hugging Face",
     "description": {
-      "en": "Speridlabs' idol model converts images to 3D models, with over 31,000 downloads showing growing interest in 3D content generation. It opens new possibilities for AR/VR and digital asset creation workflows.",
-      "he": "מודל שהופך תמונות לדגמים תלת-ממדיים. הוא שימושי ליצירת תוכן AR/VR וסחורה דיגיטלית."
+      "en": "Qwen's 27B multimodal model with 6.7M downloads and 19K+ likes is a top performer for image-text understanding. Versatile foundation model for vision-language tasks.",
+      "he": "מודל Qwen 27B עם 6.7 מיליון הורדות. מודל חזק להבנת תמונות וטקסט ביחד."
     },
-    "href": "https://huggingface.co/speridlabs/idol",
-    "stars": 2259,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/speridlabs/idol.png"
+    "href": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "stars": 19932,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Qwen/Qwen3.8-27B.png"
+  },
+  {
+    "id": "2026-11-14-huggingface-10",
+    "title": "NousResearch/Arete-27B",
+    "source": "Hugging Face",
+    "description": {
+      "en": "Nous Research's 27B text generation model offers an emerging alternative in the crowded LLM space. Designed for high-quality reasoning and instruction-following.",
+      "he": "מודל יצירת טקסט 27B מ-Nous Research. מודל חדש עם דגש על חשיבה איכותית."
+    },
+    "href": "https://huggingface.co/NousResearch/Arete-27B",
+    "stars": 584,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/NousResearch/Arete-27B.png"
   }
 ]
