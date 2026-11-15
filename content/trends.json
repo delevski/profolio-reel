@@ -1,6 +1,30 @@
 [
   {
-    "id": "2026-11-14-github-1",
+    "id": "2026-11-15-github-1",
+    "title": "GoogleChrome/modern-web-guidance-src",
+    "source": "GitHub",
+    "description": {
+      "en": "Google Chrome releases modern web guidance to help developers build better websites. Keep your coding practices aligned with the latest web standards and best practices.",
+      "he": "גוגל כרום משחררת הנחיות לפיתוח אתרים מודרניים. זה עוזר למפתחים לבנות אתרים טובים יותר עם הטכנולוגיות החדשות ביותר."
+    },
+    "href": "https://github.com/GoogleChrome/modern-web-guidance-src",
+    "stars": 6538,
+    "imageUrl": "https://opengraph.githubassets.com/1/GoogleChrome/modern-web-guidance-src"
+  },
+  {
+    "id": "2026-11-15-github-2",
+    "title": "tradermonty/claude-trading-skills",
+    "source": "GitHub",
+    "description": {
+      "en": "Claude AI now has specialized trading skills for equity investors. Analyze markets, create trading strategies, and access economic data directly through AI-powered tools.",
+      "he": "Claude AI עכשיו יכול לעזור למשקיעים בניתוח שוקים. הוא יכול לעשות ניתוח טכני ולעזור בפיתוח אסטרטגיות מסחר."
+    },
+    "href": "https://github.com/tradermonty/claude-trading-skills",
+    "stars": 5131,
+    "imageUrl": "https://opengraph.githubassets.com/1/tradermonty/claude-trading-skills"
+  },
+  {
+    "id": "2026-11-15-github-3",
     "title": "alibaba/open-code-review",
     "source": "GitHub",
     "description": {
@@ -8,115 +32,91 @@
       "he": "טרנד חדש: alibaba/open-code-review. כדאי לעקוב אחרי העדכון הזה."
     },
     "href": "https://github.com/alibaba/open-code-review",
-    "stars": 51002,
+    "stars": 51697,
     "imageUrl": "https://opengraph.githubassets.com/1/alibaba/open-code-review"
   },
   {
-    "id": "2026-11-14-github-2",
-    "title": "GoogleChrome/modern-web-guidance-src",
+    "id": "2026-11-15-github-4",
+    "title": "QwenLM/qwen-code",
     "source": "GitHub",
     "description": {
-      "en": "Google Chrome's guidance framework keeps AI coding agents aligned with modern web standards and best practices. Essential for developers building with AI assistants.",
-      "he": "גוגל Chrome מספקת הנחיות לעדכון סוכני AI לפי תקנים ועקרונות אתר מודרניים. חשוב למפתחים שעובדים עם עוזרים AI."
+      "en": "Qwen Code is an open-source AI coding agent that runs directly in your terminal. Write and debug code faster with an AI assistant built into your command line.",
+      "he": "Qwen Code הוא סוכן AI לכתיבת קוד שעובד בטרמינל שלך. הוא עוזר לך לכתוב וללחצות קוד בצורה מהירה יותר."
     },
-    "href": "https://github.com/GoogleChrome/modern-web-guidance-src",
-    "stars": 5292,
-    "imageUrl": "https://opengraph.githubassets.com/1/GoogleChrome/modern-web-guidance-src"
+    "href": "https://github.com/QwenLM/qwen-code",
+    "stars": 30487,
+    "imageUrl": "https://opengraph.githubassets.com/1/QwenLM/qwen-code"
   },
   {
-    "id": "2026-11-14-github-3",
-    "title": "openai/codex-security",
+    "id": "2026-11-15-github-5",
+    "title": "dream-num/univer",
     "source": "GitHub",
     "description": {
-      "en": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm: https://www.npmjs.com/package/@openai/codex-security",
-      "he": "טרנד חדש: openai/codex-security. כדאי לעקוב אחרי העדכון הזה."
+      "en": "Univer Office SDK lets you build AI-powered office tools into your applications. Add spreadsheets, documents, and collaboration features that work with both humans and AI agents.",
+      "he": "Univer מאפשר לך לבנות כלים משרדיים עם AI בתוך האפליקציה שלך. אתה יכול להוסיף גיליונות חישוב, מסמכים, ושיתוף פעולה."
     },
-    "href": "https://github.com/openai/codex-security",
-    "stars": 13377,
-    "imageUrl": "https://opengraph.githubassets.com/1/openai/codex-security"
+    "href": "https://github.com/dream-num/univer",
+    "stars": 25210,
+    "imageUrl": "https://opengraph.githubassets.com/1/dream-num/univer"
   },
   {
-    "id": "2026-11-14-github-4",
-    "title": "ZhuLinsen/daily_stock_analysis",
-    "source": "GitHub",
-    "description": {
-      "en": "LLM-powered stock analysis system that aggregates multi-market data, real-time news, and automated insights with zero infrastructure costs. Practical AI for financial decision-making.",
-      "he": "מערכת ניתוח מניות המופעלת על ידי LLM עם נתונים מרובי שווקים וחדשות בזמן אמת. פתרון AI מעשי לקבלת החלטות כלכליות."
-    },
-    "href": "https://github.com/ZhuLinsen/daily_stock_analysis",
-    "stars": 72042,
-    "imageUrl": "https://opengraph.githubassets.com/1/ZhuLinsen/daily_stock_analysis"
-  },
-  {
-    "id": "2026-11-14-github-5",
-    "title": "tradermonty/claude-trading-skills",
-    "source": "GitHub",
-    "description": {
-      "en": "Claude Code skills toolkit for traders and investors covering market analysis, technical charting, and strategy development. Brings AI reasoning to equity trading workflows.",
-      "he": "ערכת כלים Claude Code לסוחרים ומשקיעים עם ניתוח שוק וטכניקות גרפיות. מביא AI לתהליכי מסחר בהון עצמי."
-    },
-    "href": "https://github.com/tradermonty/claude-trading-skills",
-    "stars": 4400,
-    "imageUrl": "https://opengraph.githubassets.com/1/tradermonty/claude-trading-skills"
-  },
-  {
-    "id": "2026-11-14-huggingface-6",
+    "id": "2026-11-15-huggingface-6",
     "title": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
     "source": "Hugging Face",
     "description": {
-      "en": "High-performance 9B text generation model trending on Hugging Face with strong community adoption. Lightweight alternative for resource-constrained deployments.",
-      "he": "מודל יצירת טקסט קל משקל עם אימוץ קהילתי חזק. אפשרות טובה לסביבות עם משאבים מוגבלים."
+      "en": "DeepSeek V4 Pro is a trending open-source language model with 9 billion parameters. It delivers strong text generation performance for developers building AI applications.",
+      "he": "DeepSeek V4 Pro הוא מודל שפה חדש וטוב. הוא יכול לכתוב טקסט באיכות גבוהה ויש הרבה אנשים שמשתמשים בו."
     },
     "href": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
-    "stars": 7226,
+    "stars": 7443,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic.png"
   },
   {
-    "id": "2026-11-14-huggingface-7",
+    "id": "2026-11-15-huggingface-7",
     "title": "MiniMaxAI/MiniMax-H3-Image",
     "source": "Hugging Face",
     "description": {
-      "en": "MiniMax's text-to-image model with nearly 520K downloads showing strong production adoption. Efficient image generation for creative and commercial applications.",
-      "he": "מודל טקסט לתמונה עם מעל 500K הורדות. יעיל ליצירת תמונות בשימושים יצירתיים."
+      "en": "MiniMax H3 is a popular text-to-image model generating images from text descriptions. With over 570,000 downloads, it's a practical choice for AI image generation projects.",
+      "he": "MiniMax H3 הוא מודל שיוצר תמונות מטקסט. הרבה אנשים משתמשים בו כי הוא טוב ומהיר."
     },
     "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
-    "stars": 1073,
+    "stars": 1143,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png"
   },
   {
-    "id": "2026-11-14-huggingface-8",
-    "title": "Lightricks/LTX-2.5",
-    "source": "Hugging Face",
-    "description": {
-      "en": "Lightricks' image-to-video model is the most downloaded trending model with 2.7M downloads and 11K+ likes. State-of-the-art video generation from static images.",
-      "he": "מודל תמונה לווידאו עם 2.7 מיליון הורדות. יצירת וידאו מתקדמת מתמונות סטטיות."
-    },
-    "href": "https://huggingface.co/Lightricks/LTX-2.5",
-    "stars": 11842,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png"
-  },
-  {
-    "id": "2026-11-14-huggingface-9",
+    "id": "2026-11-15-huggingface-8",
     "title": "Qwen/Qwen3.8-27B",
     "source": "Hugging Face",
     "description": {
-      "en": "Qwen's 27B multimodal model with 6.7M downloads and 19K+ likes is a top performer for image-text understanding. Versatile foundation model for vision-language tasks.",
-      "he": "מודל Qwen 27B עם 6.7 מיליון הורדות. מודל חזק להבנת תמונות וטקסט ביחד."
+      "en": "Qwen 3.8-27B is a highly popular multimodal model handling both text and images. With 6.5 million downloads, it's a leading choice for vision-language AI tasks.",
+      "he": "Qwen 3.8-27B הוא מודל חזק שמבין טקסט ותמונות. הוא אחד המודלים הפופולריים ביותר כי הוא עובד טוב מאוד."
     },
     "href": "https://huggingface.co/Qwen/Qwen3.8-27B",
-    "stars": 19932,
+    "stars": 20055,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Qwen/Qwen3.8-27B.png"
   },
   {
-    "id": "2026-11-14-huggingface-10",
-    "title": "NousResearch/Arete-27B",
+    "id": "2026-11-15-huggingface-9",
+    "title": "Lightricks/LTX-2.5",
     "source": "Hugging Face",
     "description": {
-      "en": "Nous Research's 27B text generation model offers an emerging alternative in the crowded LLM space. Designed for high-quality reasoning and instruction-following.",
-      "he": "מודל יצירת טקסט 27B מ-Nous Research. מודל חדש עם דגש על חשיבה איכותית."
+      "en": "Trending Hugging Face model (image-to-video). Likes: 11978, downloads: 2754355.",
+      "he": "טרנד חדש: Lightricks/LTX-2.5. כדאי לעקוב אחרי העדכון הזה."
     },
-    "href": "https://huggingface.co/NousResearch/Arete-27B",
-    "stars": 584,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/NousResearch/Arete-27B.png"
+    "href": "https://huggingface.co/Lightricks/LTX-2.5",
+    "stars": 11978,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png"
+  },
+  {
+    "id": "2026-11-15-huggingface-10",
+    "title": "DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
+    "source": "Hugging Face",
+    "description": {
+      "en": "This Qwen 3.8-27B variant is an optimized version for multimodal tasks with strong community adoption. It combines image and text understanding in a fine-tuned format for developers.",
+      "he": "זו גרסה משופרת של Qwen שעובדת עם תמונות וטקסט. הרבה מפתחים משתמשים בה כי היא מהירה ודיוקית."
+    },
+    "href": "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
+    "stars": 3140,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF.png"
   }
 ]

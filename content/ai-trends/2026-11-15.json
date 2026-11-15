@@ -1,0 +1,150 @@
+{
+  "date": "2026-11-15",
+  "trendOfTheDay": {
+    "slug": "2026-11-15-qwen3-8-27b-a-27-billion-parameter-vision-language-model-built-for-complex-tasks",
+    "title": "Qwen3.8-27B: A 27-Billion Parameter Vision-Language Model Built for Complex Tasks",
+    "titleHe": "Qwen3.8-27B: מודל ראיית-שפה עם 27 מיליארד פרמטרים שנבנה למשימות מורכבות",
+    "excerpt": "Alibaba's latest open-source model combines native image and video understanding with flexible reasoning capabilities in a 27B dense architecture, targeting agentic workflows and long-horizon reasoning.",
+    "excerptHe": "המודל הפתוח האחרון של אליבאבא משלב הבנה מקורית של תמונות וסרטונים עם יכולות חשיבה גמישות בארכיטקטורה צפופה של 27B, המכוונת לזרימות עבודה של סוכנים וחשיבה לטווח ארוך.",
+    "sourceHref": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "image": "/blog/ai-trends/2026-11-15-qwen3-8-27b-a-27-billion-parameter-vision-language-model-built-for-complex-tasks.webp",
+    "imageAlt": "Abstract illustration for: Qwen3.8-27B: A 27-Billion Parameter Vision-Language Model Built for Complex Tasks"
+  },
+  "items": [
+    {
+      "id": "2026-11-15-github-1",
+      "source": "github",
+      "title": "GoogleChrome/modern-web-guidance-src",
+      "href": "https://github.com/GoogleChrome/modern-web-guidance-src",
+      "stars": 6538,
+      "language": "TypeScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/GoogleChrome/modern-web-guidance-src",
+      "summary": {
+        "en": "Google Chrome releases modern web guidance to help developers build better websites. Keep your coding practices aligned with the latest web standards and best practices.",
+        "he": "גוגל כרום משחררת הנחיות לפיתוח אתרים מודרניים. זה עוזר למפתחים לבנות אתרים טובים יותר עם הטכנולוגיות החדשות ביותר."
+      }
+    },
+    {
+      "id": "2026-11-15-github-2",
+      "source": "github",
+      "title": "tradermonty/claude-trading-skills",
+      "href": "https://github.com/tradermonty/claude-trading-skills",
+      "stars": 5131,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/tradermonty/claude-trading-skills",
+      "summary": {
+        "en": "Claude AI now has specialized trading skills for equity investors. Analyze markets, create trading strategies, and access economic data directly through AI-powered tools.",
+        "he": "Claude AI עכשיו יכול לעזור למשקיעים בניתוח שוקים. הוא יכול לעשות ניתוח טכני ולעזור בפיתוח אסטרטגיות מסחר."
+      }
+    },
+    {
+      "id": "2026-11-15-github-3",
+      "source": "github",
+      "title": "alibaba/open-code-review",
+      "href": "https://github.com/alibaba/open-code-review",
+      "stars": 51697,
+      "language": "Go",
+      "imageUrl": "https://opengraph.githubassets.com/1/alibaba/open-code-review",
+      "summary": {
+        "en": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+        "he": "טרנד חדש: alibaba/open-code-review. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-15-github-4",
+      "source": "github",
+      "title": "QwenLM/qwen-code",
+      "href": "https://github.com/QwenLM/qwen-code",
+      "stars": 30487,
+      "language": "TypeScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/QwenLM/qwen-code",
+      "summary": {
+        "en": "Qwen Code is an open-source AI coding agent that runs directly in your terminal. Write and debug code faster with an AI assistant built into your command line.",
+        "he": "Qwen Code הוא סוכן AI לכתיבת קוד שעובד בטרמינל שלך. הוא עוזר לך לכתוב וללחצות קוד בצורה מהירה יותר."
+      }
+    },
+    {
+      "id": "2026-11-15-github-5",
+      "source": "github",
+      "title": "dream-num/univer",
+      "href": "https://github.com/dream-num/univer",
+      "stars": 25210,
+      "language": "TypeScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/dream-num/univer",
+      "summary": {
+        "en": "Univer Office SDK lets you build AI-powered office tools into your applications. Add spreadsheets, documents, and collaboration features that work with both humans and AI agents.",
+        "he": "Univer מאפשר לך לבנות כלים משרדיים עם AI בתוך האפליקציה שלך. אתה יכול להוסיף גיליונות חישוב, מסמכים, ושיתוף פעולה."
+      }
+    },
+    {
+      "id": "2026-11-15-huggingface-6",
+      "source": "huggingface",
+      "title": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+      "href": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+      "stars": 7443,
+      "tag": "text-generation",
+      "downloads": 27037,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic.png",
+      "summary": {
+        "en": "DeepSeek V4 Pro is a trending open-source language model with 9 billion parameters. It delivers strong text generation performance for developers building AI applications.",
+        "he": "DeepSeek V4 Pro הוא מודל שפה חדש וטוב. הוא יכול לכתוב טקסט באיכות גבוהה ויש הרבה אנשים שמשתמשים בו."
+      }
+    },
+    {
+      "id": "2026-11-15-huggingface-7",
+      "source": "huggingface",
+      "title": "MiniMaxAI/MiniMax-H3-Image",
+      "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+      "stars": 1143,
+      "tag": "text-to-image",
+      "downloads": 571067,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png",
+      "summary": {
+        "en": "MiniMax H3 is a popular text-to-image model generating images from text descriptions. With over 570,000 downloads, it's a practical choice for AI image generation projects.",
+        "he": "MiniMax H3 הוא מודל שיוצר תמונות מטקסט. הרבה אנשים משתמשים בו כי הוא טוב ומהיר."
+      }
+    },
+    {
+      "id": "2026-11-15-huggingface-8",
+      "source": "huggingface",
+      "title": "Qwen/Qwen3.8-27B",
+      "href": "https://huggingface.co/Qwen/Qwen3.8-27B",
+      "stars": 20055,
+      "tag": "image-text-to-text",
+      "downloads": 6547772,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Qwen/Qwen3.8-27B.png",
+      "summary": {
+        "en": "Qwen 3.8-27B is a highly popular multimodal model handling both text and images. With 6.5 million downloads, it's a leading choice for vision-language AI tasks.",
+        "he": "Qwen 3.8-27B הוא מודל חזק שמבין טקסט ותמונות. הוא אחד המודלים הפופולריים ביותר כי הוא עובד טוב מאוד."
+      }
+    },
+    {
+      "id": "2026-11-15-huggingface-9",
+      "source": "huggingface",
+      "title": "Lightricks/LTX-2.5",
+      "href": "https://huggingface.co/Lightricks/LTX-2.5",
+      "stars": 11978,
+      "tag": "image-to-video",
+      "downloads": 2754355,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png",
+      "summary": {
+        "en": "Trending Hugging Face model (image-to-video). Likes: 11978, downloads: 2754355.",
+        "he": "טרנד חדש: Lightricks/LTX-2.5. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-15-huggingface-10",
+      "source": "huggingface",
+      "title": "DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
+      "href": "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
+      "stars": 3140,
+      "tag": "image-text-to-text",
+      "downloads": 1708637,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF.png",
+      "summary": {
+        "en": "This Qwen 3.8-27B variant is an optimized version for multimodal tasks with strong community adoption. It combines image and text understanding in a fine-tuned format for developers.",
+        "he": "זו גרסה משופרת של Qwen שעובדת עם תמונות וטקסט. הרבה מפתחים משתמשים בה כי היא מהירה ודיוקית."
+      }
+    }
+  ]
+}
