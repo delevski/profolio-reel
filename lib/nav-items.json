@@ -1,6 +1,10 @@
 {
   "items": [
     {
+      "href": "/services",
+      "key": "services"
+    },
+    {
       "href": "/projects",
       "key": "projects"
     },
