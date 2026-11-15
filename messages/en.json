@@ -14,7 +14,8 @@
     "contact": "Contact",
     "hebrew": "עברית",
     "english": "English",
-    "aiTrends": "AI Trends"
+    "aiTrends": "AI Trends",
+    "services": "Services"
   },
   "footer": {
     "tagline": "Build boldly. Ship often.",
@@ -191,6 +192,72 @@
       "updated": "Updated every morning from GitHub Trending and Hugging Face.",
       "items": "trends",
       "source": "Source"
+    },
+    "services": {
+      "label": "Services",
+      "title": "Websites, AI automations and agents for businesses",
+      "subtitle": "ORDEL builds for small and mid-size businesses the tools that used to be reserved for big companies: a site that brings customers, automations that save hours, and AI agents working for you in the background.",
+      "metaDescription": "ORDEL builds business websites, automations and AI agents that save hours of work every week. Real projects in production, a clear process, and a no-commitment intro call.",
+      "intro": [
+        "I'm Or Delevski, a CTO / VP R&D with 15+ years in software. At ORDEL I point that level of engineering at businesses like yours: no giant vendor, no chain of contractors, one person who owns everything from spec to launch.",
+        "Everything on this site was built exactly that way: the site itself, the apps, the dashboards and the agents. If you want live examples before we talk, the case studies and projects are open to read."
+      ],
+      "services": [
+        {
+          "title": "Business websites",
+          "text": "A fast, sharp, Google-ready site in English and Hebrew. Not a template that looks like everyone else's: designed, secured, and written for your customers. Forms, WhatsApp integration and analytics included."
+        },
+        {
+          "title": "AI automations and agents",
+          "text": "Anything that repeats in your business can happen by itself: first replies to customers, scheduling, lead management, call summaries and reports. I build agents that plug into the tools you already use, WhatsApp, email and calendar, and work for you 24/7."
+        },
+        {
+          "title": "Apps and digital products",
+          "text": "From idea to store: iOS and Android apps, dashboards and SaaS products. I cover the whole path: spec, design, development, testing and launch, and stay available after it ships."
+        }
+      ],
+      "processTitle": "How working with me looks",
+      "steps": [
+        {
+          "title": "Intro call",
+          "text": "A short WhatsApp or phone chat, no commitment. I learn what the business needs and what is worth building first."
+        },
+        {
+          "title": "A clear proposal",
+          "text": "You get a written proposal with a price and a timeline. No surprises halfway."
+        },
+        {
+          "title": "Built in stages",
+          "text": "Updates and previews along the way, so you see the product taking shape and react in time."
+        },
+        {
+          "title": "Launch and support",
+          "text": "After launch I stay available for questions, fixes and improvements."
+        }
+      ],
+      "faqTitle": "Common questions",
+      "faq": [
+        {
+          "q": "How long does a website take?",
+          "a": "Depends on scope. A brochure site can be live in about two weeks; a more complex system takes one to two months. You get an exact timeline in the intro call."
+        },
+        {
+          "q": "How much does it cost?",
+          "a": "Each project is priced separately, by what the business actually needs. The proposal arrives in writing before we start, and the price does not move mid-way."
+        },
+        {
+          "q": "Do I need a technical background?",
+          "a": "Not at all. I explain everything in plain language, and you get a product that is easy to operate."
+        },
+        {
+          "q": "What happens after launch?",
+          "a": "I stay available for maintenance, changes and improvements. The goal is a product that keeps working and improving after it ships."
+        }
+      ],
+      "ctaTitle": "Let's talk about your business",
+      "ctaText": "Send a WhatsApp message or leave details in the form, and I'll get back to you within one business day.",
+      "ctaWhatsapp": "WhatsApp",
+      "ctaContact": "Contact form"
     }
   },
   "common": {
