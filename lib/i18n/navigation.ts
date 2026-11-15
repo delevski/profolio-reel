@@ -1,9 +1,23 @@
 import type { Locale } from "./config";
 
+import { SITE_URL } from "@/lib/constants";
+
 export function localizedPath(locale: Locale, path: string): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
   if (normalized === "/") return `/${locale}`;
   return `/${locale}${normalized}`;
+}
+
+/** Absolute canonical + hreflang pair (en/he/x-default) for a locale page. */
+export function localeAlternates(locale: Locale, path: string) {
+  return {
+    canonical: `${SITE_URL}${localizedPath(locale, path)}`,
+    languages: {
+      en: `${SITE_URL}${localizedPath("en", path)}`,
+      he: `${SITE_URL}${localizedPath("he", path)}`,
+      "x-default": `${SITE_URL}${localizedPath("en", path)}`,
+    },
+  };
 }
 
 export function stripLocaleFromPathname(pathname: string): string {

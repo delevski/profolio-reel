@@ -10,8 +10,14 @@ import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { ConnectSection } from "@/components/sections/ConnectSection";
 import { getSiteConfig } from "@/lib/content";
 import type { Locale } from "@/lib/i18n/config";
+import { localeAlternates } from "@/lib/i18n/navigation";
 
 type Props = { params: Promise<{ locale: Locale }> };
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  return { alternates: localeAlternates(locale, "/") };
+}
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;

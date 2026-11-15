@@ -7,6 +7,7 @@ import { getTrendDigests } from "@/lib/ai-trends";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { isRtl, type Locale } from "@/lib/i18n/config";
 import { localizedPath } from "@/lib/i18n/navigation";
+import { localeAlternates } from "@/lib/i18n/navigation";
 import { cn } from "@/lib/utils";
 import type { TrendDigest } from "@/lib/types";
 
@@ -21,6 +22,7 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: dict.pages.aiTrends.title,
     description: dict.pages.aiTrends.subtitle,
+    alternates: localeAlternates(locale, "/ai-trends"),
   };
 }
 

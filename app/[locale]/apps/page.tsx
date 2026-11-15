@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { AppCard } from "@/components/ui/Card";
 import { getApps } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
+import { localeAlternates } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
 
 type Props = { params: Promise<{ locale: Locale }> };
@@ -9,7 +10,11 @@ type Props = { params: Promise<{ locale: Locale }> };
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const dict = getDictionary(locale);
-  return { title: dict.nav.apps };
+  return {
+    title: dict.nav.apps,
+    description: dict.pages.apps.subtitle,
+    alternates: localeAlternates(locale, "/apps"),
+  };
 }
 
 export default async function AppsPage({ params }: Props) {

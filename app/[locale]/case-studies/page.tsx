@@ -3,6 +3,7 @@ import { ContentCard } from "@/components/ui/Card";
 import { getCaseStudies } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { localizedPath } from "@/lib/i18n/navigation";
+import { localeAlternates } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
 import { formatDate, formatReadTime } from "@/lib/utils";
 
@@ -16,6 +17,7 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: dict.nav.caseStudies,
     description: dict.pages.caseStudies.subtitle,
+    alternates: localeAlternates(locale, "/case-studies"),
   };
 }
 

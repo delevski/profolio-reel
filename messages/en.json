@@ -107,7 +107,8 @@
       "phone": "Phone",
       "location": "Location",
       "birthDate": "Born",
-      "downloadCv": "Download CV"
+      "downloadCv": "Download CV",
+      "metaDescription": "About Or Delevski: 15+ years in R&D, product innovation and scaling engineering teams. CTO / VP R&D building AI products, websites and automations at ORDEL."
     },
     "blog": {
       "label": "Blog",
@@ -166,7 +167,8 @@
       "label": "Legal",
       "title": "Privacy Policy",
       "p1": "This is a placeholder privacy policy. Replace with your actual policy before collecting user data.",
-      "p2": "We respect your privacy. This site uses minimal analytics and does not sell personal information. Contact us with any questions about data handling."
+      "p2": "We respect your privacy. This site uses minimal analytics and does not sell personal information. Contact us with any questions about data handling.",
+      "subtitle": "Privacy policy for ordel.dev: what data is collected and how it is used."
     },
     "caseStudies": {
       "label": "Case Studies",

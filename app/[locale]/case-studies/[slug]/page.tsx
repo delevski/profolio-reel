@@ -6,6 +6,7 @@ import { MdxContent } from "@/lib/mdx";
 import { getCaseStudies, getCaseStudy } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { localizedPath } from "@/lib/i18n/navigation";
+import { localeAlternates } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
 import { formatDate, formatReadTime } from "@/lib/utils";
 import { Badge } from "@/components/ui/Badge";
@@ -27,7 +28,11 @@ export async function generateMetadata({ params }: Props) {
   const { locale, slug } = await params;
   const study = getCaseStudy(slug, locale);
   if (!study) return { title: "Case Study Not Found" };
-  return { title: study.title, description: study.excerpt };
+  return {
+    title: study.title,
+    description: study.excerpt,
+    alternates: localeAlternates(locale, `/case-studies/${study.slug}`),
+  };
 }
 
 export default async function CaseStudyPage({ params }: Props) {

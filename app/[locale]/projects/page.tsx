@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { ProjectCard } from "@/components/ui/Card";
 import { getProjects } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
+import { localeAlternates } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
 
 type Props = { params: Promise<{ locale: Locale }> };
@@ -9,7 +10,11 @@ type Props = { params: Promise<{ locale: Locale }> };
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const dict = getDictionary(locale);
-  return { title: dict.nav.projects };
+  return {
+    title: dict.nav.projects,
+    description: dict.pages.projects.subtitle,
+    alternates: localeAlternates(locale, "/projects"),
+  };
 }
 
 export default async function ProjectsPage({ params }: Props) {

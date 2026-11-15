@@ -5,6 +5,7 @@ import { MdxContent } from "@/lib/mdx";
 import { getLearnGuide, getLearnGuides } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { localizedPath } from "@/lib/i18n/navigation";
+import { localeAlternates } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
 import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
@@ -22,7 +23,11 @@ export async function generateMetadata({ params }: Props) {
   const { locale, slug } = await params;
   const guide = getLearnGuide(slug, locale);
   if (!guide) return { title: "Guide Not Found" };
-  return { title: guide.title, description: guide.excerpt };
+  return {
+    title: guide.title,
+    description: guide.excerpt,
+    alternates: localeAlternates(locale, `/learn/${guide.slug}`),
+  };
 }
 
 export default async function LearnGuidePage({ params }: Props) {
