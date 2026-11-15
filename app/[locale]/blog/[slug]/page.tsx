@@ -6,7 +6,7 @@ import { renderArticle } from "@/lib/mdx";
 import { getBlogPost, getMdxBlogPosts } from "@/lib/content";
 import { getDigestForPost } from "@/lib/ai-trends";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
-import { localizedPath } from "@/lib/i18n/navigation";
+import { localizedPath, localeAlternates } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
 import { formatDate, formatReadTime, formatTag } from "@/lib/utils";
 import { Badge } from "@/components/ui/Badge";
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: post.title,
     description: post.excerpt,
-    alternates: { canonical: localizedPath(locale, `/blog/${post.slug}`) },
+    alternates: localeAlternates(locale, `/blog/${post.slug}`),
     openGraph: {
       type: "article",
       title: post.title,

@@ -3,6 +3,7 @@ import { ContentCard } from "@/components/ui/Card";
 import { getLearnGuides } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { localizedPath } from "@/lib/i18n/navigation";
+import { localeAlternates } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
 import { formatReadTime } from "@/lib/utils";
 
@@ -11,7 +12,11 @@ type Props = { params: Promise<{ locale: Locale }> };
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const dict = getDictionary(locale);
-  return { title: dict.nav.learn };
+  return {
+    title: dict.nav.learn,
+    description: dict.pages.learn.subtitle,
+    alternates: localeAlternates(locale, "/learn"),
+  };
 }
 
 export default async function LearnPage({ params }: Props) {

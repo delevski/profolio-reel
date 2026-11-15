@@ -1,5 +1,6 @@
 import { PageHeader } from "@/components/ui/PageHeader";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
+import { localeAlternates } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
 import { cn } from "@/lib/utils";
 
@@ -8,7 +9,11 @@ type Props = { params: Promise<{ locale: Locale }> };
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const dict = getDictionary(locale);
-  return { title: dict.footer.privacy };
+  return {
+    title: dict.footer.privacy,
+    description: dict.pages.privacy.subtitle,
+    alternates: localeAlternates(locale, "/privacy"),
+  };
 }
 
 export default async function PrivacyPage({ params }: Props) {

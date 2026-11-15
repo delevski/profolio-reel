@@ -3,6 +3,7 @@ import { ContentCard } from "@/components/ui/Card";
 import { getBlogPosts } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { localizedPath } from "@/lib/i18n/navigation";
+import { localeAlternates } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
 import { formatDate, formatReadTime, formatTag } from "@/lib/utils";
 
@@ -13,7 +14,11 @@ export const revalidate = 300;
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const dict = getDictionary(locale);
-  return { title: dict.nav.blog };
+  return {
+    title: dict.nav.blog,
+    description: dict.pages.blog.subtitle,
+    alternates: localeAlternates(locale, "/blog"),
+  };
 }
 
 export default async function BlogPage({ params }: Props) {

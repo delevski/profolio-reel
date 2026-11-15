@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { getSiteConfig } from "@/lib/content";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
+import { localeAlternates } from "@/lib/i18n/navigation";
 import { isRtl, type Locale } from "@/lib/i18n/config";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +12,11 @@ type Props = { params: Promise<{ locale: Locale }> };
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const dict = getDictionary(locale);
-  return { title: dict.nav.about };
+  return {
+    title: dict.nav.about,
+    description: dict.pages.about.metaDescription,
+    alternates: localeAlternates(locale, "/about"),
+  };
 }
 
 export default async function AboutPage({ params }: Props) {
