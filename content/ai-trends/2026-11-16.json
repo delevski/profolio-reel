@@ -1,0 +1,150 @@
+{
+  "date": "2026-11-16",
+  "trendOfTheDay": {
+    "slug": "2026-11-16-univer-building-office-applications-inside-your-product",
+    "title": "Univer: Building Office Applications Inside Your Product",
+    "titleHe": "Univer: בניית יישומי Office בתוך המוצר שלך",
+    "excerpt": "An open-source SDK for embedding spreadsheets, documents, and collaborative editing into applications—with extensible architecture and optional AI integration.",
+    "excerptHe": "SDK בקוד פתוח להטמעת גיליונות אלקטרוניים, מסמכים ועריכה שיתופית ביישומים—עם ארכיטקטורה הרחבה ואינטגרציית AI אופציונלית.",
+    "sourceHref": "https://github.com/dream-num/univer",
+    "image": "/blog/ai-trends/2026-11-16-univer-building-office-applications-inside-your-product.webp",
+    "imageAlt": "Abstract illustration for: Univer: Building Office Applications Inside Your Product"
+  },
+  "items": [
+    {
+      "id": "2026-11-16-github-1",
+      "source": "github",
+      "title": "ag-ui-protocol/ag-ui",
+      "href": "https://github.com/ag-ui-protocol/ag-ui",
+      "stars": 18344,
+      "language": "TypeScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/ag-ui-protocol/ag-ui",
+      "summary": {
+        "en": "AG-UI is a protocol that lets AI agents interact directly with frontend applications. It bridges the gap between agent logic and user interfaces.",
+        "he": "AG-UI היא פרוטוקול שמאפשר לסוכנים AI לעבוד ישירות עם ממשקי משתמש. זה מחבר בין לוגיקה של סוכנים לבין ממשקים."
+      }
+    },
+    {
+      "id": "2026-11-16-github-2",
+      "source": "github",
+      "title": "dream-num/univer",
+      "href": "https://github.com/dream-num/univer",
+      "stars": 27461,
+      "language": "TypeScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/dream-num/univer",
+      "summary": {
+        "en": "Univer Office SDK lets you embed AI-powered editing, calculations, and collaboration tools into your products. It's built on an open-source, extensible foundation.",
+        "he": "Univer מאפשר להטמיע כלים עם AI לעריכה, חישובים ושיתוף פעולה בתוך המוצרים שלך. זה בנוי על בסיס קוד פתוח וניתן להרחבה."
+      }
+    },
+    {
+      "id": "2026-11-16-github-3",
+      "source": "github",
+      "title": "tradermonty/claude-trading-skills",
+      "href": "https://github.com/tradermonty/claude-trading-skills",
+      "stars": 5976,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/tradermonty/claude-trading-skills",
+      "summary": {
+        "en": "Claude Code skills for traders include market analysis, technical charting, and strategy development tools. It brings AI-assisted trading capabilities to equity investors.",
+        "he": "כישרונות Claude Code לסוחרים כוללים ניתוח שוק וכלים לפיתוח אסטרטגיה. זה מביא יכולות מסחר בעזרת AI למשקיעים."
+      }
+    },
+    {
+      "id": "2026-11-16-github-4",
+      "source": "github",
+      "title": "elementalsouls/Claude-BugHunter",
+      "href": "https://github.com/elementalsouls/Claude-BugHunter",
+      "stars": 7057,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/elementalsouls/Claude-BugHunter",
+      "summary": {
+        "en": "Claude-BugHunter is a comprehensive skill bundle with 82 security tools for bug hunting and red-team testing. It covers 24 vulnerability classes and attack matrices.",
+        "he": "Claude-BugHunter הוא חבילה של 82 כלים לאבטחה לחיפוש באגים. זה מכסה 24 סוגים של חולשות ותקיפות."
+      }
+    },
+    {
+      "id": "2026-11-16-github-5",
+      "source": "github",
+      "title": "google-labs-code/stitch-skills",
+      "href": "https://github.com/google-labs-code/stitch-skills",
+      "stars": 9575,
+      "language": "TypeScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/google-labs-code/stitch-skills",
+      "summary": {
+        "en": "Stitch Skills is a library of agent skills compatible with multiple coding agents like Claude Code and Cursor. It follows open standards for broad compatibility.",
+        "he": "Stitch Skills היא ספרייה של כישרונות סוכנים תואמים לסוכנים קוד מרובים. זה עוקב אחרי תקנים פתוחים לתאימות רחבה."
+      }
+    },
+    {
+      "id": "2026-11-16-huggingface-6",
+      "source": "huggingface",
+      "title": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+      "href": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+      "stars": 7636,
+      "tag": "text-generation",
+      "downloads": 29567,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic.png",
+      "summary": {
+        "en": "A trending uncensored text generation model based on DeepSeek and Qwen architecture. It has gained significant traction with over 29,000 downloads.",
+        "he": "מודל דור טקסט פופולרי בהשראת DeepSeek ו-Qwen. הוא קיבל תשומת לב רבה עם יותר מ-29,000 הורדות."
+      }
+    },
+    {
+      "id": "2026-11-16-huggingface-7",
+      "source": "huggingface",
+      "title": "MiniMaxAI/MiniMax-H3-Image",
+      "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+      "stars": 1244,
+      "tag": "text-to-image",
+      "downloads": 609130,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png",
+      "summary": {
+        "en": "MiniMax-H3-Image is a text-to-image model with strong adoption, reaching over 600,000 downloads. It generates images from text descriptions.",
+        "he": "MiniMax-H3-Image הוא מודל טקסט לתמונה עם אימוץ חזק של יותר מ-600,000 הורדות. הוא יוצר תמונות מתיאורים טקסטואליים."
+      }
+    },
+    {
+      "id": "2026-11-16-huggingface-8",
+      "source": "huggingface",
+      "title": "Qwen/Qwen3.8-27B",
+      "href": "https://huggingface.co/Qwen/Qwen3.8-27B",
+      "stars": 20185,
+      "tag": "image-text-to-text",
+      "downloads": 6763402,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Qwen/Qwen3.8-27B.png",
+      "summary": {
+        "en": "Trending Hugging Face model (image-text-to-text). Likes: 20185, downloads: 6763402.",
+        "he": "טרנד חדש: Qwen/Qwen3.8-27B. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-16-huggingface-9",
+      "source": "huggingface",
+      "title": "Lightricks/LTX-2.5",
+      "href": "https://huggingface.co/Lightricks/LTX-2.5",
+      "stars": 12137,
+      "tag": "image-to-video",
+      "downloads": 2789021,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png",
+      "summary": {
+        "en": "Trending Hugging Face model (image-to-video). Likes: 12137, downloads: 2789021.",
+        "he": "טרנד חדש: Lightricks/LTX-2.5. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-16-huggingface-10",
+      "source": "huggingface",
+      "title": "Comfy-Org/MiniMax-H3-Image",
+      "href": "https://huggingface.co/Comfy-Org/MiniMax-H3-Image",
+      "stars": 438,
+      "tag": "text-to-image",
+      "downloads": 2294065,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Comfy-Org/MiniMax-H3-Image.png",
+      "summary": {
+        "en": "The ComfyUI version of MiniMax-H3-Image text-to-image model has achieved over 2.2 million downloads. It's optimized for the ComfyUI workflow ecosystem.",
+        "he": "גרסת ComfyUI של מודל MiniMax-H3-Image הגיעה ליותר מ-2.2 מיליון הורדות. היא מותאמת לאקוסיסטם ComfyUI."
+      }
+    }
+  ]
+}
