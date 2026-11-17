@@ -1,0 +1,150 @@
+{
+  "date": "2026-11-17",
+  "trendOfTheDay": {
+    "slug": "2026-11-17-claude-bughunter-a-specialized-skill-bundle-for-systematic-security-testing",
+    "title": "Claude-BugHunter: A Specialized Skill Bundle for Systematic Security Testing",
+    "titleHe": "Claude-BugHunter: חבילת כישורים מתמחה לבדיקות אבטחה שיטתיות",
+    "excerpt": "Claude-BugHunter packages 83 security skills and 681 vulnerability patterns into a Claude Code plugin, automating bug hunting across 24 vulnerability classes with enterprise attack matrices and red-team discipline.",
+    "excerptHe": "Claude-BugHunter משלב 83 כישורי אבטחה ו-681 דפוסי חולשות לתוך תוסף Claude Code, ומטמיע ציד באגים על פני 24 סוגי חולשות עם מטריצות התקפה ארגוניות ודיסציפלינה של צוות אדום.",
+    "sourceHref": "https://github.com/elementalsouls/Claude-BugHunter",
+    "image": "/blog/ai-trends/2026-11-17-claude-bughunter-a-specialized-skill-bundle-for-systematic-security-testing.webp",
+    "imageAlt": "Abstract illustration for: Claude-BugHunter: A Specialized Skill Bundle for Systematic Security Testing"
+  },
+  "items": [
+    {
+      "id": "2026-11-17-github-1",
+      "source": "github",
+      "title": "elementalsouls/Claude-BugHunter",
+      "href": "https://github.com/elementalsouls/Claude-BugHunter",
+      "stars": 8205,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/elementalsouls/Claude-BugHunter",
+      "summary": {
+        "en": "Claude-BugHunter is a specialized skill bundle with 82 tools and 681 vulnerability patterns for security testing and red-team work. It automates bug hunting across 24 vulnerability classes with enterprise-grade attack matrices.",
+        "he": "Claude-BugHunter הוא חבילת כלים למציאת באגים וחולשות אבטחה בקוד. הוא כולל 82 כלים ו-681 דוגמאות של בעיות אבטחה שונות."
+      }
+    },
+    {
+      "id": "2026-11-17-github-2",
+      "source": "github",
+      "title": "mvanhorn/last30days-skill",
+      "href": "https://github.com/mvanhorn/last30days-skill",
+      "stars": 68591,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/mvanhorn/last30days-skill",
+      "summary": {
+        "en": "Last30Days-Skill is an AI agent that researches trending topics across Reddit, X, YouTube, Hacker News, and Polymarket, then synthesizes findings into grounded summaries. It automates trend research and synthesis across multiple platforms.",
+        "he": "Last30Days-Skill הוא סוכן AI שחוקר נושאים חדשים בכל הרשתות החברתיות. הוא אוסף מידע ויוצר סיכום מובן מכל המקורות."
+      }
+    },
+    {
+      "id": "2026-11-17-github-3",
+      "source": "github",
+      "title": "alibaba/open-code-review",
+      "href": "https://github.com/alibaba/open-code-review",
+      "stars": 53406,
+      "language": "Go",
+      "imageUrl": "https://opengraph.githubassets.com/1/alibaba/open-code-review",
+      "summary": {
+        "en": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+        "he": "טרנד חדש: alibaba/open-code-review. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-17-github-4",
+      "source": "github",
+      "title": "Tencent/LoopForge",
+      "href": "https://github.com/Tencent/LoopForge",
+      "stars": 2815,
+      "language": "Go",
+      "imageUrl": "https://opengraph.githubassets.com/1/Tencent/LoopForge",
+      "summary": {
+        "en": "LoopForge enables self-hosted workflows for orchestrating multiple coding agents with human approval gates and script automation. It integrates CodeBuddy, Codex, and Claude Code into production-ready pipelines.",
+        "he": "LoopForge מאפשר ניהול של סוכני קוד מרובים עם אישורים של בני אדם. הוא מחבר כלים שונים לזרימת עבודה אחת."
+      }
+    },
+    {
+      "id": "2026-11-17-github-5",
+      "source": "github",
+      "title": "dream-num/univer",
+      "href": "https://github.com/dream-num/univer",
+      "stars": 28670,
+      "language": "TypeScript",
+      "imageUrl": "https://opengraph.githubassets.com/1/dream-num/univer",
+      "summary": {
+        "en": "Build your own AI office with Univer Office SDK. Bring editing, calculation, collaboration, and file processing into your product for people and AI agents. Built on an extensible open-source core.",
+        "he": "טרנד חדש: dream-num/univer. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-17-huggingface-6",
+      "source": "huggingface",
+      "title": "MiniMaxAI/MiniMax-H3-Image",
+      "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+      "stars": 1372,
+      "tag": "text-to-image",
+      "downloads": 727110,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png",
+      "summary": {
+        "en": "MiniMax-H3-Image is a trending text-to-image model with strong adoption (727K downloads). It generates high-quality images from text descriptions efficiently.",
+        "he": "MiniMax-H3-Image הוא מודל שיוצר תמונות מטקסט. הוא פופולרי מאוד עם מאות אלפי הורדות."
+      }
+    },
+    {
+      "id": "2026-11-17-huggingface-7",
+      "source": "huggingface",
+      "title": "Qwen/Qwen3.8-27B",
+      "href": "https://huggingface.co/Qwen/Qwen3.8-27B",
+      "stars": 20337,
+      "tag": "image-text-to-text",
+      "downloads": 6942530,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Qwen/Qwen3.8-27B.png",
+      "summary": {
+        "en": "Trending Hugging Face model (image-text-to-text). Likes: 20337, downloads: 6942530.",
+        "he": "טרנד חדש: Qwen/Qwen3.8-27B. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-17-huggingface-8",
+      "source": "huggingface",
+      "title": "Lightricks/LTX-2.5",
+      "href": "https://huggingface.co/Lightricks/LTX-2.5",
+      "stars": 12320,
+      "tag": "image-to-video",
+      "downloads": 2828071,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png",
+      "summary": {
+        "en": "Trending Hugging Face model (image-to-video). Likes: 12320, downloads: 2828071.",
+        "he": "טרנד חדש: Lightricks/LTX-2.5. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-17-huggingface-9",
+      "source": "huggingface",
+      "title": "Comfy-Org/MiniMax-H3-Image",
+      "href": "https://huggingface.co/Comfy-Org/MiniMax-H3-Image",
+      "stars": 509,
+      "tag": "text-to-image",
+      "downloads": 2660341,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Comfy-Org/MiniMax-H3-Image.png",
+      "summary": {
+        "en": "MiniMax-H3-Image (Comfy-Org version) is a widely-adopted text-to-image model with 2.6M downloads, optimized for integration into creative workflows. It demonstrates strong community adoption for image generation.",
+        "he": "גרסה זו של MiniMax-H3-Image מותאמת לכלים יצירתיים. היא הורדה מיליונים פעמים על ידי משתמשים."
+      }
+    },
+    {
+      "id": "2026-11-17-huggingface-10",
+      "source": "huggingface",
+      "title": "higurashi-ai/Haru-4B",
+      "href": "https://huggingface.co/higurashi-ai/Haru-4B",
+      "stars": 468,
+      "tag": "audio-to-audio",
+      "downloads": 4445,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/higurashi-ai/Haru-4B.png",
+      "summary": {
+        "en": "Haru-4B is an audio-to-audio model for processing and transforming audio signals. It represents emerging capabilities in audio AI beyond text and image modalities.",
+        "he": "Haru-4B הוא מודל שעובד עם קול ואודיו. הוא מראה שAI יכול לעבוד גם עם קול, לא רק טקסט."
+      }
+    }
+  ]
+}
