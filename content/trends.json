@@ -1,122 +1,122 @@
 [
   {
-    "id": "2026-11-17-github-1",
+    "id": "2026-11-18-github-1",
     "title": "elementalsouls/Claude-BugHunter",
     "source": "GitHub",
     "description": {
-      "en": "Claude-BugHunter is a specialized skill bundle with 82 tools and 681 vulnerability patterns for security testing and red-team work. It automates bug hunting across 24 vulnerability classes with enterprise-grade attack matrices.",
-      "he": "Claude-BugHunter הוא חבילת כלים למציאת באגים וחולשות אבטחה בקוד. הוא כולל 82 כלים ו-681 דוגמאות של בעיות אבטחה שונות."
+      "en": "A Claude Code skill bundle for bug hunting and external red-team work - 82 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.",
+      "he": "טרנד חדש: elementalsouls/Claude-BugHunter. כדאי לעקוב אחרי העדכון הזה."
     },
     "href": "https://github.com/elementalsouls/Claude-BugHunter",
-    "stars": 8205,
+    "stars": 10455,
     "imageUrl": "https://opengraph.githubassets.com/1/elementalsouls/Claude-BugHunter"
   },
   {
-    "id": "2026-11-17-github-2",
+    "id": "2026-11-18-github-2",
+    "title": "HKUDS/CLI-Anything",
+    "source": "GitHub",
+    "description": {
+      "en": "CLI-Anything makes any command-line tool work natively with AI agents, enabling software to become agent-aware without modification. This bridges the gap between traditional CLI tools and modern AI workflows.",
+      "he": "CLI-Anything מאפשר לכל כלי שורת פקודה לעבוד עם סוכני AI באופן טבעי. זה חיבור חדש בין כלים ישנים לבין AI מודרני."
+    },
+    "href": "https://github.com/HKUDS/CLI-Anything",
+    "stars": 59353,
+    "imageUrl": "https://opengraph.githubassets.com/1/HKUDS/CLI-Anything"
+  },
+  {
+    "id": "2026-11-18-github-3",
     "title": "mvanhorn/last30days-skill",
     "source": "GitHub",
     "description": {
-      "en": "Last30Days-Skill is an AI agent that researches trending topics across Reddit, X, YouTube, Hacker News, and Polymarket, then synthesizes findings into grounded summaries. It automates trend research and synthesis across multiple platforms.",
-      "he": "Last30Days-Skill הוא סוכן AI שחוקר נושאים חדשים בכל הרשתות החברתיות. הוא אוסף מידע ויוצר סיכום מובן מכל המקורות."
+      "en": "Last30Days is an AI agent skill that gathers and synthesizes recent information from Reddit, X, YouTube, Hacker News, and prediction markets into grounded summaries. Perfect for staying current on trending topics.",
+      "he": "Last30Days הוא כישור לסוכני AI שאוסף מידע עדכני מרשתות חברתיות ובורסות חיזוי. זה עוזר להבין מה חדש בעולם."
     },
     "href": "https://github.com/mvanhorn/last30days-skill",
-    "stars": 68591,
+    "stars": 69601,
     "imageUrl": "https://opengraph.githubassets.com/1/mvanhorn/last30days-skill"
   },
   {
-    "id": "2026-11-17-github-3",
-    "title": "alibaba/open-code-review",
+    "id": "2026-11-18-github-4",
+    "title": "NVIDIA/SkillEvaluator",
     "source": "GitHub",
     "description": {
-      "en": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
-      "he": "טרנד חדש: alibaba/open-code-review. כדאי לעקוב אחרי העדכון הזה."
+      "en": "NVIDIA's SkillEvaluator is a framework for testing AI agent skills with quality gates, overlap detection, and synthetic evaluation datasets. It measures real impact on agent behavior.",
+      "he": "SkillEvaluator של NVIDIA בודק את איכות כישורי AI עם בדיקות איכות וגילוי חפיפות. זה מודד איך כישורים משפיעים על סוכנים."
     },
-    "href": "https://github.com/alibaba/open-code-review",
-    "stars": 53406,
-    "imageUrl": "https://opengraph.githubassets.com/1/alibaba/open-code-review"
+    "href": "https://github.com/NVIDIA/SkillEvaluator",
+    "stars": 3475,
+    "imageUrl": "https://opengraph.githubassets.com/1/NVIDIA/SkillEvaluator"
   },
   {
-    "id": "2026-11-17-github-4",
-    "title": "Tencent/LoopForge",
+    "id": "2026-11-18-github-5",
+    "title": "google-research/paper-orchestra",
     "source": "GitHub",
     "description": {
-      "en": "LoopForge enables self-hosted workflows for orchestrating multiple coding agents with human approval gates and script automation. It integrates CodeBuddy, Codex, and Claude Code into production-ready pipelines.",
-      "he": "LoopForge מאפשר ניהול של סוכני קוד מרובים עם אישורים של בני אדם. הוא מחבר כלים שונים לזרימת עבודה אחת."
+      "en": "PaperOrchestra is a multi-agent framework that automates the entire AI research paper writing process. Agents collaborate to research, draft, and refine academic papers.",
+      "he": "PaperOrchestra הוא מערכת סוכנים שכותבת מאמרי מחקר AI באופן אוטומטי. סוכנים שונים עובדים ביחד על כל שלב."
     },
-    "href": "https://github.com/Tencent/LoopForge",
-    "stars": 2815,
-    "imageUrl": "https://opengraph.githubassets.com/1/Tencent/LoopForge"
+    "href": "https://github.com/google-research/paper-orchestra",
+    "stars": 3700,
+    "imageUrl": "https://opengraph.githubassets.com/1/google-research/paper-orchestra"
   },
   {
-    "id": "2026-11-17-github-5",
-    "title": "dream-num/univer",
-    "source": "GitHub",
-    "description": {
-      "en": "Build your own AI office with Univer Office SDK. Bring editing, calculation, collaboration, and file processing into your product for people and AI agents. Built on an extensible open-source core.",
-      "he": "טרנד חדש: dream-num/univer. כדאי לעקוב אחרי העדכון הזה."
-    },
-    "href": "https://github.com/dream-num/univer",
-    "stars": 28670,
-    "imageUrl": "https://opengraph.githubassets.com/1/dream-num/univer"
-  },
-  {
-    "id": "2026-11-17-huggingface-6",
-    "title": "MiniMaxAI/MiniMax-H3-Image",
-    "source": "Hugging Face",
-    "description": {
-      "en": "MiniMax-H3-Image is a trending text-to-image model with strong adoption (727K downloads). It generates high-quality images from text descriptions efficiently.",
-      "he": "MiniMax-H3-Image הוא מודל שיוצר תמונות מטקסט. הוא פופולרי מאוד עם מאות אלפי הורדות."
-    },
-    "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
-    "stars": 1372,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png"
-  },
-  {
-    "id": "2026-11-17-huggingface-7",
-    "title": "Qwen/Qwen3.8-27B",
-    "source": "Hugging Face",
-    "description": {
-      "en": "Trending Hugging Face model (image-text-to-text). Likes: 20337, downloads: 6942530.",
-      "he": "טרנד חדש: Qwen/Qwen3.8-27B. כדאי לעקוב אחרי העדכון הזה."
-    },
-    "href": "https://huggingface.co/Qwen/Qwen3.8-27B",
-    "stars": 20337,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Qwen/Qwen3.8-27B.png"
-  },
-  {
-    "id": "2026-11-17-huggingface-8",
-    "title": "Lightricks/LTX-2.5",
-    "source": "Hugging Face",
-    "description": {
-      "en": "Trending Hugging Face model (image-to-video). Likes: 12320, downloads: 2828071.",
-      "he": "טרנד חדש: Lightricks/LTX-2.5. כדאי לעקוב אחרי העדכון הזה."
-    },
-    "href": "https://huggingface.co/Lightricks/LTX-2.5",
-    "stars": 12320,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png"
-  },
-  {
-    "id": "2026-11-17-huggingface-9",
-    "title": "Comfy-Org/MiniMax-H3-Image",
-    "source": "Hugging Face",
-    "description": {
-      "en": "MiniMax-H3-Image (Comfy-Org version) is a widely-adopted text-to-image model with 2.6M downloads, optimized for integration into creative workflows. It demonstrates strong community adoption for image generation.",
-      "he": "גרסה זו של MiniMax-H3-Image מותאמת לכלים יצירתיים. היא הורדה מיליונים פעמים על ידי משתמשים."
-    },
-    "href": "https://huggingface.co/Comfy-Org/MiniMax-H3-Image",
-    "stars": 509,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Comfy-Org/MiniMax-H3-Image.png"
-  },
-  {
-    "id": "2026-11-17-huggingface-10",
+    "id": "2026-11-18-huggingface-6",
     "title": "higurashi-ai/Haru-4B",
     "source": "Hugging Face",
     "description": {
-      "en": "Haru-4B is an audio-to-audio model for processing and transforming audio signals. It represents emerging capabilities in audio AI beyond text and image modalities.",
-      "he": "Haru-4B הוא מודל שעובד עם קול ואודיו. הוא מראה שAI יכול לעבוד גם עם קול, לא רק טקסט."
+      "en": "Haru-4B is a compact audio-to-audio model for transforming and processing sound. Its small size makes it practical for edge deployment and real-time applications.",
+      "he": "Haru-4B הוא מודל קטן שמעבד קול ומשנה אותו. הוא קטן מספיק להריץ על מכשירים קטנים."
     },
     "href": "https://huggingface.co/higurashi-ai/Haru-4B",
-    "stars": 468,
+    "stars": 587,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/higurashi-ai/Haru-4B.png"
+  },
+  {
+    "id": "2026-11-18-huggingface-7",
+    "title": "Lightricks/LTX-2.5",
+    "source": "Hugging Face",
+    "description": {
+      "en": "Trending Hugging Face model (image-to-video). Likes: 12484, downloads: 2871190.",
+      "he": "טרנד חדש: Lightricks/LTX-2.5. כדאי לעקוב אחרי העדכון הזה."
+    },
+    "href": "https://huggingface.co/Lightricks/LTX-2.5",
+    "stars": 12484,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png"
+  },
+  {
+    "id": "2026-11-18-huggingface-8",
+    "title": "thinkingmachines/Inkling-2-Small",
+    "source": "Hugging Face",
+    "description": {
+      "en": "Inkling-2-Small combines image and text understanding in a lightweight model for multimodal tasks. With 30K downloads, it's gaining traction for practical vision-language applications.",
+      "he": "Inkling-2-Small הוא מודל קטן שמבין תמונות וטקסט ביחד. הוא משמש למשימות שדורשות הבנה של שניהם."
+    },
+    "href": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+    "stars": 477,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/thinkingmachines/Inkling-2-Small.png"
+  },
+  {
+    "id": "2026-11-18-huggingface-9",
+    "title": "MiniMaxAI/MiniMax-H3-Image",
+    "source": "Hugging Face",
+    "description": {
+      "en": "MiniMax-H3-Image generates high-quality images from text descriptions with strong adoption (759K downloads). It offers an efficient alternative to larger text-to-image models.",
+      "he": "MiniMax-H3-Image יוצר תמונות מתיאורים בטקסט. הוא יעיל וקל יותר מאשר מודלים גדולים אחרים."
+    },
+    "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+    "stars": 1567,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png"
+  },
+  {
+    "id": "2026-11-18-huggingface-10",
+    "title": "harness-hub/Qwen3.8-27B-pi-adapted",
+    "source": "Hugging Face",
+    "description": {
+      "en": "Qwen3.8-27B-pi-adapted is a specialized vision-language model optimized for image-text understanding tasks. The pi-adaptation indicates fine-tuning for specific performance characteristics.",
+      "he": "Qwen3.8-27B-pi-adapted הוא מודל שמבין תמונות וטקסט בו זמנית. הוא מותאם לביצועים מיוחדים."
+    },
+    "href": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
+    "stars": 281,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/harness-hub/Qwen3.8-27B-pi-adapted.png"
   }
 ]

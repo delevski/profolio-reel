@@ -1,0 +1,150 @@
+{
+  "date": "2026-11-18",
+  "trendOfTheDay": {
+    "slug": "2026-11-18-skillevaluator-nvidia-s-framework-for-measuring-real-ai-agent-skill-impact",
+    "title": "SkillEvaluator: NVIDIA's Framework for Measuring Real AI Agent Skill Impact",
+    "titleHe": "SkillEvaluator: מסגרת של NVIDIA למדידת השפעת כישורי AI Agent בעולם האמת",
+    "excerpt": "NVIDIA's open-source SkillEvaluator framework automates quality gates, security scanning, and overlap detection for AI agent skills—measuring whether a skill actually improves agent behavior before it ships.",
+    "excerptHe": "מסגרת SkillEvaluator בקוד פתוח של NVIDIA מאוטומטית שערים איכות, סריקת אבטחה וגילוי חפיפות עבור כישורי AI agent — מודדת האם כישור באמת משפר התנהגות agent לפני שהוא משוחרר.",
+    "sourceHref": "https://github.com/NVIDIA/SkillEvaluator",
+    "image": "/blog/ai-trends/2026-11-18-skillevaluator-nvidia-s-framework-for-measuring-real-ai-agent-skill-impact.webp",
+    "imageAlt": "Abstract illustration for: SkillEvaluator: NVIDIA's Framework for Measuring Real AI Agent Skill Impact"
+  },
+  "items": [
+    {
+      "id": "2026-11-18-github-1",
+      "source": "github",
+      "title": "elementalsouls/Claude-BugHunter",
+      "href": "https://github.com/elementalsouls/Claude-BugHunter",
+      "stars": 10455,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/elementalsouls/Claude-BugHunter",
+      "summary": {
+        "en": "A Claude Code skill bundle for bug hunting and external red-team work - 82 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.",
+        "he": "טרנד חדש: elementalsouls/Claude-BugHunter. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-18-github-2",
+      "source": "github",
+      "title": "HKUDS/CLI-Anything",
+      "href": "https://github.com/HKUDS/CLI-Anything",
+      "stars": 59353,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/HKUDS/CLI-Anything",
+      "summary": {
+        "en": "CLI-Anything makes any command-line tool work natively with AI agents, enabling software to become agent-aware without modification. This bridges the gap between traditional CLI tools and modern AI workflows.",
+        "he": "CLI-Anything מאפשר לכל כלי שורת פקודה לעבוד עם סוכני AI באופן טבעי. זה חיבור חדש בין כלים ישנים לבין AI מודרני."
+      }
+    },
+    {
+      "id": "2026-11-18-github-3",
+      "source": "github",
+      "title": "mvanhorn/last30days-skill",
+      "href": "https://github.com/mvanhorn/last30days-skill",
+      "stars": 69601,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/mvanhorn/last30days-skill",
+      "summary": {
+        "en": "Last30Days is an AI agent skill that gathers and synthesizes recent information from Reddit, X, YouTube, Hacker News, and prediction markets into grounded summaries. Perfect for staying current on trending topics.",
+        "he": "Last30Days הוא כישור לסוכני AI שאוסף מידע עדכני מרשתות חברתיות ובורסות חיזוי. זה עוזר להבין מה חדש בעולם."
+      }
+    },
+    {
+      "id": "2026-11-18-github-4",
+      "source": "github",
+      "title": "NVIDIA/SkillEvaluator",
+      "href": "https://github.com/NVIDIA/SkillEvaluator",
+      "stars": 3475,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/NVIDIA/SkillEvaluator",
+      "summary": {
+        "en": "NVIDIA's SkillEvaluator is a framework for testing AI agent skills with quality gates, overlap detection, and synthetic evaluation datasets. It measures real impact on agent behavior.",
+        "he": "SkillEvaluator של NVIDIA בודק את איכות כישורי AI עם בדיקות איכות וגילוי חפיפות. זה מודד איך כישורים משפיעים על סוכנים."
+      }
+    },
+    {
+      "id": "2026-11-18-github-5",
+      "source": "github",
+      "title": "google-research/paper-orchestra",
+      "href": "https://github.com/google-research/paper-orchestra",
+      "stars": 3700,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/google-research/paper-orchestra",
+      "summary": {
+        "en": "PaperOrchestra is a multi-agent framework that automates the entire AI research paper writing process. Agents collaborate to research, draft, and refine academic papers.",
+        "he": "PaperOrchestra הוא מערכת סוכנים שכותבת מאמרי מחקר AI באופן אוטומטי. סוכנים שונים עובדים ביחד על כל שלב."
+      }
+    },
+    {
+      "id": "2026-11-18-huggingface-6",
+      "source": "huggingface",
+      "title": "higurashi-ai/Haru-4B",
+      "href": "https://huggingface.co/higurashi-ai/Haru-4B",
+      "stars": 587,
+      "tag": "audio-to-audio",
+      "downloads": 5314,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/higurashi-ai/Haru-4B.png",
+      "summary": {
+        "en": "Haru-4B is a compact audio-to-audio model for transforming and processing sound. Its small size makes it practical for edge deployment and real-time applications.",
+        "he": "Haru-4B הוא מודל קטן שמעבד קול ומשנה אותו. הוא קטן מספיק להריץ על מכשירים קטנים."
+      }
+    },
+    {
+      "id": "2026-11-18-huggingface-7",
+      "source": "huggingface",
+      "title": "Lightricks/LTX-2.5",
+      "href": "https://huggingface.co/Lightricks/LTX-2.5",
+      "stars": 12484,
+      "tag": "image-to-video",
+      "downloads": 2871190,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png",
+      "summary": {
+        "en": "Trending Hugging Face model (image-to-video). Likes: 12484, downloads: 2871190.",
+        "he": "טרנד חדש: Lightricks/LTX-2.5. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-18-huggingface-8",
+      "source": "huggingface",
+      "title": "thinkingmachines/Inkling-2-Small",
+      "href": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
+      "stars": 477,
+      "tag": "image-text-to-text",
+      "downloads": 30082,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/thinkingmachines/Inkling-2-Small.png",
+      "summary": {
+        "en": "Inkling-2-Small combines image and text understanding in a lightweight model for multimodal tasks. With 30K downloads, it's gaining traction for practical vision-language applications.",
+        "he": "Inkling-2-Small הוא מודל קטן שמבין תמונות וטקסט ביחד. הוא משמש למשימות שדורשות הבנה של שניהם."
+      }
+    },
+    {
+      "id": "2026-11-18-huggingface-9",
+      "source": "huggingface",
+      "title": "MiniMaxAI/MiniMax-H3-Image",
+      "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+      "stars": 1567,
+      "tag": "text-to-image",
+      "downloads": 759661,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png",
+      "summary": {
+        "en": "MiniMax-H3-Image generates high-quality images from text descriptions with strong adoption (759K downloads). It offers an efficient alternative to larger text-to-image models.",
+        "he": "MiniMax-H3-Image יוצר תמונות מתיאורים בטקסט. הוא יעיל וקל יותר מאשר מודלים גדולים אחרים."
+      }
+    },
+    {
+      "id": "2026-11-18-huggingface-10",
+      "source": "huggingface",
+      "title": "harness-hub/Qwen3.8-27B-pi-adapted",
+      "href": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
+      "stars": 281,
+      "tag": "image-text-to-text",
+      "downloads": 377,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/harness-hub/Qwen3.8-27B-pi-adapted.png",
+      "summary": {
+        "en": "Qwen3.8-27B-pi-adapted is a specialized vision-language model optimized for image-text understanding tasks. The pi-adaptation indicates fine-tuning for specific performance characteristics.",
+        "he": "Qwen3.8-27B-pi-adapted הוא מודל שמבין תמונות וטקסט בו זמנית. הוא מותאם לביצועים מיוחדים."
+      }
+    }
+  ]
+}
