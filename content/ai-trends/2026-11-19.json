@@ -1,0 +1,150 @@
+{
+  "date": "2026-11-19",
+  "trendOfTheDay": {
+    "slug": "2026-11-19-cli-anything-bridging-command-line-tools-and-ai-agents",
+    "title": "CLI-Anything: Bridging Command-Line Tools and AI Agents",
+    "titleHe": "CLI-Anything: חיבור כלים שורת-פקודה וסוכני AI",
+    "excerpt": "A Python framework that wraps existing CLI tools into agent-native interfaces, enabling AI systems to automate software workflows without modification to the underlying tools.",
+    "excerptHe": "מסגרת Python שעוטפת כלים קיימים של CLI לממשקים תומכי-סוכנים, המאפשרת למערכות AI להפעיל אוטומציה של זרימות עבודה תוכנה ללא שינוי לכלים הבסיסיים.",
+    "sourceHref": "https://github.com/HKUDS/CLI-Anything",
+    "image": "/blog/ai-trends/2026-11-19-cli-anything-bridging-command-line-tools-and-ai-agents.webp",
+    "imageAlt": "Abstract illustration for: CLI-Anything: Bridging Command-Line Tools and AI Agents"
+  },
+  "items": [
+    {
+      "id": "2026-11-19-github-1",
+      "source": "github",
+      "title": "elementalsouls/Claude-BugHunter",
+      "href": "https://github.com/elementalsouls/Claude-BugHunter",
+      "stars": 11751,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/elementalsouls/Claude-BugHunter",
+      "summary": {
+        "en": "A Claude Code skill bundle for bug hunting and external red-team work - 82 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.",
+        "he": "טרנד חדש: elementalsouls/Claude-BugHunter. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-19-github-2",
+      "source": "github",
+      "title": "HKUDS/CLI-Anything",
+      "href": "https://github.com/HKUDS/CLI-Anything",
+      "stars": 60235,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/HKUDS/CLI-Anything",
+      "summary": {
+        "en": "CLI-Anything makes any command-line tool work natively with AI agents, enabling seamless automation across all software. This bridges the gap between traditional CLI tools and modern AI workflows.",
+        "he": "CLI-Anything מאפשר לכל כלי שורת פקודה לעבוד ישירות עם סוכנים בינה מלאכותית. זה חיבור חדש בין כלים ישנים לאוטומציה חכמה."
+      }
+    },
+    {
+      "id": "2026-11-19-github-3",
+      "source": "github",
+      "title": "jingyaogong/minimind",
+      "href": "https://github.com/jingyaogong/minimind",
+      "stars": 66637,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/jingyaogong/minimind",
+      "summary": {
+        "en": "MiniMind lets you train a 64M parameter language model from scratch in just 2 hours, making LLM development accessible to anyone. Perfect for learning or building lightweight models.",
+        "he": "MiniMind מאפשר לך לאמן מודל שפה בגודל 64M תוך שעתיים בלבד. זה הופך את בניית מודלים חכמים לפשוטה וזולה."
+      }
+    },
+    {
+      "id": "2026-11-19-github-4",
+      "source": "github",
+      "title": "openvinotoolkit/openvino",
+      "href": "https://github.com/openvinotoolkit/openvino",
+      "stars": 11458,
+      "language": "C++",
+      "imageUrl": "https://opengraph.githubassets.com/1/openvinotoolkit/openvino",
+      "summary": {
+        "en": "OpenVINO is an open-source toolkit that optimizes and deploys AI models efficiently across different hardware. It's essential for running inference at scale in production.",
+        "he": "OpenVINO הוא כלי חינמי שמייעל ויפעיל מודלי AI בצורה יעילה. הוא עוזר להריץ בינה מלאכותית במהירות בכל מחשב."
+      }
+    },
+    {
+      "id": "2026-11-19-github-5",
+      "source": "github",
+      "title": "cathrynlavery/diagram-design",
+      "href": "https://github.com/cathrynlavery/diagram-design",
+      "stars": 68369,
+      "language": "HTML",
+      "imageUrl": "https://opengraph.githubassets.com/1/cathrynlavery/diagram-design",
+      "summary": {
+        "en": "Diagram-Design provides 45 professional diagram templates for AI code editors like Claude and Copilot using pure HTML and SVG. No dependencies, no bloat—just clean, ready-to-use visuals.",
+        "he": "Diagram-Design מכיל 45 תבניות דיאגרמה מקצועיות לעורכי קוד עם AI. הכל בHTML וSVG נקי, ללא תלויות מיותרות."
+      }
+    },
+    {
+      "id": "2026-11-19-huggingface-6",
+      "source": "huggingface",
+      "title": "higurashi-ai/Haru-4B",
+      "href": "https://huggingface.co/higurashi-ai/Haru-4B",
+      "stars": 2086,
+      "tag": "audio-to-audio",
+      "downloads": 6266,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/higurashi-ai/Haru-4B.png",
+      "summary": {
+        "en": "Haru-4B is a trending audio-to-audio model that transforms sound directly without intermediate steps. Useful for real-time audio processing and voice enhancement tasks.",
+        "he": "Haru-4B הוא מודל שמעבד קול ישירות לקול. זה טוב לשיפור קול וטיפול בשמע בזמן אמת."
+      }
+    },
+    {
+      "id": "2026-11-19-huggingface-7",
+      "source": "huggingface",
+      "title": "tencent/Hy4-flash",
+      "href": "https://huggingface.co/tencent/Hy4-flash",
+      "stars": 289,
+      "tag": "image-text-to-text",
+      "downloads": 2053,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/tencent/Hy4-flash.png",
+      "summary": {
+        "en": "Hy4-Flash from Tencent combines images and text input to generate text output efficiently. A compact multimodal model gaining traction for practical AI applications.",
+        "he": "Hy4-Flash של Tencent מקבל תמונות וטקסט ויוצר טקסט חדש. מודל קטן וחכם לעבודה עם תמונות וטקסט ביחד."
+      }
+    },
+    {
+      "id": "2026-11-19-huggingface-8",
+      "source": "huggingface",
+      "title": "Qwen/Qwen3.8-27B",
+      "href": "https://huggingface.co/Qwen/Qwen3.8-27B",
+      "stars": 20615,
+      "tag": "image-text-to-text",
+      "downloads": 6647301,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Qwen/Qwen3.8-27B.png",
+      "summary": {
+        "en": "Trending Hugging Face model (image-text-to-text). Likes: 20615, downloads: 6647301.",
+        "he": "טרנד חדש: Qwen/Qwen3.8-27B. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-19-huggingface-9",
+      "source": "huggingface",
+      "title": "MiniMaxAI/MiniMax-H3-Image",
+      "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+      "stars": 1608,
+      "tag": "text-to-image",
+      "downloads": 821710,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png",
+      "summary": {
+        "en": "MiniMax-H3-Image converts text prompts into high-quality images with strong download adoption (821K+). A competitive text-to-image model for creative and commercial use.",
+        "he": "MiniMax-H3-Image הופך טקסט לתמונות יפות. הרבה אנשים משתמשים בו כי הוא טוב ומהיר."
+      }
+    },
+    {
+      "id": "2026-11-19-huggingface-10",
+      "source": "huggingface",
+      "title": "harness-hub/Qwen3.8-27B-pi-adapted",
+      "href": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
+      "stars": 663,
+      "tag": "image-text-to-text",
+      "downloads": 1320,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/harness-hub/Qwen3.8-27B-pi-adapted.png",
+      "summary": {
+        "en": "Qwen3.8-27B-pi-adapted is a specialized version of Qwen3.8 optimized for Pi hardware, enabling powerful multimodal AI on resource-constrained devices. Bridges high-performance models with edge computing.",
+        "he": "Qwen3.8-27B-pi-adapted הוא גרסה מיוחדת לחשמלים קטנים כמו Raspberry Pi. זה מאפשר בינה מלאכותית חזקה גם בהתקנים חלשים."
+      }
+    }
+  ]
+}

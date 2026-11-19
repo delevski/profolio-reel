@@ -1,6 +1,6 @@
 [
   {
-    "id": "2026-11-18-github-1",
+    "id": "2026-11-19-github-1",
     "title": "elementalsouls/Claude-BugHunter",
     "source": "GitHub",
     "description": {
@@ -8,115 +8,115 @@
       "he": "טרנד חדש: elementalsouls/Claude-BugHunter. כדאי לעקוב אחרי העדכון הזה."
     },
     "href": "https://github.com/elementalsouls/Claude-BugHunter",
-    "stars": 10455,
+    "stars": 11751,
     "imageUrl": "https://opengraph.githubassets.com/1/elementalsouls/Claude-BugHunter"
   },
   {
-    "id": "2026-11-18-github-2",
+    "id": "2026-11-19-github-2",
     "title": "HKUDS/CLI-Anything",
     "source": "GitHub",
     "description": {
-      "en": "CLI-Anything makes any command-line tool work natively with AI agents, enabling software to become agent-aware without modification. This bridges the gap between traditional CLI tools and modern AI workflows.",
-      "he": "CLI-Anything מאפשר לכל כלי שורת פקודה לעבוד עם סוכני AI באופן טבעי. זה חיבור חדש בין כלים ישנים לבין AI מודרני."
+      "en": "CLI-Anything makes any command-line tool work natively with AI agents, enabling seamless automation across all software. This bridges the gap between traditional CLI tools and modern AI workflows.",
+      "he": "CLI-Anything מאפשר לכל כלי שורת פקודה לעבוד ישירות עם סוכנים בינה מלאכותית. זה חיבור חדש בין כלים ישנים לאוטומציה חכמה."
     },
     "href": "https://github.com/HKUDS/CLI-Anything",
-    "stars": 59353,
+    "stars": 60235,
     "imageUrl": "https://opengraph.githubassets.com/1/HKUDS/CLI-Anything"
   },
   {
-    "id": "2026-11-18-github-3",
-    "title": "mvanhorn/last30days-skill",
+    "id": "2026-11-19-github-3",
+    "title": "jingyaogong/minimind",
     "source": "GitHub",
     "description": {
-      "en": "Last30Days is an AI agent skill that gathers and synthesizes recent information from Reddit, X, YouTube, Hacker News, and prediction markets into grounded summaries. Perfect for staying current on trending topics.",
-      "he": "Last30Days הוא כישור לסוכני AI שאוסף מידע עדכני מרשתות חברתיות ובורסות חיזוי. זה עוזר להבין מה חדש בעולם."
+      "en": "MiniMind lets you train a 64M parameter language model from scratch in just 2 hours, making LLM development accessible to anyone. Perfect for learning or building lightweight models.",
+      "he": "MiniMind מאפשר לך לאמן מודל שפה בגודל 64M תוך שעתיים בלבד. זה הופך את בניית מודלים חכמים לפשוטה וזולה."
     },
-    "href": "https://github.com/mvanhorn/last30days-skill",
-    "stars": 69601,
-    "imageUrl": "https://opengraph.githubassets.com/1/mvanhorn/last30days-skill"
+    "href": "https://github.com/jingyaogong/minimind",
+    "stars": 66637,
+    "imageUrl": "https://opengraph.githubassets.com/1/jingyaogong/minimind"
   },
   {
-    "id": "2026-11-18-github-4",
-    "title": "NVIDIA/SkillEvaluator",
+    "id": "2026-11-19-github-4",
+    "title": "openvinotoolkit/openvino",
     "source": "GitHub",
     "description": {
-      "en": "NVIDIA's SkillEvaluator is a framework for testing AI agent skills with quality gates, overlap detection, and synthetic evaluation datasets. It measures real impact on agent behavior.",
-      "he": "SkillEvaluator של NVIDIA בודק את איכות כישורי AI עם בדיקות איכות וגילוי חפיפות. זה מודד איך כישורים משפיעים על סוכנים."
+      "en": "OpenVINO is an open-source toolkit that optimizes and deploys AI models efficiently across different hardware. It's essential for running inference at scale in production.",
+      "he": "OpenVINO הוא כלי חינמי שמייעל ויפעיל מודלי AI בצורה יעילה. הוא עוזר להריץ בינה מלאכותית במהירות בכל מחשב."
     },
-    "href": "https://github.com/NVIDIA/SkillEvaluator",
-    "stars": 3475,
-    "imageUrl": "https://opengraph.githubassets.com/1/NVIDIA/SkillEvaluator"
+    "href": "https://github.com/openvinotoolkit/openvino",
+    "stars": 11458,
+    "imageUrl": "https://opengraph.githubassets.com/1/openvinotoolkit/openvino"
   },
   {
-    "id": "2026-11-18-github-5",
-    "title": "google-research/paper-orchestra",
+    "id": "2026-11-19-github-5",
+    "title": "cathrynlavery/diagram-design",
     "source": "GitHub",
     "description": {
-      "en": "PaperOrchestra is a multi-agent framework that automates the entire AI research paper writing process. Agents collaborate to research, draft, and refine academic papers.",
-      "he": "PaperOrchestra הוא מערכת סוכנים שכותבת מאמרי מחקר AI באופן אוטומטי. סוכנים שונים עובדים ביחד על כל שלב."
+      "en": "Diagram-Design provides 45 professional diagram templates for AI code editors like Claude and Copilot using pure HTML and SVG. No dependencies, no bloat—just clean, ready-to-use visuals.",
+      "he": "Diagram-Design מכיל 45 תבניות דיאגרמה מקצועיות לעורכי קוד עם AI. הכל בHTML וSVG נקי, ללא תלויות מיותרות."
     },
-    "href": "https://github.com/google-research/paper-orchestra",
-    "stars": 3700,
-    "imageUrl": "https://opengraph.githubassets.com/1/google-research/paper-orchestra"
+    "href": "https://github.com/cathrynlavery/diagram-design",
+    "stars": 68369,
+    "imageUrl": "https://opengraph.githubassets.com/1/cathrynlavery/diagram-design"
   },
   {
-    "id": "2026-11-18-huggingface-6",
+    "id": "2026-11-19-huggingface-6",
     "title": "higurashi-ai/Haru-4B",
     "source": "Hugging Face",
     "description": {
-      "en": "Haru-4B is a compact audio-to-audio model for transforming and processing sound. Its small size makes it practical for edge deployment and real-time applications.",
-      "he": "Haru-4B הוא מודל קטן שמעבד קול ומשנה אותו. הוא קטן מספיק להריץ על מכשירים קטנים."
+      "en": "Haru-4B is a trending audio-to-audio model that transforms sound directly without intermediate steps. Useful for real-time audio processing and voice enhancement tasks.",
+      "he": "Haru-4B הוא מודל שמעבד קול ישירות לקול. זה טוב לשיפור קול וטיפול בשמע בזמן אמת."
     },
     "href": "https://huggingface.co/higurashi-ai/Haru-4B",
-    "stars": 587,
+    "stars": 2086,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/higurashi-ai/Haru-4B.png"
   },
   {
-    "id": "2026-11-18-huggingface-7",
-    "title": "Lightricks/LTX-2.5",
+    "id": "2026-11-19-huggingface-7",
+    "title": "tencent/Hy4-flash",
     "source": "Hugging Face",
     "description": {
-      "en": "Trending Hugging Face model (image-to-video). Likes: 12484, downloads: 2871190.",
-      "he": "טרנד חדש: Lightricks/LTX-2.5. כדאי לעקוב אחרי העדכון הזה."
+      "en": "Hy4-Flash from Tencent combines images and text input to generate text output efficiently. A compact multimodal model gaining traction for practical AI applications.",
+      "he": "Hy4-Flash של Tencent מקבל תמונות וטקסט ויוצר טקסט חדש. מודל קטן וחכם לעבודה עם תמונות וטקסט ביחד."
     },
-    "href": "https://huggingface.co/Lightricks/LTX-2.5",
-    "stars": 12484,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Lightricks/LTX-2.5.png"
+    "href": "https://huggingface.co/tencent/Hy4-flash",
+    "stars": 289,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/tencent/Hy4-flash.png"
   },
   {
-    "id": "2026-11-18-huggingface-8",
-    "title": "thinkingmachines/Inkling-2-Small",
+    "id": "2026-11-19-huggingface-8",
+    "title": "Qwen/Qwen3.8-27B",
     "source": "Hugging Face",
     "description": {
-      "en": "Inkling-2-Small combines image and text understanding in a lightweight model for multimodal tasks. With 30K downloads, it's gaining traction for practical vision-language applications.",
-      "he": "Inkling-2-Small הוא מודל קטן שמבין תמונות וטקסט ביחד. הוא משמש למשימות שדורשות הבנה של שניהם."
+      "en": "Trending Hugging Face model (image-text-to-text). Likes: 20615, downloads: 6647301.",
+      "he": "טרנד חדש: Qwen/Qwen3.8-27B. כדאי לעקוב אחרי העדכון הזה."
     },
-    "href": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
-    "stars": 477,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/thinkingmachines/Inkling-2-Small.png"
+    "href": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "stars": 20615,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Qwen/Qwen3.8-27B.png"
   },
   {
-    "id": "2026-11-18-huggingface-9",
+    "id": "2026-11-19-huggingface-9",
     "title": "MiniMaxAI/MiniMax-H3-Image",
     "source": "Hugging Face",
     "description": {
-      "en": "MiniMax-H3-Image generates high-quality images from text descriptions with strong adoption (759K downloads). It offers an efficient alternative to larger text-to-image models.",
-      "he": "MiniMax-H3-Image יוצר תמונות מתיאורים בטקסט. הוא יעיל וקל יותר מאשר מודלים גדולים אחרים."
+      "en": "MiniMax-H3-Image converts text prompts into high-quality images with strong download adoption (821K+). A competitive text-to-image model for creative and commercial use.",
+      "he": "MiniMax-H3-Image הופך טקסט לתמונות יפות. הרבה אנשים משתמשים בו כי הוא טוב ומהיר."
     },
     "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
-    "stars": 1567,
+    "stars": 1608,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png"
   },
   {
-    "id": "2026-11-18-huggingface-10",
+    "id": "2026-11-19-huggingface-10",
     "title": "harness-hub/Qwen3.8-27B-pi-adapted",
     "source": "Hugging Face",
     "description": {
-      "en": "Qwen3.8-27B-pi-adapted is a specialized vision-language model optimized for image-text understanding tasks. The pi-adaptation indicates fine-tuning for specific performance characteristics.",
-      "he": "Qwen3.8-27B-pi-adapted הוא מודל שמבין תמונות וטקסט בו זמנית. הוא מותאם לביצועים מיוחדים."
+      "en": "Qwen3.8-27B-pi-adapted is a specialized version of Qwen3.8 optimized for Pi hardware, enabling powerful multimodal AI on resource-constrained devices. Bridges high-performance models with edge computing.",
+      "he": "Qwen3.8-27B-pi-adapted הוא גרסה מיוחדת לחשמלים קטנים כמו Raspberry Pi. זה מאפשר בינה מלאכותית חזקה גם בהתקנים חלשים."
     },
     "href": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
-    "stars": 281,
+    "stars": 663,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/harness-hub/Qwen3.8-27B-pi-adapted.png"
   }
 ]
