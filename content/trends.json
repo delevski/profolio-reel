@@ -1,6 +1,6 @@
 [
   {
-    "id": "2026-11-19-github-1",
+    "id": "2026-11-20-github-1",
     "title": "elementalsouls/Claude-BugHunter",
     "source": "GitHub",
     "description": {
@@ -8,115 +8,115 @@
       "he": "טרנד חדש: elementalsouls/Claude-BugHunter. כדאי לעקוב אחרי העדכון הזה."
     },
     "href": "https://github.com/elementalsouls/Claude-BugHunter",
-    "stars": 11751,
+    "stars": 13392,
     "imageUrl": "https://opengraph.githubassets.com/1/elementalsouls/Claude-BugHunter"
   },
   {
-    "id": "2026-11-19-github-2",
+    "id": "2026-11-20-github-2",
     "title": "HKUDS/CLI-Anything",
     "source": "GitHub",
     "description": {
-      "en": "CLI-Anything makes any command-line tool work natively with AI agents, enabling seamless automation across all software. This bridges the gap between traditional CLI tools and modern AI workflows.",
-      "he": "CLI-Anything מאפשר לכל כלי שורת פקודה לעבוד ישירות עם סוכנים בינה מלאכותית. זה חיבור חדש בין כלים ישנים לאוטומציה חכמה."
+      "en": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
+      "he": "טרנד חדש: HKUDS/CLI-Anything. כדאי לעקוב אחרי העדכון הזה."
     },
     "href": "https://github.com/HKUDS/CLI-Anything",
-    "stars": 60235,
+    "stars": 60989,
     "imageUrl": "https://opengraph.githubassets.com/1/HKUDS/CLI-Anything"
   },
   {
-    "id": "2026-11-19-github-3",
+    "id": "2026-11-20-github-3",
     "title": "jingyaogong/minimind",
     "source": "GitHub",
     "description": {
-      "en": "MiniMind lets you train a 64M parameter language model from scratch in just 2 hours, making LLM development accessible to anyone. Perfect for learning or building lightweight models.",
-      "he": "MiniMind מאפשר לך לאמן מודל שפה בגודל 64M תוך שעתיים בלבד. זה הופך את בניית מודלים חכמים לפשוטה וזולה."
+      "en": "Train a 64-million-parameter language model from scratch in just 2 hours. This lightweight approach makes AI model development accessible to developers without massive computational resources.",
+      "he": "אתה יכול לאמן מודל שפה של 64 מיליון פרמטרים בשעתיים בלבד. זה הופך את פיתוח מודלים של AI לנגיש לכל מפתח."
     },
     "href": "https://github.com/jingyaogong/minimind",
-    "stars": 66637,
+    "stars": 67463,
     "imageUrl": "https://opengraph.githubassets.com/1/jingyaogong/minimind"
   },
   {
-    "id": "2026-11-19-github-4",
+    "id": "2026-11-20-github-4",
     "title": "openvinotoolkit/openvino",
     "source": "GitHub",
     "description": {
-      "en": "OpenVINO is an open-source toolkit that optimizes and deploys AI models efficiently across different hardware. It's essential for running inference at scale in production.",
-      "he": "OpenVINO הוא כלי חינמי שמייעל ויפעיל מודלי AI בצורה יעילה. הוא עוזר להריץ בינה מלאכותית במהירות בכל מחשב."
+      "en": "OpenVINO is an open-source toolkit that optimizes and deploys AI inference across different hardware platforms. It helps reduce model size and speed up inference for production applications.",
+      "he": "OpenVINO הוא כלי קוד פתוח שמייעל ומפרוס מודלי AI על חומware שונה. הוא מקטין גודל מודלים ומאיץ את ביצוע המודלים בייצור."
     },
     "href": "https://github.com/openvinotoolkit/openvino",
-    "stars": 11458,
+    "stars": 11668,
     "imageUrl": "https://opengraph.githubassets.com/1/openvinotoolkit/openvino"
   },
   {
-    "id": "2026-11-19-github-5",
+    "id": "2026-11-20-github-5",
     "title": "cathrynlavery/diagram-design",
     "source": "GitHub",
     "description": {
-      "en": "Diagram-Design provides 45 professional diagram templates for AI code editors like Claude and Copilot using pure HTML and SVG. No dependencies, no bloat—just clean, ready-to-use visuals.",
-      "he": "Diagram-Design מכיל 45 תבניות דיאגרמה מקצועיות לעורכי קוד עם AI. הכל בHTML וSVG נקי, ללא תלויות מיותרות."
+      "en": "A design system with 45 diagram types built for AI code editors like Claude Code and Cursor. Uses clean HTML and SVG without heavy styling, making diagrams fast and lightweight.",
+      "he": "מערכת עיצוב עם 45 סוגי דיאגרמות לעורכי קוד AI. היא משתמשת ב-HTML ו-SVG נקיים ללא עיצוב כבד."
     },
     "href": "https://github.com/cathrynlavery/diagram-design",
-    "stars": 68369,
+    "stars": 68998,
     "imageUrl": "https://opengraph.githubassets.com/1/cathrynlavery/diagram-design"
   },
   {
-    "id": "2026-11-19-huggingface-6",
+    "id": "2026-11-20-huggingface-6",
     "title": "higurashi-ai/Haru-4B",
     "source": "Hugging Face",
     "description": {
-      "en": "Haru-4B is a trending audio-to-audio model that transforms sound directly without intermediate steps. Useful for real-time audio processing and voice enhancement tasks.",
-      "he": "Haru-4B הוא מודל שמעבד קול ישירות לקול. זה טוב לשיפור קול וטיפול בשמע בזמן אמת."
+      "en": "Haru-4B is a trending audio-to-audio model that transforms sound inputs with strong community adoption. It demonstrates practical applications in audio processing and voice enhancement.",
+      "he": "Haru-4B הוא מודל אודיו-לאודיו שהופך קלטות קול. הוא מראה יישומים מעשיים בעיבוד אודיו."
     },
     "href": "https://huggingface.co/higurashi-ai/Haru-4B",
-    "stars": 2086,
+    "stars": 3960,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/higurashi-ai/Haru-4B.png"
   },
   {
-    "id": "2026-11-19-huggingface-7",
-    "title": "tencent/Hy4-flash",
+    "id": "2026-11-20-huggingface-7",
+    "title": "apple/FastFrames-L",
     "source": "Hugging Face",
     "description": {
-      "en": "Hy4-Flash from Tencent combines images and text input to generate text output efficiently. A compact multimodal model gaining traction for practical AI applications.",
-      "he": "Hy4-Flash של Tencent מקבל תמונות וטקסט ויוצר טקסט חדש. מודל קטן וחכם לעבודה עם תמונות וטקסט ביחד."
+      "en": "Apple's FastFrames-L generates videos from text prompts with efficient performance. It represents advances in text-to-video generation from a major tech company.",
+      "he": "FastFrames-L של Apple יוצר סרטונים מטקסט. זה מראה התקדמות בטכנולוגיית יצירת וידאו מטקסט."
     },
-    "href": "https://huggingface.co/tencent/Hy4-flash",
-    "stars": 289,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/tencent/Hy4-flash.png"
+    "href": "https://huggingface.co/apple/FastFrames-L",
+    "stars": 375,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/apple/FastFrames-L.png"
   },
   {
-    "id": "2026-11-19-huggingface-8",
-    "title": "Qwen/Qwen3.8-27B",
+    "id": "2026-11-20-huggingface-8",
+    "title": "inworld/voice-isolator",
     "source": "Hugging Face",
     "description": {
-      "en": "Trending Hugging Face model (image-text-to-text). Likes: 20615, downloads: 6647301.",
-      "he": "טרנד חדש: Qwen/Qwen3.8-27B. כדאי לעקוב אחרי העדכון הזה."
+      "en": "Voice Isolator is an audio-to-audio model that separates and enhances voice signals from background noise. Useful for cleaning audio in real-time applications and voice processing pipelines.",
+      "he": "Voice Isolator מפריד קול מרעש רקע. זה שימושי לניקוי אודיו ביישומים בזמן אמת."
     },
-    "href": "https://huggingface.co/Qwen/Qwen3.8-27B",
-    "stars": 20615,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Qwen/Qwen3.8-27B.png"
+    "href": "https://huggingface.co/inworld/voice-isolator",
+    "stars": 324,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/inworld/voice-isolator.png"
   },
   {
-    "id": "2026-11-19-huggingface-9",
-    "title": "MiniMaxAI/MiniMax-H3-Image",
-    "source": "Hugging Face",
-    "description": {
-      "en": "MiniMax-H3-Image converts text prompts into high-quality images with strong download adoption (821K+). A competitive text-to-image model for creative and commercial use.",
-      "he": "MiniMax-H3-Image הופך טקסט לתמונות יפות. הרבה אנשים משתמשים בו כי הוא טוב ומהיר."
-    },
-    "href": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
-    "stars": 1608,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/MiniMaxAI/MiniMax-H3-Image.png"
-  },
-  {
-    "id": "2026-11-19-huggingface-10",
+    "id": "2026-11-20-huggingface-9",
     "title": "harness-hub/Qwen3.8-27B-pi-adapted",
     "source": "Hugging Face",
     "description": {
-      "en": "Qwen3.8-27B-pi-adapted is a specialized version of Qwen3.8 optimized for Pi hardware, enabling powerful multimodal AI on resource-constrained devices. Bridges high-performance models with edge computing.",
-      "he": "Qwen3.8-27B-pi-adapted הוא גרסה מיוחדת לחשמלים קטנים כמו Raspberry Pi. זה מאפשר בינה מלאכותית חזקה גם בהתקנים חלשים."
+      "en": "Qwen3.8-27B-pi-adapted is a multimodal model optimized for image and text understanding. It combines vision and language capabilities in a compact 27-billion-parameter form.",
+      "he": "Qwen3.8-27B-pi-adapted הוא מודל שמבין תמונות וטקסט. הוא משלב ראייה ושפה בגודל קומפקטי."
     },
     "href": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
-    "stars": 663,
+    "stars": 789,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/harness-hub/Qwen3.8-27B-pi-adapted.png"
+  },
+  {
+    "id": "2026-11-20-huggingface-10",
+    "title": "Qwen/Qwen3.8-27B",
+    "source": "Hugging Face",
+    "description": {
+      "en": "Trending Hugging Face model (image-text-to-text). Likes: 20723, downloads: 6454419.",
+      "he": "טרנד חדש: Qwen/Qwen3.8-27B. כדאי לעקוב אחרי העדכון הזה."
+    },
+    "href": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "stars": 20723,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Qwen/Qwen3.8-27B.png"
   }
 ]
