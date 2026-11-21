@@ -1,6 +1,6 @@
 [
   {
-    "id": "2026-11-20-github-1",
+    "id": "2026-11-21-github-1",
     "title": "elementalsouls/Claude-BugHunter",
     "source": "GitHub",
     "description": {
@@ -8,11 +8,11 @@
       "he": "טרנד חדש: elementalsouls/Claude-BugHunter. כדאי לעקוב אחרי העדכון הזה."
     },
     "href": "https://github.com/elementalsouls/Claude-BugHunter",
-    "stars": 13392,
+    "stars": 15141,
     "imageUrl": "https://opengraph.githubassets.com/1/elementalsouls/Claude-BugHunter"
   },
   {
-    "id": "2026-11-20-github-2",
+    "id": "2026-11-21-github-2",
     "title": "HKUDS/CLI-Anything",
     "source": "GitHub",
     "description": {
@@ -20,103 +20,103 @@
       "he": "טרנד חדש: HKUDS/CLI-Anything. כדאי לעקוב אחרי העדכון הזה."
     },
     "href": "https://github.com/HKUDS/CLI-Anything",
-    "stars": 60989,
+    "stars": 61739,
     "imageUrl": "https://opengraph.githubassets.com/1/HKUDS/CLI-Anything"
   },
   {
-    "id": "2026-11-20-github-3",
+    "id": "2026-11-21-github-3",
     "title": "jingyaogong/minimind",
     "source": "GitHub",
     "description": {
-      "en": "Train a 64-million-parameter language model from scratch in just 2 hours. This lightweight approach makes AI model development accessible to developers without massive computational resources.",
-      "he": "אתה יכול לאמן מודל שפה של 64 מיליון פרמטרים בשעתיים בלבד. זה הופך את פיתוח מודלים של AI לנגיש לכל מפתח."
+      "en": "🧠 两小时从 0 训出你的 64M 大模型。Train your own 64M LLM from scratch in 2 hours.",
+      "he": "טרנד חדש: jingyaogong/minimind. כדאי לעקוב אחרי העדכון הזה."
     },
     "href": "https://github.com/jingyaogong/minimind",
-    "stars": 67463,
+    "stars": 67924,
     "imageUrl": "https://opengraph.githubassets.com/1/jingyaogong/minimind"
   },
   {
-    "id": "2026-11-20-github-4",
+    "id": "2026-11-21-github-4",
     "title": "openvinotoolkit/openvino",
     "source": "GitHub",
     "description": {
-      "en": "OpenVINO is an open-source toolkit that optimizes and deploys AI inference across different hardware platforms. It helps reduce model size and speed up inference for production applications.",
-      "he": "OpenVINO הוא כלי קוד פתוח שמייעל ומפרוס מודלי AI על חומware שונה. הוא מקטין גודל מודלים ומאיץ את ביצוע המודלים בייצור."
+      "en": "OpenVINO is an open-source toolkit that optimizes and deploys AI models efficiently across different hardware. It helps developers run inference faster on CPUs, GPUs, and edge devices.",
+      "he": "OpenVINO היא ערכת כלים חינמית שמאיצה הרצת מודלי AI על חומware שונים. היא עוזרת למפתחים להריץ AI מהר יותר על מחשבים וטלפונים."
     },
     "href": "https://github.com/openvinotoolkit/openvino",
-    "stars": 11668,
+    "stars": 11861,
     "imageUrl": "https://opengraph.githubassets.com/1/openvinotoolkit/openvino"
   },
   {
-    "id": "2026-11-20-github-5",
+    "id": "2026-11-21-github-5",
     "title": "cathrynlavery/diagram-design",
     "source": "GitHub",
     "description": {
-      "en": "A design system with 45 diagram types built for AI code editors like Claude Code and Cursor. Uses clean HTML and SVG without heavy styling, making diagrams fast and lightweight.",
-      "he": "מערכת עיצוב עם 45 סוגי דיאגרמות לעורכי קוד AI. היא משתמשת ב-HTML ו-SVG נקיים ללא עיצוב כבד."
+      "en": "A design system for creating clean, professional diagrams in AI code editors without relying on Mermaid. Includes 45 diagram types as self-contained HTML and SVG.",
+      "he": "מערכת עיצוב ליצירת דיאגרמות נקיות ומקצועיות בעורכי קוד AI. כוללת 45 סוגי דיאגרמות כ-HTML ו-SVG עצמאיים."
     },
     "href": "https://github.com/cathrynlavery/diagram-design",
-    "stars": 68998,
+    "stars": 69554,
     "imageUrl": "https://opengraph.githubassets.com/1/cathrynlavery/diagram-design"
   },
   {
-    "id": "2026-11-20-huggingface-6",
+    "id": "2026-11-21-huggingface-6",
+    "title": "thinkingmachines/Inkling-2-Mini",
+    "source": "Hugging Face",
+    "description": {
+      "en": "Inkling-2-Mini is a compact multimodal model that processes images and text together to generate text responses. Popular on Hugging Face with over 1,200 likes.",
+      "he": "Inkling-2-Mini הוא מודל קטן שמעבד תמונות וטקסט ביחד. הוא פופולרי בקהילה עם יותר מ-1,200 לייקים."
+    },
+    "href": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+    "stars": 1211,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/thinkingmachines/Inkling-2-Mini.png"
+  },
+  {
+    "id": "2026-11-21-huggingface-7",
     "title": "higurashi-ai/Haru-4B",
     "source": "Hugging Face",
     "description": {
-      "en": "Haru-4B is a trending audio-to-audio model that transforms sound inputs with strong community adoption. It demonstrates practical applications in audio processing and voice enhancement.",
-      "he": "Haru-4B הוא מודל אודיו-לאודיו שהופך קלטות קול. הוא מראה יישומים מעשיים בעיבוד אודיו."
+      "en": "Haru-4B is an audio-to-audio model enabling real-time voice transformation and processing. It demonstrates growing interest in audio-focused AI applications.",
+      "he": "Haru-4B הוא מודל שמעבד קול וממיר אותו לקול אחר. הוא מראה עניין גדל ביישומי AI המבוססים על קול."
     },
     "href": "https://huggingface.co/higurashi-ai/Haru-4B",
-    "stars": 3960,
+    "stars": 810,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/higurashi-ai/Haru-4B.png"
   },
   {
-    "id": "2026-11-20-huggingface-7",
-    "title": "apple/FastFrames-L",
-    "source": "Hugging Face",
-    "description": {
-      "en": "Apple's FastFrames-L generates videos from text prompts with efficient performance. It represents advances in text-to-video generation from a major tech company.",
-      "he": "FastFrames-L של Apple יוצר סרטונים מטקסט. זה מראה התקדמות בטכנולוגיית יצירת וידאו מטקסט."
-    },
-    "href": "https://huggingface.co/apple/FastFrames-L",
-    "stars": 375,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/apple/FastFrames-L.png"
-  },
-  {
-    "id": "2026-11-20-huggingface-8",
-    "title": "inworld/voice-isolator",
-    "source": "Hugging Face",
-    "description": {
-      "en": "Voice Isolator is an audio-to-audio model that separates and enhances voice signals from background noise. Useful for cleaning audio in real-time applications and voice processing pipelines.",
-      "he": "Voice Isolator מפריד קול מרעש רקע. זה שימושי לניקוי אודיו ביישומים בזמן אמת."
-    },
-    "href": "https://huggingface.co/inworld/voice-isolator",
-    "stars": 324,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/inworld/voice-isolator.png"
-  },
-  {
-    "id": "2026-11-20-huggingface-9",
+    "id": "2026-11-21-huggingface-8",
     "title": "harness-hub/Qwen3.8-27B-pi-adapted",
     "source": "Hugging Face",
     "description": {
-      "en": "Qwen3.8-27B-pi-adapted is a multimodal model optimized for image and text understanding. It combines vision and language capabilities in a compact 27-billion-parameter form.",
-      "he": "Qwen3.8-27B-pi-adapted הוא מודל שמבין תמונות וטקסט. הוא משלב ראייה ושפה בגודל קומפקטי."
+      "en": "Qwen3.8-27B-pi-adapted is a vision-language model optimized for specific use cases, combining image understanding with text generation. Balances capability with practical deployment.",
+      "he": "Qwen3.8-27B-pi-adapted הוא מודל שמבין תמונות וטקסט ביחד. הוא מאוזן בין כוח ויעילות."
     },
     "href": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
-    "stars": 789,
+    "stars": 849,
     "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/harness-hub/Qwen3.8-27B-pi-adapted.png"
   },
   {
-    "id": "2026-11-20-huggingface-10",
-    "title": "Qwen/Qwen3.8-27B",
+    "id": "2026-11-21-huggingface-9",
+    "title": "Sentinel7/h3",
     "source": "Hugging Face",
     "description": {
-      "en": "Trending Hugging Face model (image-text-to-text). Likes: 20723, downloads: 6454419.",
-      "he": "טרנד חדש: Qwen/Qwen3.8-27B. כדאי לעקוב אחרי העדכון הזה."
+      "en": "H3 is a trending Hugging Face model with early adoption interest. Limited download data suggests it's a newly released or specialized model worth monitoring.",
+      "he": "H3 הוא מודל חדש בקהילה שמושך תשומת לב. זה מודל מתמחה שכדאי לעקוב אחריו."
     },
-    "href": "https://huggingface.co/Qwen/Qwen3.8-27B",
-    "stars": 20723,
-    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Qwen/Qwen3.8-27B.png"
+    "href": "https://huggingface.co/Sentinel7/h3",
+    "stars": 634,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Sentinel7/h3.png"
+  },
+  {
+    "id": "2026-11-21-huggingface-10",
+    "title": "unsloth/Inkling-2-Mini-GGUF",
+    "source": "Hugging Face",
+    "description": {
+      "en": "Inkling-2-Mini-GGUF is a quantized version of Inkling-2-Mini optimized for local deployment. With 238K downloads, it's the most practical option for running multimodal AI on consumer hardware.",
+      "he": "Inkling-2-Mini-GGUF היא גרסה קטנה של Inkling-2-Mini שרצה על מחשבים רגילים. עם 238K הורדות, היא הדרך הכי פרקטית להריץ AI בבית."
+    },
+    "href": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
+    "stars": 399,
+    "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/unsloth/Inkling-2-Mini-GGUF.png"
   }
 ]

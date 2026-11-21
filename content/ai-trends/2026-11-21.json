@@ -1,0 +1,149 @@
+{
+  "date": "2026-11-21",
+  "trendOfTheDay": {
+    "slug": "2026-11-21-openvino-an-open-source-toolkit-for-deploying-ai-models-across-hardware",
+    "title": "OpenVINO: An Open-Source Toolkit for Deploying AI Models Across Hardware",
+    "titleHe": "OpenVINO: ערכת כלים בקוד פתוח לפריסת מודלי AI על חומware שונה",
+    "excerpt": "OpenVINO optimizes and deploys deep learning models efficiently on CPUs, GPUs, and edge devices without requiring original frameworks. It supports models from PyTorch, TensorFlow, ONNX, and other popular frameworks.",
+    "excerptHe": "OpenVINO משפרת ופורסת מודלי deep learning בצורה יעילה על CPUs, GPUs והתקנים edge ללא צורך בפריימוורקים מקוריים. היא תומכת במודלים מ-PyTorch, TensorFlow, ONNX ופריימוורקים פופולריים נוספים.",
+    "sourceHref": "https://github.com/openvinotoolkit/openvino",
+    "image": "/blog/ai-trends/2026-11-21-openvino-an-open-source-toolkit-for-deploying-ai-models-across-hardware.webp",
+    "imageAlt": "Abstract illustration for: OpenVINO: An Open-Source Toolkit for Deploying AI Models Across Hardware"
+  },
+  "items": [
+    {
+      "id": "2026-11-21-github-1",
+      "source": "github",
+      "title": "elementalsouls/Claude-BugHunter",
+      "href": "https://github.com/elementalsouls/Claude-BugHunter",
+      "stars": 15141,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/elementalsouls/Claude-BugHunter",
+      "summary": {
+        "en": "A Claude Code skill bundle for bug hunting and external red-team work - 82 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.",
+        "he": "טרנד חדש: elementalsouls/Claude-BugHunter. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-21-github-2",
+      "source": "github",
+      "title": "HKUDS/CLI-Anything",
+      "href": "https://github.com/HKUDS/CLI-Anything",
+      "stars": 61739,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/HKUDS/CLI-Anything",
+      "summary": {
+        "en": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
+        "he": "טרנד חדש: HKUDS/CLI-Anything. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-21-github-3",
+      "source": "github",
+      "title": "jingyaogong/minimind",
+      "href": "https://github.com/jingyaogong/minimind",
+      "stars": 67924,
+      "language": "Python",
+      "imageUrl": "https://opengraph.githubassets.com/1/jingyaogong/minimind",
+      "summary": {
+        "en": "🧠 两小时从 0 训出你的 64M 大模型。Train your own 64M LLM from scratch in 2 hours.",
+        "he": "טרנד חדש: jingyaogong/minimind. כדאי לעקוב אחרי העדכון הזה."
+      }
+    },
+    {
+      "id": "2026-11-21-github-4",
+      "source": "github",
+      "title": "openvinotoolkit/openvino",
+      "href": "https://github.com/openvinotoolkit/openvino",
+      "stars": 11861,
+      "language": "C++",
+      "imageUrl": "https://opengraph.githubassets.com/1/openvinotoolkit/openvino",
+      "summary": {
+        "en": "OpenVINO is an open-source toolkit that optimizes and deploys AI models efficiently across different hardware. It helps developers run inference faster on CPUs, GPUs, and edge devices.",
+        "he": "OpenVINO היא ערכת כלים חינמית שמאיצה הרצת מודלי AI על חומware שונים. היא עוזרת למפתחים להריץ AI מהר יותר על מחשבים וטלפונים."
+      }
+    },
+    {
+      "id": "2026-11-21-github-5",
+      "source": "github",
+      "title": "cathrynlavery/diagram-design",
+      "href": "https://github.com/cathrynlavery/diagram-design",
+      "stars": 69554,
+      "language": "HTML",
+      "imageUrl": "https://opengraph.githubassets.com/1/cathrynlavery/diagram-design",
+      "summary": {
+        "en": "A design system for creating clean, professional diagrams in AI code editors without relying on Mermaid. Includes 45 diagram types as self-contained HTML and SVG.",
+        "he": "מערכת עיצוב ליצירת דיאגרמות נקיות ומקצועיות בעורכי קוד AI. כוללת 45 סוגי דיאגרמות כ-HTML ו-SVG עצמאיים."
+      }
+    },
+    {
+      "id": "2026-11-21-huggingface-6",
+      "source": "huggingface",
+      "title": "thinkingmachines/Inkling-2-Mini",
+      "href": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+      "stars": 1211,
+      "tag": "image-text-to-text",
+      "downloads": 7944,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/thinkingmachines/Inkling-2-Mini.png",
+      "summary": {
+        "en": "Inkling-2-Mini is a compact multimodal model that processes images and text together to generate text responses. Popular on Hugging Face with over 1,200 likes.",
+        "he": "Inkling-2-Mini הוא מודל קטן שמעבד תמונות וטקסט ביחד. הוא פופולרי בקהילה עם יותר מ-1,200 לייקים."
+      }
+    },
+    {
+      "id": "2026-11-21-huggingface-7",
+      "source": "huggingface",
+      "title": "higurashi-ai/Haru-4B",
+      "href": "https://huggingface.co/higurashi-ai/Haru-4B",
+      "stars": 810,
+      "tag": "audio-to-audio",
+      "downloads": 8120,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/higurashi-ai/Haru-4B.png",
+      "summary": {
+        "en": "Haru-4B is an audio-to-audio model enabling real-time voice transformation and processing. It demonstrates growing interest in audio-focused AI applications.",
+        "he": "Haru-4B הוא מודל שמעבד קול וממיר אותו לקול אחר. הוא מראה עניין גדל ביישומי AI המבוססים על קול."
+      }
+    },
+    {
+      "id": "2026-11-21-huggingface-8",
+      "source": "huggingface",
+      "title": "harness-hub/Qwen3.8-27B-pi-adapted",
+      "href": "https://huggingface.co/harness-hub/Qwen3.8-27B-pi-adapted",
+      "stars": 849,
+      "tag": "image-text-to-text",
+      "downloads": 2383,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/harness-hub/Qwen3.8-27B-pi-adapted.png",
+      "summary": {
+        "en": "Qwen3.8-27B-pi-adapted is a vision-language model optimized for specific use cases, combining image understanding with text generation. Balances capability with practical deployment.",
+        "he": "Qwen3.8-27B-pi-adapted הוא מודל שמבין תמונות וטקסט ביחד. הוא מאוזן בין כוח ויעילות."
+      }
+    },
+    {
+      "id": "2026-11-21-huggingface-9",
+      "source": "huggingface",
+      "title": "Sentinel7/h3",
+      "href": "https://huggingface.co/Sentinel7/h3",
+      "stars": 634,
+      "downloads": 0,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/Sentinel7/h3.png",
+      "summary": {
+        "en": "H3 is a trending Hugging Face model with early adoption interest. Limited download data suggests it's a newly released or specialized model worth monitoring.",
+        "he": "H3 הוא מודל חדש בקהילה שמושך תשומת לב. זה מודל מתמחה שכדאי לעקוב אחריו."
+      }
+    },
+    {
+      "id": "2026-11-21-huggingface-10",
+      "source": "huggingface",
+      "title": "unsloth/Inkling-2-Mini-GGUF",
+      "href": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
+      "stars": 399,
+      "tag": "image-text-to-text",
+      "downloads": 238152,
+      "imageUrl": "https://cdn-thumbnails.huggingface.co/social-thumbnails/models/unsloth/Inkling-2-Mini-GGUF.png",
+      "summary": {
+        "en": "Inkling-2-Mini-GGUF is a quantized version of Inkling-2-Mini optimized for local deployment. With 238K downloads, it's the most practical option for running multimodal AI on consumer hardware.",
+        "he": "Inkling-2-Mini-GGUF היא גרסה קטנה של Inkling-2-Mini שרצה על מחשבים רגילים. עם 238K הורדות, היא הדרך הכי פרקטית להריץ AI בבית."
+      }
+    }
+  ]
+}
